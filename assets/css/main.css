@@ -569,6 +569,12 @@ a:hover { color: var(--accent-dim); }
   color: var(--accent);
 }
 
+.bento-card h3.sport-heading {
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--text);
+}
+
 .bento-card p {
   font-size: var(--text-sm);
   color: var(--muted-body);
@@ -660,6 +666,15 @@ a:hover { color: var(--accent-dim); }
   color: var(--text);
 }
 
+.entrepreneur-heading {
+  margin-bottom: 0.35rem;
+}
+
+.entrepreneur-list {
+  margin-top: 0;
+  margin-bottom: 0.65rem;
+}
+
 .about-note {
   font-size: var(--text-sm);
   color: var(--dim);
@@ -724,7 +739,7 @@ a:hover { color: var(--accent-dim); }
 .about-card li:last-child { margin-bottom: 0; }
 
 .about-card strong {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text);
 }
 
@@ -752,7 +767,7 @@ a:hover { color: var(--accent-dim); }
 
 .career-row {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 110px 1fr;
   gap: 0.85rem;
   padding: 0.9rem 1rem;
   background: var(--surface);
@@ -772,6 +787,17 @@ a:hover { color: var(--accent-dim); }
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: var(--tracking-upper);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.career-row .yr-dur {
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  color: var(--muted-body);
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 .career-row h3 {
@@ -1249,6 +1275,11 @@ a:hover { color: var(--accent-dim); }
 
 .service-item li,
 .case-wrap li { margin-bottom: 0.25rem; }
+
+.service-item strong {
+  font-weight: 700;
+  color: var(--text);
+}
 
 .network-industries {
   margin-bottom: var(--gap-block);
