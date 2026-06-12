@@ -16,33 +16,48 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="logo" href="#top">Oleg <em>Sorvanov</em></a>
-      <div class="nav-scroll">
-        <nav class="nav" aria-label="Main">
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="visually-hidden" lang="ru">Меню</span>
+        <span class="visually-hidden" lang="en">Menu</span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <div class="nav-group nav-group--primary">
           <a href="#about" lang="ru">Обо мне</a>
           <a href="#about" lang="en">About</a>
           <a href="#career" lang="ru">Карьера</a>
           <a href="#career" lang="en">Career</a>
           <a href="#cases" lang="ru">Кейсы</a>
           <a href="#cases" lang="en">Cases</a>
-          <a href="#services" lang="ru">Услуги</a>
-          <a href="#services" lang="en">Services</a>
-          <a href="#ai" lang="ru">AI</a>
-          <a href="#ai" lang="en">AI</a>
-          <a href="#network" lang="ru">Сеть</a>
-          <a href="#network" lang="en">Network</a>
-          <a href="#coffee">Coffee</a>
-          <a href="#life" lang="ru">Жизнь</a>
-          <a href="#life" lang="en">Life</a>
-          <a href="#business" lang="ru">Бизнес</a>
-          <a href="#business" lang="en">Business</a>
-          <a href="#builder" lang="ru">Визитки</a>
-          <a href="#builder" lang="en">Builder</a>
-          <a href="#location" lang="ru">Локация</a>
-          <a href="#location" lang="en">Location</a>
           <a href="#contact" lang="ru">Контакты</a>
           <a href="#contact" lang="en">Contact</a>
-        </nav>
-      </div>
+        </div>
+        <div class="nav-more">
+          <button type="button" class="nav-more-btn" aria-expanded="false" aria-controls="nav-more-panel">
+            <span lang="ru">Ещё</span>
+            <span lang="en">More</span>
+          </button>
+          <div id="nav-more-panel" class="nav-more-panel">
+            <a href="#services" lang="ru">Услуги</a>
+            <a href="#services" lang="en">Services</a>
+            <a href="#ai" lang="ru">AI</a>
+            <a href="#ai" lang="en">AI</a>
+            <a href="#network" lang="ru">Сеть</a>
+            <a href="#network" lang="en">Network</a>
+            <a href="#coffee">Coffee</a>
+            <a href="#life" lang="ru">Жизнь</a>
+            <a href="#life" lang="en">Life</a>
+            <a href="#business" lang="ru">Бизнес</a>
+            <a href="#business" lang="en">Business</a>
+            <a href="#builder" lang="ru">Визитки</a>
+            <a href="#builder" lang="en">Builder</a>
+            <a href="#location" lang="ru">Локация</a>
+            <a href="#location" lang="en">Location</a>
+          </div>
+        </div>
+      </nav>
       <div class="lang-switch">
         <button type="button" class="lang-btn active" data-lang="ru" aria-label="Русский">RU</button>
         <button type="button" class="lang-btn" data-lang="en" aria-label="English">EN</button>
@@ -123,8 +138,8 @@
               <li><span class="about-pill">CoffeeFriends</span></li>
               <li><span class="about-pill" lang="ru">Спорт</span><span class="about-pill" lang="en">Sports</span></li>
             </ul>
-            <p class="about-note" lang="ru">Вне работы — беговые лыжи на коньке, турники и прогулки с детьми.</p>
-            <p class="about-note" lang="en">Off work — skating-style cross-country skiing, calisthenics, and long walks with the kids.</p>
+            <p class="about-note" lang="ru">Семья, спорт и досуг — в разделе <a href="#life">«Жизнь»</a>.</p>
+            <p class="about-note" lang="en">Family, sports &amp; leisure — see <a href="#life">Life</a>.</p>
           </div>
           <aside class="about-aside" aria-label="Professional highlights">
             <article class="about-card">
@@ -141,8 +156,8 @@
             </article>
             <article class="about-card">
               <h3>CoffeeFriends</h3>
-              <p lang="ru">Владелец сети кофепоинтов — кофе и еда на вынос. 150+ чеков ежедневно.</p>
-              <p lang="en">Owner of a coffee-point network — coffee &amp; takeaway food. 150+ receipts daily.</p>
+              <p lang="ru">Владелец сети кофепоинтов — подробнее в разделе <a href="#coffee">Coffee</a>.</p>
+              <p lang="en">Owner of a coffee-point network — details in <a href="#coffee">Coffee</a>.</p>
             </article>
           </aside>
         </div>
@@ -302,7 +317,7 @@
         <p class="case-note" lang="ru">Последний проект, сданный в 2026 году; продолжает развиваться и дорабатываться.</p>
         <p class="case-note" lang="en">Last project delivered in 2026; still evolving and under active development.</p>
 
-        <div class="section-top" style="margin-top: 1.25rem;">
+        <div class="section-top section-top--nested">
           <h2 lang="ru">Закрытый проект</h2>
           <h2 lang="en">Past project</h2>
           <p class="sub" lang="ru">Спорт · Китай · Avito</p>
@@ -345,20 +360,20 @@
           <article class="service-item">
             <h3 lang="ru">Досуг и отдых</h3>
             <h3 lang="en">Leisure &amp; recreation</h3>
+            <p class="service-lead" lang="ru">Совместные активности и консультации по экипировке, локациям и тренировкам.</p>
+            <p class="service-lead" lang="en">Joint activities and consulting on gear, locations, and training.</p>
             <ul lang="ru">
-              <li>Беговые лыжи, конёк — Мещёрский лес, парк Ларисы Лазутиной</li>
-              <li>Турники и брусья (workout)</li>
-              <li>Прогулки с детьми, парки и пляжный отдых в Москве</li>
+              <li>Лыжи на коньке — Мещёрский лес, парк Лазутиной</li>
+              <li>Workout — турники и брусья</li>
               <li>Яхтинг — <a href="https://pro-yachting.ru/" target="_blank" rel="noopener">PROyachting</a>, права капитана 2019</li>
-              <li>Чёрный пояс по прогулкам</li>
             </ul>
             <ul lang="en">
-              <li>Cross-country skiing, skating style — Meshchersky Forest, Larisa Lazutina Park</li>
-              <li>Pull-up bar and parallel bars (workout)</li>
-              <li>Walks with kids, parks and beach leisure in Moscow</li>
+              <li>Skating-style skiing — Mecherschiy, Lazutina park</li>
+              <li>Workout — pull-up bar and parallel bars</li>
               <li>Sailing — <a href="https://pro-yachting.ru/" target="_blank" rel="noopener">PROyachting</a>, captain's license 2019</li>
-              <li>Black belt in walks</li>
             </ul>
+            <p class="service-xref" lang="ru">Подробнее — <a href="#life">«Жизнь»</a>.</p>
+            <p class="service-xref" lang="en">More details — <a href="#life">Life</a>.</p>
           </article>
           <article class="service-item">
             <h3 lang="ru">Совместные проекты</h3>
