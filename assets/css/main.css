@@ -521,10 +521,12 @@ a:hover { color: var(--accent-dim); }
 .hero-lead,
 .career-row p,
 .bento-card p,
+.bento-card ul,
 .service-item p,
 .service-item ul,
 .case-mini p,
 .case-wrap > p,
+.case-wrap ul,
 .location-info p {
   max-width: var(--prose-max);
 }
@@ -573,6 +575,16 @@ a:hover { color: var(--accent-dim); }
   line-height: var(--leading-relaxed);
   margin: 0;
 }
+
+.bento-card ul {
+  font-size: var(--text-sm);
+  color: var(--muted-body);
+  line-height: var(--leading-relaxed);
+  padding-left: 1.1rem;
+  margin: 0;
+}
+
+.bento-card li { margin-bottom: 0.25rem; }
 
 /* About */
 .about-grid {
@@ -919,6 +931,13 @@ a:hover { color: var(--accent-dim); }
   color: var(--muted);
 }
 
+.coffee-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+}
+
 /* Coffee strip */
 .strip-3 {
   display: grid;
@@ -1166,19 +1185,23 @@ a:hover { color: var(--accent-dim); }
 }
 
 .service-item p,
-.service-item ul {
+.service-item ul,
+.case-wrap > p,
+.case-wrap ul {
   font-size: var(--text-sm);
   color: var(--muted-body);
   line-height: var(--leading-relaxed);
   margin: 0;
 }
 
-.service-item ul {
+.service-item ul,
+.case-wrap ul {
   padding-left: 1.1rem;
   margin-top: 0.35rem;
 }
 
-.service-item li { margin-bottom: 0.25rem; }
+.service-item li,
+.case-wrap li { margin-bottom: 0.25rem; }
 
 .network-list {
   display: grid;
@@ -1259,7 +1282,7 @@ a:hover { color: var(--accent-dim); }
 
 .location-info p {
   font-size: var(--text-sm);
-  color: var(--muted-body);
+  color: var(--text);
   margin: 0;
   line-height: var(--leading-relaxed);
 }
