@@ -423,11 +423,12 @@ a:hover { color: var(--accent-dim); }
 
 @media (max-width: 767px) {
   .stat-widgets {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
   }
 
   .stat-widget {
     grid-column: auto;
+    min-width: 0;
     padding: 0.75rem 0.65rem;
   }
 
@@ -454,8 +455,14 @@ a:hover { color: var(--accent-dim); }
   color: var(--dim);
   margin-top: 0.3rem;
   line-height: var(--leading-tight);
-  word-wrap: break-word;
+  word-break: normal;
   overflow-wrap: break-word;
+  hyphens: none;
+  text-wrap: balance;
+}
+
+.stat-widget .lbl.lbl-nowrap {
+  white-space: nowrap;
 }
 
 /* ── Sections ── */
