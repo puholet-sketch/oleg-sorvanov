@@ -941,6 +941,21 @@ a:hover { color: var(--accent-dim); }
   line-height: var(--leading-relaxed);
 }
 
+.modules--case .module--lead {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+@media (min-width: 1024px) {
+  .modules--case {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .modules--case .module--lead {
+    grid-column: 1 / -1;
+  }
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
