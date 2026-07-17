@@ -837,6 +837,14 @@ a:hover { color: var(--accent-dim); }
   border-bottom: 1px solid var(--border);
 }
 
+.case-metrics--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 767px) {
+  .case-metrics--4 { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 479px) {
   .case-metrics { grid-template-columns: repeat(3, 1fr); }
 }
@@ -1178,6 +1186,49 @@ a:hover { color: var(--accent-dim); }
 
 #cases > .wrap > .section-top:not(.section-top--nested) {
   margin-bottom: 0.35rem;
+}
+
+.case-block {
+  margin-top: 1.75rem;
+}
+
+.case-block:first-of-type {
+  margin-top: 0.85rem;
+}
+
+.case-lead {
+  font-size: var(--text-sm);
+  color: var(--muted-body);
+  line-height: var(--leading-relaxed);
+  margin: 0 0 0.85rem;
+  max-width: var(--prose-max);
+}
+
+.modules--stabilize {
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 1024px) {
+  .modules--stabilize {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.activity-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.35rem 0 1.5rem;
+}
+
+.activity-chip {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
 }
 
 .case-note {
