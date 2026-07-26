@@ -1,22 +1,22 @@
 {
-  "context_version": 7,
-  "timestamp": "2026-07-26T19:04:09.090980+00:00",
-  "context_hash": "e395a8329f864a476afc514e2f657ddc8a16e2ce",
+  "context_version": 8,
+  "timestamp": "2026-07-26T19:46:37.380557+00:00",
+  "context_hash": "95cc473b4257bf377bb9724bc27752e9aa735cf4",
   "active_files": [
     ".ai/CONTEXT.md",
     ".ai/INDEX.md",
     "index.html"
   ],
   "active_file_hashes": {
-    ".ai/CONTEXT.md": "e395a8329f864a476afc514e2f657ddc8a16e2ce",
-    ".ai/INDEX.md": "c50200f50aa539a33b7a33c433aebfde3e005e6f",
-    "index.html": "a606e544f53de4e241f3874b1fb5f70802285965"
+    ".ai/CONTEXT.md": "95cc473b4257bf377bb9724bc27752e9aa735cf4",
+    ".ai/INDEX.md": "6ca4d25762ad8e2882bf1846069904fa599b51ea",
+    "index.html": "ff84cfe23b5d58c20cd65a6c14d03c720e0b628d"
   },
   "decisions": [
-    "Structa Nordix demo linked; real OrgStructure stays private"
+    "FACT playbook published from simplified PO time-tracking"
   ],
   "blockers": [],
   "last_error": null,
   "retry_count": 0,
-  "next_action": "await feedback on next demos"
+  "next_action": "await feedback"
 }
