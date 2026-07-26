@@ -15,4 +15,5 @@
 | TopNews | https://puholet-sketch.github.io/TopNews/ | https://github.com/puholet-sketch/TopNews |
 | Шлагбаум.Путь | https://puholet-sketch.github.io/shlagbaum-put/ | https://github.com/puholet-sketch/shlagbaum-put |
 | IntroAI (гайд по AI) | https://puholet-sketch.github.io/IntroAI/ | https://github.com/puholet-sketch/IntroAI |
+| Ежемесячный статус | https://puholet-sketch.github.io/monthly-project-status/ | https://github.com/puholet-sketch/monthly-project-status |
 | CoffeeFriends | https://puholet-sketch.github.io/coffee.friends/ | — |

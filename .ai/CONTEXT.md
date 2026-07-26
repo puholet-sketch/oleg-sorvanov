@@ -9,8 +9,9 @@ updated: 2026-07-26
 ## Статус
 - Публичный сайт: https://puholet-sketch.github.io/oleg-sorvanov/
 - Репо: https://github.com/puholet-sketch/oleg-sorvanov
-- В `#cases` / `#personal`: DDX Coach, TopNews, Шлагбаум.Путь, IntroAI (гайд по AI).
+- В `#cases` / `#personal`: DDX Coach, TopNews, Шлагбаум.Путь, IntroAI, ежемесячный статус портфеля.
 - В `#ai` — ссылка на IntroAI.
+- В кейсе «Ежемесячный статус» — кнопка на live-дайджест.
 
 ## Важно
 - Рабочие кейсы (ЛК Агента, PMO) и личные shipped-проекты разделены в секции кейсов.

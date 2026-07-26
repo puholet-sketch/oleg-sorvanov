@@ -1243,7 +1243,7 @@ a:hover { color: var(--accent-dim); }
 }
 
 @media (min-width: 1100px) {
-  .personal-grid { grid-template-columns: repeat(4, 1fr); }
+  .personal-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 .personal-card {
