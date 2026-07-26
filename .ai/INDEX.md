@@ -17,4 +17,5 @@
 | IntroAI (гайд по AI) | https://puholet-sketch.github.io/IntroAI/ | https://github.com/puholet-sketch/IntroAI |
 | PlanFact (превышения) | https://puholet-sketch.github.io/PlanFact/ | https://github.com/puholet-sketch/PlanFact |
 | Ежемесячный статус (май 2026) | https://puholet-sketch.github.io/virtu-digest-may-2026/ | https://github.com/puholet-sketch/virtu-digest-may-2026 |
+| ОУД4 консалтинг | https://puholet-sketch.github.io/oud4-consulting/ | https://github.com/puholet-sketch/oud4-consulting |
 | CoffeeFriends | https://puholet-sketch.github.io/coffee.friends/ | — |
