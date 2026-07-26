@@ -15,6 +15,6 @@
 | TopNews | https://puholet-sketch.github.io/TopNews/ | https://github.com/puholet-sketch/TopNews |
 | Шлагбаум.Путь | https://puholet-sketch.github.io/shlagbaum-put/ | https://github.com/puholet-sketch/shlagbaum-put |
 | IntroAI (гайд по AI) | https://puholet-sketch.github.io/IntroAI/ | https://github.com/puholet-sketch/IntroAI |
-| PlanFact (превышения) | https://puholet-sketch.github.io/planfact-exceed/ | https://github.com/puholet-sketch/planfact-exceed |
-| Ежемесячный статус | https://puholet-sketch.github.io/monthly-project-status/ | https://github.com/puholet-sketch/monthly-project-status |
+| PlanFact (превышения) | https://puholet-sketch.github.io/PlanFact/ | https://github.com/puholet-sketch/PlanFact |
+| Ежемесячный статус (май 2026) | https://puholet-sketch.github.io/virtu-digest-may-2026/ | https://github.com/puholet-sketch/virtu-digest-may-2026 |
 | CoffeeFriends | https://puholet-sketch.github.io/coffee.friends/ | — |
