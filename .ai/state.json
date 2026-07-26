@@ -1,21 +1,19 @@
 {
-  "context_version": 5,
-  "timestamp": "2026-07-26T18:30:10.333170+00:00",
-  "context_hash": "3946a8105875504b10f8a7d065ccd0f80f9c2af8",
+  "context_version": 6,
+  "timestamp": "2026-07-26T18:54:21.017881+00:00",
+  "context_hash": "1ea093113d8a9aed03051c4f58def42a84654f7c",
   "active_files": [
     ".ai/CONTEXT.md",
     ".ai/INDEX.md",
     "index.html"
   ],
   "active_file_hashes": {
-    ".ai/CONTEXT.md": "3946a8105875504b10f8a7d065ccd0f80f9c2af8",
+    ".ai/CONTEXT.md": "1ea093113d8a9aed03051c4f58def42a84654f7c",
     ".ai/INDEX.md": "be4776ff6050a944954084b3c6ddecde459f0630",
-    "index.html": "2c46041ab04a9f095c63e40fd8e64deed0849158"
+    "index.html": "94d0e122b59fe24b14ee1a282fb9d41c51b32195"
   },
   "decisions": [
-    "Tightened case copy",
-    "Personal projects: OUD4 first; dropped PlanFact/status duplicates from grid",
-    "Compact PMO activity chips without nested heading"
+    "PATH stabilization consulting site linked from portfolio"
   ],
   "blockers": [],
   "last_error": null,

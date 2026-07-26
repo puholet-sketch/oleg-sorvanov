@@ -24,3 +24,4 @@
 | Шлагбаум.Путь | https://puholet-sketch.github.io/shlagbaum-put/ | https://github.com/puholet-sketch/shlagbaum-put |
 | IntroAI | https://puholet-sketch.github.io/IntroAI/ | https://github.com/puholet-sketch/IntroAI |
 | CoffeeFriends | https://puholet-sketch.github.io/coffee.friends/ | — |
+| PATH стабилизация | https://puholet-sketch.github.io/stabilization-path/ | https://github.com/puholet-sketch/stabilization-path |
