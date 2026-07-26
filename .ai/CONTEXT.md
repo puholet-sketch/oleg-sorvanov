@@ -9,11 +9,12 @@ updated: 2026-07-26
 ## Статус
 - Публичный сайт: https://puholet-sketch.github.io/oleg-sorvanov/
 - Репо: https://github.com/puholet-sketch/oleg-sorvanov
-- В `#cases` добавлены личные проекты: DDX Coach, TopNews, Шлагбаум.Путь (со ссылками).
+- В `#cases` / `#personal`: DDX Coach, TopNews, Шлагбаум.Путь, IntroAI (гайд по AI).
+- В `#ai` — ссылка на IntroAI.
 
 ## Важно
 - Рабочие кейсы (ЛК Агента, PMO) и личные shipped-проекты разделены в секции кейсов.
 - Стабилизация СК — без названия компании.
 
 ## Следующий шаг
-Залить изменения на GitHub (push main).
+Ожидает новые правки пользователя.

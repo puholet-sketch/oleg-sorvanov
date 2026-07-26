@@ -14,4 +14,5 @@
 | DDX Coach | https://puholet-sketch.github.io/ddx-coach/ | https://github.com/puholet-sketch/ddx-coach |
 | TopNews | https://puholet-sketch.github.io/TopNews/ | https://github.com/puholet-sketch/TopNews |
 | Шлагбаум.Путь | https://puholet-sketch.github.io/shlagbaum-put/ | https://github.com/puholet-sketch/shlagbaum-put |
+| IntroAI (гайд по AI) | https://puholet-sketch.github.io/IntroAI/ | https://github.com/puholet-sketch/IntroAI |
 | CoffeeFriends | https://puholet-sketch.github.io/coffee.friends/ | — |
