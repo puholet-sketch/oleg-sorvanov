@@ -1,24 +1,24 @@
 {
-  "context_version": 1,
-  "timestamp": "2026-07-26T17:30:01.450167+00:00",
-  "context_hash": "f753e76293734b6b23365ac08d7bb3e10edf9fbc0af0f21fad72c9db3a03dae4",
+  "context_version": 2,
+  "timestamp": "2026-07-26T18:09:04.710885+00:00",
+  "context_hash": "f3339b7cbc15f600aeb9d41316bc798ad4d1165b7b90d985e7dc9540e68488a4",
   "active_files": [
     ".ai/CONTEXT.md",
     ".ai/INDEX.md",
-    "index.html",
-    "assets/css/main.css"
+    "index.html"
   ],
   "active_file_hashes": {
-    ".ai/CONTEXT.md": "0e50ca70e51bb7cb10cdc9d6de2f71cefb11e2af1ce649ea322048ec3744de40",
-    ".ai/INDEX.md": "056e5982cef076437b5633a705f99cc68b3f621cde050f1ad00148f397cbf1da",
-    "index.html": "809d730e64598287a467b889e00067f84c743e4054d086ef8019fd2f9de502e3",
-    "assets/css/main.css": "b979e753617834ec53a5d437327e77aad205499d2fc8acb7eb958a8388488875"
+    ".ai/CONTEXT.md": "f3339b7cbc15f600aeb9d41316bc798ad4d1165b7b90d985e7dc9540e68488a4",
+    ".ai/INDEX.md": "2833ad7ed44d38d7fd51cf9b69d43f410b5475378cc94a7a42b09131a3f3ce78",
+    "index.html": "88c010ba779970f267c0fe0e6de51d5bf80c5c4e63b653d06a36a8df5fe352e0"
   },
   "decisions": [
-    "Личные проекты DDX/TopNews/Шлагбаум в #personal со ссылками Pages+GitHub"
+    "Removed services, AI, network, past-case, business/builder stubs",
+    "Keep PlanFact + virtu-digest live links",
+    "Primary nav: About, Career, Cases, Projects, Contact"
   ],
   "blockers": [],
   "last_error": null,
   "retry_count": 0,
-  "next_action": "push to GitHub"
+  "next_action": "await user feedback on slim portfolio"
 }

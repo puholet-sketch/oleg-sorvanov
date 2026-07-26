@@ -2,20 +2,23 @@
 
 | Путь | Зачем |
 |------|--------|
-| `index.html` | Главная страница сайта |
+| `index.html` | Главная |
 | `assets/css/main.css` | Стили |
 | `assets/js/main.js` | Язык, навигация |
 | `cv.html` | Резюме |
-| `.ai/CONTEXT.md` | Контекст проекта |
+| `.ai/CONTEXT.md` | Контекст |
 
-## Внешние личные проекты (ссылки на сайте)
+## Секции сайта
+`#about` · `#career` · `#cases` / `#personal` · `#coffee` · `#life` · `#location` · `#contact`
+
+## Внешние проекты
 | Проект | Pages | Repo |
 |--------|-------|------|
+| PlanFact | https://puholet-sketch.github.io/PlanFact/ | https://github.com/puholet-sketch/PlanFact |
+| Статус портфеля | https://puholet-sketch.github.io/virtu-digest-may-2026/ | https://github.com/puholet-sketch/virtu-digest-may-2026 |
+| ОУД4 консалтинг | https://puholet-sketch.github.io/oud4-consulting/ | https://github.com/puholet-sketch/oud4-consulting |
 | DDX Coach | https://puholet-sketch.github.io/ddx-coach/ | https://github.com/puholet-sketch/ddx-coach |
 | TopNews | https://puholet-sketch.github.io/TopNews/ | https://github.com/puholet-sketch/TopNews |
 | Шлагбаум.Путь | https://puholet-sketch.github.io/shlagbaum-put/ | https://github.com/puholet-sketch/shlagbaum-put |
-| IntroAI (гайд по AI) | https://puholet-sketch.github.io/IntroAI/ | https://github.com/puholet-sketch/IntroAI |
-| PlanFact (превышения) | https://puholet-sketch.github.io/PlanFact/ | https://github.com/puholet-sketch/PlanFact |
-| Ежемесячный статус (май 2026) | https://puholet-sketch.github.io/virtu-digest-may-2026/ | https://github.com/puholet-sketch/virtu-digest-may-2026 |
-| ОУД4 консалтинг | https://puholet-sketch.github.io/oud4-consulting/ | https://github.com/puholet-sketch/oud4-consulting |
+| IntroAI | https://puholet-sketch.github.io/IntroAI/ | https://github.com/puholet-sketch/IntroAI |
 | CoffeeFriends | https://puholet-sketch.github.io/coffee.friends/ | — |
