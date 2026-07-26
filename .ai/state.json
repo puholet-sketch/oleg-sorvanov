@@ -1,20 +1,20 @@
 {
-  "context_version": 2,
-  "timestamp": "2026-07-26T18:09:04.710885+00:00",
-  "context_hash": "f3339b7cbc15f600aeb9d41316bc798ad4d1165b7b90d985e7dc9540e68488a4",
+  "context_version": 4,
+  "timestamp": "2026-07-26T18:10:44.770456+00:00",
+  "context_hash": "f87f70ff15ae9c0a2472272aad4f3e3b1b649055",
   "active_files": [
     ".ai/CONTEXT.md",
     ".ai/INDEX.md",
     "index.html"
   ],
   "active_file_hashes": {
-    ".ai/CONTEXT.md": "f3339b7cbc15f600aeb9d41316bc798ad4d1165b7b90d985e7dc9540e68488a4",
-    ".ai/INDEX.md": "2833ad7ed44d38d7fd51cf9b69d43f410b5475378cc94a7a42b09131a3f3ce78",
-    "index.html": "88c010ba779970f267c0fe0e6de51d5bf80c5c4e63b653d06a36a8df5fe352e0"
+    ".ai/CONTEXT.md": "f87f70ff15ae9c0a2472272aad4f3e3b1b649055",
+    ".ai/INDEX.md": "e772b49f7ee4bf6b386f62298b67e1c225bab188",
+    "index.html": "286a8f45dee11a5f6df77cbcedd84d00fbde6876"
   },
   "decisions": [
     "Removed services, AI, network, past-case, business/builder stubs",
-    "Keep PlanFact + virtu-digest live links",
+    "Keep PlanFact + virtu-digest + OUD4 live links",
     "Primary nav: About, Career, Cases, Projects, Contact"
   ],
   "blockers": [],
