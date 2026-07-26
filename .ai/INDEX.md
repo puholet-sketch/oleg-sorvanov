@@ -11,6 +11,8 @@
 ## Секции сайта
 `#about` · `#career` · `#cases` / `#personal` · `#coffee` · `#life` · `#location` · `#contact`
 
+Личные проекты (без дублей кейсов): ОУД4, DDX, TopNews, Шлагбаум, IntroAI.
+
 ## Внешние проекты
 | Проект | Pages | Repo |
 |--------|-------|------|

@@ -1,24 +1,24 @@
 {
-  "context_version": 4,
-  "timestamp": "2026-07-26T18:10:44.770456+00:00",
-  "context_hash": "f87f70ff15ae9c0a2472272aad4f3e3b1b649055",
+  "context_version": 5,
+  "timestamp": "2026-07-26T18:30:10.333170+00:00",
+  "context_hash": "3946a8105875504b10f8a7d065ccd0f80f9c2af8",
   "active_files": [
     ".ai/CONTEXT.md",
     ".ai/INDEX.md",
     "index.html"
   ],
   "active_file_hashes": {
-    ".ai/CONTEXT.md": "f87f70ff15ae9c0a2472272aad4f3e3b1b649055",
-    ".ai/INDEX.md": "e772b49f7ee4bf6b386f62298b67e1c225bab188",
-    "index.html": "286a8f45dee11a5f6df77cbcedd84d00fbde6876"
+    ".ai/CONTEXT.md": "3946a8105875504b10f8a7d065ccd0f80f9c2af8",
+    ".ai/INDEX.md": "be4776ff6050a944954084b3c6ddecde459f0630",
+    "index.html": "2c46041ab04a9f095c63e40fd8e64deed0849158"
   },
   "decisions": [
-    "Removed services, AI, network, past-case, business/builder stubs",
-    "Keep PlanFact + virtu-digest + OUD4 live links",
-    "Primary nav: About, Career, Cases, Projects, Contact"
+    "Tightened case copy",
+    "Personal projects: OUD4 first; dropped PlanFact/status duplicates from grid",
+    "Compact PMO activity chips without nested heading"
   ],
   "blockers": [],
   "last_error": null,
   "retry_count": 0,
-  "next_action": "await user feedback on slim portfolio"
+  "next_action": "await feedback"
 }
