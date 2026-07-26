@@ -25,3 +25,4 @@
 | IntroAI | https://puholet-sketch.github.io/IntroAI/ | https://github.com/puholet-sketch/IntroAI |
 | CoffeeFriends | https://puholet-sketch.github.io/coffee.friends/ | — |
 | PATH стабилизация | https://puholet-sketch.github.io/stabilization-path/ | https://github.com/puholet-sketch/stabilization-path |
+| Structa org demo | https://puholet-sketch.github.io/structa-demo/ | https://github.com/puholet-sketch/structa-demo |

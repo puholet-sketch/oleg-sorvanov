@@ -1,22 +1,22 @@
 {
-  "context_version": 6,
-  "timestamp": "2026-07-26T18:54:21.017881+00:00",
-  "context_hash": "1ea093113d8a9aed03051c4f58def42a84654f7c",
+  "context_version": 7,
+  "timestamp": "2026-07-26T19:04:09.090980+00:00",
+  "context_hash": "e395a8329f864a476afc514e2f657ddc8a16e2ce",
   "active_files": [
     ".ai/CONTEXT.md",
     ".ai/INDEX.md",
     "index.html"
   ],
   "active_file_hashes": {
-    ".ai/CONTEXT.md": "1ea093113d8a9aed03051c4f58def42a84654f7c",
-    ".ai/INDEX.md": "be4776ff6050a944954084b3c6ddecde459f0630",
-    "index.html": "94d0e122b59fe24b14ee1a282fb9d41c51b32195"
+    ".ai/CONTEXT.md": "e395a8329f864a476afc514e2f657ddc8a16e2ce",
+    ".ai/INDEX.md": "c50200f50aa539a33b7a33c433aebfde3e005e6f",
+    "index.html": "a606e544f53de4e241f3874b1fb5f70802285965"
   },
   "decisions": [
-    "PATH stabilization consulting site linked from portfolio"
+    "Structa Nordix demo linked; real OrgStructure stays private"
   ],
   "blockers": [],
   "last_error": null,
   "retry_count": 0,
-  "next_action": "await feedback"
+  "next_action": "await feedback on next demos"
 }
