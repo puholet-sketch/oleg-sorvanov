@@ -1,22 +1,23 @@
 {
-  "context_version": 8,
-  "timestamp": "2026-07-26T19:46:37.380557+00:00",
-  "context_hash": "95cc473b4257bf377bb9724bc27752e9aa735cf4",
+  "active_file_hashes": {
+    "index.html": "58e3ac3db423172a4be13d634e6d7d282a32d8e7",
+    ".ai/INDEX.md": "20c7cace8501b6830c5d780b9bb4cc7413664ac5",
+    ".ai/CONTEXT.md": "05c1bf8b837102fe3c7cd3b43eabaa863c2dae6d"
+  },
+  "blockers": [],
+  "context_hash": "05c1bf8b837102fe3c7cd3b43eabaa863c2dae6d",
   "active_files": [
     ".ai/CONTEXT.md",
     ".ai/INDEX.md",
     "index.html"
   ],
-  "active_file_hashes": {
-    ".ai/CONTEXT.md": "95cc473b4257bf377bb9724bc27752e9aa735cf4",
-    ".ai/INDEX.md": "6ca4d25762ad8e2882bf1846069904fa599b51ea",
-    "index.html": "ff84cfe23b5d58c20cd65a6c14d03c720e0b628d"
-  },
-  "decisions": [
-    "FACT playbook published from simplified PO time-tracking"
-  ],
-  "blockers": [],
   "last_error": null,
-  "retry_count": 0,
-  "next_action": "await feedback"
+  "timestamp": "2026-07-28T08:18:46.066177+00:00",
+  "next_action": "await feedback",
+  "decisions": [
+    "Furik case added with github.io demo + TD PDF download",
+    "Removed all github.com repo/profile links from portfolio UI"
+  ],
+  "context_version": 9,
+  "retry_count": 0
 }
