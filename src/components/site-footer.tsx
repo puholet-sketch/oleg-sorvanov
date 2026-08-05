@@ -1,21 +1,31 @@
 "use client";
 
+import { Layout, Typography } from "antd";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
+
+const { Footer } = Layout;
 
 export function SiteFooter() {
   const { t } = useI18n();
 
   return (
-    <footer className="border-t border-[var(--ink)]/10 bg-[var(--fog)] px-6 py-8 md:px-10">
-      <div className="mx-auto flex max-w-6xl flex-col gap-3 text-sm text-[var(--ink)]/50 md:flex-row md:items-center md:justify-between">
-        <p className="font-[family-name:var(--font-display)] tracking-[0.18em] text-[var(--ink)]">
-          {site.brand}
-        </p>
-        <p>
-          © {new Date().getFullYear()} · {t(site.fullName)}
-        </p>
-      </div>
-    </footer>
+    <Footer
+      style={{
+        borderTop: "1px solid #303030",
+        display: "flex",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
+        gap: 8,
+        color: "rgba(255,255,255,0.45)",
+      }}
+    >
+      <Typography.Text style={{ color: "rgba(255,255,255,0.85)", letterSpacing: "0.14em" }}>
+        {site.brand}
+      </Typography.Text>
+      <span>
+        © {new Date().getFullYear()} · {t(site.fullName)}
+      </span>
+    </Footer>
   );
 }

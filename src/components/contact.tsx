@@ -1,101 +1,71 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import {
+  EnvironmentOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  SendOutlined,
+} from "@ant-design/icons";
+import { Button, Card, Col, Row, Space, Typography } from "antd";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
+
+const { Title, Paragraph, Text } = Typography;
 
 export function Contact() {
   const { lang } = useI18n();
 
   return (
-    <section id="contact" className="bg-[var(--fog)] px-6 py-24 md:px-10 md:py-32">
-      <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-hidden rounded-[2rem] bg-[var(--ink)] px-8 py-14 text-[var(--fog)] md:px-14 md:py-20"
-        >
-          <div className="absolute -right-16 -top-16 size-64 rounded-full bg-[var(--accent)]/20 blur-3xl" />
-          <div className="absolute -bottom-20 left-10 size-72 rounded-full bg-[var(--accent)]/10 blur-3xl" />
+    <section id="contact">
+      <div className="section-wrap">
+        <Text type="secondary" style={{ letterSpacing: "0.16em", textTransform: "uppercase" }}>
+          {lang === "ru" ? "Контакты" : "Contact"}
+        </Text>
+        <Title level={2} style={{ color: "#fff", marginTop: 8 }}>
+          {lang === "ru" ? "Рекомендации по запросу" : "References on request"}
+        </Title>
 
-          <div className="relative grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-            <div>
-              <p className="mb-3 text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
-                {lang === "ru" ? "Контакты" : "Contact"}
-              </p>
-              <h2 className="font-[family-name:var(--font-display)] text-4xl tracking-tight md:text-5xl">
-                {lang === "ru"
-                  ? "Рекомендации по запросу"
-                  : "References on request"}
-              </h2>
-              <p className="mt-5 max-w-lg text-[var(--fog)]/70">
+        <Row gutter={[16, 16]} style={{ marginTop: 8 }}>
+          <Col xs={24} lg={14}>
+            <Card>
+              <Paragraph style={{ color: "rgba(255,255,255,0.7)", fontSize: 16 }}>
+                <EnvironmentOutlined style={{ marginRight: 8, color: "#1668dc" }} />
                 {lang === "ru" ? site.location.ru : site.location.en}.{" "}
                 {lang === "ru" ? site.locationNote.ru : site.locationNote.en}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild variant="accent" size="lg">
-                  <a href={`mailto:${site.email}`}>{site.email}</a>
+              </Paragraph>
+              <Space wrap size="middle" style={{ marginTop: 8 }}>
+                <Button type="primary" icon={<MailOutlined />} href={`mailto:${site.email}`}>
+                  {site.email}
+                </Button>
+                <Button icon={<PhoneOutlined />} href={site.phoneHref}>
+                  {site.phone}
                 </Button>
                 <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="border-[var(--fog)]/25 text-[var(--fog)] hover:border-[var(--accent)] hover:bg-transparent hover:text-[var(--accent)]"
+                  icon={<SendOutlined />}
+                  href={site.telegram}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <a href={site.phoneHref}>{site.phone}</a>
+                  {site.telegramLabel}
                 </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="border-[var(--fog)]/25 text-[var(--fog)] hover:border-[var(--accent)] hover:bg-transparent hover:text-[var(--accent)]"
-                >
-                  <a href={site.telegram} target="_blank" rel="noopener noreferrer">
-                    {site.telegramLabel}
-                  </a>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="border-[var(--fog)]/25 text-[var(--fog)] hover:border-[var(--accent)] hover:bg-transparent hover:text-[var(--accent)]"
-                >
-                  <a href="cv.html">{lang === "ru" ? "Резюме / CV" : "CV"}</a>
-                </Button>
-              </div>
-            </div>
-
-            <div className="space-y-3 self-end">
-              <a
-                href={site.maps.yandex}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block rounded-2xl border border-[var(--fog)]/15 px-5 py-4 transition-colors hover:border-[var(--accent)]/50"
-              >
+                <Button href="cv.html">{lang === "ru" ? "Резюме / CV" : "CV"}</Button>
+              </Space>
+            </Card>
+          </Col>
+          <Col xs={24} lg={10}>
+            <Space direction="vertical" style={{ width: "100%" }} size="middle">
+              <Button block size="large" href={site.maps.yandex} target="_blank">
                 {lang === "ru" ? "Яндекс.Карты" : "Yandex Maps"}
-              </a>
-              <a
-                href={site.maps.google}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block rounded-2xl border border-[var(--fog)]/15 px-5 py-4 transition-colors hover:border-[var(--accent)]/50"
-              >
+              </Button>
+              <Button block size="large" href={site.maps.google} target="_blank">
                 Google Maps
-              </a>
-              <a
-                href={site.maxUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block rounded-2xl border border-[var(--fog)]/15 px-5 py-4 transition-colors hover:border-[var(--accent)]/50"
-              >
+              </Button>
+              <Button block size="large" href={site.maxUrl} target="_blank">
                 MAX
-              </a>
-            </div>
-          </div>
-        </motion.div>
+              </Button>
+            </Space>
+          </Col>
+        </Row>
       </div>
     </section>
   );

@@ -1,43 +1,39 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { Timeline, Typography } from "antd";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
+
+const { Title, Paragraph, Text } = Typography;
 
 export function Career() {
   const { t, lang } = useI18n();
 
   return (
-    <section id="career" className="bg-[var(--fog)] px-6 py-24 md:px-10 md:py-28">
-      <div className="mx-auto max-w-6xl">
-        <p className="mb-3 text-xs uppercase tracking-[0.22em] text-[var(--ink)]/45">
+    <section id="career">
+      <div className="section-wrap">
+        <Text type="secondary" style={{ letterSpacing: "0.16em", textTransform: "uppercase" }}>
           {lang === "ru" ? "Карьера" : "Career"}
-        </p>
-        <h2 className="mb-12 font-[family-name:var(--font-display)] text-4xl tracking-tight text-[var(--ink)] md:text-5xl">
+        </Text>
+        <Title level={2} style={{ color: "#fff", marginTop: 8, marginBottom: 32 }}>
           {lang === "ru" ? "Профессиональный путь" : "Professional path"}
-        </h2>
-
-        <ol className="space-y-0 border-l border-[var(--ink)]/15 pl-6 md:pl-8">
-          {site.career.map((item, index) => (
-            <motion.li
-              key={item.title.ru}
-              initial={{ opacity: 0, x: -12 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.55, delay: index * 0.08 }}
-              className="relative pb-10 last:pb-0"
-            >
-              <span className="absolute -left-[1.9rem] top-1.5 size-3 rounded-full bg-[var(--accent)] md:-left-[2.4rem]" />
-              <p className="text-sm uppercase tracking-[0.16em] text-[var(--ink)]/45">
-                {t(item.period)}
-              </p>
-              <h3 className="mt-2 font-[family-name:var(--font-display)] text-2xl text-[var(--ink)]">
-                {t(item.title)}
-              </h3>
-              <p className="mt-2 max-w-3xl text-[var(--ink)]/65">{t(item.text)}</p>
-            </motion.li>
-          ))}
-        </ol>
+        </Title>
+        <Timeline
+          items={site.career.map((item) => ({
+            color: "blue",
+            children: (
+              <div>
+                <Text type="secondary">{t(item.period)}</Text>
+                <Title level={4} style={{ color: "#fff", margin: "4px 0 8px" }}>
+                  {t(item.title)}
+                </Title>
+                <Paragraph style={{ color: "rgba(255,255,255,0.7)", marginBottom: 0 }}>
+                  {t(item.text)}
+                </Paragraph>
+              </div>
+            ),
+          }))}
+        />
       </div>
     </section>
   );

@@ -1,26 +1,17 @@
 {
-  "context_version": 1,
-  "timestamp": "2026-08-06T00:19:44.358918+03:00",
-  "context_hash": "b79b7febbd7017c2",
+  "context_version": 2,
+  "timestamp": "2026-08-06T00:32:51.583254+03:00",
+  "context_hash": "46cc6570181e7d91",
   "active_files": [
-    "src/app/page.tsx",
     "src/lib/site.ts",
-    "src/app/globals.css",
-    "public/hero.jpg"
+    "src/app/page.tsx"
   ],
-  "active_file_hashes": {
-    "src/app/page.tsx": "dad4021ca404fc13",
-    "src/lib/site.ts": "1c584a8ede468595",
-    "src/app/globals.css": "2affb86ccefe366f",
-    "public/hero.jpg": "477c669032b4d649"
-  },
+  "active_file_hashes": {},
   "decisions": [
-    "Next.js + shadcn-pattern + Tailwind",
-    "Palette ink/fog/acid-lime",
-    "Brand placeholder OLEG"
+    "Deployed Next.js rebuild to puholet-sketch/oleg-sorvanov"
   ],
   "blockers": [],
   "last_error": null,
   "retry_count": 0,
-  "next_action": "customize site.ts and review in browser"
+  "next_action": "review live site"
 }

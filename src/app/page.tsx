@@ -1,3 +1,6 @@
+"use client";
+
+import { Layout } from "antd";
 import { About } from "@/components/about";
 import { Career } from "@/components/career";
 import { Contact } from "@/components/contact";
@@ -10,9 +13,9 @@ import { Work } from "@/components/work";
 
 export default function Home() {
   return (
-    <>
+    <Layout style={{ minHeight: "100vh", background: "#141414" }}>
       <SiteHeader />
-      <main className="flex-1">
+      <Layout.Content>
         <Hero />
         <Stats />
         <About />
@@ -20,8 +23,8 @@ export default function Home() {
         <Career />
         <Projects />
         <Contact />
-      </main>
+      </Layout.Content>
       <SiteFooter />
-    </>
+    </Layout>
   );
 }

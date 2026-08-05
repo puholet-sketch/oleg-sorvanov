@@ -1,74 +1,77 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { Button, Layout, Menu, Space, Typography } from "antd";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
-import { cn } from "@/lib/utils";
+
+const { Header } = Layout;
 
 export function SiteHeader() {
   const { lang, setLang, t } = useI18n();
 
-  const links = [
-    { href: "#about", label: { ru: "Обо мне", en: "About" } },
-    { href: "#cases", label: { ru: "Кейсы", en: "Cases" } },
-    { href: "#career", label: { ru: "Карьера", en: "Career" } },
-    { href: "#projects", label: { ru: "Проекты", en: "Projects" } },
-    { href: "#contact", label: { ru: "Контакты", en: "Contact" } },
+  const items = [
+    { key: "about", label: <a href="#about">{t({ ru: "Обо мне", en: "About" })}</a> },
+    { key: "cases", label: <a href="#cases">{t({ ru: "Кейсы", en: "Cases" })}</a> },
+    { key: "career", label: <a href="#career">{t({ ru: "Карьера", en: "Career" })}</a> },
+    {
+      key: "projects",
+      label: <a href="#projects">{t({ ru: "Проекты", en: "Projects" })}</a>,
+    },
+    {
+      key: "contact",
+      label: <a href="#contact">{t({ ru: "Контакты", en: "Contact" })}</a>,
+    },
   ];
 
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute inset-x-0 top-0 z-20"
+    <Header
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+        display: "flex",
+        alignItems: "center",
+        gap: 16,
+        paddingInline: 24,
+        borderBottom: "1px solid #303030",
+        backdropFilter: "blur(12px)",
+      }}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-6 md:px-10">
-        <a
-          href="#top"
-          className="font-[family-name:var(--font-display)] text-lg font-semibold tracking-[0.18em] text-[var(--fog)]"
-        >
-          {site.brand}
-        </a>
+      <Typography.Text strong style={{ color: "#fff", letterSpacing: "0.12em" }}>
+        <a href="#top">{site.brand}</a>
+      </Typography.Text>
 
-        <nav className="hidden items-center gap-6 lg:flex">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-[var(--fog)]/75 transition-colors hover:text-[var(--accent)]"
-            >
-              {t(link.label)}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <div className="flex rounded-full border border-[var(--fog)]/20 p-0.5 text-xs">
-            {(["ru", "en"] as const).map((code) => (
-              <button
-                key={code}
-                type="button"
-                onClick={() => setLang(code)}
-                className={cn(
-                  "rounded-full px-2.5 py-1 uppercase tracking-wide transition-colors",
-                  lang === code
-                    ? "bg-[var(--accent)] text-[var(--ink)]"
-                    : "text-[var(--fog)]/70 hover:text-[var(--fog)]",
-                )}
-              >
-                {code}
-              </button>
-            ))}
-          </div>
-          <a
-            href={`mailto:${site.email}`}
-            className="hidden rounded-full border border-[var(--fog)]/25 px-4 py-2 text-xs tracking-wide text-[var(--fog)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] sm:inline-flex"
-          >
-            {lang === "ru" ? "Написать" : "Email"}
-          </a>
-        </div>
+      <div className="nav-desktop" style={{ flex: 1, minWidth: 0 }}>
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          selectable={false}
+          items={items}
+          style={{ background: "transparent", border: "none" }}
+        />
       </div>
-    </motion.header>
+
+      <Space>
+        <Button.Group>
+          <Button
+            type={lang === "ru" ? "primary" : "default"}
+            size="small"
+            onClick={() => setLang("ru")}
+          >
+            RU
+          </Button>
+          <Button
+            type={lang === "en" ? "primary" : "default"}
+            size="small"
+            onClick={() => setLang("en")}
+          >
+            EN
+          </Button>
+        </Button.Group>
+        <Button type="primary" href={`mailto:${site.email}`} className="cta-desktop">
+          {lang === "ru" ? "Написать" : "Email"}
+        </Button>
+      </Space>
+    </Header>
   );
 }
