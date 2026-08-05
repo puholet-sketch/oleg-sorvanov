@@ -24,10 +24,11 @@ jobs:
           node-version: 22
           cache: npm
       - name: Install
-        run: npm ci
+        run: npm ci --include=dev
       - name: Build
         env:
           NEXT_PUBLIC_BASE_PATH: /oleg-sorvanov
+          NODE_ENV: production
         run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

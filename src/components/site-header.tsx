@@ -1,77 +1,58 @@
 "use client";
 
-import { Button, Layout, Menu, Space, Typography } from "antd";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
-
-const { Header } = Layout;
 
 export function SiteHeader() {
   const { lang, setLang, t } = useI18n();
 
-  const items = [
-    { key: "about", label: <a href="#about">{t({ ru: "Обо мне", en: "About" })}</a> },
-    { key: "cases", label: <a href="#cases">{t({ ru: "Кейсы", en: "Cases" })}</a> },
-    { key: "career", label: <a href="#career">{t({ ru: "Карьера", en: "Career" })}</a> },
-    {
-      key: "projects",
-      label: <a href="#projects">{t({ ru: "Проекты", en: "Projects" })}</a>,
-    },
-    {
-      key: "contact",
-      label: <a href="#contact">{t({ ru: "Контакты", en: "Contact" })}</a>,
-    },
+  const links = [
+    { href: "#about", label: { ru: "Обо мне", en: "About" } },
+    { href: "#cases", label: { ru: "Кейсы", en: "Cases" } },
+    { href: "#career", label: { ru: "Карьера", en: "Career" } },
+    { href: "#projects", label: { ru: "Проекты", en: "Projects" } },
+    { href: "#contact", label: { ru: "Контакты", en: "Contact" } },
   ];
 
   return (
-    <Header
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 100,
-        display: "flex",
-        alignItems: "center",
-        gap: 16,
-        paddingInline: 24,
-        borderBottom: "1px solid #303030",
-        backdropFilter: "blur(12px)",
-      }}
-    >
-      <Typography.Text strong style={{ color: "#fff", letterSpacing: "0.12em" }}>
-        <a href="#top">{site.brand}</a>
-      </Typography.Text>
-
-      <div className="nav-desktop" style={{ flex: 1, minWidth: 0 }}>
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          selectable={false}
-          items={items}
-          style={{ background: "transparent", border: "none" }}
-        />
+    <div className="navbar sticky top-0 z-50 border-b border-base-300 bg-base-100/90 px-4 backdrop-blur md:px-8">
+      <div className="navbar-start">
+        <a href="#top" className="btn btn-ghost text-lg tracking-[0.18em]">
+          {site.brand}
+        </a>
       </div>
 
-      <Space>
-        <Button.Group>
-          <Button
-            type={lang === "ru" ? "primary" : "default"}
-            size="small"
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal gap-1 px-1">
+          {links.map((link) => (
+            <li key={link.href}>
+              <a href={link.href}>{t(link.label)}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="navbar-end gap-2">
+        <div className="join">
+          <button
+            type="button"
+            className={`btn btn-sm join-item ${lang === "ru" ? "btn-primary" : "btn-ghost"}`}
             onClick={() => setLang("ru")}
           >
             RU
-          </Button>
-          <Button
-            type={lang === "en" ? "primary" : "default"}
-            size="small"
+          </button>
+          <button
+            type="button"
+            className={`btn btn-sm join-item ${lang === "en" ? "btn-primary" : "btn-ghost"}`}
             onClick={() => setLang("en")}
           >
             EN
-          </Button>
-        </Button.Group>
-        <Button type="primary" href={`mailto:${site.email}`} className="cta-desktop">
+          </button>
+        </div>
+        <a href={`mailto:${site.email}`} className="btn btn-primary btn-sm hidden sm:inline-flex">
           {lang === "ru" ? "Написать" : "Email"}
-        </Button>
-      </Space>
-    </Header>
+        </a>
+      </div>
+    </div>
   );
 }

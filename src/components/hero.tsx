@@ -1,77 +1,52 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowDownOutlined, FileTextOutlined } from "@ant-design/icons";
-import { Button, Space, Tag, Typography } from "antd";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
-
-const { Title, Paragraph } = Typography;
 
 export function Hero() {
   const { t, lang } = useI18n();
 
   return (
-    <section
-      id="top"
-      style={{
-        position: "relative",
-        minHeight: "88vh",
-        display: "flex",
-        alignItems: "flex-end",
-        overflow: "hidden",
-        background: "#141414",
-      }}
-    >
-      <div style={{ position: "absolute", inset: 0 }}>
+    <section id="top" className="relative min-h-[88vh] overflow-hidden bg-base-200">
+      <div className="absolute inset-0">
         <Image
           src="/hero.jpg"
           alt={t(site.fullName)}
           fill
           priority
-          className="object-cover object-[center_18%] opacity-70"
+          className="object-cover object-[center_18%] opacity-50"
           sizes="100vw"
         />
-        <div className="hero-overlay" style={{ position: "absolute", inset: 0 }} />
+        <div className="hero-overlay absolute inset-0" />
       </div>
 
-      <div className="section-wrap" style={{ position: "relative", zIndex: 1, paddingBottom: 72 }}>
-        <Tag color="processing" style={{ marginBottom: 16 }}>
-          <a href={site.companyUrl} target="_blank" rel="noopener noreferrer">
+      <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-6xl items-end px-6 pb-16 pt-28 md:px-10">
+        <div className="max-w-3xl">
+          <a
+            href={site.companyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="badge badge-primary badge-outline mb-4"
+          >
             {t(site.role)}
           </a>
-        </Tag>
-        <Title
-          level={1}
-          style={{
-            color: "#fff",
-            margin: 0,
-            fontSize: "clamp(2.4rem, 7vw, 4.4rem)",
-            lineHeight: 1.1,
-            maxWidth: 820,
-          }}
-        >
-          {t(site.fullName)}
-        </Title>
-        <Paragraph
-          style={{
-            color: "rgba(255,255,255,0.75)",
-            fontSize: 18,
-            maxWidth: 720,
-            marginTop: 20,
-            marginBottom: 28,
-          }}
-        >
-          <strong style={{ color: "#fff" }}>{t(site.headline)}.</strong> {t(site.tagline)}
-        </Paragraph>
-        <Space wrap size="middle">
-          <Button type="primary" size="large" href="#cases" icon={<ArrowDownOutlined />}>
-            {lang === "ru" ? "Смотреть кейсы" : "View cases"}
-          </Button>
-          <Button size="large" href="cv.html" icon={<FileTextOutlined />}>
-            {lang === "ru" ? "Резюме" : "CV"}
-          </Button>
-        </Space>
+          <h1 className="text-5xl font-extrabold leading-tight tracking-tight md:text-6xl lg:text-7xl">
+            {t(site.fullName)}
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg text-base-content/75 md:text-xl">
+            <span className="font-semibold text-base-content">{t(site.headline)}.</span>{" "}
+            {t(site.tagline)}
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href="#cases" className="btn btn-primary">
+              {lang === "ru" ? "Смотреть кейсы" : "View cases"}
+            </a>
+            <a href="cv.html" className="btn btn-outline">
+              {lang === "ru" ? "Резюме" : "CV"}
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

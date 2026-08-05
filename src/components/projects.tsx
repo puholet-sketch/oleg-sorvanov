@@ -1,77 +1,74 @@
 "use client";
 
-import { ExportOutlined } from "@ant-design/icons";
-import { Card, Col, Row, Typography } from "antd";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
-
-const { Title, Paragraph, Text, Link } = Typography;
 
 export function Projects() {
   const { t, lang } = useI18n();
 
   return (
-    <section id="projects" style={{ background: "#0f0f0f" }}>
-      <div className="section-wrap">
-        <Text type="secondary" style={{ letterSpacing: "0.16em", textTransform: "uppercase" }}>
+    <section id="projects" className="bg-base-200">
+      <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+        <p className="text-sm font-semibold tracking-[0.18em] text-primary uppercase">
           {lang === "ru" ? "Личные проекты" : "Personal projects"}
-        </Text>
-        <Title level={2} style={{ color: "#fff", marginTop: 8 }}>
+        </p>
+        <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
           {lang === "ru" ? "Публичные демо и сервисы" : "Public demos and services"}
-        </Title>
+        </h2>
 
-        <Row gutter={[16, 16]} style={{ marginTop: 8 }}>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {site.projects.map((project) => (
-            <Col xs={24} sm={12} lg={6} key={project.title}>
-              <Card
-                hoverable
-                title={project.title}
-                extra={
-                  <a href={project.href} target="_blank" rel="noopener noreferrer">
-                    <ExportOutlined />
-                  </a>
-                }
-                onClick={() => window.open(project.href, "_blank", "noopener,noreferrer")}
-                style={{ height: "100%", cursor: "pointer" }}
-              >
-                <Paragraph style={{ color: "rgba(255,255,255,0.7)", marginBottom: 0 }}>
-                  {t(project.text)}
-                </Paragraph>
-              </Card>
-            </Col>
+            <a
+              key={project.title}
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card border border-base-300 bg-base-100 shadow-sm transition hover:border-primary"
+            >
+              <div className="card-body">
+                <h3 className="card-title text-lg">{project.title}</h3>
+                <p className="text-sm text-base-content/70">{t(project.text)}</p>
+              </div>
+            </a>
           ))}
-        </Row>
+        </div>
 
-        <Card
-          style={{ marginTop: 16, borderColor: "#1668dc" }}
-          title={site.coffee.title}
-          extra={
-            <Link href={site.coffee.href} target="_blank">
-              coffee.friends →
-            </Link>
-          }
+        <a
+          href={site.coffee.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="card mt-4 border border-primary/40 bg-base-100 shadow-sm"
         >
-          <Paragraph style={{ marginBottom: 0, color: "rgba(255,255,255,0.75)" }}>
-            {t(site.coffee.text)}
-          </Paragraph>
-        </Card>
+          <div className="card-body md:flex-row md:items-center md:justify-between">
+            <div>
+              <div className="badge badge-primary badge-outline">Business</div>
+              <h3 className="mt-2 text-2xl font-bold">{site.coffee.title}</h3>
+              <p className="mt-2 max-w-2xl text-base-content/70">{t(site.coffee.text)}</p>
+            </div>
+            <span className="btn btn-primary btn-sm">coffee.friends →</span>
+          </div>
+        </a>
 
-        <Row gutter={[16, 16]} style={{ marginTop: 16 }}>
+        <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {site.hobbies.map((hobby) => (
-            <Col xs={24} sm={12} lg={6} key={hobby.title.ru}>
-              <Card title={t(hobby.title)} size="small">
-                <Paragraph style={{ color: "rgba(255,255,255,0.7)", marginBottom: 8 }}>
-                  {t(hobby.text)}
-                </Paragraph>
+            <div key={hobby.title.ru} className="card border border-base-300 bg-base-100">
+              <div className="card-body">
+                <h3 className="card-title text-base">{t(hobby.title)}</h3>
+                <p className="text-sm text-base-content/70">{t(hobby.text)}</p>
                 {"href" in hobby && hobby.href ? (
-                  <Link href={hobby.href} target="_blank">
+                  <a
+                    href={hobby.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link link-primary text-sm"
+                  >
                     {lang === "ru" ? "Открыть →" : "Open →"}
-                  </Link>
+                  </a>
                 ) : null}
-              </Card>
-            </Col>
+              </div>
+            </div>
           ))}
-        </Row>
+        </div>
       </div>
     </section>
   );

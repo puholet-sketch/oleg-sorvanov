@@ -1,71 +1,77 @@
 "use client";
 
-import {
-  EnvironmentOutlined,
-  MailOutlined,
-  PhoneOutlined,
-  SendOutlined,
-} from "@ant-design/icons";
-import { Button, Card, Col, Row, Space, Typography } from "antd";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
-
-const { Title, Paragraph, Text } = Typography;
 
 export function Contact() {
   const { lang } = useI18n();
 
   return (
-    <section id="contact">
-      <div className="section-wrap">
-        <Text type="secondary" style={{ letterSpacing: "0.16em", textTransform: "uppercase" }}>
+    <section id="contact" className="bg-base-100">
+      <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+        <p className="text-sm font-semibold tracking-[0.18em] text-primary uppercase">
           {lang === "ru" ? "Контакты" : "Contact"}
-        </Text>
-        <Title level={2} style={{ color: "#fff", marginTop: 8 }}>
+        </p>
+        <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
           {lang === "ru" ? "Рекомендации по запросу" : "References on request"}
-        </Title>
+        </h2>
 
-        <Row gutter={[16, 16]} style={{ marginTop: 8 }}>
-          <Col xs={24} lg={14}>
-            <Card>
-              <Paragraph style={{ color: "rgba(255,255,255,0.7)", fontSize: 16 }}>
-                <EnvironmentOutlined style={{ marginRight: 8, color: "#1668dc" }} />
+        <div className="mt-10 grid gap-4 lg:grid-cols-[1.4fr_0.8fr]">
+          <div className="card border border-base-300 bg-base-100 shadow-sm">
+            <div className="card-body">
+              <p className="text-base-content/75">
                 {lang === "ru" ? site.location.ru : site.location.en}.{" "}
                 {lang === "ru" ? site.locationNote.ru : site.locationNote.en}
-              </Paragraph>
-              <Space wrap size="middle" style={{ marginTop: 8 }}>
-                <Button type="primary" icon={<MailOutlined />} href={`mailto:${site.email}`}>
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <a href={`mailto:${site.email}`} className="btn btn-primary">
                   {site.email}
-                </Button>
-                <Button icon={<PhoneOutlined />} href={site.phoneHref}>
+                </a>
+                <a href={site.phoneHref} className="btn btn-outline">
                   {site.phone}
-                </Button>
-                <Button
-                  icon={<SendOutlined />}
+                </a>
+                <a
                   href={site.telegram}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="btn btn-outline"
                 >
                   {site.telegramLabel}
-                </Button>
-                <Button href="cv.html">{lang === "ru" ? "Резюме / CV" : "CV"}</Button>
-              </Space>
-            </Card>
-          </Col>
-          <Col xs={24} lg={10}>
-            <Space direction="vertical" style={{ width: "100%" }} size="middle">
-              <Button block size="large" href={site.maps.yandex} target="_blank">
-                {lang === "ru" ? "Яндекс.Карты" : "Yandex Maps"}
-              </Button>
-              <Button block size="large" href={site.maps.google} target="_blank">
-                Google Maps
-              </Button>
-              <Button block size="large" href={site.maxUrl} target="_blank">
-                MAX
-              </Button>
-            </Space>
-          </Col>
-        </Row>
+                </a>
+                <a href="cv.html" className="btn btn-ghost">
+                  {lang === "ru" ? "Резюме / CV" : "CV"}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <a
+              href={site.maps.yandex}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline btn-block"
+            >
+              {lang === "ru" ? "Яндекс.Карты" : "Yandex Maps"}
+            </a>
+            <a
+              href={site.maps.google}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline btn-block"
+            >
+              Google Maps
+            </a>
+            <a
+              href={site.maxUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline btn-block"
+            >
+              MAX
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

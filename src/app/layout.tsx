@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ru" className={`${body.variable} h-full antialiased`}>
-      <body className="min-h-full bg-[#141414] text-white/85">
+    <html lang="ru" data-theme="corporate" className={`${body.variable} h-full`}>
+      <body className="min-h-full bg-base-100 text-base-content antialiased">
         <Providers>{children}</Providers>
       </body>
     </html>

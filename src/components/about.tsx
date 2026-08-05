@@ -1,54 +1,50 @@
 "use client";
 
-import { Card, Col, Row, Typography } from "antd";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
-
-const { Title, Paragraph, Text } = Typography;
 
 export function About() {
   const { t, lang } = useI18n();
 
   return (
-    <section id="about">
-      <div className="section-wrap">
-        <Text type="secondary" style={{ letterSpacing: "0.16em", textTransform: "uppercase" }}>
+    <section id="about" className="bg-base-100">
+      <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+        <p className="text-sm font-semibold tracking-[0.18em] text-primary uppercase">
           {lang === "ru" ? "Обо мне" : "About"}
-        </Text>
-        <Title level={2} style={{ color: "#fff", marginTop: 8 }}>
+        </p>
+        <h2 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">
           {t(site.about.intro)}
-        </Title>
-        <Paragraph style={{ color: "rgba(255,255,255,0.7)", fontSize: 17, maxWidth: 820 }}>
-          {t(site.about.focus)}
-        </Paragraph>
+        </h2>
+        <p className="mt-5 max-w-3xl text-lg text-base-content/70">{t(site.about.focus)}</p>
 
-        <Row gutter={[16, 16]} style={{ marginTop: 28 }}>
-          <Col xs={24} md={8}>
-            <Card title={lang === "ru" ? "Образование" : "Education"} bordered>
-              <ul style={{ margin: 0, paddingLeft: 18, color: "rgba(255,255,255,0.75)" }}>
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          <div className="card border border-base-300 bg-base-100 shadow-sm">
+            <div className="card-body">
+              <h3 className="card-title text-lg">
+                {lang === "ru" ? "Образование" : "Education"}
+              </h3>
+              <ul className="list-disc space-y-2 pl-5 text-base-content/75">
                 {site.about.education[lang].map((item) => (
-                  <li key={item} style={{ marginBottom: 8 }}>
-                    {item}
-                  </li>
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
-            </Card>
-          </Col>
-          <Col xs={24} md={8}>
-            <Card title={lang === "ru" ? "Проектный офис" : "Project office"} bordered>
-              <Paragraph style={{ margin: 0, color: "rgba(255,255,255,0.75)" }}>
-                {t(site.about.office)}
-              </Paragraph>
-            </Card>
-          </Col>
-          <Col xs={24} md={8}>
-            <Card title={lang === "ru" ? "Стек" : "Stack"} bordered>
-              <Paragraph style={{ margin: 0, color: "rgba(255,255,255,0.75)" }}>
-                {t(site.about.stack)}
-              </Paragraph>
-            </Card>
-          </Col>
-        </Row>
+            </div>
+          </div>
+          <div className="card border border-base-300 bg-base-100 shadow-sm">
+            <div className="card-body">
+              <h3 className="card-title text-lg">
+                {lang === "ru" ? "Проектный офис" : "Project office"}
+              </h3>
+              <p className="text-base-content/75">{t(site.about.office)}</p>
+            </div>
+          </div>
+          <div className="card border border-base-300 bg-base-100 shadow-sm">
+            <div className="card-body">
+              <h3 className="card-title text-lg">{lang === "ru" ? "Стек" : "Stack"}</h3>
+              <p className="text-base-content/75">{t(site.about.stack)}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
