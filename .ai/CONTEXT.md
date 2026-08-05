@@ -1,15 +1,24 @@
-# Porfolio (oleg-sorvanov)
+# CONTEXT — personal-portfolio
 
-context_version: 9
-updated: 2026-07-28
+context_version: 1
+updated: 2026-08-06
 
 ## Цель
-Личный сайт-портфолио Олега Сорванова (Pages).
+Личный бренд-сайт (портфолио) на Next.js + shadcn-style UI + Tailwind.
+
+## Стек
+- Next.js 16 (App Router), React 19, Tailwind 4
+- framer-motion, lucide-react, CVA button (shadcn-паттерн)
+- Шрифты: Syne (display) + Manrope (body)
+
+## Визуал
+Палитра ink/fog/acid-lime (`#0B1210` / `#EEF3EF` / `#C6F135`) — трендовый editorial tech, не корпоративный красный.
+
+## Контент
+Правки текстов/ссылок: `src/lib/site.ts`. Герой-фото: `public/hero.jpg`.
 
 ## Статус
-- Live: https://puholet-sketch.github.io/oleg-sorvanov/
-- Кейс Фурик: https://puholet-sketch.github.io/furik/
-- Ссылки на github.com (репо/профиль) убраны; демо — только `*.github.io`
+Одностраничное портфолио собрано (hero / work / about / contact).
 
 ## Следующий шаг
-Ожидает обратную связь.
+Подставить реальные кейсы, email и соцсети; при необходимости переименовать бренд.

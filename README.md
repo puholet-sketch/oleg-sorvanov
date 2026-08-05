@@ -1,38 +1,28 @@
-# Портфолио — Олег Сорванов
+# Олег Сорванов — портфолио
 
-Статический сайт для GitHub Pages: личный бренд (IT + предпринимательство + яхтинг).
+Next.js + Tailwind + shadcn-паттерн. Сайт: https://puholet-sketch.github.io/oleg-sorvanov/
 
-## Локальный просмотр
+## Локально
 
 ```bash
-cd D:\projects\Porfolio
-npx --yes serve .
+npm install
+npm run dev
 ```
 
-Откройте `http://localhost:3000` (или порт из вывода команды).
+## Сборка как на GitHub Pages
 
-## Публикация на GitHub Pages
+```bash
+set NEXT_PUBLIC_BASE_PATH=/oleg-sorvanov
+npm run build
+npx --yes serve out
+```
 
-1. Создайте репозиторий **`puholet-sketch/oleg-sorvanov`** (Public).
-2. Залейте содержимое папки `Porfolio` в корень репозитория.
-3. **Settings → Pages → Deploy from a branch** → ветка **`main`**, папка **`/ (root)`**.
-4. Через 1–5 минут сайт будет доступен:
+## Контент
 
-   **https://puholet-sketch.github.io/oleg-sorvanov/**
+- Тексты и ссылки: `src/lib/site.ts`
+- Фото героя: `public/hero.jpg`
+- Резюме: `public/cv.html`
 
-Файл `.nojekyll` уже в корне.
+## Деплой
 
-## Структура
-
-| Файл | Назначение |
-|------|------------|
-| `index.html` | Главная, RU/EN |
-| `cv.html` | Резюме 2026 (печать → PDF) |
-| `assets/css/main.css` | Стили |
-| `assets/js/main.js` | Переключатель языка |
-
-## PDF резюме
-
-Откройте `cv.html` → кнопка **«Сохранить как PDF»** → в диалоге печати выберите «Сохранить как PDF».
-
-Старый файл `Oleg_Sorvanov_CV_2023_09.pdf` можно архивировать — актуальная версия в `cv.html`.
+Push в `main` → GitHub Actions собирает static export и публикует на Pages.

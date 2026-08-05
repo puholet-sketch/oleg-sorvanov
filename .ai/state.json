@@ -1,23 +1,26 @@
 {
-  "active_file_hashes": {
-    "index.html": "58e3ac3db423172a4be13d634e6d7d282a32d8e7",
-    ".ai/INDEX.md": "20c7cace8501b6830c5d780b9bb4cc7413664ac5",
-    ".ai/CONTEXT.md": "05c1bf8b837102fe3c7cd3b43eabaa863c2dae6d"
-  },
-  "blockers": [],
-  "context_hash": "05c1bf8b837102fe3c7cd3b43eabaa863c2dae6d",
+  "context_version": 1,
+  "timestamp": "2026-08-06T00:19:44.358918+03:00",
+  "context_hash": "b79b7febbd7017c2",
   "active_files": [
-    ".ai/CONTEXT.md",
-    ".ai/INDEX.md",
-    "index.html"
+    "src/app/page.tsx",
+    "src/lib/site.ts",
+    "src/app/globals.css",
+    "public/hero.jpg"
   ],
-  "last_error": null,
-  "timestamp": "2026-07-28T08:18:46.066177+00:00",
-  "next_action": "await feedback",
+  "active_file_hashes": {
+    "src/app/page.tsx": "dad4021ca404fc13",
+    "src/lib/site.ts": "1c584a8ede468595",
+    "src/app/globals.css": "2affb86ccefe366f",
+    "public/hero.jpg": "477c669032b4d649"
+  },
   "decisions": [
-    "Furik case added with github.io demo + TD PDF download",
-    "Removed all github.com repo/profile links from portfolio UI"
+    "Next.js + shadcn-pattern + Tailwind",
+    "Palette ink/fog/acid-lime",
+    "Brand placeholder OLEG"
   ],
-  "context_version": 9,
-  "retry_count": 0
+  "blockers": [],
+  "last_error": null,
+  "retry_count": 0,
+  "next_action": "customize site.ts and review in browser"
 }
