@@ -1,6 +1,25 @@
 @import "tailwindcss";
-@plugin "daisyui" {
-  themes: corporate --default, business;
+
+:root {
+  --void: #070b09;
+  --ink: #101815;
+  --mist: #eef3ef;
+  --paper: #f7faf7;
+  --voltage: #d4ff00;
+  --voltage-dim: #a8cc00;
+  --muted: #5f6d64;
+  --line: rgba(16, 24, 21, 0.12);
+}
+
+@theme inline {
+  --color-void: var(--void);
+  --color-ink: var(--ink);
+  --color-mist: var(--mist);
+  --color-paper: var(--paper);
+  --color-voltage: var(--voltage);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
 }
 
 html {
@@ -8,23 +27,83 @@ html {
 }
 
 body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
-.hero-overlay {
-  background: linear-gradient(
-    105deg,
-    oklch(100% 0 0 / 0.94) 10%,
-    oklch(100% 0 0 / 0.72) 48%,
-    oklch(100% 0 0 / 0.28) 100%
-  );
+::selection {
+  background: var(--voltage);
+  color: var(--void);
 }
 
-[data-theme="business"] .hero-overlay {
+.font-display {
+  font-family: var(--font-display), var(--font-body), sans-serif;
+}
+
+.grain {
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+.mesh {
+  background:
+    radial-gradient(ellipse 50% 40% at 80% 20%, rgba(212, 255, 0, 0.22), transparent 55%),
+    radial-gradient(ellipse 40% 50% at 15% 70%, rgba(212, 255, 0, 0.1), transparent 50%),
+    linear-gradient(120deg, rgba(7, 11, 9, 0.94) 12%, rgba(7, 11, 9, 0.62) 52%, rgba(7, 11, 9, 0.28) 100%);
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.shine {
   background: linear-gradient(
-    105deg,
-    oklch(20% 0.02 250 / 0.92) 10%,
-    oklch(20% 0.02 250 / 0.7) 48%,
-    oklch(20% 0.02 250 / 0.3) 100%
+    110deg,
+    transparent 30%,
+    rgba(212, 255, 0, 0.35) 45%,
+    transparent 60%
   );
+  background-size: 200% 100%;
+  animation: shine 4.5s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0%,
+  100% {
+    background-position: 120% 0;
+  }
+  50% {
+    background-position: -20% 0;
+  }
+}
+
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(12px, -18px, 0) scale(1.08);
+  }
 }

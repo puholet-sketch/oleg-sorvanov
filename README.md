@@ -1,28 +1,22 @@
 # Олег Сорванов — портфолио
 
-Next.js + Tailwind + shadcn-паттерн. Сайт: https://puholet-sketch.github.io/oleg-sorvanov/
+Премиальный editorial-сайт: **Next.js + Tailwind + Framer Motion**.
+
+Сайт: https://puholet-sketch.github.io/oleg-sorvanov/
+
+## Дизайн
+
+- Палитра: void `#070B09` · paper `#F7FAF7` · voltage `#D4FF00`
+- Шрифты: Syne (display) + Manrope
+- Эффекты: grain, mesh gradient, floating blobs, marquee, scroll reveals, shine CTA
 
 ## Локально
 
 ```bash
-npm install
+npm install --include=dev
 npm run dev
-```
-
-## Сборка как на GitHub Pages
-
-```bash
-set NEXT_PUBLIC_BASE_PATH=/oleg-sorvanov
-npm run build
-npx --yes serve out
 ```
 
 ## Контент
 
-- Тексты и ссылки: `src/lib/site.ts`
-- Фото героя: `public/hero.jpg`
-- Резюме: `public/cv.html`
-
-## Деплой
-
-Push в `main` → GitHub Actions собирает static export и публикует на Pages.
+`src/lib/site.ts` · `public/hero.jpg` · `public/cv.html`

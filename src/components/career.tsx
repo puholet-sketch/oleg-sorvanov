@@ -1,5 +1,6 @@
 "use client";
 
+import { FadeUp } from "@/components/motion";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
@@ -7,35 +8,29 @@ export function Career() {
   const { t, lang } = useI18n();
 
   return (
-    <section id="career" className="bg-base-100">
-      <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-        <p className="text-sm font-semibold tracking-[0.18em] text-primary uppercase">
-          {lang === "ru" ? "Карьера" : "Career"}
-        </p>
-        <h2 className="mt-3 mb-10 text-4xl font-bold tracking-tight md:text-5xl">
-          {lang === "ru" ? "Профессиональный путь" : "Professional path"}
-        </h2>
+    <section id="career" className="bg-void text-mist">
+      <div className="mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
+        <FadeUp>
+          <p className="text-xs font-semibold tracking-[0.22em] text-voltage uppercase">
+            {lang === "ru" ? "Карьера" : "Career"}
+          </p>
+          <h2 className="font-display mt-3 mb-12 text-4xl font-extrabold tracking-tight md:text-5xl">
+            {lang === "ru" ? "Профессиональный путь" : "Professional path"}
+          </h2>
+        </FadeUp>
 
-        <ul className="timeline timeline-vertical timeline-snap-icon">
+        <ol className="relative space-y-0 border-l border-white/15 pl-8">
           {site.career.map((item, index) => (
-            <li key={item.title.ru}>
-              {index > 0 ? <hr className="bg-primary/30" /> : null}
-              <div className="timeline-middle">
-                <span className="flex size-4 items-center justify-center rounded-full bg-primary" />
-              </div>
-              <div
-                className={`timeline-box border-base-300 bg-base-100 ${
-                  index % 2 === 0 ? "timeline-start md:text-end" : "timeline-end"
-                }`}
-              >
-                <p className="text-sm text-base-content/50">{t(item.period)}</p>
-                <h3 className="mt-1 text-xl font-bold">{t(item.title)}</h3>
-                <p className="mt-2 text-base-content/70">{t(item.text)}</p>
-              </div>
-              {index < site.career.length - 1 ? <hr className="bg-primary/30" /> : null}
-            </li>
+            <FadeUp key={item.title.ru} delay={index * 0.08} className="relative pb-12 last:pb-0">
+              <span className="absolute -left-[2.35rem] top-1 size-3 rounded-full bg-voltage shadow-[0_0_24px_rgba(212,255,0,0.55)]" />
+              <p className="text-sm tracking-[0.16em] text-mist/45 uppercase">
+                {t(item.period)}
+              </p>
+              <h3 className="font-display mt-2 text-2xl font-bold">{t(item.title)}</h3>
+              <p className="mt-2 max-w-3xl text-mist/70">{t(item.text)}</p>
+            </FadeUp>
           ))}
-        </ul>
+        </ol>
       </div>
     </section>
   );

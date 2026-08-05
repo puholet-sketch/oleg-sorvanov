@@ -2,6 +2,7 @@ import { About } from "@/components/about";
 import { Career } from "@/components/career";
 import { Contact } from "@/components/contact";
 import { Hero } from "@/components/hero";
+import { Marquee } from "@/components/marquee";
 import { Projects } from "@/components/projects";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -14,6 +15,7 @@ export default function Home() {
       <SiteHeader />
       <main>
         <Hero />
+        <Marquee />
         <Stats />
         <About />
         <Work />
