@@ -9,7 +9,7 @@ export function Hero() {
   const { t, lang } = useI18n();
 
   return (
-    <section id="top" className="relative min-h-[100svh] overflow-hidden bg-void text-mist">
+    <section id="top" className="relative min-h-[100svh] overflow-hidden bg-void text-mist scroll-mt-0">
       <div className="absolute inset-0">
         <Image
           src="/hero.jpg"
@@ -28,7 +28,7 @@ export function Hero() {
         <div className="grain absolute inset-0 opacity-30" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-6 pb-16 pt-28 md:px-10 md:pb-20">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-4 pb-16 pt-[max(7rem,18vh)] sm:px-6 md:px-10 md:pb-20">
         <motion.a
           href={site.companyUrl}
           target="_blank"
