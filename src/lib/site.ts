@@ -249,6 +249,22 @@ export const site = {
       en: "Owner of a coffee-point network — coffee & takeaway. Currently 2 points in Kitizh BC.",
     },
     href: "https://puholet-sketch.github.io/coffee.friends/",
+    cta: "coffee.friends →",
+  },
+  digitalMenu: {
+    title: { ru: "Бегущее меню", en: "Digital menu board" },
+    label: { ru: "MarketingCofe", en: "MarketingCofe" },
+    text: {
+      ru: "Цифровая вывеска на вертикальном мониторе: 47 напитков и 14 блюд, автопрокрутка слайдов 9:16, white studio, данные в JSON — для HDMI-плеера или записи MP4.",
+      en: "Vertical digital signage: 47 drinks and 14 food items, 9:16 auto-sliding board, white studio look, JSON-driven — for HDMI player or MP4 loop.",
+    },
+    href: "https://puholet-sketch.github.io/coffee-menu/",
+    cta: { ru: "Открыть доску →", en: "Open board →" },
+    stats: [
+      { value: "61", label: { ru: "позиций", en: "items" } },
+      { value: "9:16", label: { ru: "формат", en: "format" } },
+      { value: "3.5с", label: { ru: "слайд", en: "slide" } },
+    ],
   },
   hobbies: [
     {

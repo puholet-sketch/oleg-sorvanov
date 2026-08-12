@@ -24,6 +24,8 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  overflow-x: clip;
 }
 
 body {
@@ -31,6 +33,14 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3 {
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 
 ::selection {

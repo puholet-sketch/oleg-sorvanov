@@ -22,7 +22,7 @@ export function SiteHeader() {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-x-0 top-0 z-50"
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-5 md:px-10">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:gap-4 sm:px-6 sm:py-5 md:px-10">
         <a
           href="#top"
           className="font-display text-sm font-bold tracking-[0.22em] text-mist mix-blend-difference md:text-base"

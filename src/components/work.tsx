@@ -47,7 +47,7 @@ export function Work() {
                 <div className="relative grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
                   <div>
                     <p className="text-sm text-muted">{t(item.meta)}</p>
-                    <h3 className="font-display mt-2 text-2xl font-bold md:text-3xl">
+                    <h3 className="font-display mt-2 text-[clamp(1.25rem,4.5vw,1.875rem)] leading-tight font-bold break-words md:text-3xl">
                       {t(item.title)}
                     </h3>
                     <p className="mt-2 max-w-3xl text-ink/65">{t(item.summary)}</p>
