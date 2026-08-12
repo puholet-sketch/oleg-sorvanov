@@ -245,18 +245,18 @@ export const site = {
   coffee: {
     title: "CoffeeFriends",
     text: {
-      ru: "Владелец сети кофепоинтов — кофе и еда на вынос. Сейчас 2 точки в БЦ «Китеж».",
-      en: "Owner of a coffee-point network — coffee & takeaway. Currently 2 points in Kitizh BC.",
+      ru: "Владелец сети кофепоинтов — кофе и еда на вынос. Сейчас 2 точки — на 2‑й и 11‑й этажах БЦ «Китеж».",
+      en: "Owner of a coffee-point network — coffee & takeaway. Currently 2 points — on the 2nd and 11th floors of Kitizh BC.",
     },
     href: "https://puholet-sketch.github.io/coffee.friends/",
     cta: "coffee.friends →",
   },
   digitalMenu: {
-    title: { ru: "Бегущее меню", en: "Digital menu board" },
-    label: { ru: "MarketingCofe", en: "MarketingCofe" },
+    title: { ru: "Интерактивное меню", en: "Interactive menu" },
+    label: { ru: "Цифровая вывеска", en: "Digital signage" },
     text: {
-      ru: "Цифровая вывеска на вертикальном мониторе: 47 напитков и 14 блюд, автопрокрутка слайдов 9:16, white studio, данные в JSON — для HDMI-плеера или записи MP4.",
-      en: "Vertical digital signage: 47 drinks and 14 food items, 9:16 auto-sliding board, white studio look, JSON-driven — for HDMI player or MP4 loop.",
+      ru: "Бегущая реклама на вертикальном мониторе: 47 напитков и 14 блюд, автопрокрутка слайдов 9:16, white studio, данные в JSON — для HDMI-плеера или записи MP4.",
+      en: "Scrolling signage on a vertical monitor: 47 drinks and 14 food items, 9:16 auto-slides, white studio, JSON-driven — for HDMI player or MP4 loop.",
     },
     href: "https://puholet-sketch.github.io/coffee-menu/",
     cta: { ru: "Открыть доску →", en: "Open board →" },

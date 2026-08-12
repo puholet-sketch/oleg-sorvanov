@@ -46,7 +46,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 36 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-[clamp(3.2rem,10vw,7.2rem)] leading-[0.9] font-extrabold tracking-[-0.04em]"
+          className="font-display text-[clamp(2.4rem,9vw,7.2rem)] leading-[0.95] font-extrabold tracking-[-0.04em]"
         >
           {t(site.fullName)}
         </motion.h1>

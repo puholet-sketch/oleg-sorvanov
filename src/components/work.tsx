@@ -15,7 +15,7 @@ export function Work() {
             <p className="text-xs font-semibold tracking-[0.22em] text-[color:var(--voltage-dim)] uppercase">
               {lang === "ru" ? "Кейсы" : "Cases"}
             </p>
-            <h2 className="font-display mt-3 text-4xl font-extrabold tracking-tight md:text-5xl">
+            <h2 className="section-heading mt-3">
               {lang === "ru" ? "Продуктовый delivery и PMO" : "Product delivery and PMO"}
             </h2>
           </div>
@@ -47,10 +47,10 @@ export function Work() {
                 <div className="relative grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
                   <div>
                     <p className="text-sm text-muted">{t(item.meta)}</p>
-                    <h3 className="font-display mt-2 text-[clamp(1.25rem,4.5vw,1.875rem)] leading-tight font-bold break-words md:text-3xl">
+                    <h3 className="card-heading mt-2 text-xl sm:text-2xl md:text-3xl">
                       {t(item.title)}
                     </h3>
-                    <p className="mt-2 max-w-3xl text-ink/65">{t(item.summary)}</p>
+                    <p className="body-copy mt-2 max-w-3xl text-ink/65">{t(item.summary)}</p>
                     {"stats" in item && item.stats ? (
                       <div className="mt-4 flex flex-wrap gap-6">
                         {item.stats.map((stat) => (

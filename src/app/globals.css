@@ -43,8 +43,53 @@ body {
 h1,
 h2,
 h3 {
-  overflow-wrap: anywhere;
-  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+  hyphenate-limit-chars: 6 3 3;
+  text-wrap: pretty;
+}
+
+/* Section H2 — единый масштаб, без разрыва «й» и слогов посередине */
+.section-heading {
+  font-family: var(--font-display), var(--font-body), sans-serif;
+  font-size: clamp(1.65rem, 5.2vw, 3rem);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  text-wrap: pretty;
+}
+
+/* Заголовки карточек */
+.card-heading {
+  font-family: var(--font-display), var(--font-body), sans-serif;
+  font-size: clamp(1.05rem, 4vw, 1.35rem);
+  line-height: 1.15;
+  font-weight: 700;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.featured-heading {
+  font-family: var(--font-display), var(--font-body), sans-serif;
+  font-size: clamp(1.2rem, 4.8vw, 1.75rem);
+  line-height: 1.12;
+  font-weight: 800;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  text-wrap: pretty;
+}
+
+.body-copy {
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+  text-wrap: pretty;
 }
 
 ::selection {

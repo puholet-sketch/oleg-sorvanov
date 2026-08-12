@@ -24,7 +24,7 @@ export function Contact() {
                 <p className="text-xs tracking-[0.22em] text-voltage uppercase">
                   {lang === "ru" ? "Контакты" : "Contact"}
                 </p>
-                <h2 className="font-display mt-3 text-4xl font-extrabold tracking-tight md:text-5xl">
+                <h2 className="section-heading mt-3">
                   {lang === "ru" ? "Рекомендации по запросу" : "References on request"}
                 </h2>
                 <p className="mt-5 max-w-lg text-mist/70">

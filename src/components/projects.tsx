@@ -33,10 +33,8 @@ function FeaturedCard({
           <p className="text-[0.65rem] font-semibold tracking-[0.2em] text-voltage uppercase sm:text-xs">
             {label}
           </p>
-          <h3 className="font-display mt-2 text-[clamp(1.35rem,5.5vw,1.875rem)] leading-tight font-extrabold break-words">
-            {title}
-          </h3>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-mist/70 break-words sm:text-base">
+          <h3 className="featured-heading mt-2">{title}</h3>
+          <p className="body-copy mt-2 max-w-2xl text-sm leading-relaxed text-mist/70 sm:text-base">
             {text}
           </p>
           {stats ? (
@@ -72,7 +70,7 @@ export function Projects() {
           <p className="text-xs font-semibold tracking-[0.22em] text-[color:var(--voltage-dim)] uppercase">
             {lang === "ru" ? "Личные проекты" : "Personal projects"}
           </p>
-          <h2 className="font-display mt-3 text-[clamp(1.75rem,6vw,3rem)] leading-tight font-extrabold tracking-tight">
+          <h2 className="section-heading mt-3">
             {lang === "ru" ? "Публичные демо и сервисы" : "Public demos and services"}
           </h2>
         </FadeUp>
@@ -87,9 +85,7 @@ export function Projects() {
                 className="group flex h-full min-w-0 flex-col rounded-3xl border border-[var(--line)] bg-paper p-4 transition hover:-translate-y-1 hover:border-[color:var(--voltage-dim)] hover:shadow-[0_20px_50px_rgba(16,24,21,0.08)] sm:p-5"
               >
                 <div className="mb-4 flex min-w-0 items-start justify-between gap-2 sm:mb-6">
-                  <h3 className="font-display min-w-0 flex-1 text-lg leading-tight font-bold break-words sm:text-xl">
-                    {project.title}
-                  </h3>
+                  <h3 className="card-heading min-w-0 flex-1">{project.title}</h3>
                   <span
                     aria-hidden="true"
                     className="shrink-0 text-voltage transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -97,7 +93,7 @@ export function Projects() {
                     ↗
                   </span>
                 </div>
-                <p className="text-sm leading-relaxed text-ink/65 break-words">{t(project.text)}</p>
+                <p className="body-copy text-sm leading-relaxed text-ink/65">{t(project.text)}</p>
               </a>
             </FadeUp>
           ))}
@@ -130,10 +126,8 @@ export function Projects() {
           {site.hobbies.map((hobby, index) => (
             <FadeUp key={hobby.title.ru} delay={index * 0.05}>
               <div className="min-w-0 rounded-3xl border border-[var(--line)] bg-paper p-4 sm:p-5">
-                <h3 className="font-display text-base leading-tight font-bold break-words sm:text-lg">
-                  {t(hobby.title)}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/65 break-words">{t(hobby.text)}</p>
+                <h3 className="card-heading">{t(hobby.title)}</h3>
+                <p className="body-copy mt-2 text-sm leading-relaxed text-ink/65">{t(hobby.text)}</p>
                 {"href" in hobby && hobby.href ? (
                   <a
                     href={hobby.href}

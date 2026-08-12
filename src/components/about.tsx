@@ -14,7 +14,7 @@ export function About() {
           <p className="text-xs font-semibold tracking-[0.22em] text-[color:var(--voltage-dim)] uppercase">
             {lang === "ru" ? "Обо мне" : "About"}
           </p>
-          <h2 className="font-display mt-3 text-4xl font-extrabold tracking-tight md:text-5xl">
+          <h2 className="section-heading mt-3">
             {t(site.about.intro)}
           </h2>
         </FadeUp>

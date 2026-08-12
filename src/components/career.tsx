@@ -14,7 +14,7 @@ export function Career() {
           <p className="text-xs font-semibold tracking-[0.22em] text-voltage uppercase">
             {lang === "ru" ? "Карьера" : "Career"}
           </p>
-          <h2 className="font-display mt-3 mb-12 text-4xl font-extrabold tracking-tight md:text-5xl">
+          <h2 className="section-heading mt-3 mb-12">
             {lang === "ru" ? "Профессиональный путь" : "Professional path"}
           </h2>
         </FadeUp>
@@ -26,8 +26,8 @@ export function Career() {
               <p className="text-sm tracking-[0.16em] text-mist/45 uppercase">
                 {t(item.period)}
               </p>
-              <h3 className="font-display mt-2 text-2xl font-bold">{t(item.title)}</h3>
-              <p className="mt-2 max-w-3xl text-mist/70">{t(item.text)}</p>
+              <h3 className="card-heading mt-2 text-xl sm:text-2xl">{t(item.title)}</h3>
+              <p className="body-copy mt-2 max-w-3xl text-mist/70">{t(item.text)}</p>
             </FadeUp>
           ))}
         </ol>
