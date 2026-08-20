@@ -9,28 +9,35 @@ export function Career() {
 
   return (
     <section id="career" className="bg-void text-mist">
-      <div className="mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:px-10 md:py-16">
         <FadeUp>
-          <p className="text-xs font-semibold tracking-[0.22em] text-voltage uppercase">
+          <p className="text-[0.68rem] font-semibold tracking-[0.22em] text-voltage uppercase">
             {lang === "ru" ? "Карьера" : "Career"}
           </p>
-          <h2 className="section-heading mt-3 mb-12">
+          <h2 className="section-heading mt-2 mb-7">
             {lang === "ru" ? "Профессиональный путь" : "Professional path"}
           </h2>
         </FadeUp>
 
-        <ol className="relative space-y-0 border-l border-white/15 pl-8">
+        <div className="divide-y divide-white/10 border-y border-white/10">
           {site.career.map((item, index) => (
-            <FadeUp key={item.title.ru} delay={index * 0.08} className="relative pb-12 last:pb-0">
-              <span className="absolute -left-[2.35rem] top-1 size-3 rounded-full bg-voltage shadow-[0_0_24px_rgba(212,255,0,0.55)]" />
-              <p className="text-sm tracking-[0.16em] text-mist/45 uppercase">
+            <FadeUp
+              key={item.title.ru}
+              delay={index * 0.05}
+              className="grid gap-2 py-4 md:grid-cols-[7.5rem_1fr] md:gap-8 md:py-5"
+            >
+              <p className="font-display text-sm font-bold tracking-wide text-voltage">
                 {t(item.period)}
               </p>
-              <h3 className="card-heading mt-2 text-xl sm:text-2xl">{t(item.title)}</h3>
-              <p className="body-copy mt-2 max-w-3xl text-mist/70">{t(item.text)}</p>
+              <div>
+                <h3 className="text-base font-semibold md:text-lg">{t(item.title)}</h3>
+                <p className="body-copy mt-1 max-w-3xl text-sm leading-relaxed text-mist/65">
+                  {t(item.text)}
+                </p>
+              </div>
             </FadeUp>
           ))}
-        </ol>
+        </div>
       </div>
     </section>
   );

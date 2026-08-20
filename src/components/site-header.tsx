@@ -35,7 +35,7 @@ export function SiteHeader() {
           : "border-b border-transparent bg-gradient-to-b from-void/85 via-void/55 to-transparent backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:gap-4 sm:px-6 sm:py-5 md:px-10">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 md:px-10">
         <a
           href="#top"
           className="font-display text-sm font-bold tracking-[0.22em] text-mist md:text-base"

@@ -27,24 +27,22 @@ function FeaturedCard({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex h-full min-w-0 flex-col justify-between gap-5 overflow-hidden rounded-[1.75rem] bg-void p-5 text-mist sm:p-7 md:p-8"
+        className="group flex h-full min-w-0 flex-col justify-between gap-4 overflow-hidden rounded-2xl bg-void p-5 text-mist"
       >
         <div className="min-w-0">
-          <p className="text-[0.65rem] font-semibold tracking-[0.2em] text-voltage uppercase sm:text-xs">
+          <p className="text-[0.65rem] font-semibold tracking-[0.2em] text-voltage uppercase">
             {label}
           </p>
-          <h3 className="featured-heading mt-2">{title}</h3>
-          <p className="body-copy mt-2 max-w-2xl text-sm leading-relaxed text-mist/70 sm:text-base">
-            {text}
-          </p>
+          <h3 className="featured-heading mt-1.5">{title}</h3>
+          <p className="body-copy mt-2 text-sm leading-relaxed text-mist/68">{text}</p>
           {stats ? (
-            <div className="mt-4 flex flex-wrap gap-4 sm:gap-5">
+            <div className="mt-3 flex flex-wrap gap-4">
               {stats.map((item) => (
                 <div key={item.value + item.label} className="min-w-0">
-                  <div className="font-display text-lg font-extrabold text-voltage sm:text-xl">
+                  <div className="font-display text-lg font-extrabold text-voltage">
                     {item.value}
                   </div>
-                  <div className="text-[0.65rem] tracking-wide text-mist/55 uppercase sm:text-xs">
+                  <div className="text-[0.65rem] tracking-wide text-mist/50 uppercase">
                     {item.label}
                   </div>
                 </div>
@@ -52,7 +50,7 @@ function FeaturedCard({
             </div>
           ) : null}
         </div>
-        <span className="inline-flex w-full shrink-0 items-center justify-center rounded-full bg-voltage px-4 py-3 text-center text-xs font-bold break-words text-void sm:w-auto sm:justify-start sm:px-5 sm:text-sm">
+        <span className="inline-flex w-full shrink-0 items-center justify-center rounded-full bg-voltage px-4 py-2.5 text-center text-xs font-bold text-void sm:w-auto sm:justify-start">
           {cta}
         </span>
       </a>
@@ -65,26 +63,26 @@ export function Projects() {
 
   return (
     <section id="projects" className="bg-mist">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:px-10 md:py-32">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:px-10 md:py-16">
         <FadeUp>
-          <p className="text-xs font-semibold tracking-[0.22em] text-[color:var(--voltage-dim)] uppercase">
-            {lang === "ru" ? "Личные проекты" : "Personal projects"}
+          <p className="text-[0.68rem] font-semibold tracking-[0.22em] text-[color:var(--voltage-dim)] uppercase">
+            {lang === "ru" ? "Проекты" : "Projects"}
           </p>
-          <h2 className="section-heading mt-3">
-            {lang === "ru" ? "Публичные демо и сервисы" : "Public demos and services"}
+          <h2 className="section-heading mt-2">
+            {lang === "ru" ? "Демо, сервис и жизнь" : "Demos, services and life"}
           </h2>
         </FadeUp>
 
-        <div className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {site.projects.map((project, index) => (
-            <FadeUp key={project.title} delay={index * 0.04}>
+            <FadeUp key={project.title} delay={index * 0.03}>
               <a
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-full min-w-0 flex-col rounded-3xl border border-[var(--line)] bg-paper p-4 transition hover:-translate-y-1 hover:border-[color:var(--voltage-dim)] hover:shadow-[0_20px_50px_rgba(16,24,21,0.08)] sm:p-5"
+                className="group flex h-full min-w-0 flex-col rounded-2xl border border-[var(--line)] bg-paper p-4 transition hover:-translate-y-0.5 hover:border-[color:var(--voltage-dim)]"
               >
-                <div className="mb-4 flex min-w-0 items-start justify-between gap-2 sm:mb-6">
+                <div className="mb-3 flex min-w-0 items-start justify-between gap-2">
                   <h3 className="card-heading min-w-0 flex-1">{project.title}</h3>
                   <span
                     aria-hidden="true"
@@ -99,14 +97,14 @@ export function Projects() {
           ))}
         </div>
 
-        <div className="mt-4 grid gap-4 lg:grid-cols-2">
+        <div className="mt-3 grid gap-3 lg:grid-cols-2">
           <FeaturedCard
             label={lang === "ru" ? "Бизнес" : "Business"}
             title={site.coffee.title}
             text={t(site.coffee.text)}
             href={site.coffee.href}
             cta={site.coffee.cta}
-            delay={0.08}
+            delay={0.06}
           />
           <FeaturedCard
             label={t(site.digitalMenu.label)}
@@ -118,22 +116,24 @@ export function Projects() {
               value: item.value,
               label: t(item.label),
             }))}
-            delay={0.12}
+            delay={0.1}
           />
         </div>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+        <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {site.hobbies.map((hobby, index) => (
-            <FadeUp key={hobby.title.ru} delay={index * 0.05}>
-              <div className="min-w-0 rounded-3xl border border-[var(--line)] bg-paper p-4 sm:p-5">
+            <FadeUp key={hobby.title.ru} delay={index * 0.04}>
+              <div className="min-w-0 rounded-2xl border border-[var(--line)] bg-paper p-4">
                 <h3 className="card-heading">{t(hobby.title)}</h3>
-                <p className="body-copy mt-2 text-sm leading-relaxed text-ink/65">{t(hobby.text)}</p>
+                <p className="body-copy mt-1.5 text-sm leading-relaxed text-ink/65">
+                  {t(hobby.text)}
+                </p>
                 {"href" in hobby && hobby.href ? (
                   <a
                     href={hobby.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-block text-sm font-semibold text-[color:var(--voltage-dim)]"
+                    className="mt-2 inline-block text-sm font-semibold text-[color:var(--voltage-dim)]"
                   >
                     {lang === "ru" ? "Открыть →" : "Open →"}
                   </a>

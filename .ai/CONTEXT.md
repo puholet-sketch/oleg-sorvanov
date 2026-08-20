@@ -1,19 +1,16 @@
-# CONTEXT — personal-portfolio / oleg-sorvanov
+# Porfolio (oleg-sorvanov)
 
-context_version: 2
-updated: 2026-08-06
+context_version: 7
+updated: 2026-08-21
 
 ## Цель
-Портфолио Олега Сорванова на Next.js + Tailwind, деплой GitHub Pages.
+Next.js-портфолио Олега Сорванова на GitHub Pages.
 
-## Прод
-https://puholet-sketch.github.io/oleg-sorvanov/
-Репозиторий: https://github.com/puholet-sketch/oleg-sorvanov
+## Статус
+- Сайт: https://puholet-sketch.github.io/oleg-sorvanov/
+- Компактная вёрстка: KPI-кубы в hero, меньше вертикального воздуха, сетка кейсов
+- Ориентир плотности: `d:\projects\oleg-sorvanov\index.html`
+- Стек: Next.js + Tailwind + Framer Motion, лайм `#d4ff00`
 
-## Важно
-Контент из старого HTML перенесён (RU/EN), новый editorial tech UI, Actions deploy.
-
-## Правки
-- src/lib/site.ts — тексты/ссылки
-- public/hero.jpg — фото
-- public/cv.html — резюме
+## Следующий шаг
+Проверить compact-layout локально; залить на GitHub по запросу.

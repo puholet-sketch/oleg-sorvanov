@@ -1,12 +1,16 @@
 # INDEX — personal-portfolio
 
-- `src/app/page.tsx` — сборка страницы
-- `src/app/layout.tsx` — fonts + metadata
-- `src/app/globals.css` — токены темы
-- `src/lib/site.ts` — бренд и контент
-- `src/components/hero.tsx` — full-bleed hero
-- `src/components/work.tsx` — список проектов
-- `src/components/about.tsx` — обо мне
-- `src/components/contact.tsx` — CTA
-- `public/hero.jpg` — портрет героя
-- `components.json` — shadcn aliases
+| Путь | Зачем |
+|------|--------|
+| `src/app/page.tsx` | Сборка страницы |
+| `src/lib/site.ts` | Бренд, кейсы, проекты, coffee + digitalMenu |
+| `src/components/projects.tsx` | Личные проекты + бизнес-карточки |
+| `src/components/work.tsx` | Кейсы |
+| `.github/workflows/deploy.yml` | GitHub Pages deploy |
+
+## Внешние проекты
+| Проект | Pages | Repo |
+|--------|-------|------|
+| Портфолио | https://puholet-sketch.github.io/oleg-sorvanov/ | этот репо |
+| CoffeeFriends | https://puholet-sketch.github.io/coffee.friends/ | — |
+| Бегущее меню | https://puholet-sketch.github.io/coffee-menu/ | https://github.com/puholet-sketch/coffee-menu (MarketingCofe) |

@@ -6,7 +6,6 @@ import { Marquee } from "@/components/marquee";
 import { Projects } from "@/components/projects";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { Stats } from "@/components/stats";
 import { Work } from "@/components/work";
 
 export default function Home() {
@@ -16,7 +15,6 @@ export default function Home() {
       <main>
         <Hero />
         <Marquee />
-        <Stats />
         <About />
         <Work />
         <Career />

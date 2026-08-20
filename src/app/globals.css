@@ -24,12 +24,12 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6.5rem;
+  scroll-padding-top: 4.75rem;
   overflow-x: clip;
 }
 
 section[id] {
-  scroll-margin-top: 6.5rem;
+  scroll-margin-top: 4.75rem;
 }
 
 body {
@@ -53,8 +53,8 @@ h3 {
 /* Section H2 — единый масштаб, без разрыва «й» и слогов посередине */
 .section-heading {
   font-family: var(--font-display), var(--font-body), sans-serif;
-  font-size: clamp(1.65rem, 5.2vw, 3rem);
-  line-height: 1.1;
+  font-size: clamp(1.35rem, 3.6vw, 2.15rem);
+  line-height: 1.12;
   font-weight: 800;
   letter-spacing: -0.02em;
   overflow-wrap: normal;
@@ -66,8 +66,8 @@ h3 {
 /* Заголовки карточек */
 .card-heading {
   font-family: var(--font-display), var(--font-body), sans-serif;
-  font-size: clamp(1.05rem, 4vw, 1.35rem);
-  line-height: 1.15;
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
+  line-height: 1.18;
   font-weight: 700;
   overflow-wrap: normal;
   word-break: normal;
@@ -76,8 +76,8 @@ h3 {
 
 .featured-heading {
   font-family: var(--font-display), var(--font-body), sans-serif;
-  font-size: clamp(1.2rem, 4.8vw, 1.75rem);
-  line-height: 1.12;
+  font-size: clamp(1.1rem, 3.4vw, 1.45rem);
+  line-height: 1.14;
   font-weight: 800;
   overflow-wrap: normal;
   word-break: normal;
@@ -148,6 +148,19 @@ h3 {
   50% {
     background-position: -20% 0;
   }
+}
+
+.stat-cube {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(7, 11, 9, 0.58);
+  padding: 0.7rem 0.75rem 0.8rem;
+  backdrop-filter: blur(12px);
+  min-height: 4.6rem;
+}
+
+.stat-cube:hover {
+  border-color: rgba(212, 255, 0, 0.45);
 }
 
 .blob {
