@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Manrope, Syne } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const display = Syne({
+const display = Outfit({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["500", "600", "700"],
 });
 
-const body = Manrope({
+const body = Inter({
   variable: "--font-body",
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="ru"
       className={`${display.variable} ${body.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-paper text-ink">
+      <body className="min-h-full bg-void text-mist">
         <Providers>{children}</Providers>
       </body>
     </html>

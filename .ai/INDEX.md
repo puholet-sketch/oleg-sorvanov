@@ -2,10 +2,11 @@
 
 | Путь | Зачем |
 |------|--------|
-| `src/app/page.tsx` | Сборка страницы |
-| `src/lib/site.ts` | Бренд, кейсы, проекты, coffee + digitalMenu |
-| `src/components/projects.tsx` | Личные проекты + бизнес-карточки |
-| `src/components/work.tsx` | Кейсы |
+| `src/app/page.tsx` | Сборка: hero → about → career → cases → projects → coffee → life → location → contact |
+| `src/lib/site.ts` | Весь контент RU/EN |
+| `src/components/location.tsx` | Блок `#location` как в HTML-оригинале |
+| `src/components/coffee.tsx` | CoffeeFriends + партнёры + меню |
+| `src/components/life.tsx` | Хобби |
 | `.github/workflows/deploy.yml` | GitHub Pages deploy |
 
 ## Внешние проекты

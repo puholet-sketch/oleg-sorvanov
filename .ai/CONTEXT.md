@@ -1,16 +1,16 @@
 # Porfolio (oleg-sorvanov)
 
-context_version: 7
+context_version: 8
 updated: 2026-08-21
 
 ## Цель
 Next.js-портфолио Олега Сорванова на GitHub Pages.
 
 ## Статус
+- Эталон вёрстки: `oleg-sorvanov/index.html` (компактный one-pager, `#location`)
+- Шрифты легче: Outfit 600, Inter 400/500; лаймовые uppercase-заголовки карточек
+- Секции как в HTML: about → career → cases → projects → coffee → life → location → contact
 - Сайт: https://puholet-sketch.github.io/oleg-sorvanov/
-- Компактная вёрстка: KPI-кубы в hero, меньше вертикального воздуха, сетка кейсов
-- Ориентир плотности: `d:\projects\oleg-sorvanov\index.html`
-- Стек: Next.js + Tailwind + Framer Motion, лайм `#d4ff00`
 
 ## Следующий шаг
-Проверить compact-layout локально; залить на GitHub по запросу.
+Проверить локально; залить на GitHub по запросу.

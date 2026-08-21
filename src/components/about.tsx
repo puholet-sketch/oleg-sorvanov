@@ -7,61 +7,211 @@ import { site } from "@/lib/site";
 export function About() {
   const { t, lang } = useI18n();
 
-  const chips =
-    lang === "ru"
-      ? ["ИТ-Лидер", "Предприниматель", "Лыжник", "Яхтсмен", "Отец троих"]
-      : ["IT Leader", "Entrepreneur", "Skier", "Yachtsman", "Father of three"];
-
   return (
-    <section id="about" className="bg-mist">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-[0.92fr_1.08fr] md:gap-10 md:px-10 md:py-16">
+    <section id="about" className="bg-void">
+      <div className="mx-auto max-w-[1080px] px-4 py-8 sm:px-6 md:px-8 md:py-9">
         <FadeUp>
-          <p className="text-[0.68rem] font-semibold tracking-[0.22em] text-[color:var(--voltage-dim)] uppercase">
-            {lang === "ru" ? "Обо мне" : "About"}
-          </p>
-          <h2 className="section-heading mt-2">{t(site.about.intro)}</h2>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-ink/70 md:text-[0.95rem]">
-            {t(site.about.focus)}
-          </p>
-          <div className="mt-5 flex flex-wrap gap-1.5">
-            {chips.map((chip) => (
-              <span
-                key={chip}
-                className="rounded-full border border-[var(--line)] bg-paper px-2.5 py-1 text-[0.7rem] font-medium text-ink/70"
-              >
-                {chip}
-              </span>
-            ))}
-          </div>
+          <h2 className="section-heading">{lang === "ru" ? "Обо мне" : "About"}</h2>
+          <p className="mt-1 text-sm text-muted">{t(site.about.intro)}</p>
         </FadeUp>
 
-        <FadeUp delay={0.08} className="grid gap-3 sm:grid-cols-2">
-          <div className="rounded-2xl border border-[var(--line)] bg-paper p-4">
-            <h3 className="text-[0.72rem] font-semibold tracking-[0.16em] text-[color:var(--voltage-dim)] uppercase">
-              {lang === "ru" ? "Образование" : "Education"}
-            </h3>
-            <ul className="mt-2.5 space-y-1.5 text-sm text-ink/70">
-              {site.about.education[lang].map((item) => (
-                <li key={item} className="flex gap-2">
-                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-voltage" />
-                  {item}
-                </li>
-              ))}
+        <div className="mt-5 grid gap-4 md:grid-cols-[0.95fr_1.05fr] md:items-start md:gap-6">
+          <FadeUp>
+            <ul className="space-y-3 text-sm leading-relaxed text-muted">
+              <li>
+                <span className="font-medium text-mist">
+                  {lang === "ru" ? "Выпускник:" : "Graduate:"}
+                </span>
+                <ul className="mt-1 list-disc space-y-0.5 pl-5">
+                  {site.about.education[lang].map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </li>
+              <li>
+                <span className="font-medium text-mist">
+                  {lang === "ru" ? "ИТ-Лидер" : "IT Leader"}
+                </span>
+                {" — "}
+                {t(site.about.focus)}
+              </li>
+              <li>
+                <span className="font-medium text-mist">
+                  {lang === "ru" ? "Лыжник — любитель" : "Recreational skier"}
+                </span>
+                {" — "}
+                <a
+                  href="https://runkeeper.com/user/sorvanovon/profile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-voltage hover:underline"
+                >
+                  Runkeeper
+                </a>
+              </li>
+              <li>
+                <span className="font-medium text-mist">
+                  {lang === "ru" ? "Яхтсмен — любитель" : "Recreational yachtsman"}
+                </span>
+                <ul className="mt-1 list-disc space-y-0.5 pl-5">
+                  <li>
+                    <a
+                      href="https://silavetra.com/city/howto/moscow/strogino"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-voltage hover:underline"
+                    >
+                      {lang === "ru" ? "Сила ветра" : "Wind force"}
+                    </a>
+                    {" — "}
+                    {lang === "ru" ? "Строгинский залив" : "Strogino Bay"}
+                  </li>
+                  <li>
+                    <a
+                      href="https://pro-yachting.ru/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-voltage hover:underline"
+                    >
+                      PROyachting
+                    </a>
+                    {" — "}
+                    {lang === "ru" ? "Речной вокзал" : "River Station"}
+                  </li>
+                  <li>
+                    <a
+                      href="https://yandex.ru/navi?rtext=55.706179%2C37.481463~60.697157%2C28.737800&rtt=auto"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-voltage hover:underline"
+                    >
+                      {lang === "ru" ? "Выборг" : "Vyborg"}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <span className="font-medium text-mist">
+                  {lang === "ru" ? "Многодетный отец:" : "Father of a large family:"}
+                </span>{" "}
+                {lang === "ru" ? "отец троих детей" : "father of three"}
+              </li>
             </ul>
-          </div>
-          <div className="rounded-2xl border border-[var(--line)] bg-paper p-4">
-            <h3 className="text-[0.72rem] font-semibold tracking-[0.16em] text-[color:var(--voltage-dim)] uppercase">
-              {lang === "ru" ? "Стек" : "Stack"}
-            </h3>
-            <p className="mt-2.5 text-sm leading-relaxed text-ink/70">{t(site.about.stack)}</p>
-          </div>
-          <div className="rounded-2xl bg-void p-4 text-mist sm:col-span-2">
-            <h3 className="text-[0.72rem] font-semibold tracking-[0.16em] text-voltage uppercase">
-              {lang === "ru" ? "Проектный офис" : "Project office"}
-            </h3>
-            <p className="mt-2.5 text-sm leading-relaxed text-mist/75">{t(site.about.office)}</p>
-          </div>
-        </FadeUp>
+            <p className="mt-4 text-sm">
+              <span className="font-medium text-mist">
+                {lang === "ru" ? "Действующий" : "Active"}
+              </span>{" "}
+              <span className="hi">{lang === "ru" ? "предприниматель" : "entrepreneur"}</span>
+            </p>
+            <p className="mt-1 text-sm text-muted">
+              {lang === "ru" ? "кофейный проект" : "coffee project"}{" "}
+              <a
+                href={site.coffee.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-voltage hover:underline"
+              >
+                CoffeeFriends
+              </a>
+            </p>
+          </FadeUp>
+
+          <FadeUp delay={0.05} className="grid gap-2">
+            <article className="glass-card p-3.5">
+              <h3 className="card-label">{lang === "ru" ? "Проектный офис" : "Project office"}</h3>
+              <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-muted">
+                <li>
+                  <span className="font-medium text-mist">
+                    {lang === "ru" ? "Команды:" : "Teams:"}
+                  </span>{" "}
+                  {t(site.about.teams)}
+                </li>
+                <li>
+                  <span className="font-medium text-mist">
+                    {lang === "ru" ? "Клиенты:" : "Clients:"}
+                  </span>{" "}
+                  {t(site.about.clients)}
+                </li>
+              </ul>
+            </article>
+
+            <article className="glass-card p-3.5">
+              <h3 className="card-label">
+                {lang === "ru" ? "Технологический стэк" : "Technology stack"}
+              </h3>
+              <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-muted">
+                {site.about.stackGroups[lang].map((group) => (
+                  <li key={group.label}>
+                    <span className="font-medium text-mist">{group.label}:</span> {group.text}
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            <article className="glass-card p-3.5">
+              <h3 className="card-label">{lang === "ru" ? "Спорт" : "Sports"}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                <span className="font-medium text-mist">
+                  {lang === "ru" ? "Беговые лыжи" : "Cross-country skiing"}
+                </span>
+                {lang === "ru" ? ", конёк; частые локации:" : ", skating; frequent spots:"}
+              </p>
+              <ul className="mt-1 list-disc space-y-0.5 pl-5 text-sm text-muted">
+                <li>
+                  <a
+                    href="https://yandex.ru/navi?rtext=55.705330%2C37.481051~55.675768%2C37.409927&rtt=auto"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-voltage hover:underline"
+                  >
+                    {lang === "ru" ? "Мещёрский лес" : "Meshchersky Forest"}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://yandex.ru/navi/org/lyzherollernaya_trassa/168399550179?si=4xx9tm30a9ux8rvak1wu98zkpr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-voltage hover:underline"
+                  >
+                    {lang === "ru" ? "парк Ларисы Лазутиной" : "Larisa Lazutina Park"}
+                  </a>
+                </li>
+              </ul>
+              <p className="mt-1.5 text-sm text-muted">
+                {lang === "ru" ? "Яхтинг —" : "Sailing —"}{" "}
+                <a
+                  href="https://pro-yachting.ru/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-voltage hover:underline"
+                >
+                  PROyachting
+                </a>
+                , {lang === "ru" ? "права капитана 2019." : "captain license 2019."}
+              </p>
+            </article>
+
+            <article className="glass-card p-3.5">
+              <h3 className="card-label">
+                {lang === "ru" ? "Предпринимательство" : "Entrepreneurship"}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                {lang === "ru"
+                  ? "Владелец сети кофепоинтов — подробнее на сайте"
+                  : "Owner of a coffee-point network — details at"}{" "}
+                <a
+                  href={site.coffee.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-voltage hover:underline"
+                >
+                  CoffeeFriends
+                </a>
+              </p>
+            </article>
+          </FadeUp>
+        </div>
       </div>
     </section>
   );

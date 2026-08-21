@@ -1,17 +1,19 @@
 {
-  "context_version": 2,
-  "timestamp": "2026-08-06T00:32:51.583254+03:00",
-  "context_hash": "46cc6570181e7d91",
+  "context_version": 8,
+  "timestamp": "2026-08-21T12:30:00+03:00",
+  "context_hash": "4a72cac8bcc6f244",
   "active_files": [
+    "src/app/page.tsx",
     "src/lib/site.ts",
-    "src/app/page.tsx"
+    "src/components/location.tsx",
+    "src/app/globals.css"
   ],
   "active_file_hashes": {},
   "decisions": [
-    "Deployed Next.js rebuild to puholet-sketch/oleg-sorvanov"
+    "Restore compact HTML one-pager structure including #location; lighter Outfit 600 headings; keep lime uppercase card labels"
   ],
   "blockers": [],
   "last_error": null,
   "retry_count": 0,
-  "next_action": "review live site"
+  "next_action": "review locally; deploy on request"
 }
