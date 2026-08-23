@@ -256,6 +256,14 @@ export const site = {
   ],
   projects: [
     {
+      title: "LC200",
+      text: {
+        ru: "Подбор колёс 20→22 для Land Cruiser 200: диски, лето, гайки и ссылки в магазины.",
+        en: "Land Cruiser 200 wheel upgrade 20→22: rims, summer tires, lug nuts, shop links.",
+      },
+      href: "https://puholet-sketch.github.io/LC200/",
+    },
+    {
       title: "FACT",
       text: {
         ru: "Плейбук учёта времени в PMO: Epic → Story → Subtask, фикс. бюджет, SLA, план/факт.",
