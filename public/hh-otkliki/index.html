@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Адаптивные отклики — Олег Сорванов</title>
+  <meta name="description" content="Разбор избранных вакансий hh.ru с активной кнопкой «Откликнуться»: требования, опыт, боевые примеры и стратегия 90 дней." />
+  <style>
+    :root {
+      --hh: #d6001c;
+      --hh-dark: #b00018;
+      --ink: #222;
+      --muted: #6a6a6a;
+      --line: #e5e5e5;
+      --bg: #f6f6f6;
+      --card: #fff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Arial", "Helvetica Neue", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+    a { color: var(--hh); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .top {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .top__inner, .wrap {
+      max-width: 980px; margin: 0 auto; padding: 16px 20px;
+    }
+    .top__inner {
+      display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap;
+    }
+    .brand { font-weight: 700; color: var(--ink); }
+    .brand span { color: var(--hh); }
+    .btn {
+      display: inline-block; background: var(--hh); color: #fff !important;
+      padding: 10px 16px; border-radius: 8px; font-weight: 700; text-decoration: none !important;
+    }
+    .btn:hover { background: var(--hh-dark); }
+    .hero {
+      background: #fff; border: 1px solid var(--line); border-radius: 16px;
+      padding: 24px; margin: 20px auto; max-width: 980px;
+    }
+    .hero h1 { margin: 0 0 8px; font-size: 28px; }
+    .hero p { margin: 0 0 10px; color: var(--muted); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .chip {
+      background: #fff0f0; color: var(--hh); border: 1px solid #ffd0d6;
+      border-radius: 999px; padding: 6px 10px; font-size: 13px;
+    }
+    .toc {
+      display: flex; flex-wrap: wrap; gap: 8px; margin: 0 auto 20px; max-width: 980px; padding: 0 20px;
+    }
+    .toc a {
+      background: #fff; border: 1px solid var(--line); border-radius: 8px;
+      padding: 8px 10px; font-size: 13px; color: var(--ink);
+    }
+    .vacancy {
+      background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+      padding: 22px; margin: 0 auto 18px; max-width: 980px;
+    }
+    .vacancy__head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .vacancy__company { margin: 0; color: var(--muted); font-size: 14px; }
+    .vacancy__title { margin: 4px 0; font-size: 22px; }
+    .vacancy__meta { margin: 0; color: var(--muted); font-size: 13px; }
+    .fit { min-width: 140px; text-align: center; background: #f8f8f8; border-radius: 12px; padding: 10px 12px; }
+    .fit__score { font-size: 28px; font-weight: 800; color: var(--hh); }
+    .fit__label { font-size: 12px; color: var(--muted); }
+    .skills { font-size: 13px; color: var(--muted); }
+    .grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;
+    }
+    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+    .block {
+      border: 1px solid var(--line); border-radius: 12px; padding: 14px; background: #fafafa;
+    }
+    .block--accent { background: #fff7f8; border-color: #ffd0d6; }
+    .block h3 { margin: 0 0 8px; font-size: 15px; }
+    .block p, .block ul { margin: 0; font-size: 14px; }
+    .block ul { padding-left: 18px; }
+    .gap {
+      margin-top: 12px; padding: 12px 14px; border-radius: 12px;
+      background: #f3f3f3; font-size: 14px;
+    }
+    footer {
+      max-width: 980px; margin: 24px auto 40px; padding: 0 20px; color: var(--muted); font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <div class="top__inner">
+      <div class="brand">hh<span>·</span>адаптация · Олег Сорванов</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="../cv.html">Резюме</a>
+        <a class="btn" href="../">Портфолио</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <h1>Адаптивные отклики по избранным вакансиям</h1>
+    <p>Источник: избранное hh.ru (страница 1) — только вакансии с активной кнопкой «Откликнуться». Архивные исключены. По каждой вакансии: требования → мой рассказ → боевые примеры из резюме/портфолио/проектов → стратегия 90 дней → честный gap.</p>
+    <p>База опыта: Virtu Systems (Head of PMO), Росгосстрах (IT BP), ГУТА (Team Lead), портфель 300+ млн ₽/год, ЛК Агента 30K+ польз./день, PlanFact, PATH, FACT, Structa, IntroAI, CoffeeFriends.</p>
+    <div class="chips">
+      <span class="chip">14 активных вакансий</span>
+      <span class="chip">HH-style</span>
+      <span class="chip">примеры из боевого опыта</span>
+      <span class="chip">обновлено 2026-08-27</span>
+    </div>
+  </section>
+
+  <nav class="toc"><a href="#v-135475556">International School of Moscow</a><a href="#v-135554720">DIS Group</a><a href="#v-136147270">ООО Нараком.ру</a><a href="#v-136556373">Международная школа Внуково</a><a href="#v-136175866">Diamond Personnel R&amp;C</a><a href="#v-136414225">АО Спарго Технологии</a><a href="#v-136475190">Союзспецодежда</a><a href="#v-136567032">Сбер для экспертов</a><a href="#v-133929820">Сервис Плюс</a><a href="#v-136558091">ООО Миша Фишер</a><a href="#v-136136847">ПАО МегаФон, IT</a><a href="#v-135613589">ООО АГР</a><a href="#v-136567253">ТПС Недвижимость</a><a href="#v-136131002">HALEON</a></nav>
+  
+<article class="vacancy" id="v-135475556">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">International School of Moscow</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/135475556" target="_blank" rel="noopener">Head of IT / Руководитель отдела информационных технологий</a></h2>
+      <p class="vacancy__meta">Опыт: более 6 лет · <a href="https://hh.ru/vacancy/135475556" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--70">
+      <div class="fit__score">78%</div>
+      <div class="fit__label">Сильное пересечение</div>
+    </div>
+  </header>
+  <p class="skills"><strong>Ключевые навыки из объявления:</strong> Английский язык, Деловая коммуникация, Обучение и развитие, Информационная безопасность, ИТ-инфраструктура, Долгосрочное бюджетирование и планирование, ITIL, Автоматизация процессов, Постановка задач разработчикам, Администрирование, Системная интеграция, Техническая поддержка</p>
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>Руководство школьной ИТ-функцией и поддержкой пользователей</li><li>Инфраструктура, доступность сервисов, ИБ (ФЗ-152/GDPR), SLA с подрядчиками</li><li>ИТ-бюджет, закупки, лицензии, активы</li><li>Поддержка админ-контуров (1С, ЭДО) и англоязычная среда NAE</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>Я привык держать ИТ как сервис для бизнеса: доступность, поддержка, подрядчики, бюджет и безопасность — в одном контуре ответственности. В школе это тот же операционный ритм, что и в страховых контурах: критичные сервисы, пользователи каждый день, жёсткие требования к данным.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>Virtu / РГС: обеспечение промышленной эксплуатации B2B-платформы и ЛК агента — 30K+ польз./день, контроль инцидентов и интеграций.</li><li>Портфель 300+ млн ₽/год: бюджет, подрядчики, SLA и план/факт — без «средней температуры по больнице».</li><li>Курсы «IT Директор 2.0» (РШУ) и «Управление IT Службой» (РДТЕХ) — управленческий каркас для ИТ-функции.</li><li>Публичные инструменты: PATH (стабилизация delivery), PlanFact (превышения план/факт), FACT (учёт времени PMO).</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>0–30 дней: аудит инфраструктуры, поддержки, подрядчиков, лицензий и критичных сервисов; карта рисков ИБ/ФЗ-152.</li><li>30–60 дней: единый Service Desk/приоритеты, SLA с подрядчиками, бюджетный контур CAPEX/OPEX.</li><li>60–90 дней: дорожная карта (Apple-парк, 1С/ЭДО, сеть/печать), прозрачная отчётность директору школы и региональному ИТ.</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Прямого опыта Apple-парка в школьной среде нет — закрою через быстрый аудит текущего ландшафта, сильного локального инженера и корпоративные стандарты NAE. Английский — Upper Intermediate; для NAE усилю деловую переписку и резюме на EN.</section>
+</article>
+
+<article class="vacancy" id="v-135554720">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">DIS Group</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/135554720" target="_blank" rel="noopener">Директор департамента внедрения ПО</a></h2>
+      <p class="vacancy__meta">Опыт: более 6 лет · <a href="https://hh.ru/vacancy/135554720" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--90">
+      <div class="fit__score">92%</div>
+      <div class="fit__label">Максимальное попадание</div>
+    </div>
+  </header>
+  <p class="skills"><strong>Ключевые навыки из объявления:</strong> Проектный менеджмент, Деловая коммуникация, Стратегический менеджмент, Мотивация персонала, Управленческие навыки, Управление рисками, Управление бюджетом, Управление стейкхолдерами, Разработка и внедрение KPI, Управление конфликтами</p>
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>P&amp;L / маржинальность проектов внедрения, бюджет департамента</li><li>Delivery: сроки, качество, эскалации, стандартизация PMI/Agile/ITIL</li><li>Resource/bench management, развитие компетенций, найм</li><li>Presale: RFP/RFI, оценка себестоимости, upsell, проекты 200+ млн ₽</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>Это почти дословное описание моей текущей роли в Virtu Systems: портфель внедрений у страховых клиентов, экономика FP/T&amp;M, утилизация команд, эскалации и пресейл.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>Руководитель проектного офиса: 8 продакшн-команд, клиенты ВСК/Альфа/Райф/Сбер/РГС/Ингосстрах и др.</li><li>РГС: портфель ~300 млн ₽/год, 150 активностей/мес, 45 поставок/мес, 15 ключевых подрядчиков.</li><li>ЛК Агента РГС с нуля: команда ~30, FP/T&amp;M, Scrum — до 30K+ пользователей/день.</li><li>PlanFact + ежемесячный статус портфеля + PATH: язык контроля превышений и прозрачность для руководства.</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>Зафиксировать P&amp;L и утилизацию по практикам/продуктам DIS Group.</li><li>Единый delivery-стандарт (гибрид PMI/Agile) + эскалационный протокол.</li><li>Presale-конвейер: оценка рисков/трудозатрат до обещания заказчику; upsell из статус-ритма.</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Профильный фокус DIS Group — data/MDM. У меня сильнее страховой delivery и интеграции; data-контур быстро наберу через продуктовую экспертизу команды и совместные пресейлы.</section>
+</article>
+
+<article class="vacancy" id="v-136147270">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">ООО Нараком.ру</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/136147270" target="_blank" rel="noopener">Генеральный директор</a></h2>
+      <p class="vacancy__meta">Опыт: более 6 лет · <a href="https://hh.ru/vacancy/136147270" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--70">
+      <div class="fit__score">70%</div>
+      <div class="fit__label">Смежный CEO-контур</div>
+    </div>
+  </header>
+  <p class="skills"><strong>Ключевые навыки из объявления:</strong> Лидерство, Стратегическое планирование, Запуск новых продуктов, Управление командой, Start-up project, Управление бизнес процессами, Стратегический менеджмент</p>
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>Масштабирование 7–10 → 30–50 человек, оргструктура и процессы</li><li>Операционка: разработка, производство, сервис, продажи, финансы</li><li>B2G / регуляторика, KPI руководителей, бюджет перед собственником</li><li>Hardware+software lifecycle на уровне управленца</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>Я умею переводить хаос роста в управляемую систему: оргструктура, KPI, бюджет, поставка продукта и переговоры с жёсткими стейкхолдерами. Предпринимательский контур CoffeeFriends + масштабирование ИТ-портфелей дают нужную «руками в деталях» дисциплину.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>Рост и управление мультикомандным портфелем (60+ человек в контуре).</li><li>CoffeeFriends: операционка точек, партнёры, регулярный оборот чеков — ответственность собственника.</li><li>B2G/регуляторика: eОСАГО под дедлайн ЦБ, проверки, ГОСТ-контур в ОУД4.</li><li>Structa / оргдизайн PMO — упаковка оргструктуры и ролей.</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>Сначала операционный каркас: роли, KPI, ритм отчётности собственнику.</li><li>Затем продукт: lifecycle ПАК, качество, сервисный контур.</li><li>Параллельно найм ключевых замов, чтобы снять «я = всё» без потери темпа.</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Формального опыта именно CEO hardware-вендора меньше, чем PMO/IT BP. Компенсирую системным масштабированием, B2G-опытом и готовностью лично закрывать операционные дыры на старте.</section>
+</article>
+
+<article class="vacancy" id="v-136556373">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">Международная школа Внуково</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/136556373" target="_blank" rel="noopener">Руководитель цифровой трансформации</a></h2>
+      <p class="vacancy__meta">Опыт: не требуется · <a href="https://hh.ru/vacancy/136556373" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--60">
+      <div class="fit__score">62%</div>
+      <div class="fit__label">Частичное пересечение</div>
+    </div>
+  </header>
+  
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>Аудит ИТ школы, пилот ИИ в LMS, дашборды для учителей</li><li>Обучение педагогов промпт-инжинирингу</li><li>Соответствие ФЗ-152 / СанПиН / Минпросвещения</li><li>Метрики эффекта и отчёт учредителю</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>Сильная сторона — запуск пилотов, метрики, AI в PMO/документах и упаковка изменений для нетехнической аудитории. EdTech-школьный бэкграунд у меня не основной, поэтому зайду через проектный контур и измеряемый пилот.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>IntroAI — гайд по AI для нетехнарей; практика Cursor/LLM.</li><li>AI в PMO: автоотчёты, протоколы, эксперименты LLM/RAG.</li><li>Дашборды и статусы для руководства (virtu-digest, PlanFact).</li><li>Коммуникация сложных ИТ-тем бизнесу 10+ лет как IT BP.</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>Аудит → узкий пилот (1 предмет/классы) → метрики до/после.</li><li>Юридический контур с юристами школы до масштабирования.</li><li>Академия учителей: короткий практический курс, не теория.</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Нет 3+ лет именно в EdTech-продуктах (Skyeng и т.п.). Честно закрываю проектным управлением трансформации + AI-практикой; домен школьных процессов изучу на входе.</section>
+</article>
+
+<article class="vacancy" id="v-136175866">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">Diamond Personnel R&amp;C</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/136175866" target="_blank" rel="noopener">Директор по ИТ</a></h2>
+      <p class="vacancy__meta">Опыт: более 6 лет · <a href="https://hh.ru/vacancy/136175866" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--90">
+      <div class="fit__score">90%</div>
+      <div class="fit__label">Профильное попадание</div>
+    </div>
+  </header>
+  <p class="skills"><strong>Ключевые навыки из объявления:</strong> Управление командой, Проектирование высоконагруженных систем</p>
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>ИТ-стратегия, бюджет, закупки, подрядчики</li><li>Крупные ИТ-проекты, инновации/трансформация</li><li>Стык бизнеса и технологий; кандидаты из банков/НПФ/страхования</li><li>AI для анализа и автоматизации</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>Ровно мой трек: страховой/финконтур, IT Business Partner → Head of PMO, крупные поставки, подрядчики, бюджет и сейчас активное внедрение AI в управленческий контур.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>10 лет IT BP в Росгосстрахе: eОСАГО, B2B 30→700 продуктов, 50+ интеграций, DRP.</li><li>Virtu: нулевые проекты до прома, микрофронтенды, портфель страховых заказчиков.</li><li>Сертификаты IT Director 2.0 / Управление IT-службой.</li><li>AI: Cursor, IntroAI, AI-отчётность в PATH/PMO.</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>Диагностика ландшафта и стейкхолдеров → ИТ-roadmap на 12 месяцев.</li><li>Портфель проектов с финансовым контролем и vendor management.</li><li>AI-use-cases с измеримым эффектом (не «пилоты ради пилотов»).</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Формально «7 лет в роли ИТ-директора» у меня как Head of PMO / IT BP с CIO-смежным контуром — на интервью разложу зону ответственности и результаты 1:1 к обязанностям.</section>
+</article>
+
+<article class="vacancy" id="v-136414225">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">АО Спарго Технологии</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/136414225" target="_blank" rel="noopener">Руководитель группы развития ПО</a></h2>
+      <p class="vacancy__meta">Опыт: 3–6 лет · <a href="https://hh.ru/vacancy/136414225" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--80">
+      <div class="fit__score">85%</div>
+      <div class="fit__label">Сильное попадание</div>
+    </div>
+  </header>
+  
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>Развитие ПО, сбор требований, работа с госзаказчиком</li><li>Документация для госзакупок, ПМИ/ПСИ, сдача работ</li><li>Планирование разработки, постановка задач, контроль плана</li><li>Локализация дефектов на проде у госзаказчика</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>Большая часть карьеры — поставка сложного ПО заказчику с приёмкой, ГОСТом, интеграциями и жёстким контуром качества. Госзаказчик и ПМИ/ПСИ для меня рабочий режим, не теория.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>ЛК Агента РГС: полный цикл полиса, ГОСТ-документация, 30+ интеграций.</li><li>ОУД4 — консалтинг по оценке доверия (ГОСТ Р ИСО/МЭК 15408).</li><li>Стабилизация СК: шаблоны БТ, релизный ритм, Jira-артефакты, plan/fact.</li><li>IT BP РГС: взаимодействие с бизнесом и внешними командами на сотнях поставок.</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>Карта продукта и backlog развития под госзаказчика.</li><li>Единый пакет приёмки (ПМИ/ПСИ) и дефект-контур с разработкой.</li><li>Календарь закупочной документации и статусов сдачи.</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Мед/фарм-домен Спарго — новый; методологию заказной поставки перенесу быстро, домен закрою через экспертов продукта.</section>
+</article>
+
+<article class="vacancy" id="v-136475190">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">Союзспецодежда</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/136475190" target="_blank" rel="noopener">Директор по информационным технологиям</a></h2>
+      <p class="vacancy__meta">Опыт: более 6 лет · <a href="https://hh.ru/vacancy/136475190" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--80">
+      <div class="fit__score">80%</div>
+      <div class="fit__label">Сильное пересечение</div>
+    </div>
+  </header>
+  
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>Управление ИТ-функцией: 1С, сайт, WMS, розница, подрядчики</li><li>Стабильность критичных систем и поддержка</li><li>ИТ-стратегия и портфель проектов автоматизации</li><li>Интеграции, производство/давальческая схема, ИБ и бюджет</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>Умею держать сложный ландшафт систем и интеграций как единый портфель: приоритеты бизнеса, стабильность прома, подрядчики и развитие. Опыт автоматизации процессов и интеграций — ядро карьеры.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>50+ интеграций и отказоустойчивость 99% на контурах РГС.</li><li>Микрофронтенды/BFF, Kubernetes, Keycloak — современный интеграционный стек.</li><li>Портфельное управление: статусы, риски, ресурсы, подрядчики.</li><li>CoffeeFriends / операционка точек — понимание ритейл-ритма «касса–остатки–смены».</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>Аудит 1С-ландшафта и интеграций → карта критичности.</li><li>Service Desk + релизный ритм для WMS/розницы/сайта.</li><li>Дорожная карта 8.3→8.5 с пилотами и откатом.</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Глубокий hands-on 1С-разработчик я не являюсь — управляю через архитектуру, аналитиков 1С и подрядчиков; для давальческой схемы привлеку профильного эксперта учёта.</section>
+</article>
+
+<article class="vacancy" id="v-136567032">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">Сбер для экспертов</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/136567032" target="_blank" rel="noopener">Директор по развитию ИТ-департамента Wealth Management</a></h2>
+      <p class="vacancy__meta">Опыт: более 6 лет · <a href="https://hh.ru/vacancy/136567032" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--80">
+      <div class="fit__score">88%</div>
+      <div class="fit__label">Очень сильное попадание</div>
+    </div>
+  </header>
+  
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>Инженерная эффективность 200+ команд: потери, Lead Time, quality gates</li><li>AI PDLC / Spec-Driven / AI-агенты в SDLC</li><li>Централизованные сервисы QA/DevOps/CI/CD</li><li>Метрики и change management на масштабе</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>Масштаб Сбера больше моего текущего, но задача знакомая: единые практики delivery, метрики, AI в цикле поставки и снятие потерь между идеей и продом. Это развитие того, что я уже делаю в PMO/стабилизации.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>PATH: релизы, Jira Timeline, created/resolved, прозрачность руководству.</li><li>PlanFact: точечный контроль превышений вместо «средней температуры».</li><li>AI в PMO: автоотчёты, протоколы, LLM/RAG, тест-дизайн.</li><li>РГС/Virtu: предсказуемая поставка в регулируемой среде.</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>Базовые метрики потока (Lead Time, fail rate, дефектность) по пилотным направлениям Wealth.</li><li>Каталог инженерных сервисов + SLA самообслуживания.</li><li>AI PDLC: 2–3 use-case с доказанным эффектом до масштабирования на 200 команд.</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Опыт «сотен продуктовых команд» масштабирую с текущего уровня десятков людей/нескольких направлений через платформенный подход и change management, а не микроменеджмент каждой команды.</section>
+</article>
+
+<article class="vacancy" id="v-133929820">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">Сервис Плюс</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/133929820" target="_blank" rel="noopener">Директор по информационным технологиям / CIO</a></h2>
+      <p class="vacancy__meta">Опыт: 3–6 лет · <a href="https://hh.ru/vacancy/133929820" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--80">
+      <div class="fit__score">84%</div>
+      <div class="fit__label">Сильное попадание</div>
+    </div>
+  </header>
+  
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>Единое управление R&amp;D + внедрение + поддержка</li><li>Портфель продуктов, архитектура, техдолг, CI/CD/InfoSec</li><li>Enterprise SLA, инсталляции на оборудование клиентов</li><li>Presale/PoC для крупных ритейл-заказчиков</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>Сквозной контур «сделали → внедрили → сопровождаем» — моя ежедневная практика на вендорской стороне Virtu для enterprise-заказчиков.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>Virtu: разработка/внедрение/ТП по страховым продуктам и платформам.</li><li>5K+ заявок/мес и контуры поддержки в портфеле.</li><li>Presale и оценка сложности для крупных СК.</li><li>Стабилизация delivery: от хаоса к релизному ритму и качеству.</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>Сшить 3 контура общими KPI (time-to-resolve, release health, tech debt).</li><li>Архитектурный совет + quality gates.</li><li>Каталог типовых внедрений/PoC для ритейл-сетей.</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Встраиваемое ПО для POS/IoT — смежный hardware-контур; компенсирую опытом enterprise-поставок и управлением инженерами внедрения/сервиса.</section>
+</article>
+
+<article class="vacancy" id="v-136558091">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">ООО Миша Фишер</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/136558091" target="_blank" rel="noopener">Руководитель IT-отдела / Head of IT</a></h2>
+      <p class="vacancy__meta">Опыт: 3–6 лет · <a href="https://hh.ru/vacancy/136558091" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--80">
+      <div class="fit__score">86%</div>
+      <div class="fit__label">Сильное попадание</div>
+    </div>
+  </header>
+  <p class="skills"><strong>Ключевые навыки из объявления:</strong> Руководство коллективом, Администрирование серверов Linux, Обучение персонала</p>
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>Аудит IT-ландшафта, архитектура, реестр систем/подрядчиков</li><li>Service Desk/ITSM, SLA, мониторинг критичных сервисов</li><li>Управление разработкой приложения, релизы, качество</li><li>ИБ, доступы, бэкапы; автоматизация HoReCa/производства</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>Роль «навести порядок в уже живом ландшафте» — классика стабилизации: инвентаризация, зоны ответственности, SLA, подрядчики, дорожная карта. Плюс у меня свой операционный опыт в food/кофейном контуре.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>PATH/стабилизация: процессы, артефакты, прозрачность, AI-отчётность.</li><li>Управление подрядчиками и интеграциями на крупных контурах.</li><li>CoffeeFriends: понимание смен, точек, кассового ритма.</li><li>Structa — реестры и оргструктура как управленческий инструмент.</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>30 дней: реестр систем/интеграций/подрядчиков + критичность.</li><li>60 дней: Service Desk, SLA, мониторинг, бэкап/restore drill.</li><li>90 дней: roadmap приложения и iiko/производства с KPI бизнеса.</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Глубокий hands-on Linux/iiko-админ — не мой основной профиль; выстрою через сильных инженеров и прозрачный vendor control.</section>
+</article>
+
+<article class="vacancy" id="v-136136847">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">ПАО МегаФон, IT</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/136136847" target="_blank" rel="noopener">Директор по информационным технологиям ТТ-Мобайл</a></h2>
+      <p class="vacancy__meta">Опыт: более 6 лет · <a href="https://hh.ru/vacancy/136136847" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--50">
+      <div class="fit__score">55%</div>
+      <div class="fit__label">Ограниченный fit (релокация)</div>
+    </div>
+  </header>
+  
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>CIO телекома в Таджикистане (Душанбе)</li><li>Стратегия ИТ, крупные проекты, кибербез, CAPEX/OPEX</li><li>Управление командами 40+ (разработка/поддержка/инфра/ИБ)</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>По содержанию роли (стратегия, крупные проекты, мультикомандность, бюджет) опыт релевантен. Ключевое ограничение — релокация в Душанбе и телеком-домен.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>Управление крупными портфелями и командами 60+.</li><li>Критичная инфраструктура и непрерывность сервисов.</li><li>Переговоры с топ-стейкхолдерами в регулируемых отраслях.</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>Если формат предполагает гибрид/командировки — готов обсуждать программу 90 дней.</li><li>Иначе честно фиксирую географический constraint на входе.</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Готовность к постоянной релокации в Таджикистан и глубокий telecom-стек — требуют отдельного согласования условий; без этого отклик будет формальным.</section>
+</article>
+
+<article class="vacancy" id="v-135613589">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">ООО АГР</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/135613589" target="_blank" rel="noopener">Руководитель департамента цифровой трансформации</a></h2>
+      <p class="vacancy__meta">Опыт: более 6 лет · <a href="https://hh.ru/vacancy/135613589" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--80">
+      <div class="fit__score">82%</div>
+      <div class="fit__label">Сильное попадание</div>
+    </div>
+  </header>
+  <p class="skills"><strong>Ключевые навыки из объявления:</strong> Информационные технологии, Английский — C1 — Продвинутый</p>
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>Управление IT-процессами, проектами и разработкой</li><li>Бюджет CAPEX/OPEX, персонал, риски</li><li>PMI/Agile/ITIL, отчётность по цифровой трансформации</li><li>Английский Advanced; SAP/1C как пользователь-управленец</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>Цифровая трансформация через портфель проектов, бюджет и развитие компетенций команд — мой основной режим работы последние годы.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>PMO Virtu: трансформация поставки у страховых клиентов.</li><li>Методологии: гибрид Waterfall+FP / Agile+Fixed Team на практике РГС.</li><li>ITIL-ориентированное управление сервисами и эскалациями.</li><li>Английский Upper Intermediate + постоянная практика в документах/переговорах.</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>Карта процессов и цифровых инициатив заводов/склада/сервиса.</li><li>Портфель с финконтролем и риск-реестром.</li><li>Программа digital-компетенций для бизнеса и ИТ.</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Автопром/SAP-глубокая экспертиза набирается на входе; управленческий каркас PMI/Agile/ITIL и портфельный опыт переношу сразу.</section>
+</article>
+
+<article class="vacancy" id="v-136567253">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">ТПС Недвижимость</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/136567253" target="_blank" rel="noopener">Руководитель управления ИТ-проектами и интеграциями</a></h2>
+      <p class="vacancy__meta">Опыт: более 6 лет · <a href="https://hh.ru/vacancy/136567253" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--90">
+      <div class="fit__score">93%</div>
+      <div class="fit__label">Максимальное попадание</div>
+    </div>
+  </header>
+  <p class="skills"><strong>Ключевые навыки из объявления:</strong> Управление проектами, Системная интеграция, Разработка технических заданий, Постановка задач разработчикам, Информационные технологии, архитектура информационных систем</p>
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>Руководство ИТ-проектами и интеграциями</li><li>Своя команда + подрядчики, бюджет отдела</li><li>Архитектурные принципы, ТЗ, постановка задач</li><li>Закупки/договоры, внедрение и сопровождение продуктов</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>Это прямое описание моей текущей компетенции: ИТ-проекты, интеграции, подрядчики, бюджет, архитектура на уровне управленца и сдача результата бизнесу.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>ЛК Агента + 30+ интеграций, микрофронтенды, Node.js/TypeScript/.NET.</li><li>Управление подрядчиками и закупками в портфеле РГС/Virtu.</li><li>Стабилизация и развитие продуктов: от внедрения к поддержке.</li><li>Публичные кейсы: PlanFact, digest статуса, PATH, FACT.</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>Портфель трансформации ТРЦ: приоритеты, интеграционная карта, риски.</li><li>Модель in-house + подряд с KPI и договорным контролем.</li><li>Единый ритм статусов для бизнеса и ИТ.</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Домен торговой недвижимости новый по объектам, но паттерн «интеграции + проекты + подрядчики» идентичен страховому enterprise.</section>
+</article>
+
+<article class="vacancy" id="v-136131002">
+  <header class="vacancy__head">
+    <div>
+      <p class="vacancy__company">HALEON</p>
+      <h2 class="vacancy__title"><a href="https://hh.ru/vacancy/136131002" target="_blank" rel="noopener">Старший ИТ бизнес-партнер</a></h2>
+      <p class="vacancy__meta">Опыт: 3–6 лет · <a href="https://hh.ru/vacancy/136131002" target="_blank" rel="noopener">вакансия на hh.ru</a></p>
+    </div>
+    <div class="fit fit--80">
+      <div class="fit__score">89%</div>
+      <div class="fit__label">Очень сильное попадание</div>
+    </div>
+  </header>
+  
+  <div class="grid">
+    <section class="block">
+      <h3>Что просят</h3>
+      <ul><li>IT Business Partner / digital transformation в FMCG</li><li>Анализ процессов, Agile/Project/Product, портфель</li><li>GRC/Compliance, риски, BI/data-driven</li><li>ServiceNow/SLA, глобальные и локальные стейкхолдеры, EN</li></ul>
+    </section>
+    <section class="block block--accent">
+      <h3>Как я это закрываю</h3>
+      <p>10 лет IT Business Partner в страховании — это тот же контракт с бизнесом: требования, портфель, compliance, метрики и сервис. FMCG/Pharma — смена домена при сохранении роли.</p>
+    </section>
+    <section class="block">
+      <h3>Боевые примеры</h3>
+      <ul><li>IT BP РГС: 150 активностей/мес, поставки, интеграции, подрядчики.</li><li>PMO: портфель, статусы для руководства, план/факт.</li><li>Compliance-контуры (ЦБ, ГОСТ) — привычка работать в ограничениях.</li><li>EN Upper Intermediate; опыт коммуникации на стыке бизнеса и ИТ.</li></ul>
+    </section>
+    <section class="block">
+      <h3>Стратегия на 90 дней</h3>
+      <ul><li>Stakeholder map глобал/локал + портфель digital-инициатив.</li><li>Process workshops → backlog → Agile delivery с compliance gates.</li><li>BI/дашборды под решения бизнеса, не «отчёт ради отчёта».</li></ul>
+    </section>
+  </div>
+  <section class="gap"><strong>Честный gap:</strong> Прямого FMCG/Haleon-стека (CDP/SCRM) нет — быстро закрою через глобальные playbooks компании и локальную data-команду.</section>
+</article>
+
+
+  <footer>
+    Собрано для откликов Олега Сорванова. Не заменяет сопроводительное письмо 1:1 — это каркас разговора по требованиям.
+    Контакты: <a href="mailto:sorvanovon@yandex.ru">sorvanovon@yandex.ru</a> · Telegram <a href="https://t.me/puholet">@puholet</a>
+  </footer>
+</body>
+</html>

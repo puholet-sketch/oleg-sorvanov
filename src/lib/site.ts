@@ -27,13 +27,9 @@ export const site = {
     ru: "Очаково-Матвеевское (ЗАО, Москва)",
     en: "Ochakovo-Matveyevskoye (ZAO, Moscow)",
   },
-  locationLead: {
-    ru: "Живу в районе Очаково-Матвеевское (ЗАО, Москва) — удобная точка для личной встречи, если хотите встретиться",
-    en: "Based in Ochakovo-Matveyevskoye (ZAO, Moscow) — a convenient spot for an in-person meeting if you'd like to meet up",
-  },
   locationNote: {
-    ru: "Постоянная локация — для встреч на месте",
-    en: "Where I am based — open to meeting locally",
+    ru: "Удобная точка для личной встречи, если хотите встретиться лично.",
+    en: "A convenient spot for an in-person meeting if you'd like to meet up.",
   },
   maps: {
     yandex:
@@ -69,104 +65,46 @@ export const site = {
       en: "Path from Oracle developer and Team Lead to Head of Project Office: delivery, PMO analytics, portfolio and product stabilization in insurance IT.",
     },
     office: {
-      ru: "Команды: VFOS B2B, ОФР, Аутстафф, VirtuDrive, РГС Ипотека, Согласие Ипотека, Согласие ВИТА и НПФ, ВСК / МСГ. Клиенты: ВСК, Альфа, Райффайзен, Сбер, РОСГОССТРАХ, Ингосстрах, Гелиос, МСГ и др.",
+      ru: "Команды: VFOS B2B, ОФР, Аутстафф, VirtuDrive, РГС Ипотека, Согласие Ипотека, Согласие ВИТА и НПФ, ВСК / МСГ. Клиенты: ВСК, Альфа, Райффайзен, Сбер, Росгосстрах, Ингосстрах, Гелиос, МСГ и др.",
       en: "Teams: VFOS B2B, OFR, Outstaff, VirtuDrive, RGS Mortgage, Soglasie Mortgage, Soglasie VITA & NPF, VSK / MSG. Clients: VSK, Alfa, Raiffeisen, Sber, Rosgosstrakh, Ingosstrakh, Helios, MSG, and others.",
-    },
-    teams: {
-      ru: "VFOS B2B, ОФР, Аутстафф, VirtuDrive, РГС Ипотека, Согласие Ипотека, Согласие ВИТА и НПФ, ВСК / МСГ",
-      en: "VFOS B2B, OFR, Outstaff, VirtuDrive, RGS Mortgage, Soglasie Mortgage, Soglasie VITA & NPF, VSK / MSG",
-    },
-    clients: {
-      ru: "ВСК, Альфа, Райффайзен, Сбер, РОСГОССТРАХ, Ингосстрах, Гелиос, МСГ и др.",
-      en: "VSK, Alfa, Raiffeisen, Sber, Rosgosstrakh, Ingosstrakh, Helios, MSG, and others.",
     },
     stack: {
       ru: "Micro Frontend / BFF, .NET, Delphi, Node.js, TypeScript, Kubernetes, Keycloak · Oracle, MS SQL, PostgreSQL · SOAP/REST, Splunk · Jira, Confluence, Postman, Cursor AI",
       en: "Micro Frontend / BFF, .NET, Delphi, Node.js, TypeScript, Kubernetes, Keycloak · Oracle, MS SQL, PostgreSQL · SOAP/REST, Splunk · Jira, Confluence, Postman, Cursor AI",
     },
-    stackGroups: {
-      ru: [
-        { label: "Платформа", text: "Micro Frontend / BFF, .NET, Delphi, Node.js, TypeScript, Kubernetes, Keycloak" },
-        { label: "Данные", text: "Oracle, MS SQL, PostgreSQL, PL/SQL, Oracle Forms, Oracle Reports" },
-        { label: "Интеграции", text: "SOAP/REST, Splunk" },
-        { label: "Инструменты", text: "Jira, Confluence, Postman, Cursor AI" },
-      ],
-      en: [
-        { label: "Platform", text: "Micro Frontend / BFF, .NET, Delphi, Node.js, TypeScript, Kubernetes, Keycloak" },
-        { label: "Data", text: "Oracle, MS SQL, PostgreSQL, PL/SQL, Oracle Forms, Oracle Reports" },
-        { label: "Integrations", text: "SOAP/REST, Splunk" },
-        { label: "Tools", text: "Jira, Confluence, Postman, Cursor AI" },
-      ],
-    },
   },
   career: [
     {
-      year: "2023+",
-      duration: { ru: "3 года", en: "3 years" },
-      href: "https://www.virtusystems.ru/",
+      period: { ru: "2023 — сегодня", en: "2023 — today" },
       title: {
         ru: "ВИРТУ СИСТЕМС · Руководитель проектного офиса",
         en: "VIRTU SYSTEMS · Head of Project Office",
       },
-      lines: {
-        ru: [
-          "8 команд: VFOS B2B, ОФР, Аутстафф, VirtuDrive (автоагрегатор), РГС Ипотека, Согласие Ипотека, Согласие ВИТА и НПФ, ВСК / МСГ.",
-          "Клиенты: ВСК, АльфаСтрахование, Райффайзен, Сбер, Росгосстрах, Ингосстрах, Гелиос, МСГ и др.",
-        ],
-        en: [
-          "8 teams: VFOS B2B, OFR, Outstaff, VirtuDrive (auto aggregator), RGS Mortgage, Soglasie Mortgage, Soglasie VITA & NPF, VSK / MSG.",
-          "Clients: VSK, AlfaStrakhovanie, Raiffeisen, Sber, Rosgosstrakh, Ingosstrakh, Helios, MSG, and others.",
-        ],
+      text: {
+        ru: "8 команд: VFOS B2B, ОФР, Аутстафф, VirtuDrive, РГС Ипотека, Согласие Ипотека, Согласие ВИТА и НПФ, ВСК / МСГ. Клиенты: ВСК, АльфаСтрахование, Райффайзен, Сбер, Росгосстрах, Ингосстрах, Гелиос, МСГ и др.",
+        en: "8 teams: VFOS B2B, OFR, Outstaff, VirtuDrive, RGS Mortgage, Soglasie Mortgage, Soglasie VITA & NPF, VSK / MSG. Clients: VSK, AlfaStrakhovanie, Raiffeisen, Sber, Rosgosstrakh, Ingosstrakh, Helios, MSG, and others.",
       },
     },
     {
-      year: "2013–22",
-      duration: { ru: "10 лет", en: "10 years" },
+      period: { ru: "2013 — 2022", en: "2013 — 2022" },
       title: {
         ru: "Росгосстрах · ИТ-бизнес партнёр",
         en: "Rosgosstrakh · IT Business Partner",
       },
-      lines: {
-        ru: ["150 активностей/мес, 300+ млн ₽/год. eОСАГО, B2B 30→700 продуктов, 50+ интеграций."],
-        en: ["150 activities/mo, 300M+ ₽/yr. eOSAGO, B2B 30→700 products, 50+ integrations."],
+      text: {
+        ru: "150 активностей/мес, 300+ млн ₽/год. eОСАГО, B2B 30→700 продуктов, 50+ интеграций.",
+        en: "150 activities/mo, 300M+ ₽/yr. eOSAGO, B2B 30→700 products, 50+ integrations.",
       },
     },
     {
-      year: "2008–13",
-      duration: { ru: "5 лет", en: "5 years" },
+      period: { ru: "2008 — 2013", en: "2008 — 2013" },
       title: {
         ru: "ГУТА-Страхование · Team Lead",
         en: "GUTA Insurance · Team Lead",
       },
-      lines: {
-        ru: ["Oracle, PL/SQL, MS SQL, Oracle Forms, Toad, C#, Delphi. Руководитель команды разработки и сопровождения фронт и бэк систем СК."],
-        en: ["Oracle, PL/SQL, MS SQL, Oracle Forms, Toad, C#, Delphi. Head of development and support for front- and back-end systems."],
-      },
-    },
-  ],
-  educationPath: [
-    {
-      year: "2012",
-      duration: { ru: "3,5 года", en: "3.5 years" },
-      title: {
-        ru: "Всероссийская академия внешней торговли",
-        en: "Russian Foreign Trade Academy",
-      },
       text: {
-        ru: "Москва · финансы и кредит, экономист-международник.",
-        en: "Moscow · finance and credit, international economist.",
-      },
-    },
-    {
-      year: "2006",
-      duration: { ru: "5 лет", en: "5 years" },
-      title: {
-        ru: "Военная академия РВСН им. Петра Великого",
-        en: "Peter the Great Military Academy of the SRF",
-      },
-      text: {
-        ru: "ВМКСиС, инженер.",
-        en: "Computing systems and networks, engineer.",
+        ru: "Oracle, PL/SQL, MS SQL, Oracle Forms, Toad, C#, Delphi. Руководитель команды разработки и сопровождения фронт и бэк систем СК.",
+        en: "Oracle, PL/SQL, MS SQL, Oracle Forms, Toad, C#, Delphi. Head of development and support for front- and back-end systems.",
       },
     },
   ],
@@ -237,31 +175,15 @@ export const site = {
       href: "https://puholet-sketch.github.io/stabilization-path/",
       cta: { ru: "Открыть PATH", en: "Open PATH" },
     },
-    {
-      title: {
-        ru: "Фурик · приём иностранца у ИП",
-        en: "Furik · hiring a foreign worker (sole proprietor)",
-      },
-      meta: {
-        ru: "Трудовой договор · МВД · инструкция",
-        en: "Employment contract · migration notice · playbook",
-      },
-      summary: {
-        ru: "Готовый пакет к подписанию и публичная инструкция со скачиванием документов.",
-        en: "Ready-to-sign pack plus a public playbook with direct downloads of the key documents.",
-      },
-      href: "https://puholet-sketch.github.io/furik/",
-      cta: { ru: "Открыть инструкцию", en: "Open playbook" },
-    },
   ],
   projects: [
     {
-      title: "LC200",
+      title: "HH · адаптивные отклики",
       text: {
-        ru: "Подбор колёс 20→22 для Land Cruiser 200: диски, лето, гайки и ссылки в магазины.",
-        en: "Land Cruiser 200 wheel upgrade 20→22: rims, summer tires, lug nuts, shop links.",
+        ru: "Разбор избранных вакансий с активным «Откликнуться»: требования, боевые примеры и стратегия 90 дней.",
+        en: "Breakdown of favorited vacancies with active Apply: requirements, real examples, and a 90-day strategy.",
       },
-      href: "https://puholet-sketch.github.io/LC200/",
+      href: "https://puholet-sketch.github.io/oleg-sorvanov/hh-otkliki/",
     },
     {
       title: "FACT",
@@ -331,81 +253,18 @@ export const site = {
   coffee: {
     title: "CoffeeFriends",
     text: {
-      ru: "Кофепоинты · кофе и еда на вынос",
-      en: "Coffee points · coffee & takeaway food",
+      ru: "Владелец сети кофепоинтов — кофе и еда на вынос. Сейчас 2 точки в БЦ «Китеж».",
+      en: "Owner of a coffee-point network — coffee & takeaway. Currently 2 points in Kitizh BC.",
     },
     href: "https://puholet-sketch.github.io/coffee.friends/",
-    cta: "coffee.friends →",
-    strip: [
-      {
-        value: "5",
-        phase: { ru: "до пандемии", en: "pre-COVID" },
-        note: { ru: "точек в БЦ", en: "BC locations" },
-      },
-      {
-        value: "2",
-        phase: { ru: "retail", en: "retail" },
-        note: { ru: "1 закрылась · 1 ~5 лет", en: "1 closed · 1 ~5 yrs" },
-      },
-      {
-        value: "2",
-        phase: { ru: "сейчас", en: "now" },
-        note: { ru: "БЦ Китеж", en: "Kitizh BC" },
-        current: true,
-      },
-    ],
-    partners: [
-      { name: "МоеДело", href: "https://moedelo.org/", ru: "облачная бухгалтерия", en: "cloud accounting" },
-      { name: "МодульБанк", href: "https://modulbank.ru/", ru: "банковское обслуживание", en: "banking services" },
-      { name: "Модулькасса", href: "https://modulkassa.ru/", ru: "РКО", en: "cash register & POS" },
-      { name: "CafeStore", href: "https://cafe.store/", ru: "кофейный маркетплейс", en: "coffee marketplace" },
-    ],
-  },
-  digitalMenu: {
-    title: { ru: "Интерактивное меню", en: "Interactive menu" },
-    label: { ru: "Цифровая вывеска", en: "Digital signage" },
-    text: {
-      ru: "Бегущая реклама на вертикальном мониторе: 47 напитков и 14 блюд, автопрокрутка слайдов 9:16, white studio, данные в JSON — для HDMI-плеера или записи MP4.",
-      en: "Scrolling signage on a vertical monitor: 47 drinks and 14 food items, 9:16 auto-slides, white studio, JSON-driven — for HDMI player or MP4 loop.",
-    },
-    href: "https://puholet-sketch.github.io/coffee-menu/",
-    cta: { ru: "Открыть доску →", en: "Open board →" },
-    stats: [
-      { value: "61", label: { ru: "позиций", en: "items" } },
-      { value: "9:16", label: { ru: "формат", en: "format" } },
-      { value: "3.5с", label: { ru: "слайд", en: "slide" } },
-    ],
   },
   hobbies: [
     {
-      title: { ru: "Рекомендованная литература", en: "Recommended reading" },
-      text: {
-        ru: "Каталог разборов книг из канала «Книги на миллион» — названия, авторы, краткие выводы.",
-        en: "A catalog of book takeaways from the “Books to a Million” channel — titles, authors, short insights.",
-      },
-      href: "https://puholet-sketch.github.io/TelegaBoook/",
-    },
-    {
       title: { ru: "Семья", en: "Family" },
       text: {
-        ru: "Трое детей, многодетный отец. Чёрный пояс по прогулкам, пляжному отдыху, паркам и отдыху с детьми.",
-        en: "Three kids, father of a large family. Black belt in walks, beach leisure, parks, and quality time with the kids.",
+        ru: "Трое детей, многодетный отец. Чёрный пояс по прогулкам, паркам и отдыху с детьми.",
+        en: "Three kids, father of a large family. Black belt in walks, parks, and quality time.",
       },
-    },
-    {
-      title: { ru: "Гимнастика", en: "Gymnastics" },
-      text: {
-        ru: "Две дочери — 6 лет профессионально в художественной гимнастике. Подскажу по купальникам, инвентарю, тренерам, спортшколам Москвы.",
-        en: "Two daughters — 6 years in artistic gymnastics. Advice on leotards, equipment, coaches, Moscow sports schools.",
-      },
-    },
-    {
-      title: { ru: "Workout", en: "Workout" },
-      text: {
-        ru: "Турники, брусья, бег. DDX — Планета и дневник DDX Coach.",
-        en: "Pull-up bar, parallel bars, running. DDX — Planeta and DDX Coach diary.",
-      },
-      href: "https://puholet-sketch.github.io/ddx-coach/",
     },
     {
       title: { ru: "Яхтинг", en: "Sailing" },
@@ -413,7 +272,6 @@ export const site = {
         ru: "PROyachting, права капитана 2019.",
         en: "PROyachting, captain license 2019.",
       },
-      href: "https://pro-yachting.ru/",
     },
     {
       title: { ru: "Беговые лыжи", en: "Cross-country skiing" },
@@ -421,7 +279,14 @@ export const site = {
         ru: "Конёк; Мещёрский лес, парк Ларисы Лазутиной. Подбор экипировки и консультации.",
         en: "Skating style; Meshchersky Forest, Lazutina Park. Gear selection & consulting.",
       },
-      href: "https://runkeeper.com/user/sorvanovon/profile",
+    },
+    {
+      title: { ru: "Литература", en: "Reading" },
+      text: {
+        ru: "Каталог разборов книг из канала «Книги на миллион».",
+        en: "Catalog of book takeaways from the “Books to a Million” channel.",
+      },
+      href: "https://puholet-sketch.github.io/TelegaBoook/",
     },
   ],
 } as const;
