@@ -236,6 +236,22 @@ export const site = {
       },
       href: "https://puholet-sketch.github.io/stabilization-path/",
       cta: { ru: "Открыть PATH", en: "Open PATH" },
+  ,    {
+      title: {
+        ru: "Рентабельность портфеля Virtu",
+        en: "Virtu portfolio profitability",
+      },
+      meta: {
+        ru: "PM-отчёты · выручка и операционная прибыль",
+        en: "PM reports · revenue and operating profit",
+      },
+      summary: {
+        ru: "Сводка по месячным Excel-выгрузкам PM KPI: топ проектов, маржа, динамика за 7 месяцев.",
+        en: "Monthly PM KPI exports: top projects, margin, seven-month trend.",
+      },
+      href: "https://puholet-sketch.github.io/virtu-rentabelnost/",
+      cta: { ru: "Открыть анализ", en: "Open analysis" },
+    },
     },
     {
       title: {
