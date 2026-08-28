@@ -335,6 +335,14 @@ export const site = {
       },
       href: "https://puholet-sketch.github.io/IntroAI/",
     },
+    {
+      title: "VIRTU Rentability",
+      text: {
+        ru: "Рентабельность Virtu Systems: PM KPI, выручка, прямые расходы, операционная прибыль по проектам.",
+        en: "Virtu Systems profitability from PM KPI exports — revenue, direct costs, operating profit.",
+      },
+      href: "https://puholet-sketch.github.io/virtu-rentabelnost/",
+    },
   ],
   coffee: {
     title: "CoffeeFriends",
