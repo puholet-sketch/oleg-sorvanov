@@ -1,19 +1,17 @@
 {
-  "context_version": 8,
-  "timestamp": "2026-08-21T12:30:00+03:00",
-  "context_hash": "4a72cac8bcc6f244",
+  "context_version": 10,
+  "timestamp": "2026-08-29T01:50:00+03:00",
+  "context_hash": "mercedes-g63-portfolio",
   "active_files": [
-    "src/app/page.tsx",
-    "src/lib/site.ts",
-    "src/components/location.tsx",
-    "src/app/globals.css"
+    "src/lib/site.ts"
   ],
   "active_file_hashes": {},
   "decisions": [
-    "Restore compact HTML one-pager structure including #location; lighter Outfit 600 headings; keep lime uppercase card labels"
+    "Restore compact HTML one-pager structure including #location; lighter Outfit 600 headings; keep lime uppercase card labels",
+    "Personal projects include LC200 and Mercedes G 63 Pages sites"
   ],
   "blockers": [],
   "last_error": null,
   "retry_count": 0,
-  "next_action": "review locally; deploy on request"
+  "next_action": "GitHub Actions задеплоит Pages"
 }

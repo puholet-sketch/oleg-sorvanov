@@ -282,10 +282,18 @@ export const site = {
     {
       title: "LC200",
       text: {
-        ru: "Подбор колёс 20→22 для Land Cruiser 200: диски, лето, гайки и ссылки в магазины.",
-        en: "Land Cruiser 200 wheel upgrade 20→22: rims, summer tires, lug nuts, shop links.",
+        ru: "Подбор колёс 20→21 для Land Cruiser 200: диски, лето, гайки и ссылки в магазины.",
+        en: "Land Cruiser 200 wheel upgrade 20→21: rims, summer tires, lug nuts, shop links.",
       },
       href: "https://puholet-sketch.github.io/LC200/",
+    },
+    {
+      title: "Mercedes G 63",
+      text: {
+        ru: "Витрина брендовых аксессуаров для AMG G 63: спрос, каталог, комплекты и стиль Mercedes.",
+        en: "Branded accessories storefront for AMG G 63: demand, catalog, kits, Mercedes visual language.",
+      },
+      href: "https://puholet-sketch.github.io/MercedesG63/",
     },
     {
       title: "FACT",
