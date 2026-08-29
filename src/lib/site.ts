@@ -236,7 +236,8 @@ export const site = {
       },
       href: "https://puholet-sketch.github.io/stabilization-path/",
       cta: { ru: "Открыть PATH", en: "Open PATH" },
-  ,    {
+    },
+    {
       title: {
         ru: "Рентабельность портфеля Virtu",
         en: "Virtu portfolio profitability",
@@ -251,7 +252,6 @@ export const site = {
       },
       href: "https://puholet-sketch.github.io/virtu-rentabelnost/",
       cta: { ru: "Открыть анализ", en: "Open analysis" },
-    },
     },
     {
       title: {
