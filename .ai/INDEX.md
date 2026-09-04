@@ -6,6 +6,9 @@
 | `src/lib/site.ts` | Весь контент RU/EN |
 | `src/components/about.tsx` | Обо мне: 3 ряда (био/стек, спорт, бизнес) |
 | `src/components/projects.tsx` | Личные проекты (вкл. «Договор с иностранцем») |
+| `public/cv.html` | Резюме RU/EN (актуализация ВИРТУ PMO) |
+| `public/Oleg_Sorvanov_CV.pdf` | Трендовый PDF CV (1 страница, HH-стиль) |
+| `scripts/generate_cv_pdf.py` | Генератор PDF резюме |
 | `src/components/location.tsx` | Блок `#location` как в HTML-оригинале |
 | `src/components/coffee.tsx` | CoffeeFriends + партнёры + меню |
 | `src/components/life.tsx` | Хобби |
