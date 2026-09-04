@@ -78,7 +78,7 @@ export function Career() {
         </div>
 
         <div className="mt-4">
-          <a href="cv.html" className="btn-orig btn-ghost-orig">
+          <a href="Oleg_Sorvanov_CV.pdf" className="btn-orig btn-ghost-orig" target="_blank" rel="noopener noreferrer">
             {lang === "ru" ? "Резюме PDF" : "CV PDF"}
           </a>
         </div>

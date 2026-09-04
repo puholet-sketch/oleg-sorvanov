@@ -32,8 +32,9 @@ export function Contact() {
     },
     {
       label: "CV",
-      href: "cv.html",
-      value: "2026 →",
+      href: "Oleg_Sorvanov_CV.pdf",
+      value: "PDF →",
+      external: true,
     },
     {
       label: "HH",

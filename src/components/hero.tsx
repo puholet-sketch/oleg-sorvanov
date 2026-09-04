@@ -59,7 +59,7 @@ export function Hero() {
             <a href="#cases" className="btn-orig btn-primary-orig">
               {lang === "ru" ? "Кейсы" : "Cases"}
             </a>
-            <a href="cv.html" className="btn-orig btn-ghost-orig">
+            <a href="Oleg_Sorvanov_CV.pdf" className="btn-orig btn-ghost-orig" target="_blank" rel="noopener noreferrer">
               {lang === "ru" ? "Резюме" : "CV"}
             </a>
           </motion.div>
