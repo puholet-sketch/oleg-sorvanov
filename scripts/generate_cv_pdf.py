@@ -1,4 +1,4 @@
-"""Generate modern HH-style CV PDF for Oleg Sorvanov — compact 1 page."""
+"""Generate modern HH-style CV PDF — fills one A4 page evenly."""
 
 from pathlib import Path
 
@@ -8,12 +8,11 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase.pdfmetrics import stringWidth
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
     Flowable,
     HRFlowable,
-    KeepTogether,
     Paragraph,
     SimpleDocTemplate,
     Spacer,
@@ -36,9 +35,14 @@ CHIP_BG = HexColor("#F0F0EC")
 CHIP_FG = HexColor("#222222")
 LIME = HexColor("#B8E600")
 
+TOP = 11 * mm
+BOTTOM = 12 * mm
+LEFT = 15 * mm
+RIGHT = 15 * mm
+
 
 class AccentBar(Flowable):
-    def __init__(self, width, height=2.4 * mm):
+    def __init__(self, width, height=2.8 * mm):
         super().__init__()
         self.width = width
         self.height = height
@@ -62,8 +66,8 @@ class ChipRow(Flowable):
     def wrap(self, availWidth, availHeight):
         width = min(self.max_width, availWidth)
         self.width = width
-        font, size = "CV", 7.5
-        pad_x, pad_y, gap = 6, 3.2, 4
+        font, size = "CV", 8
+        pad_x, pad_y, gap = 7, 3.8, 4.5
         rows, row, row_w = [], [], 0
         for text in self.items:
             tw = stringWidth(text, font, size) + pad_x * 2
@@ -82,8 +86,8 @@ class ChipRow(Flowable):
         return width, self.height
 
     def draw(self):
-        font, size = "CV", 7.5
-        pad_x, pad_y, gap = 6, 3.2, 4
+        font, size = "CV", 8
+        pad_x, pad_y, gap = 7, 3.8, 4.5
         y = self.height
         for row in self._rows:
             x = 0
@@ -92,7 +96,7 @@ class ChipRow(Flowable):
             for text in row:
                 tw = stringWidth(text, font, size) + pad_x * 2
                 self.canv.setFillColor(CHIP_BG)
-                self.canv.roundRect(x, y, tw, chip_h, 2.5, fill=1, stroke=0)
+                self.canv.roundRect(x, y, tw, chip_h, 3, fill=1, stroke=0)
                 self.canv.setFillColor(CHIP_FG)
                 self.canv.setFont(font, size)
                 self.canv.drawString(x + pad_x, y + pad_y - 0.3, text)
@@ -104,68 +108,66 @@ def styles():
     base = getSampleStyleSheet()
     return {
         "name": ParagraphStyle(
-            "name", parent=base["Normal"], fontName="CV-Bold", fontSize=18, leading=21, textColor=INK, spaceAfter=1
+            "name", parent=base["Normal"], fontName="CV-Bold", fontSize=20, leading=24, textColor=INK, spaceAfter=2
         ),
         "role": ParagraphStyle(
-            "role", parent=base["Normal"], fontName="CV", fontSize=9.5, leading=12, textColor=MUTED, spaceAfter=2
+            "role", parent=base["Normal"], fontName="CV", fontSize=10, leading=13, textColor=MUTED, spaceAfter=3
         ),
         "contacts": ParagraphStyle(
-            "contacts", parent=base["Normal"], fontName="CV", fontSize=8, leading=10.5, textColor=MUTED
+            "contacts", parent=base["Normal"], fontName="CV", fontSize=8.5, leading=11.5, textColor=MUTED
         ),
         "h2": ParagraphStyle(
             "h2",
             parent=base["Normal"],
             fontName="CV-Bold",
-            fontSize=8.2,
-            leading=10,
+            fontSize=8.6,
+            leading=11,
             textColor=INK,
-            spaceBefore=5.5,
+            spaceBefore=0,
             spaceAfter=2,
         ),
         "body": ParagraphStyle(
-            "body", parent=base["Normal"], fontName="CV", fontSize=8.2, leading=11, textColor=INK, spaceAfter=2
+            "body", parent=base["Normal"], fontName="CV", fontSize=9, leading=12.2, textColor=INK, spaceAfter=0
         ),
         "job": ParagraphStyle(
-            "job", parent=base["Normal"], fontName="CV-Bold", fontSize=9, leading=11.5, textColor=INK
+            "job", parent=base["Normal"], fontName="CV-Bold", fontSize=9.5, leading=12.5, textColor=INK
         ),
         "meta": ParagraphStyle(
             "meta",
             parent=base["Normal"],
             fontName="CV",
-            fontSize=8,
-            leading=10.5,
+            fontSize=8.3,
+            leading=11,
             textColor=MUTED,
             alignment=TA_RIGHT,
         ),
         "meta_left": ParagraphStyle(
-            "meta_left", parent=base["Normal"], fontName="CV", fontSize=7.8, leading=10, textColor=MUTED, spaceAfter=1.5
+            "meta_left", parent=base["Normal"], fontName="CV", fontSize=8.2, leading=11, textColor=MUTED, spaceAfter=2
         ),
         "bullet": ParagraphStyle(
             "bullet",
             parent=base["Normal"],
             fontName="CV",
-            fontSize=8,
-            leading=10.4,
+            fontSize=8.4,
+            leading=11.2,
             textColor=INK,
-            leftIndent=7,
-            spaceAfter=0.7,
+            leftIndent=8,
+            spaceAfter=1.2,
         ),
         "small": ParagraphStyle(
-            "small", parent=base["Normal"], fontName="CV", fontSize=7.8, leading=10.2, textColor=MUTED
+            "small", parent=base["Normal"], fontName="CV", fontSize=8.2, leading=11, textColor=MUTED
         ),
         "metric": ParagraphStyle(
-            "metric", parent=base["Normal"], fontName="CV-Bold", fontSize=7.5, leading=9, textColor=INK, alignment=1
+            "metric", parent=base["Normal"], fontName="CV-Bold", fontSize=8, leading=10, textColor=INK, alignment=1
         ),
     }
 
 
 def section_title(text, s):
-    return KeepTogether(
-        [
-            Paragraph(text.upper(), s["h2"]),
-            HRFlowable(width="100%", thickness=0.6, color=LINE, spaceBefore=0, spaceAfter=3.5),
-        ]
-    )
+    return [
+        Paragraph(text.upper(), s["h2"]),
+        HRFlowable(width="100%", thickness=0.7, color=LINE, spaceBefore=0, spaceAfter=4.5),
+    ]
 
 
 def job_header(title, dates, s, page_w):
@@ -189,33 +191,53 @@ def bullets(items, s):
     return [Paragraph(f"• {item}", s["bullet"]) for item in items]
 
 
+def measure_height(flowables, width):
+    total = 0
+    for f in flowables:
+        _w, h = f.wrap(width, 2000)
+        total += h
+    return total
+
+
+def expand_story(blocks, page_w, avail_h, fill_ratio=0.88):
+    """Insert spacers so content approaches full page without overflowing."""
+    heights = [measure_height(b, page_w) for b in blocks]
+    used = sum(heights)
+    gaps = max(len(blocks) - 1, 1)
+    extra = max((avail_h - used) * fill_ratio, 0)
+    per_gap = extra / gaps
+
+    story = []
+    for i, block in enumerate(blocks):
+        story.extend(block)
+        if i < len(blocks) - 1:
+            story.append(Spacer(1, per_gap))
+    return story, used, extra
+
+
+def page_count_of(path):
+    from pypdf import PdfReader
+
+    return len(PdfReader(str(path)).pages)
+
+
 def build():
     s = styles()
-    doc = SimpleDocTemplate(
-        str(OUT),
-        pagesize=A4,
-        leftMargin=13 * mm,
-        rightMargin=13 * mm,
-        topMargin=8 * mm,
-        bottomMargin=9 * mm,
-        title="Олег Сорванов — резюме 2026",
-        author="Олег Сорванов",
-    )
-    page_w = A4[0] - 26 * mm
-    story = []
+    page_w = A4[0] - LEFT - RIGHT
+    avail_h = A4[1] - TOP - BOTTOM
 
-    story.append(AccentBar(page_w))
-    story.append(Spacer(1, 2.8 * mm))
-    story.append(Paragraph("Олег Сорванов", s["name"]))
-    story.append(Paragraph("Руководитель проектного офиса · IT-лидер · Delivery / PMO", s["role"]))
-    story.append(
+    header = [
+        AccentBar(page_w),
+        Spacer(1, 3.5 * mm),
+        Paragraph("Олег Сорванов", s["name"]),
+        Paragraph("Руководитель проектного офиса · IT-лидер · Delivery / PMO", s["role"]),
         Paragraph(
             "Москва · sorvanovon@yandex.ru · +7 977 363-93-00 · Telegram @puholet · "
             "puholet-sketch.github.io/oleg-sorvanov",
             s["contacts"],
-        )
-    )
-    story.append(Spacer(1, 2 * mm))
+        ),
+        Spacer(1, 3 * mm),
+    ]
 
     metrics = [
         [
@@ -231,26 +253,25 @@ def build():
             [
                 ("BACKGROUND", (0, 0), (-1, -1), SOFT),
                 ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-                ("TOPPADDING", (0, 0), (-1, -1), 5),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+                ("TOPPADDING", (0, 0), (-1, -1), 7),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
                 ("LINEAFTER", (0, 0), (-2, -1), 0.6, white),
             ]
         )
     )
-    story.append(mt)
 
-    story.append(section_title("О себе", s))
-    story.append(
+    about = [
+        *section_title("О себе", s),
         Paragraph(
             "IT-лидер страхового рынка. Путь от Oracle-разработчика и Team Lead до руководителя "
             "проектного офиса. Выстроил PMO-контур (план/факт, статус портфеля, стабилизация delivery, "
             "прозрачность экономики) и довёл до промышленной эксплуатации крупные B2B-продукты.",
             s["body"],
-        )
-    )
+        ),
+    ]
 
-    story.append(section_title("Ключевые навыки", s))
-    story.append(
+    skills = [
+        *section_title("Ключевые навыки", s),
         ChipRow(
             [
                 "PMO / Program Mgmt",
@@ -272,17 +293,17 @@ def build():
                 "Cursor AI",
             ],
             page_w,
-        )
-    )
+        ),
+    ]
 
-    story.append(section_title("Опыт", s))
-
-    story.append(job_header("ВИРТУ СИСТЕМС — Руководитель проектного офиса", "01.2023 — н.в.", s, page_w))
-    story.append(Paragraph("Портфель delivery · страховой рынок · 8 команд / 60+ чел.", s["meta_left"]))
-    story.extend(
-        bullets(
+    virtu = [
+        *section_title("Опыт", s),
+        job_header("ВИРТУ СИСТЕМС — Руководитель проектного офиса", "01.2023 — н.в.", s, page_w),
+        Paragraph("Портфель delivery · страховой рынок · 8 команд / 60+ чел.", s["meta_left"]),
+        *bullets(
             [
-                "Руководство PMO и 8 продакшн-командами (VFOS B2B, ОФР, Аутстафф, VirtuDrive, РГС/Согласие Ипотека, ВИТА и НПФ, ВСК/МСГ); клиенты: ВСК, Альфа, Райффайзен, Сбер, РГС, Ингосстрах, Гелиос, МСГ",
+                "Руководство PMO и 8 продакшн-командами: VFOS B2B, ОФР, Аутстафф, VirtuDrive, РГС Ипотека, Согласие Ипотека, Согласие ВИТА и НПФ, ВСК / МСГ",
+                "Клиенты: ВСК, АльфаСтрахование, Райффайзен, Сбер, Росгосстрах, Ингосстрах, Гелиос, МСГ и др.",
                 "Выстроил операционный контур PMO: ритм статусов, эскалации, контроль загрузки и поставки по командам",
                 "Внедрил контроль превышений план/факт (Plan-Fact × Jira) и регулярный дайджест портфеля для руководства",
                 "Провёл стабилизацию на проектах СК (24+ инициатив): релизы, шаблоны БТ, Jira Timeline, качество, отчётность",
@@ -290,67 +311,101 @@ def build():
                 "Флагман — ЛК Агента РГС: с нуля до прома, ~30 чел., 13 продуктов, 30+ интеграций, 30 000+ польз./день",
             ],
             s,
-        )
-    )
-    story.append(Spacer(1, 1.4 * mm))
+        ),
+    ]
 
-    story.append(job_header("Росгосстрах — ИТ-бизнес партнёр, IT Stream Lead", "02.2013 — 10.2022", s, page_w))
-    story.append(Paragraph("IT Stream Lead · портфель ~300+ млн ₽/год · 10 лет", s["meta_left"]))
-    story.extend(
-        bullets(
+    rgs = [
+        job_header("Росгосстрах — ИТ-бизнес партнёр, IT Stream Lead", "02.2013 — 10.2022", s, page_w),
+        Paragraph("IT Stream Lead · портфель ~300+ млн ₽/год · 10 лет", s["meta_left"]),
+        *bullets(
             [
                 "~150 активностей/мес, ~45 поставок в прод/мес; 7 внешних команд (~50 чел.) и внутренние стримы",
                 "eОСАГО на rgs.ru (дедлайн ЦБ, 2016); проверка ЦБ 90/92У; B2B: 30→700 продуктов, 1→45 млн ₽/мес, 99% availability",
                 "DRP rgs.ru и SMS-агрегатор; 50+ интеграций; 15 ключевых подрядчиков; 1000+ инициатив за 10 лет",
             ],
             s,
-        )
-    )
-    story.append(Spacer(1, 1.4 * mm))
+        ),
+    ]
 
-    story.append(job_header("ГУТА-Страхование — Team Lead / Senior Developer", "2008 — 2013", s, page_w))
-    story.append(Paragraph("Разработка и сопровождение фронт- и бэк-систем СК", s["meta_left"]))
-    story.extend(
-        bullets(
+    guta = [
+        job_header("ГУТА-Страхование — Team Lead / Senior Developer", "2008 — 2013", s, page_w),
+        Paragraph("Разработка и сопровождение фронт- и бэк-систем СК", s["meta_left"]),
+        *bullets(
             [
                 "Руководитель команды разработки и сопровождения · Oracle, PL/SQL, MS SQL, Oracle Forms/Reports, C#, Delphi",
             ],
             s,
-        )
-    )
+        ),
+    ]
 
-    story.append(section_title("Образование", s))
-    story.append(job_header("ВАВТ — финансы и кредит, экономист-международник", "2012 · 3,5 года", s, page_w))
-    story.append(Spacer(1, 0.8 * mm))
-    story.append(job_header("ВА РВСН им. Петра Великого — ВМКСиС, инженер", "2006 · 5 лет", s, page_w))
+    edu = [
+        *section_title("Образование", s),
+        job_header("ВАВТ — финансы и кредит, экономист-международник", "2012 · 3,5 года", s, page_w),
+        Spacer(1, 1.2 * mm),
+        job_header("ВА РВСН им. Петра Великого — ВМКСиС, инженер", "2006 · 5 лет", s, page_w),
+    ]
 
-    story.append(section_title("Курсы", s))
-    story.append(
+    courses = [
+        *section_title("Курсы", s),
         Paragraph(
             "IT Директор 2.0 — РШУ, 2021 · Управление IT-службой — РДТЕХ, 2015 · "
             "Oracle Database 10g PL/SQL — РДТЕХ, 2007–2008 · PROyachting — капитан, 2019",
             s["body"],
-        )
-    )
+        ),
+    ]
 
-    story.append(section_title("Дополнительно", s))
-    story.append(
+    extra = [
+        *section_title("Дополнительно", s),
         Paragraph(
             "CoffeeFriends — сеть кофепоинтов (2 точки в БЦ «Китеж») · Английский — Upper Intermediate · "
             "Рекомендации — по запросу",
             s["small"],
-        )
-    )
+        ),
+    ]
+
+    blocks = [
+        header + [mt],
+        about,
+        skills,
+        virtu,
+        rgs,
+        guta,
+        edu,
+        courses,
+        extra,
+    ]
 
     def on_page(canvas, doc_):
         canvas.saveState()
         canvas.setFillColor(MUTED)
-        canvas.setFont("CV", 7)
-        canvas.drawString(13 * mm, 5.5 * mm, "Олег Сорванов · CV 2026")
-        canvas.drawRightString(A4[0] - 13 * mm, 5.5 * mm, str(doc_.page))
+        canvas.setFont("CV", 7.2)
+        canvas.drawString(LEFT, 6.5 * mm, "Олег Сорванов · CV 2026")
+        canvas.drawRightString(A4[0] - RIGHT, 6.5 * mm, str(doc_.page))
         canvas.restoreState()
 
-    doc.build(story, onFirstPage=on_page, onLaterPages=on_page)
+    # Fit to one page: start near-full fill, back off if wraps to page 2
+    last_ok = None
+    for ratio in (0.70, 0.66, 0.63, 0.60, 0.55, 0.45, 0.3, 0.0):
+        story, used, extra = expand_story(blocks, page_w, avail_h, fill_ratio=ratio)
+        doc = SimpleDocTemplate(
+            str(OUT),
+            pagesize=A4,
+            leftMargin=LEFT,
+            rightMargin=RIGHT,
+            topMargin=TOP,
+            bottomMargin=BOTTOM,
+            title="Олег Сорванов — резюме 2026",
+            author="Олег Сорванов",
+        )
+        doc.build(story, onFirstPage=on_page, onLaterPages=on_page)
+        pages = page_count_of(OUT)
+        print(f"ratio={ratio:.2f} used={used:.1f} extra={extra:.1f} pages={pages}")
+        if pages == 1:
+            last_ok = ratio
+            break
+
+    if last_ok is None:
+        raise SystemExit("Could not fit CV onto one page")
     print(OUT)
 
 
