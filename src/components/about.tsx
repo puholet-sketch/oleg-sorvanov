@@ -188,7 +188,7 @@ export function About() {
 
           {/* Ряд 3: предприниматель / предпринимательство */}
           <FadeUp className="grid gap-4 md:grid-cols-2 md:items-start md:gap-6">
-            <div className="text-sm">
+            <div className="body-copy text-sm">
               <p>
                 <span className="font-medium text-mist">
                   {lang === "ru" ? "Действующий" : "Active"}
@@ -198,7 +198,9 @@ export function About() {
                 </span>
               </p>
               <p className="mt-1 text-muted">
-                {lang === "ru" ? "кофейный проект" : "coffee project"}{" "}
+                <span className="whitespace-nowrap">
+                  {lang === "ru" ? "кофейный проект" : "coffee project"}
+                </span>{" "}
                 <a
                   href={site.coffee.href}
                   target="_blank"
