@@ -253,39 +253,15 @@ export const site = {
       href: "https://puholet-sketch.github.io/virtu-rentabelnost/",
       cta: { ru: "Открыть анализ", en: "Open analysis" },
     },
-    {
-      title: {
-        ru: "Фурик · приём иностранца у ИП",
-        en: "Furik · hiring a foreign worker (sole proprietor)",
-      },
-      meta: {
-        ru: "Трудовой договор · МВД · инструкция",
-        en: "Employment contract · migration notice · playbook",
-      },
-      summary: {
-        ru: "Готовый пакет к подписанию и публичная инструкция со скачиванием документов.",
-        en: "Ready-to-sign pack plus a public playbook with direct downloads of the key documents.",
-      },
-      href: "https://puholet-sketch.github.io/furik/",
-      cta: { ru: "Открыть инструкцию", en: "Open playbook" },
-    },
   ],
   projects: [
     {
-      title: "HH · адаптивные отклики",
+      title: "Договор с иностранцем",
       text: {
-        ru: "Разбор избранных вакансий с активным «Откликнуться»: требования, боевые примеры и стратегия 90 дней.",
-        en: "Breakdown of favorited vacancies with active Apply: requirements, real examples, and a 90-day strategy.",
+        ru: "Трудовой договор · МВД · инструкция. Готовый пакет к подписанию и публичная инструкция со скачиванием документов.",
+        en: "Employment contract · migration notice · playbook. Ready-to-sign pack with document downloads.",
       },
-      href: "https://puholet-sketch.github.io/oleg-sorvanov/hh-otkliki/",
-    },
-    {
-      title: "LC200",
-      text: {
-        ru: "Подбор колёс 20→21 для Land Cruiser 200: диски, лето, гайки и ссылки в магазины.",
-        en: "Land Cruiser 200 wheel upgrade 20→21: rims, summer tires, lug nuts, shop links.",
-      },
-      href: "https://puholet-sketch.github.io/LC200/",
+      href: "https://puholet-sketch.github.io/furik/",
     },
     {
       title: "Mercedes G 63",
@@ -358,14 +334,6 @@ export const site = {
         en: "Short AI guide for non-tech people: start, practice, Cursor, 4-week path.",
       },
       href: "https://puholet-sketch.github.io/IntroAI/",
-    },
-    {
-      title: "VIRTU Rentability",
-      text: {
-        ru: "Рентабельность Virtu Systems: PM KPI, выручка, прямые расходы, операционная прибыль по проектам.",
-        en: "Virtu Systems profitability from PM KPI exports — revenue, direct costs, operating profit.",
-      },
-      href: "https://puholet-sketch.github.io/virtu-rentabelnost/",
     },
   ],
   coffee: {
