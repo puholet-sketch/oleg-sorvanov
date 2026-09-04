@@ -15,8 +15,9 @@ export function About() {
           <p className="mt-1 text-sm text-muted">{t(site.about.intro)}</p>
         </FadeUp>
 
-        <div className="mt-5 grid gap-4 md:grid-cols-[0.95fr_1.05fr] md:items-start md:gap-6">
-          <FadeUp>
+        <div className="mt-5 flex flex-col gap-4">
+          {/* Ряд 1: био / офис + стек */}
+          <FadeUp className="grid gap-4 md:grid-cols-2 md:items-start md:gap-6">
             <ul className="space-y-3 text-sm leading-relaxed text-muted">
               <li>
                 <span className="font-medium text-mist">
@@ -35,6 +36,48 @@ export function About() {
                 {" — "}
                 {t(site.about.focus)}
               </li>
+            </ul>
+
+            <div className="grid gap-2">
+              <article className="glass-card p-3.5">
+                <h3 className="card-label">
+                  {lang === "ru" ? "Проектный офис" : "Project office"}
+                </h3>
+                <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-muted">
+                  <li>
+                    <span className="font-medium text-mist">
+                      {lang === "ru" ? "Команды:" : "Teams:"}
+                    </span>{" "}
+                    {t(site.about.teams)}
+                  </li>
+                  <li>
+                    <span className="font-medium text-mist">
+                      {lang === "ru" ? "Клиенты:" : "Clients:"}
+                    </span>{" "}
+                    {t(site.about.clients)}
+                  </li>
+                </ul>
+              </article>
+
+              <article className="glass-card p-3.5">
+                <h3 className="card-label">
+                  {lang === "ru" ? "Технологический стэк" : "Technology stack"}
+                </h3>
+                <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-muted">
+                  {site.about.stackGroups[lang].map((group) => (
+                    <li key={group.label}>
+                      <span className="font-medium text-mist">{group.label}:</span>{" "}
+                      {group.text}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </div>
+          </FadeUp>
+
+          {/* Ряд 2: хобби / спорт */}
+          <FadeUp className="grid gap-4 md:grid-cols-2 md:items-start md:gap-6">
+            <ul className="space-y-3 text-sm leading-relaxed text-muted">
               <li>
                 <span className="font-medium text-mist">
                   {lang === "ru" ? "Лыжник — любитель" : "Recreational skier"}
@@ -97,56 +140,6 @@ export function About() {
                 {lang === "ru" ? "отец троих детей" : "father of three"}
               </li>
             </ul>
-            <p className="mt-4 text-sm">
-              <span className="font-medium text-mist">
-                {lang === "ru" ? "Действующий" : "Active"}
-              </span>{" "}
-              <span className="hi">{lang === "ru" ? "предприниматель" : "entrepreneur"}</span>
-            </p>
-            <p className="mt-1 text-sm text-muted">
-              {lang === "ru" ? "кофейный проект" : "coffee project"}{" "}
-              <a
-                href={site.coffee.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-voltage hover:underline"
-              >
-                CoffeeFriends
-              </a>
-            </p>
-          </FadeUp>
-
-          <FadeUp delay={0.05} className="grid gap-2">
-            <article className="glass-card p-3.5">
-              <h3 className="card-label">{lang === "ru" ? "Проектный офис" : "Project office"}</h3>
-              <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-muted">
-                <li>
-                  <span className="font-medium text-mist">
-                    {lang === "ru" ? "Команды:" : "Teams:"}
-                  </span>{" "}
-                  {t(site.about.teams)}
-                </li>
-                <li>
-                  <span className="font-medium text-mist">
-                    {lang === "ru" ? "Клиенты:" : "Clients:"}
-                  </span>{" "}
-                  {t(site.about.clients)}
-                </li>
-              </ul>
-            </article>
-
-            <article className="glass-card p-3.5">
-              <h3 className="card-label">
-                {lang === "ru" ? "Технологический стэк" : "Technology stack"}
-              </h3>
-              <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-muted">
-                {site.about.stackGroups[lang].map((group) => (
-                  <li key={group.label}>
-                    <span className="font-medium text-mist">{group.label}:</span> {group.text}
-                  </li>
-                ))}
-              </ul>
-            </article>
 
             <article className="glass-card p-3.5">
               <h3 className="card-label">{lang === "ru" ? "Спорт" : "Sports"}</h3>
@@ -191,6 +184,31 @@ export function About() {
                 , {lang === "ru" ? "права капитана 2019." : "captain license 2019."}
               </p>
             </article>
+          </FadeUp>
+
+          {/* Ряд 3: предприниматель / предпринимательство */}
+          <FadeUp className="grid gap-4 md:grid-cols-2 md:items-start md:gap-6">
+            <div className="text-sm">
+              <p>
+                <span className="font-medium text-mist">
+                  {lang === "ru" ? "Действующий" : "Active"}
+                </span>{" "}
+                <span className="hi">
+                  {lang === "ru" ? "предприниматель" : "entrepreneur"}
+                </span>
+              </p>
+              <p className="mt-1 text-muted">
+                {lang === "ru" ? "кофейный проект" : "coffee project"}{" "}
+                <a
+                  href={site.coffee.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-voltage hover:underline"
+                >
+                  CoffeeFriends
+                </a>
+              </p>
+            </div>
 
             <article className="glass-card p-3.5">
               <h3 className="card-label">
