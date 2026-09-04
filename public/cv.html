@@ -4,30 +4,147 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Олег Сорванов — резюме 2026</title>
+  <meta name="theme-color" content="#0a0a0a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-  <meta name="theme-color" content="#0a0a0a">
-  <link rel="stylesheet" href="assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --void: #0a0a0a;
+      --surface: #141414;
+      --mist: #f5f5f5;
+      --muted: #a3a3a3;
+      --line: #2a2a2a;
+      --voltage: #d4ff00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--void);
+      color: var(--mist);
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      hyphens: none;
+      -webkit-hyphens: none;
+    }
+    a { color: var(--voltage); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
+    .site-header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(10, 10, 10, 0.92);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+    .header-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo { color: var(--mist); font-weight: 600; text-decoration: none; }
+    .logo span { color: var(--voltage); }
+    .lang-switch { display: flex; gap: 0.35rem; }
+    .lang-btn {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      border-radius: 6px;
+      padding: 0.3rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .lang-btn.active {
+      background: var(--voltage);
+      color: #0a0a0a;
+      border-color: var(--voltage);
+    }
     .cv-toolbar {
       display: flex;
       gap: 0.75rem;
       flex-wrap: wrap;
       align-items: center;
-      margin-bottom: 1.5rem;
+      margin: 1.25rem 0 1.5rem;
     }
-    .cv-toolbar a { font-size: 0.88rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--voltage);
+      color: #0a0a0a;
+    }
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--mist);
+    }
+    h1 {
+      font-family: Outfit, Inter, sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.4rem;
+    }
+    .cv-sub { color: var(--muted); margin: 0 0 1.5rem; font-size: 0.92rem; }
+    .cv-section { margin-bottom: 1.4rem; }
+    .cv-section h2 {
+      font-family: Outfit, Inter, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--voltage);
+      margin: 0 0 0.55rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .cv-entry { margin-bottom: 1rem; }
+    .cv-entry h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 0.15rem;
+    }
+    .cv-meta { color: var(--muted); font-size: 0.85rem; margin: 0 0 0.4rem; }
+    ul { margin: 0.25rem 0 0; padding-left: 1.15rem; }
+    li { margin: 0.2rem 0; }
+    .cv-section p { margin: 0; color: #d4d4d4; }
+    [lang="en"] { display: none; }
+    html[data-lang="en"] [lang="ru"] { display: none; }
+    html[data-lang="en"] [lang="en"] { display: block; }
+    html[data-lang="en"] .cv-toolbar [lang="en"],
+    html[data-lang="ru"] .cv-toolbar [lang="ru"] { display: inline-flex; }
+    html[data-lang="en"] .cv-toolbar [lang="ru"],
+    html[data-lang="ru"] .cv-toolbar [lang="en"] { display: none; }
     @media print {
-      .cv-toolbar { display: none; }
-      .cv-page { padding-top: 0; }
+      body { background: #fff; color: #111; font-size: 11.5pt; }
+      .site-header, .cv-toolbar { display: none !important; }
+      a { color: #111; text-decoration: none; }
+      .cv-section h2 { color: #111; border-color: #ccc; }
+      .cv-sub, .cv-meta { color: #444; }
+      .cv-section p, li { color: #222; }
+      .wrap { max-width: none; padding: 0; }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="logo" href="index.html">← Олег <span>Сорванов</span></a>
+    <div class="header-inner">
+      <a class="logo" href="./">← Олег <span>Сорванов</span></a>
       <div class="lang-switch">
         <button type="button" class="lang-btn active" data-lang="ru">RU</button>
         <button type="button" class="lang-btn" data-lang="en">EN</button>
@@ -35,59 +152,69 @@
     </div>
   </header>
 
-  <div class="wrap cv-page">
+  <div class="wrap">
     <div class="cv-toolbar">
       <button type="button" class="btn btn-primary" onclick="window.print()" lang="ru">Сохранить как PDF</button>
       <button type="button" class="btn btn-primary" onclick="window.print()" lang="en">Save as PDF</button>
-      <a href="index.html" lang="ru">← На сайт</a>
-      <a href="index.html" lang="en">← Back to site</a>
+      <a class="btn btn-ghost" href="./" lang="ru">← На сайт</a>
+      <a class="btn btn-ghost" href="./" lang="en">← Back to site</a>
     </div>
 
     <!-- RU -->
     <div lang="ru">
       <h1>Олег Сорванов</h1>
-      <p class="cv-sub">Руководитель проектного офиса · Москва, ЗАО (район Очаково-Матвеевское) · sorvanovon@yandex.ru · +7 (977) 363-93-00 · Telegram @puholet · MAX</p>
+      <p class="cv-sub">
+        Руководитель проектного офиса · ВИРТУ СИСТЕМС · Москва (Очаково-Матвеевское) ·
+        <a href="mailto:sorvanovon@yandex.ru">sorvanovon@yandex.ru</a> ·
+        <a href="tel:+79773639300">+7 977 363-93-00</a> ·
+        <a href="https://t.me/puholet" target="_blank" rel="noopener">Telegram @puholet</a>
+      </p>
 
       <section class="cv-section">
         <h2>Цель</h2>
-        <p>IT-лидер / руководитель проектного офиса / директор ИТ-проектов. Управление портфелем, поставка в прод, финансовый контроль (FP, T&amp;M).</p>
+        <p>IT-лидер / руководитель проектного офиса / директор ИТ-проектов. Портфель, delivery в прод, PMO-аналитика, финансовый контроль (FP / T&amp;M), стабилизация продуктов.</p>
       </section>
 
       <section class="cv-section">
         <h2>Резюме</h2>
-        <p>20+ лет в ИТ: от Oracle-разработчика до руководителя проектного офиса. Управлял портфелем custom-разработки с бюджетом 300+ млн ₽/год, командами 60+ человек. Запускал ЛК Агента для ПАО СК «Росгосстрах» (B2B-платформа: коробочное страхование, страхование имущества физлиц, личный кабинет агента) с нуля — 30 человек, 2 года, 30 000+ пользователей/день.</p>
+        <p>20+ лет в ИТ страхового рынка: от Oracle-разработчика и Team Lead до руководителя проектного офиса. Портфель custom-разработки 300+ млн ₽/год, 8 продакшн-команд, 60+ человек. Запуск и развитие B2B-платформ и ЛК агента; методологии план/факт, статус портфеля и стабилизация delivery для руководства.</p>
       </section>
 
       <section class="cv-section">
         <h2>Опыт</h2>
+
         <div class="cv-entry">
           <h3><a href="https://www.virtusystems.ru/" target="_blank" rel="noopener">ВИРТУ СИСТЕМС</a> — Руководитель проектного офиса</h3>
-          <p class="cv-meta">01.2023 — н.в.</p>
+          <p class="cv-meta">01.2023 — н.в. · ~3 года</p>
           <ul>
-            <li>Портфель: Росгосстрах, АльфаСтрахование, Райффайзен Банк, Согласие</li>
-            <li>3 крупных проекта с нуля до промышленной эксплуатации (микрофронтенды, ЛК Агента для ПАО СК «Росгосстрах»)</li>
-            <li>Руководитель проекта (ЛК Агента для ПАО СК «Росгосстрах»): команда 30 чел., 2 года, контроль FP/T&amp;M, Scrum/Agile</li>
-            <li>Команда полного цикла ~20 чел.; ~40 операционных задач</li>
-            <li>Стек: .NET, Node.js, SQL Server, PostgreSQL, Splunk, SOAP/REST</li>
+            <li>Управление портфелем delivery: 8 команд — VFOS B2B, ОФР, Аутстафф, VirtuDrive, РГС Ипотека, Согласие Ипотека, Согласие ВИТА и НПФ, ВСК / МСГ</li>
+            <li>Клиенты: ВСК, АльфаСтрахование, Райффайзен, Сбер, Росгосстрах, Ингосстрах, Гелиос, МСГ и др.</li>
+            <li>PMO-контур: контроль превышений план/факт (Plan-Fact × Jira), ежемесячный статус портфеля для руководства, программы стабилизации delivery</li>
+            <li>Аналитика рентабельности портфеля: выручка, прямые расходы, операционная прибыль / PM KPI по проектам</li>
+            <li>ЛК Агента для ПАО СК «Росгосстрах»: с нуля до прома — 30 чел. в команде, 13 коробочных продуктов, 30+ интеграций, 30 000+ польз./день</li>
+            <li>Стек и платформа: Micro Frontend / BFF, .NET, Node.js, TypeScript, Kubernetes, Keycloak, MS SQL / PostgreSQL, SOAP/REST, Splunk, Jira, Confluence, Cursor AI</li>
           </ul>
         </div>
+
         <div class="cv-entry">
-          <h3>Росгосстрах — ИТ-Бизнес партнёр, IT Stream Lead</h3>
-          <p class="cv-meta">02.2013 — 10.2022 (10 лет)</p>
+          <h3>Росгосстрах — ИТ-бизнес партнёр, IT Stream Lead</h3>
+          <p class="cv-meta">02.2013 — 10.2022 · 10 лет</p>
           <ul>
-            <li>~150 регулярных активностей/мес; 45 поставок в прод/мес; бюджет 300 млн ₽/год</li>
-            <li>7 внешних команд (50 чел.), 10 внутренних; Waterfall + FP, Agile + Fixed Team</li>
+            <li>~150 регулярных активностей/мес; ~45 поставок в прод/мес; бюджет портфеля 300+ млн ₽/год</li>
+            <li>7 внешних команд (~50 чел.) и внутренние стримы; Waterfall + FP, Agile + Fixed Team</li>
             <li>eОСАГО на rgs.ru (дедлайн ЦБ, 2016); проверка ЦБ 90/92У</li>
-            <li>B2B-платформа: 30→700 продуктов, объём разработки 1→45 млн ₽/мес, отказоустойчивость 99%</li>
+            <li>B2B-платформа: 30→700 продуктов; объём разработки 1→45 млн ₽/мес; отказоустойчивость 99%</li>
             <li>DRP rgs.ru и SMS-агрегатор; 50+ интеграций с партнёрами; 15 ключевых подрядчиков</li>
-            <li>1000+ проектов за 10 лет</li>
+            <li>1000+ проектов / инициатив за 10 лет</li>
           </ul>
         </div>
+
         <div class="cv-entry">
           <h3>ГУТА-Страхование — Team Lead / Senior Developer</h3>
-          <p class="cv-meta">2008 — 2013</p>
+          <p class="cv-meta">2008 — 2013 · 5 лет</p>
           <ul>
-            <li>Oracle, PL/SQL, MS SQL, Oracle Forms, Toad, C#, Delphi — руководитель команды разработки и сопровождения фронт и бэк систем СК</li>
+            <li>Руководитель команды разработки и сопровождения фронт- и бэк-систем СК</li>
+            <li>Oracle, PL/SQL, MS SQL, Oracle Forms / Reports, Toad, C#, Delphi</li>
           </ul>
         </div>
       </section>
@@ -95,33 +222,33 @@
       <section class="cv-section">
         <h2>Образование</h2>
         <div class="cv-entry">
-          <h3>Всероссийская академия внешней торговли, Москва — 3,5 года, финансы и кредит, экономист-международник</h3>
-          <p class="cv-meta">2012</p>
+          <h3>Всероссийская академия внешней торговли — финансы и кредит, экономист-международник</h3>
+          <p class="cv-meta">2012 · 3,5 года · Москва</p>
         </div>
         <div class="cv-entry">
-          <h3>Военная академия РВСН им. Петра Великого — 5 лет, ВМКСиС, инженер</h3>
-          <p class="cv-meta">2006</p>
+          <h3>Военная академия РВСН им. Петра Великого — ВМКСиС, инженер</h3>
+          <p class="cv-meta">2006 · 5 лет</p>
         </div>
       </section>
 
       <section class="cv-section">
         <h2>Курсы и сертификаты</h2>
         <ul>
-          <li><a href="https://pro-yachting.ru/" target="_blank" rel="noopener">PROyachting</a> — права яхтенного капитана, 2019</li>
           <li>IT Директор 2.0 — РШУ, 2021</li>
-          <li>Управление IT Службой — РДТЕХ, 2015</li>
+          <li><a href="https://pro-yachting.ru/" target="_blank" rel="noopener">PROyachting</a> — права яхтенного капитана, 2019</li>
+          <li>Управление IT-службой — РДТЕХ, 2015</li>
           <li>Oracle Database 10g PL/SQL — РДТЕХ, 2007–2008</li>
         </ul>
       </section>
 
       <section class="cv-section">
         <h2>Технологический стэк</h2>
-        <p>Micro Frontend / BFF, .NET, Delphi, Node.js, TypeScript, Kubernetes, Keycloak · Oracle, MS SQL, PostgreSQL, PL/SQL, Oracle Forms, Oracle Reports, SOAP/REST, Splunk · Jira, Confluence, Postman, Cursor AI</p>
+        <p>Micro Frontend / BFF, .NET, Delphi, Node.js, TypeScript, Kubernetes, Keycloak · Oracle, MS SQL, PostgreSQL, PL/SQL, Oracle Forms, Oracle Reports · SOAP/REST, Splunk · Jira, Confluence, Postman, Cursor AI</p>
       </section>
 
       <section class="cv-section">
         <h2>Дополнительно</h2>
-        <p>Владелец CoffeeFriends — сеть кофепоинтов, кофе и еда на вынос (150+ чеков ежедневно). Отец троих детей; отдых с детьми — пляжный досуг в Москве, парки. Две дочери — 6 лет в художественной гимнастике. Workout (по настроению и при наличии свободного времени): турники, брусья, бег, <a href="https://www.ddxfitness.ru/clubs/ddx-matveevskoe-planeta/" target="_blank" rel="noopener">DDX — Планета</a>. <a href="https://runkeeper.com/user/sorvanovon/profile" target="_blank" rel="noopener">Беговые лыжи</a> (конёк): <a href="https://yandex.ru/navi?rtext=55.705330%2C37.481051~55.675768%2C37.409927&amp;rtt=auto" target="_blank" rel="noopener">Мещёрский лес</a>, <a href="https://yandex.ru/navi/org/lyzherollernaya_trassa/168399550179?si=4xx9tm30a9ux8rvak1wu98zkpr" target="_blank" rel="noopener">парк Ларисы Лазутиной</a>; подбор экипировки. Английский — Upper Intermediate.</p>
+        <p>Владелец CoffeeFriends — сеть кофепоинтов (сейчас 2 точки в БЦ «Китеж»). Отец троих детей. Беговые лыжи, яхтинг (капитан с 2019). Английский — Upper Intermediate. Портфолио: <a href="https://puholet-sketch.github.io/oleg-sorvanov/">puholet-sketch.github.io/oleg-sorvanov</a></p>
       </section>
 
       <section class="cv-section">
@@ -133,48 +260,58 @@
     <!-- EN -->
     <div lang="en">
       <h1>Oleg Sorvanov</h1>
-      <p class="cv-sub">Head of Project Office · Moscow, ZAO (Ochakovo-Matveyevskoye) · sorvanovon@yandex.ru · +7 (977) 363-93-00 · Telegram @puholet · MAX</p>
+      <p class="cv-sub">
+        Head of Project Office · VIRTU SYSTEMS · Moscow (Ochakovo-Matveyevskoye) ·
+        <a href="mailto:sorvanovon@yandex.ru">sorvanovon@yandex.ru</a> ·
+        <a href="tel:+79773639300">+7 977 363-93-00</a> ·
+        <a href="https://t.me/puholet" target="_blank" rel="noopener">Telegram @puholet</a>
+      </p>
 
       <section class="cv-section">
         <h2>Objective</h2>
-        <p>IT leader / Head of Project Office / IT Program Director. Portfolio management, production delivery, financial control (fixed price, T&amp;M).</p>
+        <p>IT leader / Head of Project Office / IT Program Director. Portfolio management, production delivery, PMO analytics, financial control (FP / T&amp;M), product stabilization.</p>
       </section>
 
       <section class="cv-section">
         <h2>Summary</h2>
-        <p>20+ years in IT: from Oracle developer to Head of Project Office. Managed a custom development portfolio with a 300M+ ₽/year budget and teams of 60+ people. Launched the Agent Personal Cabinet for Rosgosstrakh (B2B platform: packaged insurance, individual property insurance, agent portal) from scratch — 30 people, 2 years, 30,000+ daily users.</p>
+        <p>20+ years in insurance IT: from Oracle developer and Team Lead to Head of Project Office. Custom development portfolio 300M+ ₽/year, 8 production teams, 60+ people. B2B platforms and agent portals; plan/fact methodology, portfolio status, and delivery stabilization for leadership.</p>
       </section>
 
       <section class="cv-section">
         <h2>Experience</h2>
+
         <div class="cv-entry">
           <h3><a href="https://www.virtusystems.ru/" target="_blank" rel="noopener">VIRTU SYSTEMS</a> — Head of Project Office</h3>
-          <p class="cv-meta">Jan 2023 — present</p>
+          <p class="cv-meta">Jan 2023 — present · ~3 years</p>
           <ul>
-            <li>Portfolio: Rosgosstrakh, AlfaStrakhovanie, Raiffeisen Bank, Soglasie</li>
-            <li>Three major zero-to-production projects (micro-frontends, Agent Personal Cabinet for Rosgosstrakh)</li>
-            <li>Project Manager (Agent Personal Cabinet for Rosgosstrakh): 30-person team, 2 years, FP/T&amp;M control, Scrum/Agile</li>
-            <li>Full-cycle team ~20 people; ~40 operational workstreams</li>
-            <li>Stack: .NET, Node.js, SQL Server, PostgreSQL, Splunk, SOAP/REST</li>
+            <li>Delivery portfolio: 8 teams — VFOS B2B, OFR, Outstaff, VirtuDrive, RGS Mortgage, Soglasie Mortgage, Soglasie VITA &amp; NPF, VSK / MSG</li>
+            <li>Clients: VSK, AlfaStrakhovanie, Raiffeisen, Sber, Rosgosstrakh, Ingosstrakh, Helios, MSG, and others</li>
+            <li>PMO operating system: plan/fact overrun control (Plan-Fact × Jira), monthly portfolio digest for leadership, delivery stabilization programs</li>
+            <li>Portfolio profitability analytics: revenue, direct costs, operating profit / PM KPI by project</li>
+            <li>Agent Personal Cabinet for Rosgosstrakh: zero to production — 30-person team, 13 packaged products, 30+ integrations, 30,000+ users/day</li>
+            <li>Stack: Micro Frontend / BFF, .NET, Node.js, TypeScript, Kubernetes, Keycloak, MS SQL / PostgreSQL, SOAP/REST, Splunk, Jira, Confluence, Cursor AI</li>
           </ul>
         </div>
+
         <div class="cv-entry">
           <h3>Rosgosstrakh — IT Business Partner, IT Stream Lead</h3>
-          <p class="cv-meta">Feb 2013 — Oct 2022 (10 years)</p>
+          <p class="cv-meta">Feb 2013 — Oct 2022 · 10 years</p>
           <ul>
-            <li>~150 ongoing activities/mo; 45 production releases/month; 300M ₽/year budget</li>
-            <li>7 external teams (50 people), 10 internal; Waterfall + FP, Agile + Fixed Team</li>
-            <li>eOSAGO on rgs.ru (CB deadline, 2016); CB audit 90/92U</li>
-            <li>B2B platform: 30→700 products; dev volume 1→45M ₽/month; 99% availability</li>
+            <li>~150 ongoing activities/mo; ~45 production releases/month; portfolio budget 300M+ ₽/year</li>
+            <li>7 external teams (~50 people) plus internal streams; Waterfall + FP, Agile + Fixed Team</li>
+            <li>eOSAGO on rgs.ru (Central Bank deadline, 2016); CB audit 90/92U</li>
+            <li>B2B platform: 30→700 products; development volume 1→45M ₽/month; 99% availability</li>
             <li>DRP for rgs.ru and SMS aggregator; 50+ partner integrations; 15 key vendors</li>
-            <li>1000+ projects over 10 years</li>
+            <li>1000+ projects / initiatives over 10 years</li>
           </ul>
         </div>
+
         <div class="cv-entry">
           <h3>GUTA Insurance — Team Lead / Senior Developer</h3>
-          <p class="cv-meta">2008 — 2013</p>
+          <p class="cv-meta">2008 — 2013 · 5 years</p>
           <ul>
-            <li>Oracle, PL/SQL, MS SQL, Oracle Forms, Toad, C#, Delphi — head of development and support team for front- and back-end systems at the insurance company</li>
+            <li>Head of development and support for front- and back-end systems</li>
+            <li>Oracle, PL/SQL, MS SQL, Oracle Forms / Reports, Toad, C#, Delphi</li>
           </ul>
         </div>
       </section>
@@ -182,20 +319,20 @@
       <section class="cv-section">
         <h2>Education</h2>
         <div class="cv-entry">
-          <h3>Russian Foreign Trade Academy, Moscow — 3.5 years, finance and credit, international economist</h3>
-          <p class="cv-meta">2012</p>
+          <h3>Russian Foreign Trade Academy — finance and credit, international economist</h3>
+          <p class="cv-meta">2012 · 3.5 years · Moscow</p>
         </div>
         <div class="cv-entry">
-          <h3>Peter the Great Military Academy of the Strategic Missile Forces — 5 years, computing systems and networks, engineer</h3>
-          <p class="cv-meta">2006</p>
+          <h3>Peter the Great Military Academy of the SRF — computing systems and networks, engineer</h3>
+          <p class="cv-meta">2006 · 5 years</p>
         </div>
       </section>
 
       <section class="cv-section">
         <h2>Training &amp; certificates</h2>
         <ul>
-          <li><a href="https://pro-yachting.ru/" target="_blank" rel="noopener">PROyachting</a> — yacht captain license, 2019</li>
           <li>IT Director 2.0 — Russian School of Management, 2021</li>
+          <li><a href="https://pro-yachting.ru/" target="_blank" rel="noopener">PROyachting</a> — yacht captain license, 2019</li>
           <li>IT Service Management for Executives — RDTEX, 2015</li>
           <li>Oracle Database 10g PL/SQL — RDTEX, 2007–2008</li>
         </ul>
@@ -203,12 +340,12 @@
 
       <section class="cv-section">
         <h2>Technology stack</h2>
-        <p>Micro Frontend / BFF, .NET, Delphi, Node.js, TypeScript, Kubernetes, Keycloak · Oracle, MS SQL, PostgreSQL, PL/SQL, Oracle Forms, Oracle Reports, SOAP/REST, Splunk · Jira, Confluence, Postman, Cursor AI</p>
+        <p>Micro Frontend / BFF, .NET, Delphi, Node.js, TypeScript, Kubernetes, Keycloak · Oracle, MS SQL, PostgreSQL, PL/SQL, Oracle Forms, Oracle Reports · SOAP/REST, Splunk · Jira, Confluence, Postman, Cursor AI</p>
       </section>
 
       <section class="cv-section">
         <h2>Additional</h2>
-        <p>Owner of CoffeeFriends — coffee-point network, coffee &amp; takeaway food (150+ receipts daily). Father of three; family time — beach leisure in Moscow, parks. Two daughters — 6 years in artistic gymnastics. Workout (depending on mood and free time): pull-up bar, parallel bars, running, <a href="https://www.ddxfitness.ru/clubs/ddx-matveevskoe-planeta/" target="_blank" rel="noopener">DDX — Planeta</a>. <a href="https://runkeeper.com/user/sorvanovon/profile" target="_blank" rel="noopener">Cross-country skiing</a> (skating style): <a href="https://yandex.ru/navi?rtext=55.705330%2C37.481051~55.675768%2C37.409927&amp;rtt=auto" target="_blank" rel="noopener">Meshchersky Forest</a>, <a href="https://yandex.ru/navi/org/lyzherollernaya_trassa/168399550179?si=4xx9tm30a9ux8rvak1wu98zkpr" target="_blank" rel="noopener">Larisa Lazutina Park</a>; gear consulting. English — Upper Intermediate.</p>
+        <p>Owner of CoffeeFriends — coffee-point network (currently 2 locations at Kitizh BC). Father of three. Cross-country skiing, yachting (captain since 2019). English — Upper Intermediate. Portfolio: <a href="https://puholet-sketch.github.io/oleg-sorvanov/">puholet-sketch.github.io/oleg-sorvanov</a></p>
       </section>
 
       <section class="cv-section">
@@ -218,6 +355,27 @@
     </div>
   </div>
 
-  <script src="assets/js/main.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var buttons = document.querySelectorAll(".lang-btn");
+      function setLang(lang) {
+        root.setAttribute("data-lang", lang);
+        root.setAttribute("lang", lang);
+        buttons.forEach(function (btn) {
+          btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+        });
+        try { localStorage.setItem("cv-lang", lang); } catch (e) {}
+      }
+      buttons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          setLang(btn.getAttribute("data-lang"));
+        });
+      });
+      var saved = null;
+      try { saved = localStorage.getItem("cv-lang"); } catch (e) {}
+      setLang(saved === "en" ? "en" : "ru");
+    })();
+  </script>
 </body>
 </html>
