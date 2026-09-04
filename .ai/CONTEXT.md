@@ -1,18 +1,20 @@
 # Porfolio (oleg-sorvanov)
 
-context_version: 10
-updated: 2026-08-29
+context_version: 11
+updated: 2026-09-04
+status: active
+next: verify projects grid on live Pages
+blockers: []
 
 ## Цель
 Next.js-портфолио Олега Сорванова на GitHub Pages.
 
 ## Статус
-- Эталон вёрстки: `oleg-sorvanov/index.html` (компактный one-pager, `#location`)
-- Шрифты легче: Outfit 600, Inter 400/500; лаймовые uppercase-заголовки карточек
-- Секции как в HTML: about → career → cases → projects → coffee → life → location → contact
 - Сайт: https://puholet-sketch.github.io/oleg-sorvanov/
-- Добавлен проект LC200: https://puholet-sketch.github.io/LC200/
-- Добавлен проект Mercedes G 63: https://puholet-sketch.github.io/MercedesG63/
+- About: 3 тематических ряда
+- Личные проекты: «Договор с иностранцем» (ex-Фурик); убраны HH/LC200/VIRTU Rentability
+- Кейс рентабельности Virtu остаётся в #cases
+- Секции: about → career → cases → projects → coffee → life → location → contact
 
 ## Следующий шаг
-Проверить деплой Pages после пуша.
+Проверить сетку личных проектов после деплоя.

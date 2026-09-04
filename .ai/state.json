@@ -1,17 +1,12 @@
 {
-  "context_version": 10,
-  "timestamp": "2026-08-29T01:50:00+03:00",
-  "context_hash": "mercedes-g63-portfolio",
-  "active_files": [
-    "src/lib/site.ts"
-  ],
-  "active_file_hashes": {},
-  "decisions": [
-    "Restore compact HTML one-pager structure including #location; lighter Outfit 600 headings; keep lime uppercase card labels",
-    "Personal projects include LC200 and Mercedes G 63 Pages sites"
-  ],
+  "v": 4,
+  "updated": "2026-09-04T10:50:00+03:00",
+  "status": "active",
+  "next": "verify projects grid on live Pages",
   "blockers": [],
-  "last_error": null,
-  "retry_count": 0,
-  "next_action": "GitHub Actions задеплоит Pages"
+  "hot_files": [
+    "src/lib/site.ts",
+    "src/components/projects.tsx",
+    "src/components/about.tsx"
+  ]
 }

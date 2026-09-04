@@ -4,6 +4,8 @@
 |------|--------|
 | `src/app/page.tsx` | Сборка: hero → about → career → cases → projects → coffee → life → location → contact |
 | `src/lib/site.ts` | Весь контент RU/EN |
+| `src/components/about.tsx` | Обо мне: 3 ряда (био/стек, спорт, бизнес) |
+| `src/components/projects.tsx` | Личные проекты (вкл. «Договор с иностранцем») |
 | `src/components/location.tsx` | Блок `#location` как в HTML-оригинале |
 | `src/components/coffee.tsx` | CoffeeFriends + партнёры + меню |
 | `src/components/life.tsx` | Хобби |
