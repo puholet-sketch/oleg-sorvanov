@@ -11,12 +11,13 @@ export function About() {
     <section id="about" className="bg-void">
       <div className="mx-auto max-w-[1080px] px-4 py-8 sm:px-6 md:px-8 md:py-9">
         <FadeUp>
-          <h2 className="section-heading">{lang === "ru" ? "Обо мне" : "About"}</h2>
-          <p className="mt-1 text-sm text-muted">{t(site.about.intro)}</p>
+          <div className="grid gap-6 md:grid-cols-2 md:items-start md:gap-8">
+            {/* Левая колонка: заголовок на одной линии с «Проектный офис» */}
+            <div>
+              <h2 className="section-heading">{lang === "ru" ? "Обо мне" : "About"}</h2>
+              <p className="mt-1 text-sm text-muted">{t(site.about.intro)}</p>
 
-          <div className="mt-5 grid gap-6 md:grid-cols-2 md:items-start md:gap-8">
-            {/* Левая колонка — один сплошной блок */}
-            <div className="body-copy space-y-3 text-sm leading-relaxed text-muted">
+              <div className="body-copy mt-5 space-y-3 text-sm leading-relaxed text-muted">
               <div>
                 <p className="font-medium text-mist">
                   {lang === "ru" ? "Выпускник:" : "Graduate:"}
@@ -123,9 +124,10 @@ export function About() {
                   </a>
                 </p>
               </div>
+              </div>
             </div>
 
-            {/* Правая колонка — карточки с общего верха */}
+            {/* Правая колонка — верх совпадает с «Обо мне» */}
             <div className="grid gap-2">
               <article className="glass-card p-3.5">
                 <h3 className="card-label">
