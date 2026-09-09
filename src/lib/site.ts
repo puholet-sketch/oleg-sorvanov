@@ -256,6 +256,14 @@ export const site = {
   ],
   projects: [
     {
+      title: "Homebrew Parts",
+      text: {
+        ru: "Витрина топ-20 запчастей для пивоварения и комплектации оборудования: цены-ориентиры, заказ в Telegram.",
+        en: "Top-20 homebrew parts showcase: retail price anchors, Telegram order flow.",
+      },
+      href: "https://puholet-sketch.github.io/homebrew-parts-showcase/",
+    },
+    {
       title: "Договор с иностранцем",
       text: {
         ru: "Трудовой договор · МВД · инструкция. Готовый пакет к подписанию и публичная инструкция со скачиванием документов.",
