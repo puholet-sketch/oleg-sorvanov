@@ -258,10 +258,10 @@ export const site = {
     {
       title: "Homebrew Parts",
       text: {
-        ru: "Витрина топ-20 запчастей для пивоварения и комплектации оборудования: цены-ориентиры, заказ в Telegram.",
-        en: "Top-20 homebrew parts showcase: retail price anchors, Telegram order flow.",
+        ru: "Витрина запчастей + интерактивная схема аппарата (дистиллятор / пивоварня): hover по узлу, drill-down, ссылки на SKU.",
+        en: "Parts showcase + interactive apparatus map (still / brewery): hotspot hover, drill-down, SKU links.",
       },
-      href: "https://puholet-sketch.github.io/homebrew-parts-showcase/",
+      href: "https://puholet-sketch.github.io/homebrew-parts-showcase/schema.html",
     },
     {
       title: "Договор с иностранцем",
