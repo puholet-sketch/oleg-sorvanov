@@ -1,12 +1,14 @@
 {
   "v": 4,
-  "updated": "2026-09-04T10:50:00+03:00",
+  "updated": "2026-09-10T13:45:00+03:00",
   "status": "active",
-  "next": "verify projects grid on live Pages",
+  "next": "verify Pages deploy for B2B/VFOS/coffee",
   "blockers": [],
   "hot_files": [
+    "src/components/coffee.tsx",
     "src/lib/site.ts",
-    "src/components/projects.tsx",
-    "src/components/about.tsx"
+    "src/app/cases/b2b/page.tsx",
+    "src/app/cases/vfos/page.tsx",
+    "src/components/case-page.tsx"
   ]
 }

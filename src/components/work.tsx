@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
@@ -14,30 +15,21 @@ export function Work() {
           <h2 className="section-heading">{lang === "ru" ? "Кейсы" : "Cases"}</h2>
           <p className="mt-1 max-w-xl text-sm text-muted">
             {lang === "ru"
-              ? "Продуктовый delivery · PMO-аналитика · портфель · стабилизация"
-              : "Product delivery · PMO analytics · portfolio · stabilization"}
+              ? "Продуктовый delivery · платформы · PMO-аналитика · стабилизация"
+              : "Product delivery · platforms · PMO analytics · stabilization"}
           </p>
         </div>
 
         <div className="grid gap-2.5 md:grid-cols-2">
           {site.cases.map((item, index) => {
-            const href = "href" in item ? item.href : "#contact";
+            const href = "href" in item && item.href ? item.href : "#contact";
             const external = href.startsWith("http");
             const featured = index === 0;
-            return (
-              <motion.a
-                key={item.title.ru}
-                href={href}
-                target={external ? "_blank" : undefined}
-                rel={external ? "noopener noreferrer" : undefined}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.4, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
-                className={`glass-card group relative block p-3.5 ${
-                  featured ? "md:col-span-2 md:grid md:grid-cols-[1.4fr_auto] md:items-center md:gap-5" : ""
-                }`}
-              >
+            const className = `glass-card group relative block p-3.5 ${
+              featured ? "md:col-span-2 md:grid md:grid-cols-[1.4fr_auto] md:items-center md:gap-5" : ""
+            }`;
+            const body = (
+              <>
                 <div>
                   <p className="card-label">
                     {String(index + 1).padStart(2, "0")} · {t(item.meta)}
@@ -68,7 +60,35 @@ export function Work() {
                       ? "Подробнее"
                       : "Details"}
                 </span>
+              </>
+            );
+
+            return external ? (
+              <motion.a
+                key={item.title.ru}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
+                className={className}
+              >
+                {body}
               </motion.a>
+            ) : (
+              <motion.div
+                key={item.title.ru}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <Link href={href} className={className}>
+                  {body}
+                </Link>
+              </motion.div>
             );
           })}
         </div>

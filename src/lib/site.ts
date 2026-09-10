@@ -173,21 +173,55 @@ export const site = {
   cases: [
     {
       title: {
-        ru: "ЛК Агента для ПАО СК «Росгосстрах»",
-        en: "Agent Personal Cabinet for Rosgosstrakh",
+        ru: "ЛК Агента / ОФР для ПАО СК «Росгосстрах»",
+        en: "Agent cabinet / OFR for Rosgosstrakh",
       },
       meta: {
         ru: "B2B-платформа · коробочное страхование · ИФЛ",
         en: "B2B platform · packaged insurance · property",
       },
       summary: {
-        ru: "С нуля до прома: 30 000+ пользователей/день. Единый контур агента, 13 коробочных продуктов, 30+ интеграций.",
-        en: "From scratch to production: 30,000+ users/day. Unified agent workflow, 13 packaged products, 30+ integrations.",
+        ru: "Контрактное оформление в ЛКП: микрофронтенды продуктов, BFF, Guidewire. С нуля до прома — единый контур агента, коробочные продукты и интеграции.",
+        en: "Contract issuance in the partner cabinet: product micro-frontends, BFF, Guidewire. Zero to production — unified agent contour, packs and integrations.",
       },
       stats: [
-        { value: "30", label: { ru: "в команде", en: "team" } },
+        { value: "~20", label: { ru: "продуктовых МФ", en: "product MFs" } },
         { value: "30K+", label: { ru: "польз./день", en: "users/day" } },
       ],
+      href: "/cases/b2b/",
+      cta: { ru: "Открыть описание", en: "Open overview" },
+    },
+    {
+      title: {
+        ru: "VFOS · виртуальный фронт-офис",
+        en: "VFOS · virtual front office",
+      },
+      meta: {
+        ru: "Партнёрский канал · портал + API · РГС / БПБ",
+        en: "Partner channel · portal + API · RGS / BPB",
+      },
+      summary: {
+        ru: "Платформа продаж для партнёров страховщика: браузерный фронт, Product API, печать и выгрузки в учёт. Сопровождение и развитие в промышленной эксплуатации.",
+        en: "Partner sales platform: browser front, Product API, print and accounting exports. Live support and evolution in production.",
+      },
+      href: "/cases/vfos/",
+      cta: { ru: "Открыть описание", en: "Open overview" },
+    },
+    {
+      title: {
+        ru: "FACT · учёт времени в PMO",
+        en: "FACT · PMO time tracking",
+      },
+      meta: {
+        ru: "PMO-плейбук · Epic → Story → Subtask",
+        en: "PMO playbook · Epic → Story → Subtask",
+      },
+      summary: {
+        ru: "Методология учёта времени: фикс. бюджет, SLA, план/факт — прозрачность загрузки команд без ручного хаоса.",
+        en: "Time-tracking methodology: fixed budget, SLA, plan/fact — team load transparency without manual chaos.",
+      },
+      href: "https://puholet-sketch.github.io/pmo-time/",
+      cta: { ru: "Открыть FACT", en: "Open FACT" },
     },
     {
       title: {
@@ -223,16 +257,16 @@ export const site = {
     },
     {
       title: {
-        ru: "Стабилизация на проекте СК",
-        en: "Stabilization on an insurer project",
+        ru: "PATH · стабилизация на проекте СК",
+        en: "PATH · stabilization on an insurer project",
       },
       meta: {
         ru: "Программное управление · от хаоса к контролю",
         en: "Program management · from chaos to control",
       },
       summary: {
-        ru: "24+ инициативы: релизы, шаблоны БТ, план/факт, Jira Timeline, качество и AI-отчётность.",
-        en: "24+ initiatives: releases, BRD templates, plan/fact, Jira Timeline, quality, and AI reporting.",
+        ru: "24+ инициативы: релизы, шаблоны БТ, план/факт, Jira Timeline, качество и прозрачная отчётность для руководства.",
+        en: "24+ initiatives: releases, BRD templates, plan/fact, Jira Timeline, quality and leadership visibility.",
       },
       href: "https://puholet-sketch.github.io/stabilization-path/",
       cta: { ru: "Открыть PATH", en: "Open PATH" },
@@ -280,28 +314,12 @@ export const site = {
       href: "https://puholet-sketch.github.io/MercedesG63/",
     },
     {
-      title: "FACT",
-      text: {
-        ru: "Плейбук учёта времени в PMO: Epic → Story → Subtask, фикс. бюджет, SLA, план/факт.",
-        en: "PMO time-tracking playbook: Epic → Story → Subtask, fixed budget, SLA, plan/fact.",
-      },
-      href: "https://puholet-sketch.github.io/pmo-time/",
-    },
-    {
       title: "Structa",
       text: {
         ru: "Интерактивный кадровый реестр: дерево отделов, карточки, Excel/PDF.",
         en: "Interactive org registry: department tree, profiles, Excel/PDF.",
       },
       href: "https://puholet-sketch.github.io/structa-demo/",
-    },
-    {
-      title: "PATH",
-      text: {
-        ru: "Консалтинг-маршрут стабилизации delivery и прозрачности для руководства.",
-        en: "Consulting path for delivery stabilization and leadership visibility.",
-      },
-      href: "https://puholet-sketch.github.io/stabilization-path/",
     },
     {
       title: "ОУД4",
@@ -354,19 +372,9 @@ export const site = {
     cta: "coffee.friends →",
     strip: [
       {
-        value: "5",
-        phase: { ru: "до пандемии", en: "pre-COVID" },
-        note: { ru: "точек в БЦ", en: "BC locations" },
-      },
-      {
-        value: "2",
-        phase: { ru: "retail", en: "retail" },
-        note: { ru: "1 закрылась · 1 ~5 лет", en: "1 closed · 1 ~5 yrs" },
-      },
-      {
         value: "2",
         phase: { ru: "сейчас", en: "now" },
-        note: { ru: "БЦ Китеж", en: "Kitizh BC" },
+        note: { ru: "точки · БЦ «Китеж»", en: "points · Kitizh BC" },
         current: true,
       },
     ],

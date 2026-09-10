@@ -1,9 +1,9 @@
 # Porfolio (oleg-sorvanov)
 
-context_version: 11
-updated: 2026-09-04
+context_version: 14
+updated: 2026-09-10
 status: active
-next: verify projects grid on live Pages
+next: verify Pages deploy for cases + coffee row
 blockers: []
 
 ## Цель
@@ -11,10 +11,10 @@ Next.js-портфолио Олега Сорванова на GitHub Pages.
 
 ## Статус
 - Сайт: https://puholet-sketch.github.io/oleg-sorvanov/
-- About: 3 тематических ряда
-- Личные проекты: «Договор с иностранцем» (ex-Фурик); убраны HH/LC200/VIRTU Rentability
-- Кейс рентабельности Virtu остаётся в #cases
-- Секции: about → career → cases → projects → coffee → life → location → contact
+- Кейсы: B2B/ОФР `/cases/b2b/`, VFOS `/cases/vfos/`; FACT + PATH в кейсах
+- CoffeeFriends: одна строка — title + «2 · сейчас · Китеж» + CTA
+- CV PDF: `public/Oleg_Sorvanov_CV.pdf`
+- Контакты: email/тел. компактнее, телефон nowrap
 
 ## Следующий шаг
-Проверить сетку личных проектов после деплоя.
+Проверить деплой и живые URL кейсов.

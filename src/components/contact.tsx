@@ -12,11 +12,14 @@ export function Contact() {
       label: "Email",
       href: `mailto:${site.email}`,
       value: site.email,
+      compact: true,
     },
     {
       label: lang === "ru" ? "тел." : "Phone",
       href: site.phoneHref,
       value: site.phone,
+      compact: true,
+      nowrap: true,
     },
     {
       label: "Telegram",
@@ -53,31 +56,28 @@ export function Contact() {
           </p>
         </FadeUp>
 
-        <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[minmax(0,1.45fr)_repeat(5,minmax(0,1fr))]">
-          {items.map((item) => {
-            const isEmail = item.label === "Email";
-            return (
-              <a
-                key={item.label}
-                href={item.href}
-                target={item.external ? "_blank" : undefined}
-                rel={item.external ? "noopener noreferrer" : undefined}
-                className="glass-card block min-w-0 p-3.5"
-                title={isEmail ? item.value : undefined}
+        <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,1.25fr)_repeat(4,minmax(0,1fr))]">
+          {items.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
+              className="glass-card block min-w-0 overflow-hidden p-3 sm:p-3.5"
+              title={item.compact ? item.value : undefined}
+            >
+              <div className="card-label">{item.label}</div>
+              <div
+                className={`mt-1.5 text-mist ${
+                  item.compact
+                    ? `text-[0.72rem] leading-snug sm:text-[0.78rem] ${item.nowrap ? "whitespace-nowrap" : "break-all"}`
+                    : "text-sm"
+                }`}
               >
-                <div className="card-label">{item.label}</div>
-                <div
-                  className={`mt-1.5 text-mist ${
-                    isEmail
-                      ? "text-[0.78rem] leading-snug break-all"
-                      : "text-sm"
-                  }`}
-                >
-                  {item.value}
-                </div>
-              </a>
-            );
-          })}
+                {item.value}
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>

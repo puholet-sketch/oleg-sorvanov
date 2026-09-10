@@ -14,8 +14,8 @@ export function Projects() {
           <h2 className="section-heading">{lang === "ru" ? "Личные проекты" : "Personal projects"}</h2>
           <p className="mt-1 text-sm text-muted">
             {lang === "ru"
-              ? "Публичные демо · PlanFact и статус — в кейсах выше"
-              : "Public demos · PlanFact and status cases are above"}
+              ? "Публичные демо · FACT, PATH и платформы — в кейсах выше"
+              : "Public demos · FACT, PATH and platforms are in cases above"}
           </p>
         </FadeUp>
 

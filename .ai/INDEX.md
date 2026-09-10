@@ -4,21 +4,25 @@
 |------|--------|
 | `src/app/page.tsx` | Сборка: hero → about → career → cases → projects → coffee → life → location → contact |
 | `src/lib/site.ts` | Весь контент RU/EN |
-| `src/components/about.tsx` | Обо мне: 3 ряда (био/стек, спорт, бизнес) |
-| `src/components/projects.tsx` | Личные проекты (вкл. «Договор с иностранцем») |
-| `public/cv.html` | Резюме RU/EN (актуализация ВИРТУ PMO) |
-| `public/Oleg_Sorvanov_CV.pdf` | Трендовый PDF CV (1 страница, HH-стиль) |
-| `scripts/generate_cv_pdf.py` | Генератор PDF резюме |
-| `src/components/location.tsx` | Блок `#location` как в HTML-оригинале |
-| `src/components/coffee.tsx` | CoffeeFriends + партнёры + меню |
+| `src/components/about.tsx` | Обо мне: 2 колонки |
+| `src/components/work.tsx` | Кейсы + ссылки на внутренние страницы |
+| `src/components/projects.tsx` | Личные проекты |
+| `src/components/coffee.tsx` | CoffeeFriends: одна строка (2 точки Китеж) + меню |
+| `src/components/case-page.tsx` | Общий каркас страниц кейсов |
+| `src/components/contact.tsx` | Контакты (email/тел. компактно) |
+| `src/app/cases/b2b/page.tsx` | Кейс ОФР / B2B ЛКП |
+| `src/app/cases/vfos/page.tsx` | Кейс VFOS (без AI-перспектив) |
+| `public/cv.html` | Резюме RU/EN |
+| `public/Oleg_Sorvanov_CV.pdf` | PDF CV (1 страница) |
+| `scripts/generate_cv_pdf.py` | Генератор PDF |
+| `src/components/location.tsx` | Блок `#location` |
 | `src/components/life.tsx` | Хобби |
 | `.github/workflows/deploy.yml` | GitHub Pages deploy |
 
 ## Внешние проекты
-| Проект | Pages | Repo |
-|--------|-------|------|
-| Портфолио | https://puholet-sketch.github.io/oleg-sorvanov/ | этот репо |
-| LC200 | https://puholet-sketch.github.io/LC200/ | https://github.com/puholet-sketch/LC200 |
-| Mercedes G 63 | https://puholet-sketch.github.io/MercedesG63/ | https://github.com/puholet-sketch/MercedesG63 |
-| CoffeeFriends | https://puholet-sketch.github.io/coffee.friends/ | — |
-| Бегущее меню | https://puholet-sketch.github.io/coffee-menu/ | https://github.com/puholet-sketch/coffee-menu (MarketingCofe) |
+| Проект | Pages |
+|--------|-------|
+| Портфолио | https://puholet-sketch.github.io/oleg-sorvanov/ |
+| B2B/ОФР кейс | https://puholet-sketch.github.io/oleg-sorvanov/cases/b2b/ |
+| VFOS кейс | https://puholet-sketch.github.io/oleg-sorvanov/cases/vfos/ |
+| CV PDF | https://puholet-sketch.github.io/oleg-sorvanov/Oleg_Sorvanov_CV.pdf |

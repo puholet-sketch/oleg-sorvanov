@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useI18n } from "@/lib/i18n";
@@ -17,12 +18,12 @@ export function SiteHeader() {
   }, []);
 
   const links = [
-    { href: "#about", label: { ru: "Обо мне", en: "About" } },
-    { href: "#career", label: { ru: "Карьера", en: "Career" } },
-    { href: "#cases", label: { ru: "Кейсы", en: "Cases" } },
-    { href: "#projects", label: { ru: "Проекты", en: "Projects" } },
-    { href: "#location", label: { ru: "Локация", en: "Location" } },
-    { href: "#contact", label: { ru: "Контакты", en: "Contact" } },
+    { href: "/#about", label: { ru: "Обо мне", en: "About" } },
+    { href: "/#career", label: { ru: "Карьера", en: "Career" } },
+    { href: "/#cases", label: { ru: "Кейсы", en: "Cases" } },
+    { href: "/#projects", label: { ru: "Проекты", en: "Projects" } },
+    { href: "/#location", label: { ru: "Локация", en: "Location" } },
+    { href: "/#contact", label: { ru: "Контакты", en: "Contact" } },
   ];
 
   return (
@@ -35,19 +36,19 @@ export function SiteHeader() {
       }`}
     >
       <div className="mx-auto flex max-w-[1080px] items-center justify-between gap-3 px-4 py-2.5 sm:px-6 md:px-8">
-        <a href="#top" className="font-display text-sm font-semibold text-mist">
+        <Link href="/" className="font-display text-sm font-semibold text-mist">
           Oleg <em className="not-italic text-voltage">Sorvanov</em>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-0.5 lg:flex">
           {links.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="rounded-md px-2.5 py-1.5 text-[0.75rem] font-medium text-muted transition hover:bg-[#1c1c1c] hover:text-mist"
             >
               {t(link.label)}
-            </a>
+            </Link>
           ))}
           <div className="relative group">
             <button
@@ -57,12 +58,12 @@ export function SiteHeader() {
               {lang === "ru" ? "Ещё" : "More"}
             </button>
             <div className="invisible absolute right-0 top-full z-50 mt-1 min-w-[9rem] rounded-md border border-[#2a2a2a] bg-[#141414] py-1 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-              <a href="#coffee" className="block px-3 py-1.5 text-[0.75rem] text-muted hover:bg-[#1c1c1c] hover:text-mist">
+              <Link href="/#coffee" className="block px-3 py-1.5 text-[0.75rem] text-muted hover:bg-[#1c1c1c] hover:text-mist">
                 Coffee
-              </a>
-              <a href="#life" className="block px-3 py-1.5 text-[0.75rem] text-muted hover:bg-[#1c1c1c] hover:text-mist">
+              </Link>
+              <Link href="/#life" className="block px-3 py-1.5 text-[0.75rem] text-muted hover:bg-[#1c1c1c] hover:text-mist">
                 {lang === "ru" ? "Хобби" : "Hobbies"}
-              </a>
+              </Link>
             </div>
           </div>
         </nav>

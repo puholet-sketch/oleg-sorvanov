@@ -6,41 +6,38 @@ import { site } from "@/lib/site";
 
 export function Coffee() {
   const { t, lang } = useI18n();
+  const current = site.coffee.strip.find((item) => "current" in item && item.current) ?? site.coffee.strip.at(-1);
 
   return (
     <section id="coffee" className="bg-void">
       <div className="mx-auto max-w-[1080px] px-4 py-8 sm:px-6 md:px-8 md:py-9">
-        <FadeUp className="flex flex-wrap items-end justify-between gap-3">
-          <div>
+        <FadeUp className="glass-card flex flex-col gap-4 p-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-4">
+          <div className="min-w-0 flex-1">
             <h2 className="section-heading">
               Coffee<span className="hi">Friends</span>
             </h2>
             <p className="mt-1 text-sm text-muted">{t(site.coffee.text)}</p>
           </div>
+
+          {current ? (
+            <div className="flex shrink-0 items-center gap-3 border-voltage/40 sm:border-l sm:pl-6">
+              <div className="font-display text-3xl font-semibold leading-none text-voltage">{current.value}</div>
+              <div>
+                <div className="card-label">{t(current.phase)}</div>
+                <p className="mt-0.5 text-sm text-muted">{t(current.note)}</p>
+              </div>
+            </div>
+          ) : null}
+
           <a
             href={site.coffee.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-orig btn-primary-orig"
+            className="btn-orig btn-primary-orig shrink-0 self-start sm:self-center"
           >
             {site.coffee.cta}
           </a>
         </FadeUp>
-
-        <div className="mt-4 grid gap-2 sm:grid-cols-3">
-          {site.coffee.strip.map((item) => (
-            <div
-              key={item.value + item.phase.ru}
-              className={`glass-card p-3.5 ${"current" in item && item.current ? "border-voltage" : ""}`}
-            >
-              <div className="font-display text-2xl font-semibold leading-none text-voltage">
-                {item.value}
-              </div>
-              <div className="card-label mt-2">{t(item.phase)}</div>
-              <p className="mt-1 text-sm text-muted">{t(item.note)}</p>
-            </div>
-          ))}
-        </div>
 
         <FadeUp delay={0.05} className="glass-card mt-2 p-3.5">
           <h3 className="card-label">{lang === "ru" ? "Партнёры" : "Partners"}</h3>
