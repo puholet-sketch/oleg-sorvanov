@@ -2,44 +2,44 @@ import type { Metadata } from "next";
 import { CasePage } from "@/components/case-page";
 
 export const metadata: Metadata = {
-  title: "B2B / ОФР — ЛК партнёра · Олег Сорванов",
+  title: "ЛК Агента / ОФР · Олег Сорванов",
   description:
-    "B2B-кабинет партнёра РГС: контрактное оформление коробочных продуктов, микрофронтенды и BFF.",
+    "Личный кабинет агента РГС (ОФР / ЛКП): оформление коробочных продуктов — микрофронтенды, BFF, Guidewire PC.",
 };
 
 export default function B2BCasePage() {
   return (
     <CasePage
       eyebrow={{
-        ru: "Кейс · B2B-платформа · ОФР / ЛКП · Росгосстрах",
-        en: "Case · B2B platform · OFR / partner cabinet · Rosgosstrakh",
+        ru: "Кейс · ОФР / ЛК Агента · Росгосстрах",
+        en: "Case · OFR / Agent cabinet · Rosgosstrakh",
       }}
       title={{
-        ru: "ОФР · контрактное оформление в личном кабинете партнёра",
-        en: "OFR · contract issuance in the partner personal cabinet",
+        ru: "ЛК Агента · контрактное оформление коробочных продуктов",
+        en: "Agent cabinet · packaged-product contract issuance",
       }}
       lead={{
-        ru: "B2B-контур продаж коробочных продуктов ПАО СК «Росгосстрах»: от анкеты и расчёта до договора в Guidewire, оплаты и выпуска полиса. Архитектура — host ЛКП + микрофронтенды продуктов + единый BFF.",
-        en: "B2B packaged-product sales for Rosgosstrakh: from questionnaire and quote to Guidewire contract, payment and policy issue. Architecture — partner-cabinet host + product micro-frontends + shared BFF.",
+        ru: "ОФР / ЛКП — кабинет продавца-партнёра ПАО СК «Росгосстрах» для оформления коробочных продуктов: от анкеты и расчёта до договора в Guidewire, оплаты и печати полиса. Host ЛКП + продуктовые микрофронтенды + BFF.",
+        en: "OFR / partner cabinet — Rosgosstrakh seller channel for packaged products: questionnaire and quote through Guidewire contract, payment and policy print. Cabinet host + product micro-frontends + BFF.",
       }}
       stats={[
         { value: "~20", label: { ru: "продуктовых МФ", en: "product MFs" } },
         { value: "ЛКП", label: { ru: "канал продаж", en: "sales channel" } },
-        { value: "GW", label: { ru: "учётный контур", en: "policy core" } },
+        { value: "GW", label: { ru: "PolicyCenter", en: "PolicyCenter" } },
       ]}
       blocks={[
         {
           title: { ru: "Задача", en: "Challenge" },
           text: {
-            ru: "Единый браузерный канал для продавцов партнёра: много коробочных продуктов, разные правила оформления, общие платежи/печать/права — без разрозненных «тонких клиентов» под каждый продукт.",
-            en: "One browser channel for partner sellers across many packaged products, shared payments/print/rights — without a separate thin client per product.",
+            ru: "Один браузерный канал для продавцов партнёра (агент, МАГ и др.): много коробочных продуктов, разные правила оформления, общие платежи, печать и права — без отдельного «тонкого клиента» под каждый продукт.",
+            en: "One browser channel for partner sellers (agent, MAG, and others): many packaged products, shared payments, print and rights — without a separate thin client per product.",
           },
         },
         {
           title: { ru: "Решение", en: "Solution" },
           text: {
-            ru: "ОФР (экосистема) и контур «Контракты»: ofr-core как shell личного кабинета партнёра, продуктовые микрофронтенды (Module Federation), BFF-оркестрация поверх Guidewire, справочников и платёжных/документных сервисов.",
-            en: "OFR ecosystem and Contracts contour: ofr-core as partner-cabinet shell, product micro-frontends (Module Federation), BFF orchestration over Guidewire, directories and payment/document services.",
+            ru: "ОФР и контур «Контракты»: ofr-core как shell личного кабинета агента (ЛКП), продуктовые микрофронтенды (Module Federation), BFF поверх Guidewire PC, SCC, CDI, платёжных и документных сервисов.",
+            en: "OFR and Contracts contour: ofr-core as agent-cabinet (ЛКП) shell, product micro-frontends (Module Federation), BFF over Guidewire PC, SCC, CDI, payment and document services.",
           },
         },
         {
@@ -100,8 +100,8 @@ export default function B2BCasePage() {
         {
           title: { ru: "Роль проектного офиса", en: "PMO role" },
           text: {
-            ru: "Платформа в портфеле delivery ВИРТУ: развитие и сопровождение B2B-контура для заказчика, координация продуктовых МФ, интеграций и стабилизации поставок в промышленную эксплуатацию.",
-            en: "Platform in Virtu delivery portfolio: evolving and supporting the B2B contour for the client, coordinating product MFs, integrations and stabilization into production.",
+            ru: "В портфеле delivery ВИРТУ: развитие и сопровождение контура ЛК Агента для заказчика, координация продуктовых МФ, интеграций и стабилизации поставок в промышленную эксплуатацию.",
+            en: "In Virtu delivery portfolio: evolving and supporting the Agent cabinet contour for the client, coordinating product MFs, integrations and production stabilization.",
           },
         },
       ]}

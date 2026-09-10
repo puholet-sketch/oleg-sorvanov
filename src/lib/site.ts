@@ -173,20 +173,20 @@ export const site = {
   cases: [
     {
       title: {
-        ru: "ЛК Агента / ОФР для ПАО СК «Росгосстрах»",
-        en: "Agent cabinet / OFR for Rosgosstrakh",
+        ru: "ЛК Агента · ОФР для ПАО СК «Росгосстрах»",
+        en: "Agent cabinet · OFR for Rosgosstrakh",
       },
       meta: {
-        ru: "B2B-платформа · коробочное страхование · ИФЛ",
-        en: "B2B platform · packaged insurance · property",
+        ru: "ЛКП · коробочные продукты · контрактное оформление",
+        en: "Partner cabinet · packaged products · contract issuance",
       },
       summary: {
-        ru: "Контрактное оформление в ЛКП: микрофронтенды продуктов, BFF, Guidewire. С нуля до прома — единый контур агента, коробочные продукты и интеграции.",
-        en: "Contract issuance in the partner cabinet: product micro-frontends, BFF, Guidewire. Zero to production — unified agent contour, packs and integrations.",
+        ru: "Личный кабинет агента: контур оформления коробочных продуктов РГС — ~20 продуктовых МФ, BFF, Guidewire PC, SCC/CDI, оплата и печать. Delivery и сопровождение в портфеле ВИРТУ.",
+        en: "Agent personal cabinet: Rosgosstrakh packaged-product issuance — ~20 product MFs, BFF, Guidewire PC, SCC/CDI, payments and print. Virtu delivery and support.",
       },
       stats: [
         { value: "~20", label: { ru: "продуктовых МФ", en: "product MFs" } },
-        { value: "30K+", label: { ru: "польз./день", en: "users/day" } },
+        { value: "GW", label: { ru: "PolicyCenter", en: "PolicyCenter" } },
       ],
       href: "/cases/b2b/",
       cta: { ru: "Открыть описание", en: "Open overview" },
