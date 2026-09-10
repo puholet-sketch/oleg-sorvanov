@@ -1,9 +1,9 @@
 # Porfolio (oleg-sorvanov)
 
-context_version: 14
+context_version: 15
 updated: 2026-09-10
 status: active
-next: verify Pages deploy for cases + coffee row
+next: confirm Pages deploy after cases card align push
 blockers: []
 
 ## Цель
@@ -11,10 +11,9 @@ Next.js-портфолио Олега Сорванова на GitHub Pages.
 
 ## Статус
 - Сайт: https://puholet-sketch.github.io/oleg-sorvanov/
-- Кейсы: B2B/ОФР `/cases/b2b/`, VFOS `/cases/vfos/`; FACT + PATH в кейсах
-- CoffeeFriends: одна строка — title + «2 · сейчас · Китеж» + CTA
+- Coffee: одна строка «2 · сейчас · БЦ Китеж» + кнопка
+- Кейсы: единый flex-column layout (meta→title→summary→stats→CTA), featured col-span-2
 - CV PDF: `public/Oleg_Sorvanov_CV.pdf`
-- Контакты: email/тел. компактнее, телефон nowrap
 
 ## Следующий шаг
-Проверить деплой и живые URL кейсов.
+Проверить #cases на live после деплоя.

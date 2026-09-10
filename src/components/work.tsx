@@ -20,48 +20,59 @@ export function Work() {
           </p>
         </div>
 
-        <div className="grid gap-2.5 md:grid-cols-2">
+        <div className="grid items-stretch gap-2.5 md:grid-cols-2">
           {site.cases.map((item, index) => {
             const href = "href" in item && item.href ? item.href : "#contact";
             const external = href.startsWith("http");
             const featured = index === 0;
-            const className = `glass-card group relative block p-3.5 ${
-              featured ? "md:col-span-2 md:grid md:grid-cols-[1.4fr_auto] md:items-center md:gap-5" : ""
-            }`;
+            const spanClass = featured ? "md:col-span-2" : "";
+            const cardClass =
+              "glass-card group relative flex h-full min-w-0 flex-col p-3.5";
+            const ctaLabel =
+              "cta" in item && item.cta
+                ? t(item.cta)
+                : lang === "ru"
+                  ? "Подробнее"
+                  : "Details";
             const body = (
               <>
-                <div>
-                  <p className="card-label">
-                    {String(index + 1).padStart(2, "0")} · {t(item.meta)}
-                  </p>
-                  <h3 className="card-heading mt-1.5 text-mist">{t(item.title)}</h3>
-                  <p className="body-copy mt-1.5 max-w-3xl text-sm leading-relaxed text-muted">
-                    {t(item.summary)}
-                  </p>
-                  {"stats" in item && item.stats ? (
-                    <div className="mt-3 flex flex-wrap gap-5">
-                      {item.stats.map((stat) => (
-                        <div key={stat.value}>
-                          <div className="font-display text-lg font-semibold text-voltage">
-                            {stat.value}
-                          </div>
-                          <div className="text-[0.65rem] uppercase tracking-wide text-[#737373]">
-                            {t(stat.label)}
-                          </div>
+                <p className="card-label">
+                  {String(index + 1).padStart(2, "0")} · {t(item.meta)}
+                </p>
+                <h3 className="card-heading mt-1.5 text-mist">{t(item.title)}</h3>
+                <p className="body-copy mt-1.5 flex-1 text-sm leading-relaxed text-muted">
+                  {t(item.summary)}
+                </p>
+                {"stats" in item && item.stats ? (
+                  <div className="mt-3 flex flex-wrap gap-5">
+                    {item.stats.map((stat) => (
+                      <div key={stat.value}>
+                        <div className="font-display text-lg font-semibold text-voltage">
+                          {stat.value}
                         </div>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-                <span className="btn-orig btn-ghost-orig mt-4 md:mt-0">
-                  {"cta" in item && item.cta
-                    ? t(item.cta)
-                    : lang === "ru"
-                      ? "Подробнее"
-                      : "Details"}
+                        <div className="text-[0.65rem] uppercase tracking-wide text-[#737373]">
+                          {t(stat.label)}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+                <span className="btn-orig btn-ghost-orig mt-4 w-fit shrink-0">
+                  {ctaLabel}
                 </span>
               </>
             );
+
+            const motionProps = {
+              initial: { opacity: 0, y: 12 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true, margin: "-40px" },
+              transition: {
+                duration: 0.4,
+                delay: index * 0.04,
+                ease: [0.22, 1, 0.36, 1] as const,
+              },
+            };
 
             return external ? (
               <motion.a
@@ -69,23 +80,18 @@ export function Work() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.4, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
-                className={className}
+                {...motionProps}
+                className={`${cardClass} ${spanClass}`}
               >
                 {body}
               </motion.a>
             ) : (
               <motion.div
                 key={item.title.ru}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.4, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
+                {...motionProps}
+                className={`h-full min-w-0 ${spanClass}`}
               >
-                <Link href={href} className={className}>
+                <Link href={href} className={cardClass}>
                   {body}
                 </Link>
               </motion.div>

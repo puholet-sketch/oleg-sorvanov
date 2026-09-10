@@ -1,14 +1,14 @@
 {
   "v": 4,
-  "updated": "2026-09-10T13:45:00+03:00",
+  "updated": "2026-09-10T14:05:00+03:00",
   "status": "active",
-  "next": "verify Pages deploy for B2B/VFOS/coffee",
+  "next": "confirm Pages deploy after cases card align",
   "blockers": [],
   "hot_files": [
+    "src/components/work.tsx",
     "src/components/coffee.tsx",
     "src/lib/site.ts",
     "src/app/cases/b2b/page.tsx",
-    "src/app/cases/vfos/page.tsx",
-    "src/components/case-page.tsx"
+    "src/app/cases/vfos/page.tsx"
   ]
 }
