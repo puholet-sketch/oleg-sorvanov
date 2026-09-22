@@ -290,6 +290,14 @@ export const site = {
   ],
   projects: [
     {
+      title: "TopNews",
+      text: {
+        ru: "RSS-агрегатор: 26 тем (IT, спорт, СВО, экология…), автосбор и деплой на Pages.",
+        en: "RSS aggregator: 26 topics (IT, sports, SVO, ecology…), auto-collect and Pages deploy.",
+      },
+      href: "https://puholet-sketch.github.io/TopNews/",
+    },
+    {
       title: "Homebrew Parts",
       text: {
         ru: "Витрина запчастей + интерактивная схема аппарата (дистиллятор / пивоварня): hover по узлу, drill-down, ссылки на SKU.",
@@ -336,14 +344,6 @@ export const site = {
         en: "Training diary: Mon–Fri plan, weight/reps, anatomy, progress.",
       },
       href: "https://puholet-sketch.github.io/ddx-coach/",
-    },
-    {
-      title: "TopNews",
-      text: {
-        ru: "Агрегатор топ-новостей: 20 тем × 5 статей из RSS, автодеплой.",
-        en: "Top-news aggregator: 20 topics × 5 RSS articles, auto-deploy.",
-      },
-      href: "https://puholet-sketch.github.io/TopNews/",
     },
     {
       title: "Шлагбаум.Путь",
