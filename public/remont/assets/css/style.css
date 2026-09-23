@@ -740,6 +740,7 @@ a {
   border: 1px solid var(--po-line);
   border-radius: var(--po-radius);
   background: var(--po-panel);
+  -webkit-overflow-scrolling: touch;
 }
 
 .compare {
@@ -773,6 +774,7 @@ a {
 
 .compare a {
   color: var(--po-gold);
+  word-break: keep-all;
 }
 
 .compare .likes {
@@ -782,6 +784,130 @@ a {
 
 .compare strong {
   color: #fff;
+}
+
+.compare .contact-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+@media (max-width: 720px) {
+  .table-wrap {
+    overflow: visible;
+    border: none;
+    background: transparent;
+    border-radius: 0;
+  }
+
+  .compare {
+    display: block;
+  }
+
+  .compare thead {
+    display: none;
+  }
+
+  .compare tbody {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .compare tr {
+    display: grid;
+    gap: 0.35rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--po-line);
+    border-radius: var(--po-radius);
+    background: var(--po-panel);
+  }
+
+  .compare tr.is-chosen {
+    border-color: rgba(240, 196, 25, 0.45);
+    box-shadow: inset 0 0 0 1px rgba(240, 196, 25, 0.12);
+  }
+
+  .compare tr.is-chosen td {
+    background: transparent;
+  }
+
+  .compare td {
+    display: grid;
+    grid-template-columns: 6.2rem minmax(0, 1fr);
+    gap: 0.5rem 0.75rem;
+    align-items: baseline;
+    padding: 0.2rem 0;
+    border: none;
+    font-size: 0.9rem;
+  }
+
+  .compare td::before {
+    content: attr(data-label);
+    font-family: var(--font-display);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--po-muted);
+    padding-top: 0.15rem;
+  }
+
+  .compare td:first-child {
+    grid-template-columns: 1fr;
+    padding-bottom: 0.55rem;
+    margin-bottom: 0.2rem;
+    border-bottom: 1px solid var(--po-line);
+    font-size: 0.95rem;
+    color: #fff;
+  }
+
+  .compare td:first-child::before {
+    display: none;
+  }
+
+  .compare td:first-child .likes {
+    margin-top: 0.2rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .topbar__inner {
+    gap: 0.65rem;
+  }
+
+  .nav-back {
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+
+  .brand {
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .entry__price {
+    font-size: 0.92rem;
+    line-height: 1.35;
+  }
+
+  .contacts {
+    font-size: 0.84rem;
+    overflow-wrap: anywhere;
+  }
+
+  .contacts a {
+    overflow-wrap: anywhere;
+  }
+
+  .po-block__head {
+    gap: 0.75rem;
+  }
+
+  .po-lead {
+    font-size: 0.9rem;
+  }
 }
 
 /* CTA panel */
