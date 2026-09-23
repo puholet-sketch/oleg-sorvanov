@@ -83,8 +83,8 @@ const layers = [
     n: "01",
     title: { ru: "Регламенты", en: "Rules of the game" },
     text: {
-      ru: "Согласованные правила, которые обязательно соблюдаются. Без них статусы и метрики остаются мнением, а не управлением.",
-      en: "Agreed rules that must be followed. Without them, status and metrics stay opinions, not management.",
+      ru: "Согласованные правила игры. Без них статусы и метрики — мнение, а не управление.",
+      en: "Agreed rules. Without them, status and metrics stay opinions, not management.",
     },
   },
   {
@@ -94,8 +94,8 @@ const layers = [
       en: "Stage tracking",
     },
     text: {
-      ru: "Единый порядок ведения проектов и задач: что входит в портфель, как фиксируется старт и финиш, как закрывается этап.",
-      en: "One way to run projects and tasks: what enters the portfolio, how start/finish is recorded, how a stage is closed.",
+      ru: "Порядок ведения проектов и задач: вход в портфель, старт, финиш, закрытие этапа.",
+      en: "How projects and tasks are tracked: portfolio entry, start, finish, stage close.",
     },
   },
   {
@@ -105,8 +105,8 @@ const layers = [
       en: "Artifacts and attributes",
     },
     text: {
-      ru: "Оценка, даты, ответственность, критерии готовности — поля и документы, без которых задача не считается управляемой.",
-      en: "Estimate, dates, ownership, done criteria — fields and documents without which work is not manageable.",
+      ru: "Оценка, даты, ответственность, критерии готовности — без них задача неуправляема.",
+      en: "Estimate, dates, ownership, done criteria — without them work is not manageable.",
     },
   },
   {
@@ -116,8 +116,8 @@ const layers = [
       en: "Cadence of rituals",
     },
     text: {
-      ru: "Оценки, планирование, статусы и ретроспективы с измеримыми действиями — цикл, который держит прогноз.",
-      en: "Estimates, planning, status and retrospectives with measurable actions — a cycle that holds the forecast.",
+      ru: "Оценки, планирование, статусы и ретроспективы с действиями — цикл, который держит прогноз.",
+      en: "Estimates, planning, status and retrospectives with actions — the forecast cycle.",
     },
   },
   {
@@ -127,8 +127,8 @@ const layers = [
       en: "Load forecast",
     },
     text: {
-      ru: "Горизонт от месяца: достаточность ресурса против избытка, перебалансировка до срыва сроков, а не после.",
-      en: "From a one-month horizon: resource sufficiency vs excess, rebalancing before deadlines slip — not after.",
+      ru: "Горизонт от месяца: дефицит и избыток ресурса видно до срыва сроков, не после.",
+      en: "From one month out: resource gaps and excess visible before deadlines slip.",
     },
   },
   {
@@ -138,8 +138,8 @@ const layers = [
       en: "Customer working model",
     },
     text: {
-      ru: "Единый контур общения, показатели удовлетворённости и цикл улучшений — один язык статуса для бизнеса и команд.",
-      en: "One working model, satisfaction measures and an improvement loop — one status language for business and teams.",
+      ru: "Единый контур общения, удовлетворённость и цикл улучшений — один язык статуса.",
+      en: "One working model, satisfaction and improvement loop — one status language.",
     },
   },
 ] as const;
@@ -224,7 +224,7 @@ export function ProjectOfficePage() {
             ← {lang === "ru" ? "К портфолио" : "Back to portfolio"}
           </Link>
 
-          {/* 1. Hero — one composition */}
+          {/* 1. Hero — role + motto */}
           <FadeUp className="po-hero mt-5">
             <div className="po-hero__grid" aria-hidden>
               <span className="po-hero__mark">01</span>
@@ -251,6 +251,26 @@ export function ProjectOfficePage() {
                   : "Alternative scope: senior project lead with a group of PMs and a set of projects."}
               </p>
             </div>
+            <aside className="po-hero__motto">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/yogi-portrait.png`}
+                alt=""
+                className="po-hero__motto-photo"
+                width={280}
+                height={340}
+              />
+              <blockquote className="po-hero__motto-quote">
+                {lang === "ru"
+                  ? "Всё, что вы делаете — делайте с максимальной вовлечённостью. Когда идёте по большому, вы же делаете это с вовлечённостью. Почему бы не делать всё остальное по такому же принципу? Иначе это можно вовсе не делать."
+                  : "Whatever you do — do it with full involvement. On a great path you already walk with presence. Why not live the rest the same way? Otherwise it need not be done at all."}
+              </blockquote>
+              <p className="po-hero__motto-attr">
+                {lang === "ru"
+                  ? "— современный индийский йогин"
+                  : "— a modern Indian yogi"}
+              </p>
+            </aside>
           </FadeUp>
 
           {/* 2. KPI strip */}
@@ -302,19 +322,12 @@ export function ProjectOfficePage() {
               </div>
             </div>
 
-            <ol className="po-layers">
-              {layers.map((layer, i) => (
-                <li key={layer.n} className="po-layer">
-                  <div className="po-layer__rail" aria-hidden>
-                    <span className="po-layer__dot">{layer.n}</span>
-                    {i < layers.length - 1 ? (
-                      <span className="po-layer__line" />
-                    ) : null}
-                  </div>
-                  <div className="po-layer__body">
-                    <h3 className="po-layer__title">{t(layer.title)}</h3>
-                    <p className="po-layer__text">{t(layer.text)}</p>
-                  </div>
+            <ol className="po-kpi po-layers-grid" role="list">
+              {layers.map((layer) => (
+                <li key={layer.n} className="po-kpi__item" role="listitem">
+                  <div className="po-kpi__value">{layer.n}</div>
+                  <h3 className="po-kpi__label">{t(layer.title)}</h3>
+                  <p className="po-kpi__note">{t(layer.text)}</p>
                 </li>
               ))}
             </ol>
