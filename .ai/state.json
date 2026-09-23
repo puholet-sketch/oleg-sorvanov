@@ -1,9 +1,9 @@
 {
   "v": 4,
-  "updated": "2026-09-23T17:15:00+03:00",
-  "status": "active",
-  "goal": "PMO page live with BIV palette for conversations",
-  "next": "confirm GitHub Pages deploy of /project-office/",
+  "updated": "2026-09-23T17:35:00+03:00",
+  "status": "done",
+  "goal": "Project-office as Russian infographic one-pager",
+  "next": "use /project-office/ in BIV conversations",
   "blockers": [],
   "hot_files": [
     "src/components/project-office-page.tsx",
