@@ -298,10 +298,10 @@ export const site = {
       href: "https://puholet-sketch.github.io/TopNews/",
     },
     {
-      title: "Светланова · ремонт",
+      title: "Событие 2 · ремонт",
       text: {
-        ru: "Личный опыт ремонта: этапы договора, мастера, материалы, онлайн-покупки и шаблоны актов.",
-        en: "Personal renovation diary: contract stages, contractors, materials, online buys, act templates.",
+        ru: "ЖК Событие 2 (Василия Ланового, 3): 6 мес. ремонта, мастера, материалы, СБП и шаблоны актов.",
+        en: "Sobytie 2 renovation diary: 6 months, contractors, materials, SBP tips, act templates.",
       },
       href: "https://puholet-sketch.github.io/oleg-sorvanov/remont/",
     },
