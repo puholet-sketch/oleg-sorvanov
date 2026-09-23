@@ -173,6 +173,68 @@ a.glass-card:hover {
   color: var(--voltage);
 }
 
+/* BIV-aligned palette scoped to /project-office/ (tokens from bivgroup.ru CSS) */
+.project-office-theme {
+  --void: #0c151f;
+  --paper: #0c151f;
+  --surface: rgba(0, 36, 53, 0.72);
+  --ink: #f9fcff;
+  --mist: #f9fcff;
+  --voltage: #17a5e4;
+  --voltage-dim: #1280b1;
+  --muted: #9a9fa5;
+  --line: rgba(23, 165, 228, 0.28);
+  --accent-fg: #ffffff;
+  --biv-deep: #0d5b7e;
+  --biv-navy: #002435;
+  --biv-tint: #bbe2fe;
+  --biv-wash: #e7f5ff;
+  --biv-cyan: #2bf4fc;
+  background: var(--void);
+  color: var(--mist);
+}
+
+.project-office-theme .po-hero {
+  position: relative;
+  border-radius: 10px;
+  padding: 1.15rem 1.1rem 1.25rem;
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(23, 165, 228, 0.28), transparent 55%),
+    linear-gradient(145deg, rgba(13, 91, 126, 0.55), rgba(0, 36, 53, 0.35));
+  border: 1px solid var(--line);
+}
+
+.project-office-theme .po-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 3px;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+  background: linear-gradient(180deg, #17a5e4, #1280b1, #0d5b7e);
+}
+
+.project-office-theme .stat-cube {
+  border-color: rgba(23, 165, 228, 0.22);
+}
+
+.project-office-theme .stat-cube:hover,
+.project-office-theme .glass-card:hover,
+.project-office-theme a.glass-card:hover {
+  border-color: #45b7e9;
+}
+
+.project-office-theme .po-divider {
+  height: 1px;
+  margin: 2.25rem 0 0;
+  background: linear-gradient(90deg, #17a5e4, rgba(18, 128, 177, 0.35), transparent);
+}
+
+.project-office-theme > header {
+  border-bottom-color: rgba(23, 165, 228, 0.28) !important;
+  background-color: rgba(12, 21, 31, 0.96) !important;
+}
+
 .marquee {
   display: flex;
   width: max-content;

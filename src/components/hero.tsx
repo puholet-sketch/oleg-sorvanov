@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
@@ -56,7 +57,10 @@ export function Hero() {
             transition={{ duration: 0.45, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
             className="mt-4 flex flex-wrap gap-2"
           >
-            <a href="#cases" className="btn-orig btn-primary-orig">
+            <Link href="/project-office/" className="btn-orig btn-primary-orig">
+              {lang === "ru" ? "Проектный офис" : "Project office"}
+            </Link>
+            <a href="#cases" className="btn-orig btn-ghost-orig">
               {lang === "ru" ? "Кейсы" : "Cases"}
             </a>
             <a href="Oleg_Sorvanov_CV.pdf" className="btn-orig btn-ghost-orig" target="_blank" rel="noopener noreferrer">

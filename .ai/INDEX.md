@@ -3,8 +3,12 @@
 | Путь | Зачем |
 |------|--------|
 | `src/app/page.tsx` | Сборка: hero → about → career → cases → projects → coffee → life → location → contact |
+| `src/app/project-office/page.tsx` | Позиционирование: руководитель проектного офиса |
+| `src/components/project-office-page.tsx` | Контент и вёрстка страницы PMO |
 | `src/lib/site.ts` | Весь контент RU/EN |
-| `src/components/about.tsx` | Обо мне: 2 колонки |
+| `src/components/about.tsx` | Обо мне: 2 колонки + ссылка на /project-office/ |
+| `src/components/hero.tsx` | Hero + CTA на проектный офис |
+| `src/components/career.tsx` | Карьера + CTA на проектный офис |
 | `src/components/work.tsx` | Кейсы + ссылки на внутренние страницы |
 | `src/components/projects.tsx` | Личные проекты |
 | `src/components/coffee.tsx` | CoffeeFriends: одна строка (2 точки Китеж) + меню |
@@ -23,6 +27,8 @@
 | Проект | Pages |
 |--------|-------|
 | Портфолио | https://puholet-sketch.github.io/oleg-sorvanov/ |
+| Проектный офис | https://puholet-sketch.github.io/oleg-sorvanov/project-office/ |
 | B2B/ОФР кейс | https://puholet-sketch.github.io/oleg-sorvanov/cases/b2b/ |
 | VFOS кейс | https://puholet-sketch.github.io/oleg-sorvanov/cases/vfos/ |
+| Проектный офис | https://puholet-sketch.github.io/oleg-sorvanov/project-office/ |
 | CV PDF | https://puholet-sketch.github.io/oleg-sorvanov/Oleg_Sorvanov_CV.pdf |

@@ -1,22 +1,20 @@
-# Porfolio (oleg-sorvanov)
+---
+project: oleg-sorvanov
+v: 18
+---
 
-context_version: 17
-updated: 2026-09-22
-status: active
-next: verify TopNews first in personal projects on live Pages
-blockers: []
+# Porfolio (oleg-sorvanov)
 
 ## Цель
 Next.js-портфолио Олега Сорванова на GitHub Pages.
 
-## Статус
+## Факты
 - Сайт: https://puholet-sketch.github.io/oleg-sorvanov/
-- Кейс B2B: «ЛК Агента · ОФР» — контур оформления коробочных продуктов (МФ, BFF, GW PC)
+- Роль на сайте: руководитель проектного офиса
+- Страница позиционирования: `/project-office/` (BIV-палитра, scoped)
+- Кейсы: `/cases/b2b/`, `/cases/vfos/`
 - CV PDF: `public/Oleg_Sorvanov_CV.pdf`
+- basePath production: `/oleg-sorvanov`
 - About: 3 тематических ряда
-- Личные проекты: TopNews первым; «Договор с иностранцем» (ex-Фурик); убраны HH / LC200 / VIRTU Rentability
-- Кейс рентабельности Virtu остаётся в #cases
+- Личные проекты: TopNews первым; «Договор с иностранцем» (ex-Фурик)
 - Секции: about → career → cases → projects → coffee → life → location → contact
-
-## Следующий шаг
-Проверить live карточку #projects (TopNews) и #cases / `/cases/b2b/` после деплоя.

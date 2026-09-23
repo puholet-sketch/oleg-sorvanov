@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FadeUp } from "@/components/motion";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
@@ -77,7 +78,10 @@ export function Career() {
           ))}
         </div>
 
-        <div className="mt-4">
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Link href="/project-office/" className="btn-orig btn-primary-orig">
+            {lang === "ru" ? "Проектный офис" : "Project office"}
+          </Link>
           <a href="Oleg_Sorvanov_CV.pdf" className="btn-orig btn-ghost-orig" target="_blank" rel="noopener noreferrer">
             {lang === "ru" ? "Резюме PDF" : "CV PDF"}
           </a>

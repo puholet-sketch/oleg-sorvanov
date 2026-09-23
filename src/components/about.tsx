@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FadeUp } from "@/components/motion";
 import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site";
@@ -131,7 +132,9 @@ export function About() {
             <div className="grid gap-2">
               <article className="glass-card p-3.5">
                 <h3 className="card-label">
-                  {lang === "ru" ? "Проектный офис" : "Project office"}
+                  <Link href="/project-office/" className="hover:underline">
+                    {lang === "ru" ? "Проектный офис" : "Project office"}
+                  </Link>
                 </h3>
                 <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-muted">
                   <li>
@@ -147,6 +150,14 @@ export function About() {
                     {t(site.about.clients)}
                   </li>
                 </ul>
+                <Link
+                  href="/project-office/"
+                  className="mt-2.5 inline-block text-sm text-voltage hover:underline"
+                >
+                  {lang === "ru"
+                    ? "Роль и контур управления →"
+                    : "Role and management contour →"}
+                </Link>
               </article>
 
               <article className="glass-card p-3.5">

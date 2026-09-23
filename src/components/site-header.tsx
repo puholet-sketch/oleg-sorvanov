@@ -57,7 +57,10 @@ export function SiteHeader() {
             >
               {lang === "ru" ? "Ещё" : "More"}
             </button>
-            <div className="invisible absolute right-0 top-full z-50 mt-1 min-w-[9rem] rounded-md border border-[#2a2a2a] bg-[#141414] py-1 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <div className="invisible absolute right-0 top-full z-50 mt-1 min-w-[11rem] rounded-md border border-[#2a2a2a] bg-[#141414] py-1 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <Link href="/project-office/" className="block px-3 py-1.5 text-[0.75rem] text-muted hover:bg-[#1c1c1c] hover:text-mist">
+                {lang === "ru" ? "Проектный офис" : "Project office"}
+              </Link>
               <Link href="/#coffee" className="block px-3 py-1.5 text-[0.75rem] text-muted hover:bg-[#1c1c1c] hover:text-mist">
                 Coffee
               </Link>

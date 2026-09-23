@@ -1,14 +1,13 @@
 {
   "v": 4,
-  "updated": "2026-09-10T14:05:00+03:00",
+  "updated": "2026-09-23T17:15:00+03:00",
   "status": "active",
-  "next": "confirm Pages deploy after cases card align",
+  "goal": "PMO page live with BIV palette for conversations",
+  "next": "confirm GitHub Pages deploy of /project-office/",
   "blockers": [],
   "hot_files": [
-    "src/components/work.tsx",
-    "src/components/coffee.tsx",
-    "src/lib/site.ts",
-    "src/app/cases/b2b/page.tsx",
-    "src/app/cases/vfos/page.tsx"
+    "src/components/project-office-page.tsx",
+    "src/app/globals.css",
+    "src/app/project-office/page.tsx"
   ]
 }
