@@ -298,6 +298,14 @@ export const site = {
       href: "https://puholet-sketch.github.io/TopNews/",
     },
     {
+      title: "Светланова · ремонт",
+      text: {
+        ru: "Личный опыт ремонта: этапы договора, мастера, материалы, онлайн-покупки и шаблоны актов.",
+        en: "Personal renovation diary: contract stages, contractors, materials, online buys, act templates.",
+      },
+      href: "https://puholet-sketch.github.io/oleg-sorvanov/remont/",
+    },
+    {
       title: "Homebrew Parts",
       text: {
         ru: "Витрина запчастей + интерактивная схема аппарата (дистиллятор / пивоварня): hover по узлу, drill-down, ссылки на SKU.",

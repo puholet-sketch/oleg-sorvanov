@@ -1,13 +1,11 @@
 {
-  "v": 4,
-  "updated": "2026-09-23T17:35:00+03:00",
   "status": "done",
-  "goal": "Project-office as Russian infographic one-pager",
-  "next": "use /project-office/ in BIV conversations",
+  "goal": "Портфолио + /remont/ в личных проектах",
+  "next": "Проверить live карточку и /remont/ после Pages",
   "blockers": [],
   "hot_files": [
-    "src/components/project-office-page.tsx",
-    "src/app/globals.css",
-    "src/app/project-office/page.tsx"
-  ]
+    "public/remont/",
+    "src/lib/site.ts"
+  ],
+  "updated": "2026-09-23"
 }
