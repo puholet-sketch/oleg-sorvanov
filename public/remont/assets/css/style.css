@@ -944,18 +944,50 @@ a {
   background: var(--po-panel);
 }
 
+/* SBP brand accents from official mark */
 .sbp-card {
+  --sbp-cyan: #00a9e0;
+  --sbp-green: #6cc24a;
+  --sbp-yellow: #ffb81c;
+  --sbp-orange: #ff8200;
+  --sbp-magenta: #e40046;
+  --sbp-purple: #5d3e9b;
   display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  padding: 1rem 1.1rem;
-  border: 1px solid rgba(91, 45, 142, 0.45);
+  gap: 1.15rem;
+  align-items: center;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid transparent;
   border-radius: var(--po-radius);
-  background: linear-gradient(135deg, rgba(91, 45, 142, 0.18), transparent 55%);
+  background:
+    linear-gradient(#111111, #111111) padding-box,
+    linear-gradient(
+      125deg,
+      var(--sbp-purple),
+      var(--sbp-cyan),
+      var(--sbp-green),
+      var(--sbp-yellow),
+      var(--sbp-orange),
+      var(--sbp-magenta)
+    )
+      border-box;
+  box-shadow: 0 0 0 1px rgba(0, 169, 224, 0.08), 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 
 .sbp-card__logo {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.65rem;
+  background: #000;
+}
+
+.sbp-card__logo img {
+  width: auto;
+  height: 2.35rem;
+  max-width: 9.5rem;
+  object-fit: contain;
 }
 
 .sbp-card__label {
@@ -963,7 +995,7 @@ a {
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--po-muted);
+  color: var(--sbp-cyan);
   margin-bottom: 0.25rem;
 }
 
@@ -976,7 +1008,7 @@ a {
 .sbp-card__tel {
   display: inline-block;
   margin-top: 0.35rem;
-  color: var(--po-gold);
+  color: var(--sbp-cyan);
   font-weight: 700;
   font-size: 1.05rem;
   text-decoration: none;
@@ -984,6 +1016,7 @@ a {
 }
 
 .sbp-card__tel:hover {
+  color: #4dc4ef;
   text-decoration: underline;
 }
 
@@ -997,6 +1030,10 @@ a {
   .sbp-card {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .sbp-card__logo img {
+    height: 2.1rem;
   }
 
   .owner-tel {
