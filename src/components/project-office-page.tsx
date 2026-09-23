@@ -262,8 +262,8 @@ export function ProjectOfficePage() {
               />
               <blockquote className="po-hero__motto-quote">
                 {lang === "ru"
-                  ? "Всё, что вы делаете — делайте с максимальной вовлечённостью. Когда идёте по большому, вы же делаете это с вовлечённостью. Почему бы не делать всё остальное по такому же принципу? Иначе это можно вовсе не делать."
-                  : "Whatever you do — do it with full involvement. On a great path you already walk with presence. Why not live the rest the same way? Otherwise it need not be done at all."}
+                  ? "Всё, что вы делаете — делайте с максимальной вовлечённостью! Когда вы идёте по большому, вы максимально вовлечены в процесс, иначе результата не будет! Почему бы не делать всё остальное по такому же принципу? Иначе это вовсе можно не делать!"
+                  : "Whatever you do — do it with full involvement! When you go after something big, you are fully in the process — otherwise there is no result. Why not live the rest the same way? Otherwise it need not be done at all!"}
               </blockquote>
               <p className="po-hero__motto-attr">
                 {lang === "ru" ? (
