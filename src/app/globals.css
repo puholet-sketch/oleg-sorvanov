@@ -414,12 +414,14 @@ a.glass-card:hover {
   font-style: italic;
 }
 
-.project-office-theme .po-hero__motto-attr {
-  margin: 0;
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.project-office-theme .po-hero__motto-attr a {
   color: var(--po-gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(240, 196, 25, 0.35);
+}
+
+.project-office-theme .po-hero__motto-attr a:hover {
+  border-bottom-color: var(--po-gold);
 }
 
 @media (min-width: 900px) {

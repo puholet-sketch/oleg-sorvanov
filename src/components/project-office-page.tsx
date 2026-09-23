@@ -254,8 +254,8 @@ export function ProjectOfficePage() {
             <aside className="po-hero__motto">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/yogi-portrait.png`}
-                alt=""
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/sadhguru.jpg`}
+                alt={lang === "ru" ? "Садхгуру" : "Sadhguru"}
                 className="po-hero__motto-photo"
                 width={280}
                 height={340}
@@ -266,9 +266,29 @@ export function ProjectOfficePage() {
                   : "Whatever you do — do it with full involvement. On a great path you already walk with presence. Why not live the rest the same way? Otherwise it need not be done at all."}
               </blockquote>
               <p className="po-hero__motto-attr">
-                {lang === "ru"
-                  ? "— современный индийский йогин"
-                  : "— a modern Indian yogi"}
+                {lang === "ru" ? (
+                  <>
+                    —{" "}
+                    <a
+                      href="https://ru.wikipedia.org/wiki/%D0%92%D0%B0%D1%81%D1%83%D0%B4%D0%B5%D0%B2,_%D0%94%D0%B6%D0%B0%D0%B3%D0%B3%D0%B8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Садхгуру
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    —{" "}
+                    <a
+                      href="https://en.wikipedia.org/wiki/Sadhguru"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Sadhguru
+                    </a>
+                  </>
+                )}
               </p>
             </aside>
           </FadeUp>
