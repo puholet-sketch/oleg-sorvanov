@@ -286,14 +286,14 @@ a {
 }
 
 .po-block {
-  margin-top: 2.5rem;
+  margin-top: 1.4rem;
 }
 
 .po-block__head {
   display: flex;
   gap: 0.85rem;
   align-items: flex-start;
-  margin-bottom: 1.15rem;
+  margin-bottom: 0.85rem;
 }
 
 /* Hero */
@@ -709,8 +709,8 @@ a {
 
 /* Entries (experience cards) */
 .entry {
-  margin-top: 0.85rem;
-  padding: 1.25rem 1.15rem 1.35rem;
+  margin-top: 0.7rem;
+  padding: 1.1rem 1.15rem 1.2rem;
   border: 1px solid var(--po-line);
   border-radius: var(--po-radius);
   background: var(--po-panel);
@@ -798,6 +798,7 @@ a {
 
 .photo-slot {
   margin-top: 1rem;
+  margin-bottom: 0;
   min-height: 120px;
   border: 1px dashed var(--po-line-strong);
   border-radius: var(--po-radius);
@@ -808,6 +809,11 @@ a {
   text-align: center;
   padding: 1rem;
   background: #0c0c0c;
+}
+
+/* Отделить слот фото от нижнего описания / отзыва */
+.photo-slot + .entry__review {
+  margin-top: 1.35rem;
 }
 
 .list-check {
@@ -1064,8 +1070,8 @@ a {
 
 /* CTA panel */
 .po-cta {
-  margin-top: 2.5rem;
-  padding: 1.5rem 1.35rem;
+  margin-top: 1.4rem;
+  padding: 1.35rem 1.25rem;
   border: 1px solid var(--po-line);
   border-radius: var(--po-radius-lg);
   background:
@@ -1074,8 +1080,8 @@ a {
 }
 
 .po-thanks {
-  margin-top: 1.5rem;
-  padding: 1.5rem 1.35rem;
+  margin-top: 1.25rem;
+  padding: 1.35rem 1.25rem;
   border: 1px solid var(--po-line);
   border-radius: var(--po-radius-lg);
   background: var(--po-panel);
