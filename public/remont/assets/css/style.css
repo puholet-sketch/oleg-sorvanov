@@ -91,11 +91,7 @@ a {
 }
 
 .nav-back {
-  margin-right: auto;
-  font-size: 0.78rem;
-  color: var(--po-muted);
-  text-decoration: none;
-  letter-spacing: 0.02em;
+  display: none;
 }
 
 .nav-back:hover {
@@ -109,7 +105,7 @@ a {
   color: var(--po-gold);
   text-decoration: none;
   white-space: nowrap;
-  margin-right: 0.5rem;
+  margin-right: auto;
 }
 
 .owner-tel:hover {
@@ -240,7 +236,7 @@ a {
 
 /* Sheet / page */
 .sheet {
-  padding: max(4.5rem, 6.5vh) 0 4rem;
+  padding: 1.15rem 0 4rem;
 }
 
 .po-kicker {
@@ -304,7 +300,7 @@ a {
 .po-hero {
   position: relative;
   overflow: hidden;
-  margin-top: 1.25rem;
+  margin-top: 0;
   padding: 2rem 1.5rem 2.15rem;
   border: 1px solid #1a1a1a;
   border-radius: var(--po-radius-lg);
