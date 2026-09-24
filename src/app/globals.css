@@ -494,6 +494,69 @@ a.glass-card:hover {
   background: #141414;
 }
 
+.project-office-theme a.po-kpi__hit {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-office-theme .po-kpi__hint {
+  display: inline-block;
+  margin-top: 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--po-gold);
+}
+
+.project-office-theme .po-reveal {
+  margin-top: 0.75rem;
+  padding: 1.15rem 1.2rem 1.25rem;
+  border: 1px solid rgba(240, 196, 25, 0.45);
+  border-radius: var(--po-radius);
+  background: #141414;
+}
+
+.project-office-theme .po-reveal__title {
+  margin-top: 0.35rem;
+  font-family: var(--font-display), var(--font-body), sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.project-office-theme .po-reveal__text {
+  margin-top: 0.45rem;
+  max-width: 46rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--po-body);
+}
+
+.project-office-theme .po-reveal__steps {
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--po-muted);
+}
+
+.project-office-theme .po-reveal__more {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--po-gold);
+  text-decoration: none;
+}
+
 .project-office-theme .po-kpi__value {
   font-family: var(--font-display), var(--font-body), sans-serif;
   font-size: clamp(1.65rem, 3.4vw, 2.05rem);

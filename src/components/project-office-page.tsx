@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { FadeUp } from "@/components/motion";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { useI18n } from "@/lib/i18n";
+import { metricPages } from "@/lib/project-office-metrics";
 
 const metrics = [
   {
@@ -214,6 +216,8 @@ const perimeter = [
 
 export function ProjectOfficePage() {
   const { t, lang } = useI18n();
+  const [openMetric, setOpenMetric] = useState<string | null>(null);
+  const opened = metricPages.find((item) => item.id === openMetric);
 
   return (
     <div className="project-office-theme min-h-screen">
@@ -315,13 +319,38 @@ export function ProjectOfficePage() {
 
             <div className="po-kpi" role="list">
               {metrics.map((m) => (
-                <div key={m.id} className="po-kpi__item" role="listitem">
-                  <div className="po-kpi__value">{m.value}</div>
-                  <div className="po-kpi__label">{t(m.label)}</div>
-                  <div className="po-kpi__note">{t(m.note)}</div>
-                </div>
+                  <Link
+                    key={m.id}
+                    href={`/project-office/${m.id}/`}
+                    className="po-kpi__item po-kpi__hit"
+                    role="listitem"
+                    onMouseEnter={() => setOpenMetric(m.id)}
+                    onFocus={() => setOpenMetric(m.id)}
+                  >
+                    <div className="po-kpi__value">{m.value}</div>
+                    <div className="po-kpi__label">{t(m.label)}</div>
+                    <div className="po-kpi__note">{t(m.note)}</div>
+                    <span className="po-kpi__hint">
+                      {lang === "ru" ? "Как прийти" : "How to get there"}
+                    </span>
+                  </Link>
               ))}
             </div>
+            {opened ? (
+              <div className="po-reveal" key={opened.id}>
+                <p className="po-kicker">{opened.value}</p>
+                <h3 className="po-reveal__title">{t(opened.label)}</h3>
+                <p className="po-reveal__text">{t(opened.hover)}</p>
+                <ol className="po-reveal__steps">
+                  {opened.how.map((step) => (
+                    <li key={step.ru}>{t(step)}</li>
+                  ))}
+                </ol>
+                <Link href={`/project-office/${opened.id}/`} className="po-reveal__more">
+                  {lang === "ru" ? "Открыть страницу" : "Open the page"} →
+                </Link>
+              </div>
+            ) : null}
           </FadeUp>
 
           {/* 3. How it works — 6 layers */}
