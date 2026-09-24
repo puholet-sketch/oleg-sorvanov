@@ -11,59 +11,67 @@ export function ProjectOfficeMetricPage({ metric }: { metric: MetricPage }) {
   const { t, lang } = useI18n();
 
   return (
-    <div className="project-office-theme min-h-screen">
+    <div className="project-office-theme po-metric min-h-screen">
       <SiteHeader />
       <main>
-        <div className="po-sheet mx-auto max-w-[1100px] px-4 pb-16 pt-[max(4.5rem,6.5vh)] sm:px-6 md:px-8">
+        <div className="po-sheet po-metric__sheet mx-auto max-w-[1100px] px-4 sm:px-6 md:px-8">
           <Link href="/project-office/" className="po-back">
             ← {lang === "ru" ? "К ориентирам" : "Back to targets"}
           </Link>
 
-          <FadeUp className="po-hero mt-5">
-            <div className="po-hero__grid" aria-hidden>
-              <span className="po-hero__mark">{metric.value}</span>
-            </div>
+          <FadeUp className="po-hero po-metric__hero mt-3">
             <div className="po-hero__body">
               <p className="po-kicker">
-                {lang === "ru" ? "Ориентир после базовой линии" : "Target after baseline"}
+                {lang === "ru"
+                  ? "Ориентир после базовой линии"
+                  : "Target after baseline"}
               </p>
-              <h1 className="po-hero__title">{t(metric.label)}</h1>
+              <h1 className="po-hero__title">
+                <span className="po-metric__value">{metric.value}</span>{" "}
+                {t(metric.label)}
+              </h1>
               <p className="po-hero__lead">{t(metric.why)}</p>
             </div>
           </FadeUp>
 
-          <FadeUp className="po-block" delay={0.04}>
+          <FadeUp className="po-block po-metric__block" delay={0.03}>
             <div className="po-block__head">
               <span className="po-num" aria-hidden>
                 01
               </span>
               <div>
-                <h2 className="po-h2">{lang === "ru" ? "Как к этому прийти" : "How to get there"}</h2>
+                <h2 className="po-h2">
+                  {lang === "ru" ? "Как к этому прийти" : "How to get there"}
+                </h2>
               </div>
             </div>
-            <ol className="po-path">
+            <ol className="po-path po-metric__steps">
               {metric.how.map((step, index) => (
                 <li key={step.ru} className="po-path__step">
-                  <div className="po-path__n">{String(index + 1).padStart(2, "0")}</div>
+                  <div className="po-path__n">
+                    {String(index + 1).padStart(2, "0")}
+                  </div>
                   <p className="po-path__text">{t(step)}</p>
                 </li>
               ))}
             </ol>
           </FadeUp>
 
-          <FadeUp className="po-block" delay={0.06}>
+          <FadeUp className="po-block po-metric__block" delay={0.05}>
             <div className="po-block__head">
               <span className="po-num" aria-hidden>
                 02
               </span>
               <div>
                 <h2 className="po-h2">
-                  {lang === "ru" ? "Почему цифра держится" : "Why the figure holds"}
+                  {lang === "ru"
+                    ? "Почему цифра держится"
+                    : "Why the figure holds"}
                 </h2>
                 <p className="po-lead">{t(metric.note)}</p>
               </div>
             </div>
-            <ul className="po-scope">
+            <ul className="po-scope po-metric__why">
               {metric.before.map((item) => (
                 <li key={item.ru} className="po-scope__item">
                   {t(item)}

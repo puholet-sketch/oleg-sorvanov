@@ -472,12 +472,15 @@ a.glass-card:hover {
 }
 
 .project-office-theme .po-kpi__item {
+  display: flex;
+  flex-direction: column;
   padding: 1.15rem 1rem 1.2rem;
   border: 1px solid #1f1f1f;
   border-radius: var(--po-radius);
   background: var(--po-panel);
   text-align: left;
-  min-height: 8.5rem;
+  min-height: 9.75rem;
+  height: 100%;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
@@ -495,14 +498,16 @@ a.glass-card:hover {
 }
 
 .project-office-theme a.po-kpi__hit {
-  display: block;
+  display: flex;
+  flex-direction: column;
   color: inherit;
   text-decoration: none;
 }
 
 .project-office-theme .po-kpi__hint {
-  display: inline-block;
-  margin-top: 0.65rem;
+  display: block;
+  margin-top: auto;
+  padding-top: 0.75rem;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -683,6 +688,148 @@ a.glass-card:hover {
 
 .project-office-theme .po-path__arrow {
   display: none;
+}
+
+/* Compact one-viewport metric detail pages */
+.project-office-theme.po-metric {
+  --fs-label: 0.68rem;
+  --fs-note: 0.78rem;
+  --fs-body: 0.88rem;
+  --fs-title: 0.95rem;
+  --fs-section: 1.05rem;
+  --fs-hero: clamp(1.15rem, 2.2vw, 1.45rem);
+}
+
+.project-office-theme.po-metric > footer {
+  display: none;
+}
+
+.project-office-theme .po-metric__sheet {
+  padding-top: max(3.85rem, 5vh);
+  padding-bottom: 1rem;
+}
+
+.project-office-theme .po-metric__hero {
+  margin-top: 0.65rem;
+  padding: 1.1rem 1.15rem 1.15rem;
+  display: block;
+}
+
+.project-office-theme .po-metric__hero .po-hero__grid {
+  display: none;
+}
+
+.project-office-theme .po-metric__hero .po-hero__body {
+  max-width: none;
+}
+
+.project-office-theme .po-metric__value {
+  color: var(--po-gold);
+  margin-right: 0.25rem;
+}
+
+.project-office-theme .po-metric__hero .po-kicker {
+  font-size: var(--fs-label);
+  letter-spacing: 0.14em;
+}
+
+.project-office-theme .po-metric__hero .po-hero__title {
+  margin-top: 0.35rem;
+  font-size: var(--fs-hero);
+  line-height: 1.2;
+}
+
+.project-office-theme .po-metric__hero .po-hero__lead {
+  margin-top: 0.45rem;
+  max-width: 52rem;
+  font-size: var(--fs-body);
+  line-height: 1.4;
+}
+
+.project-office-theme .po-metric__block {
+  margin-top: 0.95rem;
+}
+
+.project-office-theme .po-metric__block .po-block__head {
+  margin-bottom: 0.65rem;
+  gap: 0.65rem;
+}
+
+.project-office-theme .po-metric__block .po-h2 {
+  font-size: var(--fs-section);
+}
+
+.project-office-theme .po-metric__block .po-lead {
+  margin-top: 0.2rem;
+  font-size: var(--fs-note);
+}
+
+.project-office-theme .po-metric__block .po-num {
+  min-width: 1.7rem;
+  height: 1.7rem;
+  font-size: 0.62rem;
+}
+
+.project-office-theme .po-metric__steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+@media (min-width: 720px) {
+  .project-office-theme .po-metric__steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.project-office-theme .po-metric__steps .po-path__step {
+  padding: 0.85rem 0.9rem 0.95rem;
+  min-height: 0;
+}
+
+.project-office-theme .po-metric__steps .po-path__n {
+  width: 1.55rem;
+  height: 1.55rem;
+  font-size: 0.62rem;
+}
+
+.project-office-theme .po-metric__steps .po-path__text {
+  margin-top: 0.45rem;
+  font-size: var(--fs-note);
+  line-height: 1.4;
+}
+
+.project-office-theme .po-metric__why {
+  gap: 0.55rem;
+}
+
+.project-office-theme .po-metric__why .po-scope__item {
+  padding: 0.75rem 0.9rem;
+  font-size: var(--fs-body);
+  line-height: 1.4;
+}
+
+@media (min-width: 900px) {
+  .project-office-theme.po-metric {
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
+  .project-office-theme.po-metric > main {
+    height: calc(100vh - 3.5rem);
+    overflow: hidden;
+  }
+
+  .project-office-theme .po-metric__sheet {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    padding-bottom: 0.75rem;
+  }
 }
 
 .project-office-theme .po-scope {
