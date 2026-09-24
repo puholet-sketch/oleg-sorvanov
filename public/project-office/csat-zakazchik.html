@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSAT · Опросник удовлетворённости заказчика</title>
+  <style>
+    :root {
+      --bg: #000;
+      --panel: #111;
+      --panel-alt: #161616;
+      --gold: #f0c419;
+      --ink: #fff;
+      --body: #d4d4d4;
+      --muted: #a3a3a3;
+      --line: #1f1f1f;
+      --radius: 0.85rem;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, "Segoe UI", system-ui, sans-serif;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .sheet {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 1.5rem 1.15rem 2.5rem;
+    }
+    .no-print {
+      display: flex;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+    }
+    .btn {
+      appearance: none;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.55rem 0.95rem;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--gold);
+    }
+    .cover {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.35rem 1.25rem 1.4rem;
+      margin-bottom: 0.85rem;
+    }
+    .kicker {
+      margin: 0 0 0.45rem;
+      color: var(--gold);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(1.25rem, 2.6vw, 1.65rem);
+      line-height: 1.2;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .lead {
+      margin: 0.65rem 0 0;
+      color: var(--body);
+      max-width: 46rem;
+    }
+    .meta {
+      margin-top: 0.95rem;
+      display: grid;
+      gap: 0.45rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 720px) {
+      .meta { grid-template-columns: 1fr 1fr; }
+    }
+    .meta label {
+      display: grid;
+      gap: 0.25rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .meta input, .meta select, textarea, .line-input {
+      width: 100%;
+      background: #0a0a0a;
+      border: 1px solid #2a2a2a;
+      border-radius: 4px;
+      color: var(--ink);
+      padding: 0.55rem 0.65rem;
+      font: inherit;
+    }
+    .block {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.15rem 1.2rem;
+      margin-bottom: 0.75rem;
+      break-inside: avoid;
+    }
+    .block__head {
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+    .num {
+      flex: 0 0 auto;
+      min-width: 1.7rem;
+      height: 1.7rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gold);
+      color: #000;
+      font-size: 0.65rem;
+      font-weight: 700;
+      border-radius: 2px;
+    }
+    h2 {
+      margin: 0;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .hint {
+      margin: 0.25rem 0 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .scale {
+      margin: 0.7rem 0 0.85rem;
+      padding: 0.65rem 0.75rem;
+      background: var(--panel-alt);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    .scale strong { color: var(--gold); }
+    .q {
+      margin: 0 0 0.85rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .q:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .q__title {
+      margin: 0 0 0.55rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .q__code {
+      color: var(--gold);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      margin-right: 0.35rem;
+    }
+    .radios {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.35rem;
+    }
+    .radios--nps {
+      grid-template-columns: repeat(11, minmax(0, 1fr));
+    }
+    @media (max-width: 720px) {
+      .radios, .radios--nps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    }
+    .radio {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.45rem 0.2rem;
+      border: 1px solid #2a2a2a;
+      border-radius: 4px;
+      background: #0a0a0a;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-align: center;
+    }
+    .radio input { accent-color: var(--gold); }
+    .radio span:last-child { color: var(--body); font-size: 0.68rem; }
+    .legend {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.35rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    .calc {
+      margin-top: 0.85rem;
+      padding: 0.75rem 0.85rem;
+      border: 1px dashed rgba(240, 196, 25, 0.45);
+      border-radius: 6px;
+      background: #14120a;
+      font-size: 0.82rem;
+      color: var(--body);
+    }
+    .calc strong { color: var(--gold); }
+    .sign {
+      display: grid;
+      gap: 0.55rem;
+    }
+    @media (min-width: 720px) {
+      .sign { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .foot {
+      margin-top: 0.85rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff; color: #111; font-size: 11pt; }
+      .sheet { max-width: none; padding: 0; }
+      .cover, .block {
+        background: #fff !important;
+        border-color: #ccc !important;
+        color: #111;
+        break-inside: avoid;
+      }
+      .kicker, .q__code, .calc strong, h2 { color: #8a6a00 !important; }
+      .lead, .hint, .scale, .body, .radio, .meta label, .foot { color: #444 !important; }
+      .meta input, .meta select, textarea, .line-input, .radio, .scale, .calc {
+        background: #fff !important;
+        border-color: #ccc !important;
+        color: #111 !important;
+      }
+      .num { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      a { color: inherit; text-decoration: none; }
+    }
+    @page { margin: 12mm; }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="no-print">
+      <button class="btn" type="button" onclick="window.print()">Печать / PDF</button>
+      <a class="btn btn--ghost" href="../project-office/">К ориентиру</a>
+    </div>
+
+    <header class="cover">
+      <p class="kicker">CSAT · Customer Satisfaction Score</p>
+      <h1>Опросник удовлетворённости заказчика</h1>
+      <p class="lead">
+        Рабочий relationship-опрос для пары «IT-подрядчик ↔ заказчик» (любая отрасль).
+        Основа — <strong>CSAT</strong> (Customer Satisfaction Score) по 5-балльной шкале:
+        это стандартный именованный инструмент для регулярной оценки удовлетворённости
+        услугой и взаимодействием. Один пункт <strong>NPS</strong> (Net Promoter Score)
+        в конце формы даёт пульс готовности рекомендовать — без отдельного опроса.
+      </p>
+      <div class="meta">
+        <label>Заказчик / организация
+          <input type="text" name="org" autocomplete="organization" />
+        </label>
+        <label>Проект / контур / договор
+          <input type="text" name="project" />
+        </label>
+        <label>Респондент (ФИО, роль)
+          <input type="text" name="respondent" autocomplete="name" />
+        </label>
+        <label>Период оценки
+          <input type="text" name="period" placeholder="напр. Q1 2026 / янв–мар 2026" />
+        </label>
+        <label>Дата заполнения
+          <input type="date" name="date" />
+        </label>
+        <label>Подрядчик / PMO
+          <input type="text" name="vendor" />
+        </label>
+      </div>
+    </header>
+
+    <section class="block">
+      <div class="block__head">
+        <span class="num">00</span>
+        <div>
+          <h2>Как проводить</h2>
+          <p class="hint">Кто отвечает · как часто · как считать</p>
+        </div>
+      </div>
+      <ul style="margin:0;padding-left:1.15rem;color:var(--body)">
+        <li><strong>Кто:</strong> владелец продукта / спонсор со стороны заказчика; при крупном контуре — ещё один представитель бизнеса и один от сопровождения.</li>
+        <li><strong>Когда:</strong> раз в квартал (или раз в 6 месяцев на длинных контрактах). Не после каждого тикета — для тикетов отдельный короткий transactional CSAT.</li>
+        <li><strong>Зачем:</strong> фиксировать сдвиг по ориентиру «+20% удовлетворённость» после базовой линии и видеть узкие места: сроки, статус, вход требований, поддержка, ценность.</li>
+        <li><strong>CSAT %:</strong> доля ответов <strong>4 и 5</strong> (Top-2 Box) по каждому вопросу и среднее по блоку A–F. Целевой рост — относительно вашей базовой линии, не «красивая цифра из интернета».</li>
+        <li><strong>NPS:</strong> % промоутеров (9–10) минус % критиков (0–6). Нейтралы 7–8 в формулу не входят.</li>
+      </ul>
+      <div class="scale">
+        Шкала CSAT:&nbsp;
+        <strong>1</strong> — совсем не удовлетворён ·
+        <strong>2</strong> — скорее нет ·
+        <strong>3</strong> — нейтрально ·
+        <strong>4</strong> — скорее да ·
+        <strong>5</strong> — полностью удовлетворён
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block__head">
+        <span class="num">01</span>
+        <div>
+          <h2>A. Общая удовлетворённость (CSAT)</h2>
+          <p class="hint">Главный индекс периода</p>
+        </div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">A1</span> Насколько вы в целом удовлетворены работой IT-подрядчика за указанный период?</p>
+        <div class="radios" role="radiogroup" aria-label="A1">
+          <label class="radio"><input type="radio" name="a1" value="1" /><span>1</span></label>
+          <label class="radio"><input type="radio" name="a1" value="2" /><span>2</span></label>
+          <label class="radio"><input type="radio" name="a1" value="3" /><span>3</span></label>
+          <label class="radio"><input type="radio" name="a1" value="4" /><span>4</span></label>
+          <label class="radio"><input type="radio" name="a1" value="5" /><span>5</span></label>
+        </div>
+        <div class="legend"><span>Совсем нет</span><span>Полностью да</span></div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">A2</span> Насколько результат работы соответствует вашим ожиданиям от договора / ТЗ периода?</p>
+        <div class="radios" role="radiogroup" aria-label="A2">
+          <label class="radio"><input type="radio" name="a2" value="1" /><span>1</span></label>
+          <label class="radio"><input type="radio" name="a2" value="2" /><span>2</span></label>
+          <label class="radio"><input type="radio" name="a2" value="3" /><span>3</span></label>
+          <label class="radio"><input type="radio" name="a2" value="4" /><span>4</span></label>
+          <label class="radio"><input type="radio" name="a2" value="5" /><span>5</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block__head">
+        <span class="num">02</span>
+        <div>
+          <h2>B. Предсказуемость поставки</h2>
+          <p class="hint">Сроки · релизы · план/факт</p>
+        </div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">B1</span> Насколько предсказуемы сроки поставки (релизы, этапы, обещанные даты)?</p>
+        <div class="radios" role="radiogroup" aria-label="B1">
+          <label class="radio"><input type="radio" name="b1" value="1" /><span>1</span></label>
+          <label class="radio"><input type="radio" name="b1" value="2" /><span>2</span></label>
+          <label class="radio"><input type="radio" name="b1" value="3" /><span>3</span></label>
+          <label class="radio"><input type="radio" name="b1" value="4" /><span>4</span></label>
+          <label class="radio"><input type="radio" name="b1" value="5" /><span>5</span></label>
+        </div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">B2</span> Насколько прозрачно объясняется отклонение факта от плана, когда оно возникает?</p>
+        <div class="radios" role="radiogroup" aria-label="B2">
+          <label class="radio"><input type="radio" name="b2" value="1" /><span>1</span></label>
+          <label class="radio"><input type="radio" name="b2" value="2" /><span>2</span></label>
+          <label class="radio"><input type="radio" name="b2" value="3" /><span>3</span></label>
+          <label class="radio"><input type="radio" name="b2" value="4" /><span>4</span></label>
+          <label class="radio"><input type="radio" name="b2" value="5" /><span>5</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block__head">
+        <span class="num">03</span>
+        <div>
+          <h2>C. Коммуникация и прозрачность статуса</h2>
+          <p class="hint">Один язык статуса · без ручной сборки</p>
+        </div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">C1</span> Насколько понятен и регулярен статус по работам (отчёты, дашборды, статусные встречи)?</p>
+        <div class="radios" role="radiogroup" aria-label="C1">
+          <label class="radio"><input type="radio" name="c1" value="1" /><span>1</span></label>
+          <label class="radio"><input type="radio" name="c1" value="2" /><span>2</span></label>
+          <label class="radio"><input type="radio" name="c1" value="3" /><span>3</span></label>
+          <label class="radio"><input type="radio" name="c1" value="4" /><span>4</span></label>
+          <label class="radio"><input type="radio" name="c1" value="5" /><span>5</span></label>
+        </div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">C2</span> Насколько легко вам получить актуальную картину без «ручной» сборки из переписки?</p>
+        <div class="radios" role="radiogroup" aria-label="C2">
+          <label class="radio"><input type="radio" name="c2" value="1" /><span>1</span></label>
+          <label class="radio"><input type="radio" name="c2" value="2" /><span>2</span></label>
+          <label class="radio"><input type="radio" name="c2" value="3" /><span>3</span></label>
+          <label class="radio"><input type="radio" name="c2" value="4" /><span>4</span></label>
+          <label class="radio"><input type="radio" name="c2" value="5" /><span>5</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block__head">
+        <span class="num">04</span>
+        <div>
+          <h2>D. Качество входа требований</h2>
+          <p class="hint">Шлюз качества · понятность постановки</p>
+        </div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">D1</span> Насколько понятен и удобен процесс передачи требований / заявок подрядчику?</p>
+        <div class="radios" role="radiogroup" aria-label="D1">
+          <label class="radio"><input type="radio" name="d1" value="1" /><span>1</span></label>
+          <label class="radio"><input type="radio" name="d1" value="2" /><span>2</span></label>
+          <label class="radio"><input type="radio" name="d1" value="3" /><span>3</span></label>
+          <label class="radio"><input type="radio" name="d1" value="4" /><span>4</span></label>
+          <label class="radio"><input type="radio" name="d1" value="5" /><span>5</span></label>
+        </div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">D2</span> Насколько редко приходится переделывать работу из‑за недосказанности на входе?</p>
+        <div class="radios" role="radiogroup" aria-label="D2">
+          <label class="radio"><input type="radio" name="d2" value="1" /><span>1</span></label>
+          <label class="radio"><input type="radio" name="d2" value="2" /><span>2</span></label>
+          <label class="radio"><input type="radio" name="d2" value="3" /><span>3</span></label>
+          <label class="radio"><input type="radio" name="d2" value="4" /><span>4</span></label>
+          <label class="radio"><input type="radio" name="d2" value="5" /><span>5</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block__head">
+        <span class="num">05</span>
+        <div>
+          <h2>E. Инциденты и сопровождение</h2>
+          <p class="hint">SLA · реакция · закрытие</p>
+        </div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">E1</span> Насколько вы удовлетворены реакцией и решением инцидентов / обращений по сопровождению?</p>
+        <div class="radios" role="radiogroup" aria-label="E1">
+          <label class="radio"><input type="radio" name="e1" value="1" /><span>1</span></label>
+          <label class="radio"><input type="radio" name="e1" value="2" /><span>2</span></label>
+          <label class="radio"><input type="radio" name="e1" value="3" /><span>3</span></label>
+          <label class="radio"><input type="radio" name="e1" value="4" /><span>4</span></label>
+          <label class="radio"><input type="radio" name="e1" value="5" /><span>5</span></label>
+        </div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">E2</span> Насколько прозрачен статус сбоев и недоступности (без отдельных «ручных танцев»)?</p>
+        <div class="radios" role="radiogroup" aria-label="E2">
+          <label class="radio"><input type="radio" name="e2" value="1" /><span>1</span></label>
+          <label class="radio"><input type="radio" name="e2" value="2" /><span>2</span></label>
+          <label class="radio"><input type="radio" name="e2" value="3" /><span>3</span></label>
+          <label class="radio"><input type="radio" name="e2" value="4" /><span>4</span></label>
+          <label class="radio"><input type="radio" name="e2" value="5" /><span>5</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block__head">
+        <span class="num">06</span>
+        <div>
+          <h2>F. Ценность и экономика</h2>
+          <p class="hint">Value for money · готовность продолжать</p>
+        </div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">F1</span> Насколько соотношение «результат / затраченные средства и усилия» вас устраивает?</p>
+        <div class="radios" role="radiogroup" aria-label="F1">
+          <label class="radio"><input type="radio" name="f1" value="1" /><span>1</span></label>
+          <label class="radio"><input type="radio" name="f1" value="2" /><span>2</span></label>
+          <label class="radio"><input type="radio" name="f1" value="3" /><span>3</span></label>
+          <label class="radio"><input type="radio" name="f1" value="4" /><span>4</span></label>
+          <label class="radio"><input type="radio" name="f1" value="5" /><span>5</span></label>
+        </div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">F2</span> Насколько вы готовы продолжать сотрудничество в текущем формате на следующий период?</p>
+        <div class="radios" role="radiogroup" aria-label="F2">
+          <label class="radio"><input type="radio" name="f2" value="1" /><span>1</span></label>
+          <label class="radio"><input type="radio" name="f2" value="2" /><span>2</span></label>
+          <label class="radio"><input type="radio" name="f2" value="3" /><span>3</span></label>
+          <label class="radio"><input type="radio" name="f2" value="4" /><span>4</span></label>
+          <label class="radio"><input type="radio" name="f2" value="5" /><span>5</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block__head">
+        <span class="num">07</span>
+        <div>
+          <h2>G. NPS · пульс рекомендации</h2>
+          <p class="hint">Один вопрос · шкала 0–10</p>
+        </div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">G1</span> Насколько вероятно, что вы порекомендуете этого IT-подрядчика коллеге в похожей ситуации?</p>
+        <div class="radios radios--nps" role="radiogroup" aria-label="G1 NPS">
+          <label class="radio"><input type="radio" name="g1" value="0" /><span>0</span></label>
+          <label class="radio"><input type="radio" name="g1" value="1" /><span>1</span></label>
+          <label class="radio"><input type="radio" name="g1" value="2" /><span>2</span></label>
+          <label class="radio"><input type="radio" name="g1" value="3" /><span>3</span></label>
+          <label class="radio"><input type="radio" name="g1" value="4" /><span>4</span></label>
+          <label class="radio"><input type="radio" name="g1" value="5" /><span>5</span></label>
+          <label class="radio"><input type="radio" name="g1" value="6" /><span>6</span></label>
+          <label class="radio"><input type="radio" name="g1" value="7" /><span>7</span></label>
+          <label class="radio"><input type="radio" name="g1" value="8" /><span>8</span></label>
+          <label class="radio"><input type="radio" name="g1" value="9" /><span>9</span></label>
+          <label class="radio"><input type="radio" name="g1" value="10" /><span>10</span></label>
+        </div>
+        <div class="legend"><span>0 — точно нет</span><span>10 — точно да</span></div>
+      </div>
+      <div class="calc">
+        <strong>Счёт:</strong> критики 0–6 · нейтралы 7–8 · промоутеры 9–10.
+        NPS = % промоутеров − % критиков.
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block__head">
+        <span class="num">08</span>
+        <div>
+          <h2>H. Открытые ответы</h2>
+          <p class="hint">Что усилить · что мешает</p>
+        </div>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">H1</span> Что за период сработало лучше всего?</p>
+        <textarea name="h1" rows="3"></textarea>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">H2</span> Что сильнее всего снижает удовлетворённость сейчас?</p>
+        <textarea name="h2" rows="3"></textarea>
+      </div>
+      <div class="q">
+        <p class="q__title"><span class="q__code">H3</span> Какое одно изменение на стороне подрядчика даст наибольший эффект в следующем периоде?</p>
+        <textarea name="h3" rows="3"></textarea>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block__head">
+        <span class="num">09</span>
+        <div>
+          <h2>Итог для PMO</h2>
+          <p class="hint">Заполняет подрядчик после сбора</p>
+        </div>
+      </div>
+      <div class="meta" style="margin-top:0">
+        <label>CSAT общий (A1), Top-2 Box %
+          <input type="text" name="csat_a1" placeholder="напр. 80%" />
+        </label>
+        <label>Средний CSAT по блокам A–F
+          <input type="text" name="csat_avg" placeholder="напр. 4,1 / 5" />
+        </label>
+        <label>NPS (G1)
+          <input type="text" name="nps" placeholder="напр. +32" />
+        </label>
+        <label>Δ к базовой линии / прошлому периоду
+          <input type="text" name="delta" placeholder="напр. +12 п.п. к Q4" />
+        </label>
+      </div>
+      <div class="q" style="margin-top:0.85rem;border:none;padding:0">
+        <p class="q__title">Топ-3 действия по итогам опроса</p>
+        <textarea name="actions" rows="4" placeholder="1. …&#10;2. …&#10;3. …"></textarea>
+      </div>
+      <div class="sign" style="margin-top:0.85rem">
+        <label style="display:grid;gap:0.25rem;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted)">Подпись заказчика
+          <input class="line-input" type="text" name="sign_customer" />
+        </label>
+        <label style="display:grid;gap:0.25rem;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted)">Подпись подрядчика / PM
+          <input class="line-input" type="text" name="sign_vendor" />
+        </label>
+        <label style="display:grid;gap:0.25rem;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted)">Дата разбора
+          <input class="line-input" type="date" name="review_date" />
+        </label>
+      </div>
+    </section>
+
+    <p class="foot">
+      Инструмент: CSAT (Customer Satisfaction Score) + пульс NPS.
+      Источники практики: relationship vs transactional surveys (Info-Tech),
+      Top-2 Box на 5-балльной шкале (Qualtrics / отраслевой стандарт CSAT),
+      NPS 0–10 (Bain / Reichheld) как отдельный loyalty-пульс, не замена CSAT.
+      Документ для печати и заполнения · чёрно-золотая палитра проектного офиса.
+    </p>
+  </div>
+</body>
+</html>

@@ -1,5 +1,10 @@
 export type LangText = { ru: string; en: string };
 
+export type MetricResource = {
+  label: LangText;
+  href: string;
+};
+
 export type MetricPage = {
   id: string;
   value: string;
@@ -9,6 +14,7 @@ export type MetricPage = {
   why: LangText;
   how: LangText[];
   before: LangText[];
+  resources?: MetricResource[];
 };
 
 export const metricPages: MetricPage[] = [
@@ -91,6 +97,15 @@ export const metricPages: MetricPage[] = [
       {
         ru: "Есть прямой канал к заказчику и руководству.",
         en: "There is a direct channel to the customer and to leadership.",
+      },
+    ],
+    resources: [
+      {
+        label: {
+          ru: "Опросник удовлетворённости (CSAT)",
+          en: "Customer satisfaction questionnaire (CSAT)",
+        },
+        href: "/project-office/csat-zakazchik.html",
       },
     ],
   },

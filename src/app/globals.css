@@ -800,6 +800,33 @@ a.glass-card:hover {
   line-height: 1.4;
 }
 
+.project-office-theme .po-metric__resources {
+  margin-top: 0.65rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.project-office-theme .po-metric__resource {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(240, 196, 25, 0.45);
+  border-radius: 2px;
+  background: #141414;
+  color: var(--po-gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.project-office-theme .po-metric__resource:hover {
+  border-color: var(--po-gold);
+  background: #1a1a1a;
+}
+
 .project-office-theme .po-metric__why {
   gap: 0.55rem;
 }

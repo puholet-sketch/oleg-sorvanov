@@ -55,6 +55,21 @@ export function ProjectOfficeMetricPage({ metric }: { metric: MetricPage }) {
                 </li>
               ))}
             </ol>
+            {metric.resources?.length ? (
+              <div className="po-metric__resources">
+                {metric.resources.map((resource) => (
+                  <a
+                    key={resource.href}
+                    className="po-metric__resource"
+                    href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${resource.href}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t(resource.label)} →
+                  </a>
+                ))}
+              </div>
+            ) : null}
           </FadeUp>
 
           <FadeUp className="po-block po-metric__block" delay={0.05}>
