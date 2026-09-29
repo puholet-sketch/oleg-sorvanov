@@ -88,6 +88,10 @@ export const metricPages: MetricPage[] = [
         ru: "Заказчику показывают измеряемый ход по качеству, релизам и экономике проекта — программу улучшений, а не обещание «разберёмся».",
         en: "The customer is shown measurable movement on quality, releases and project economics — an improvement program, not a promise to look into it.",
       },
+      {
+        ru: "Индекс периода — CSAT % (Top-2 Box: доля оценок 4 и 5) плюс пульс NPS; формулы и опросник — в ресурсе ниже.",
+        en: "The period index is CSAT % (Top-2 Box: share of 4s and 5s) plus an NPS pulse; formulas and the questionnaire are in the resource below.",
+      },
     ],
     before: [
       {
