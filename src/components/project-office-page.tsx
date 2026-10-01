@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FadeUp } from "@/components/motion";
+import { Marquee } from "@/components/marquee";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { useI18n } from "@/lib/i18n";
@@ -49,17 +50,15 @@ export function ProjectOfficePage() {
                   ? "Владеет внедрением методологии поставки и PMO-контуром на согласованном периметре."
                   : "Owns delivery methodology rollout and the PMO contour across the agreed perimeter."}
               </p>
-              <ul className="po-pillars" aria-label={lang === "ru" ? "Четыре столпа" : "Four pillars"}>
-                {(lang === "ru"
-                  ? ["Регламенты", "Учёт", "Ритм", "Прозрачность для заказчика"]
-                  : ["Rules", "Tracking", "Cadence", "Customer visibility"]
-                ).map((label) => (
-                  <li key={label} className="po-pillars__item">
-                    <span className="po-pillars__dot" aria-hidden />
-                    <span className="po-pillars__label">{label}</span>
-                  </li>
-                ))}
-              </ul>
+              <Marquee
+                className="po-pillars-marquee"
+                aria-label={lang === "ru" ? "Четыре столпа" : "Four pillars"}
+                items={
+                  lang === "ru"
+                    ? ["Регламенты", "Учёт", "Ритм", "Прозрачность для заказчика"]
+                    : ["Rules", "Tracking", "Cadence", "Customer visibility"]
+                }
+              />
               <p className="po-pillars__caption">
                 {lang === "ru"
                   ? "Измеримый эффект после базовой линии"
