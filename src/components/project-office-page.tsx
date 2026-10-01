@@ -6,7 +6,6 @@ import { FadeUp } from "@/components/motion";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { useI18n } from "@/lib/i18n";
-import { ProjectOfficeDorDod } from "@/components/project-office-dor-dod";
 import {
   authorityItems,
   launchSteps,
@@ -147,9 +146,6 @@ export function ProjectOfficePage() {
                     <li key={step.ru}>{t(step)}</li>
                   ))}
                 </ol>
-                {opened.id === "schedule" ? (
-                  <ProjectOfficeDorDod mode="callout" className="po-reveal__glossary" />
-                ) : null}
                 <Link href={`/project-office/${opened.id}/`} className="po-reveal__more">
                   {lang === "ru" ? "Открыть страницу" : "Open the page"} →
                 </Link>
@@ -192,7 +188,6 @@ export function ProjectOfficePage() {
                 </li>
               ))}
             </ol>
-            <ProjectOfficeDorDod mode="callout" className="mt-4" />
           </FadeUp>
 
           {/* 4. Launch route */}

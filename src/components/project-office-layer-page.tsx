@@ -40,7 +40,7 @@ export function ProjectOfficeLayerPage({ layer }: { layer: LayerPage }) {
 
           {layer.id === "artifacts" ? (
             <FadeUp className="po-detail__block" delay={0.03}>
-              <ProjectOfficeDorDod mode="full" />
+              <ProjectOfficeDorDod />
             </FadeUp>
           ) : null}
 

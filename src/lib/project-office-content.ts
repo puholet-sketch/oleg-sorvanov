@@ -98,8 +98,8 @@ export const metricPages: MetricPage[] = [
     steps: [
       tx("Определить путь задачи от входа до приёмки и владельца каждого перехода.", "Define the path from intake to acceptance and an owner for every transition."),
       tx(
-        "Ввести DoR (готовность ко входу) и DoD (готовность результата) плюс контроль качества требований до разработки.",
-        "Introduce DoR (intake readiness) and DoD (result readiness) plus requirements quality control before development.",
+        "Ввести Definition of Ready (DoR) и Definition of Done (DoD) плюс контроль качества требований до разработки — детали в слое «Артефакты».",
+        "Introduce Definition of Ready (DoR) and Definition of Done (DoD) plus requirements quality control before development — details in the Artifacts layer.",
       ),
       tx(
         "Задать устойчивый релизный ритм: начать от 2 недель и со временем учащать; ориентир — раз в 2 дня или чаще. Плюс правила срочных исправлений.",
@@ -422,31 +422,50 @@ export const layerPages: LayerPage[] = [
     id: "artifacts",
     n: "03",
     title: tx("Артефакты и атрибуты", "Artifacts and attributes"),
-    summary: tx("Оценка, даты, роли; DoR на входе и DoD на выходе.", "Estimate, dates, roles; DoR at intake and DoD at exit."),
-    purpose: tx(
-      "Дать задаче минимум данных для оценки, исполнения, приёмки и прогноза — и два шлюза: DoR до разработки, DoD до приёмки.",
-      "Give each item the minimum data for estimation, execution, acceptance, and forecast — plus two gates: DoR before development, DoD before acceptance.",
+    summary: tx(
+      "Оценка, даты, роли; Definition of Ready на входе и Definition of Done на выходе.",
+      "Estimate, dates, roles; Definition of Ready at intake and Definition of Done at exit.",
     ),
-    inputs: [tx("Карта стадий, шаблоны требований, правила учёта.", "Stage map, requirements templates, and tracking rules.")],
+    purpose: tx(
+      "Дать задаче минимум данных для оценки, исполнения, приёмки и прогноза — и два шлюза: Definition of Ready до разработки, Definition of Done до приёмки. Acceptance Criteria фиксируют бизнес-ценность до старта.",
+      "Give each item the minimum data for estimation, execution, acceptance, and forecast — plus two gates: Definition of Ready before development, Definition of Done before acceptance. Acceptance Criteria lock business value before start.",
+    ),
+    inputs: [
+      tx(
+        "Карта стадий, шаблоны ФТ/ТК и ОП, правила учёта и ссылки на Confluence / файловое хранилище.",
+        "Stage map, FT/TC and OP templates, tracking rules, and Confluence / file-store links.",
+      ),
+    ],
     actions: [
       tx(
-        "Ввести DoR (готовность ко входу), DoD (готовность результата) и проверяемые условия приёмки.",
-        "Introduce DoR (intake readiness), DoD (result readiness), and testable acceptance criteria.",
+        "Зафиксировать Definition of Ready (DoR), Definition of Done (DoD) и Acceptance Criteria (AC) до старта разработки.",
+        "Lock Definition of Ready (DoR), Definition of Done (DoD), and Acceptance Criteria (AC) before development starts.",
       ),
-      tx("Заполнять оценку, даты, владельца и связи Epic → Story → Subtask.", "Populate estimate, dates, owner, and Epic → Story → Subtask links."),
-      tx("Автоматизировать контроль обязательных полей и тестов (Quality Gate).", "Automate mandatory-field and test checks (Quality Gate)."),
+      tx(
+        "Заполнять оценку BA/DEV/QA ≤24 ч, даты, владельца и связи Epic → Story → Subtask.",
+        "Populate BA/DEV/QA estimate ≤24h, dates, owner, and Epic → Story → Subtask links.",
+      ),
+      tx(
+        "Вести артефакты по группам: анализ → разработка → тестирование; автоматизировать контроль обязательных полей (Quality Gate).",
+        "Keep artifacts by group: analysis → development → testing; automate mandatory-field checks (Quality Gate).",
+      ),
     ],
-    outputs: [tx("Шаблон требований, карточка Story, проверки контроля качества.", "Requirements template, story card, and quality-control checks.")],
+    outputs: [
+      tx(
+        "Готовый пакет по группам: документ требований, MR/PR и запись демо, прогоны и дефекты с временем.",
+        "Ready package by group: requirements doc, MR/PR and demo recording, runs and defects with logged time.",
+      ),
+    ],
     roles: [
       tx(
-        "Аналитик отвечает за DoR; технический и QA-лиды — за DoD; исполнитель — за факт.",
-        "Analyst owns DoR; technical and QA leads own DoD; assignee owns actuals.",
+        "Аналитик (BA) владеет входом (DoR + AC); техлид и QA-лид — стандартом результата (DoD); исполнитель — фактом в трекере.",
+        "Analyst (BA) owns intake (DoR + AC); tech lead and QA lead own the result standard (DoD); assignee owns tracker actuals.",
       ),
     ],
     cadence: [
       tx(
-        "DoR — до взятия в работу / спринт-контур; DoD — до приёмки и релиза.",
-        "DoR before taking into work / sprint contour; DoD before acceptance and release.",
+        "DoR и AC — до взятия в работу / спринт-контур; DoD — до приёмки и релиза.",
+        "DoR and AC before taking into work / sprint contour; DoD before acceptance and release.",
       ),
     ],
     relatedMetrics: ["schedule", "satisfaction", "plan-fact", "tech-debt", "overspend"],
@@ -645,8 +664,8 @@ export const launchSteps: LaunchStepPage[] = [
         "Roll out layers 1–3 rules: time logging, BA/DEV/QA ≤24h (early variance signal), Planning, ban on zero plan.",
       ),
       tx(
-        "Сделать обязательными артефакты задачи: оценка, даты, исполнитель, условия приёмки, DoR и DoD.",
-        "Make task artifacts mandatory: estimate, dates, assignee, acceptance criteria, DoR and DoD.",
+        "Сделать обязательными артефакты задачи: оценка, даты, исполнитель, условия приёмки — детали DoR/DoD/AC в слое «Артефакты».",
+        "Make task artifacts mandatory: estimate, dates, assignee, acceptance criteria — DoR/DoD/AC details in the Artifacts layer.",
       ),
       tx("Ввести шаблон бизнес-требований и оценку по ролям BA / DEV / QA.", "Introduce a business-requirements template and BA / DEV / QA role estimates."),
       tx("Зафиксировать период, набор типов работ и правила учёта — это и есть исходная линия для сравнения.", "Lock the period, work types, and accounting rules — this is the baseline for comparison."),
@@ -664,8 +683,8 @@ export const launchSteps: LaunchStepPage[] = [
         "Flow leads embed the rules in teams (delivery owners, not the customer PO).",
       ),
       tx(
-        "Аналитик отвечает за DoR (вход); технические и QA-лиды — за DoD (результат).",
-        "Analyst owns DoR (intake); technical and QA leads own DoD (result).",
+        "Владельцы входа и результата — по слою «Артефакты» (аналитик / техлид и QA-лид).",
+        "Intake and result owners follow the Artifacts layer (analyst / tech lead and QA lead).",
       ),
     ],
     rolesLink: teamStructureLink,
@@ -941,12 +960,15 @@ export const authorityItems: AuthorityPage[] = [
   },
 ];
 
-/** DoR / DoD glossary and stage ribbon — shared by PO pages */
+/** DoR / DoD / AC — full explanation only on /project-office/how/artifacts/ */
 export const dorDodContent = {
-  title: tx("DoR и DoD — два шлюза качества", "DoR and DoD — two quality gates"),
+  title: tx(
+    "Definition of Ready и Definition of Done",
+    "Definition of Ready and Definition of Done",
+  ),
   lead: tx(
-    "DoR проверяет готовность требования ко входу в работу. DoD — готовность результата к приёмке. Вместе с Quality Gate шаблона БТ и декомпозицией BA/DEV/QA ≤24 ч они держат прогноз.",
-    "DoR checks that a requirement is ready to enter work. DoD checks that the result is ready for acceptance. Together with the BT template Quality Gate and BA/DEV/QA ≤24h decomposition, they keep the forecast honest.",
+    "Два шлюза качества поставки. Вместе с Acceptance Criteria (AC) и декомпозицией BA/DEV/QA ≤24 ч они держат прогноз: не стартуем без Ready, не закрываем без Done.",
+    "Two delivery quality gates. Together with Acceptance Criteria (AC) and BA/DEV/QA ≤24h decomposition, they keep the forecast honest: no start without Ready, no close without Done.",
   ),
   stages: [
     {
@@ -957,7 +979,7 @@ export const dorDodContent = {
     },
     {
       id: "dor",
-      label: tx("DoR", "DoR"),
+      label: tx("DoR + AC", "DoR + AC"),
       hint: tx("шлюз качества", "quality gate"),
       kind: "gate" as const,
     },
@@ -982,52 +1004,152 @@ export const dorDodContent = {
   ],
   dor: {
     abbr: "DoR",
+    fullName: tx("Definition of Ready (DoR)", "Definition of Ready (DoR)"),
     name: tx(
       "критерии готовности к взятию в работу",
-      "Definition of Ready — intake readiness criteria",
+      "intake readiness criteria",
     ),
     when: tx(
       "До разработки / на входе в спринт-контур",
       "Before development / at sprint-contour intake",
     ),
     what: tx(
-      "Правила входа: ясная формулировка, условия приёмки, макеты или уточнения, нет внешних блокеров. Подкрепляется контролем качества шаблона бизнес-требований.",
-      "Intake rules: clear wording, acceptance criteria, mocks or clarifications, no external blockers. Backed by the business-requirements template quality check.",
+      "Правила входа: ясная формулировка, Acceptance Criteria, макеты или уточнения, нет внешних блокеров. Подкрепляется контролем качества шаблона бизнес-требований. Оценка BA/DEV/QA ≤24 ч — соседний критерий Ready, не замена DoR.",
+      "Intake rules: clear wording, Acceptance Criteria, mocks or clarifications, no external blockers. Backed by the business-requirements template quality check. BA/DEV/QA estimate ≤24h is a neighbouring Ready criterion, not a substitute for DoR.",
     ),
     checks: [
-      tx("Формулировка и ссылка на утверждённые БТ", "Wording and link to approved BR"),
-      tx("Проверяемые условия приёмки (AC)", "Testable acceptance criteria (AC)"),
-      tx("Оценка BA/DEV/QA ≤24 ч, нет блокеров", "BA/DEV/QA estimate ≤24h, no blockers"),
+      tx(
+        "Формулировка и ссылка на утверждённые БТ / ФТ",
+        "Wording and link to approved BR / FT",
+      ),
+      tx(
+        "Acceptance Criteria (AC) согласованы до старта разработки",
+        "Acceptance Criteria (AC) agreed before development starts",
+      ),
+      tx(
+        "Оценка BA/DEV/QA ≤24 ч, нет внешних блокеров",
+        "BA/DEV/QA estimate ≤24h, no external blockers",
+      ),
     ],
     owner: tx("Аналитик (BA) — владелец входа", "Analyst (BA) — owns intake"),
   },
   dod: {
     abbr: "DoD",
+    fullName: tx("Definition of Done (DoD)", "Definition of Done (DoD)"),
     name: tx(
       "критерии готовности результата",
-      "Definition of Done — result readiness criteria",
+      "result readiness criteria",
     ),
     when: tx(
       "До приёмки / выхода из разработки и теста",
       "Before acceptance / exit from development and test",
     ),
     what: tx(
-      "Сквозной стандарт готовности любой задачи: тесты, ревью, документация по правилу контура. Прогресс Story — не «% задач», а прохождение через DoD.",
-      "Cross-cutting readiness standard for any item: tests, review, documentation per contour rules. Story progress is not “% of tasks”, but passing through DoD.",
+      "Сквозной стандарт готовности любой задачи: тесты, ревью, документация и проверка AC по правилу контура. Прогресс Story — не «% задач», а прохождение через DoD.",
+      "Cross-cutting readiness standard for any item: tests, review, documentation, and AC verification per contour rules. Story progress is not “% of tasks”, but passing through DoD.",
     ),
     checks: [
-      tx("Тесты / автопроверки по правилу контура", "Tests / automated checks per contour rules"),
-      tx("Ревью кода и актуальный статус в трекере", "Code review and current tracker status"),
-      tx("Документация / артефакты закрытия по DoD", "Docs / closure artifacts per DoD"),
+      tx(
+        "Тесты / автопроверки и проверка Acceptance Criteria",
+        "Tests / automated checks and Acceptance Criteria verification",
+      ),
+      tx(
+        "Ревью кода (MR/PR) и актуальный статус в трекере",
+        "Code review (MR/PR) and current tracker status",
+      ),
+      tx(
+        "Документация / артефакты закрытия по DoD",
+        "Docs / closure artifacts per DoD",
+      ),
     ],
-    owner: tx("Техлид и QA-лид — стандарт результата", "Tech lead and QA lead — result standard"),
+    owner: tx(
+      "Техлид и QA-лид — стандарт результата",
+      "Tech lead and QA lead — result standard",
+    ),
   },
-  calloutTitle: tx("Коротко: DoR и DoD", "In short: DoR and DoD"),
-  calloutBody: tx(
-    "DoR — готовность ко входу (до разработки). DoD — готовность результата (до приёмки). Шкала: требование → DoR → разработка/тест → DoD → релиз.",
-    "DoR — intake readiness (before development). DoD — result readiness (before acceptance). Scale: requirement → DoR → dev/test → DoD → release.",
+  ac: {
+    abbr: "AC",
+    fullName: tx("Acceptance Criteria (AC)", "Acceptance Criteria (AC)"),
+    name: tx(
+      "критерии приёмки с точки зрения бизнес-ценности",
+      "acceptance criteria from a business-value view",
+    ),
+    what: tx(
+      "AC отвечают на вопрос заказчика: «Как понять, что ожидаемый бизнес-результат получен?» Это проверяемые условия приёмки ценности — не технический чеклист разработки и не замена DoD.",
+      "AC answer the customer’s question: “How do we know the expected business outcome is delivered?” They are testable value-acceptance conditions — not a technical development checklist and not a substitute for DoD.",
+    ),
+    links: [
+      tx(
+        "С DoR: AC должны быть сформулированы и согласованы до старта разработки.",
+        "With DoR: AC must be written and agreed before development starts.",
+      ),
+      tx(
+        "С DoD: при завершении задачи AC проверяются — без подтверждения ценности задача не Done.",
+        "With DoD: at completion AC are verified — without confirmed value the item is not Done.",
+      ),
+    ],
+  },
+  groupsTitle: tx("Артефакты по группам", "Artifacts by group"),
+  groupsLead: tx(
+    "Минимальный набор доказательств Ready и Done. Группы согласованы с DoR (анализ) и DoD (разработка + тест); оценка BA/DEV/QA ≤24 ч не отменяется.",
+    "Minimum evidence set for Ready and Done. Groups align with DoR (analysis) and DoD (development + test); BA/DEV/QA ≤24h estimate stays mandatory.",
   ),
-  moreLabel: tx("Подробнее в слое «Артефакты»", "More in the Artifacts layer"),
+  groups: [
+    {
+      id: "analysis",
+      title: tx("Анализ", "Analysis"),
+      gate: tx("к DoR · Ready", "for DoR · Ready"),
+      items: [
+        tx(
+          "Подготовленный документ ФТ/ТК, ОП",
+          "Prepared FT/TC and OP document",
+        ),
+        tx(
+          "Ссылка на документ в Confluence и в файловом хранилище",
+          "Link to the document in Confluence and the file store",
+        ),
+        tx(
+          "Документ соответствует корпоративным стандартам и содержит все необходимые разделы",
+          "Document matches corporate standards and includes all required sections",
+        ),
+      ],
+    },
+    {
+      id: "development",
+      title: tx("Разработка", "Development"),
+      gate: tx("к DoD · Done", "for DoD · Done"),
+      items: [
+        tx(
+          "Закрытые задачи сопровождаются ссылкой на MR/PR (merge/pull request)",
+          "Closed items include an MR/PR (merge/pull request) link",
+        ),
+        tx(
+          "Видеозапись работающего куска функционала",
+          "Video recording of the working piece of functionality",
+        ),
+        tx(
+          "Подтверждённый code review тимлидом",
+          "Code review confirmed by the team lead",
+        ),
+      ],
+    },
+    {
+      id: "testing",
+      title: tx("Тестирование", "Testing"),
+      gate: tx("к DoD · Done", "for DoD · Done"),
+      items: [
+        tx(
+          "Ссылки на прогоны (например TestRail)",
+          "Links to test runs (e.g. TestRail)",
+        ),
+        tx("Сами выполненные прогоны", "Completed test runs themselves"),
+        tx(
+          "Заведённые дефекты как задачи, в каждой списано / залогировано время",
+          "Logged defects as tasks, each with time written off / logged",
+        ),
+      ],
+    },
+  ],
 };
 
 /** Compact team / flow-lead structure — linked from Roles cards */

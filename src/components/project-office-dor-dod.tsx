@@ -1,42 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 import { dorDodContent } from "@/lib/project-office-content";
 
-type Mode = "full" | "callout";
-
-export function ProjectOfficeDorDod({
-  mode = "full",
-  className = "",
-}: {
-  mode?: Mode;
-  className?: string;
-}) {
+export function ProjectOfficeDorDod({ className = "" }: { className?: string }) {
   const { t, lang } = useI18n();
   const c = dorDodContent;
-
-  if (mode === "callout") {
-    return (
-      <aside className={`po-glossary ${className}`.trim()}>
-        <p className="po-kicker">{t(c.calloutTitle)}</p>
-        <p className="po-glossary__text">{t(c.calloutBody)}</p>
-        <dl className="po-glossary__pair">
-          <div>
-            <dt>DoR</dt>
-            <dd>{t(c.dor.name)}</dd>
-          </div>
-          <div>
-            <dt>DoD</dt>
-            <dd>{t(c.dod.name)}</dd>
-          </div>
-        </dl>
-        <Link href="/project-office/how/artifacts/" className="po-glossary__more">
-          {t(c.moreLabel)} →
-        </Link>
-      </aside>
-    );
-  }
 
   return (
     <section className={`po-dor ${className}`.trim()} aria-labelledby="po-dor-title">
@@ -75,7 +44,8 @@ export function ProjectOfficeDorDod({
         {[c.dor, c.dod].map((gate) => (
           <article className="po-dor__card" key={gate.abbr}>
             <p className="po-kicker">{gate.abbr}</p>
-            <h3 className="po-dor__name">{t(gate.name)}</h3>
+            <h3 className="po-dor__fullname">{t(gate.fullName)}</h3>
+            <p className="po-dor__name">{t(gate.name)}</p>
             <p className="po-dor__when">
               <span className="po-dor__tag">
                 {lang === "ru" ? "Когда" : "When"}
@@ -91,6 +61,47 @@ export function ProjectOfficeDorDod({
             <p className="po-dor__owner">{t(gate.owner)}</p>
           </article>
         ))}
+      </div>
+
+      <article className="po-dor__ac" aria-labelledby="po-ac-title">
+        <p className="po-kicker">{c.ac.abbr}</p>
+        <h3 className="po-dor__fullname" id="po-ac-title">
+          {t(c.ac.fullName)}
+        </h3>
+        <p className="po-dor__name">{t(c.ac.name)}</p>
+        <p className="po-dor__what">{t(c.ac.what)}</p>
+        <ul className="po-detail__list">
+          {c.ac.links.map((item) => (
+            <li key={item.ru}>{t(item)}</li>
+          ))}
+        </ul>
+      </article>
+
+      <div className="po-dor__groups" aria-labelledby="po-groups-title">
+        <div className="po-block__head">
+          <span className="po-num po-num--wide" aria-hidden>
+            ART
+          </span>
+          <div>
+            <h2 className="po-h2" id="po-groups-title">
+              {t(c.groupsTitle)}
+            </h2>
+            <p className="po-lead">{t(c.groupsLead)}</p>
+          </div>
+        </div>
+        <div className="po-dor__groups-grid">
+          {c.groups.map((group) => (
+            <article className="po-dor__card" key={group.id}>
+              <p className="po-kicker">{t(group.gate)}</p>
+              <h3 className="po-dor__fullname">{t(group.title)}</h3>
+              <ul className="po-detail__list">
+                {group.items.map((item) => (
+                  <li key={item.ru}>{t(item)}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

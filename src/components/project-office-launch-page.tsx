@@ -5,7 +5,6 @@ import { FadeUp } from "@/components/motion";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { useI18n } from "@/lib/i18n";
-import { ProjectOfficeDorDod } from "@/components/project-office-dor-dod";
 import {
   authorityItems,
   launchStepById,
@@ -55,12 +54,6 @@ export function ProjectOfficeLaunchPage({ step }: { step: LaunchStepPage }) {
               <p className="po-hero__lead">{t(step.purpose)}</p>
             </div>
           </FadeUp>
-
-          {step.id === "baseline" ? (
-            <FadeUp delay={0.02}>
-              <ProjectOfficeDorDod mode="callout" className="mt-4" />
-            </FadeUp>
-          ) : null}
 
           <FadeUp className="po-block po-detail__block" delay={0.03}>
             <div className="po-block__head">
