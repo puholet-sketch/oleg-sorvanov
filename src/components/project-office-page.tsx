@@ -10,6 +10,7 @@ import {
   authorityItems,
   launchSteps,
   layerPages as layers,
+  mistakesLink,
   metricPages as metrics,
   metricPages,
 } from "@/lib/project-office-content";
@@ -267,6 +268,23 @@ export function ProjectOfficePage() {
                   </Link>
                 </li>
               ))}
+              <li role="listitem">
+                <Link
+                  href={mistakesLink.href}
+                  className="po-kpi__item po-kpi__hit po-kpi__hit--mistakes"
+                >
+                  <div className="po-kpi__value">!</div>
+                  <h3 className="po-kpi__label">{t(mistakesLink.label)}</h3>
+                  <p className="po-kpi__note">
+                    {lang === "ru"
+                      ? "Ошибка × роль × как правильно — по всем контурам методологии."
+                      : "Mistake × role × right move — across every methodology contour."}
+                  </p>
+                  <span className="po-kpi__hint">
+                    {lang === "ru" ? "Открыть каталог" : "Open catalog"}
+                  </span>
+                </Link>
+              </li>
             </ol>
           </FadeUp>
 

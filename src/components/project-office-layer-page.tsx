@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { useI18n } from "@/lib/i18n";
 import { ProjectOfficeDorDod } from "@/components/project-office-dor-dod";
+import { ProjectOfficeRulesStandards } from "@/components/project-office-rules-standards";
 import { metricPages, type LayerPage } from "@/lib/project-office-content";
 
 export function ProjectOfficeLayerPage({ layer }: { layer: LayerPage }) {
@@ -37,6 +38,12 @@ export function ProjectOfficeLayerPage({ layer }: { layer: LayerPage }) {
               <p className="po-hero__lead">{t(layer.purpose)}</p>
             </div>
           </FadeUp>
+
+          {layer.id === "rules" ? (
+            <FadeUp className="po-detail__block" delay={0.02}>
+              <ProjectOfficeRulesStandards />
+            </FadeUp>
+          ) : null}
 
           {layer.id === "artifacts" ? (
             <FadeUp className="po-detail__block" delay={0.03}>
@@ -70,6 +77,11 @@ export function ProjectOfficeLayerPage({ layer }: { layer: LayerPage }) {
                 {related.map((metric) => (
                   <Link key={metric.id} href={`/project-office/${metric.id}/`}>
                     {metric.value} · {t(metric.label)}
+                  </Link>
+                ))}
+                {layer.relatedPages?.map((page) => (
+                  <Link key={page.href} href={page.href}>
+                    {t(page.label)}
                   </Link>
                 ))}
               </div>

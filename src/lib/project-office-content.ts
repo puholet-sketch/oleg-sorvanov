@@ -17,6 +17,8 @@ export type MetricPage = {
   result: LangText;
   relatedLayers: string[];
   resources?: Resource[];
+  /** Extra navigation (mistakes, sibling pages). */
+  relatedPages?: Resource[];
 };
 
 export type LayerPage = {
@@ -33,6 +35,8 @@ export type LayerPage = {
   rolesLink?: Resource;
   cadence: LangText[];
   relatedMetrics: string[];
+  /** Extra navigation (mistakes, sibling pages). */
+  relatedPages?: Resource[];
 };
 
 export type LaunchStepPage = {
@@ -77,6 +81,12 @@ export const teamStructureLink: Resource = {
   href: "/project-office/how/team/",
 };
 
+/** Shared link to the typical-mistakes catalog. */
+export const mistakesLink: Resource = {
+  label: tx("Типовые ошибки", "Typical mistakes"),
+  href: "/project-office/mistakes/",
+};
+
 export const metricPages: MetricPage[] = [
   {
     id: "schedule",
@@ -106,8 +116,8 @@ export const metricPages: MetricPage[] = [
         "Set release cadence: start from 2 weeks, aim to increase frequency; target every 2 days or more often. Plus emergency-fix rules.",
       ),
       tx(
-        "Заполнить оценки, даты и исполнителей — иначе Timeline врёт. Норма дробления ≤24 ч — в «Регламентах» и план/факт.",
-        "Populate estimates, dates, and owners — otherwise Timeline lies. The ≤24h split rule lives in Rules and plan/fact.",
+        "Заполнить оценки, даты и исполнителей — иначе Timeline врёт. ≤24 ч и Planning 4/12/20 — в «Регламентах»; сигнал план/факт — на метрике.",
+        "Populate estimates, dates, and owners — otherwise Timeline lies. ≤24h and Planning 4/12/20 live in Rules; the plan/fact signal is on that metric.",
       ),
       tx("Устранять главную причину ожидания и повторять замер на сопоставимом периоде.", "Remove the main waiting cause and repeat the measurement over a comparable period."),
     ],
@@ -133,6 +143,7 @@ export const metricPages: MetricPage[] = [
       "Median cycle time falls sustainably against the baseline while quality and agreed work volume do not deteriorate.",
     ),
     relatedLayers: ["rules", "stages", "artifacts", "cadence", "capacity"],
+    relatedPages: [mistakesLink],
   },
   {
     id: "satisfaction",
@@ -198,7 +209,15 @@ export const metricPages: MetricPage[] = [
         "Разложить Story на BA/DEV/QA ≤24 ч: крупная оценка маскирует перерасход; дробление делает отклонение видимым за 1–3 дня.",
         "Split stories into BA/DEV/QA ≤24h: a large estimate hides overspend; splitting makes variance visible in 1–3 days.",
       ),
+      tx(
+        "Оценку Story вести типом «Планирование»: малая 4 ч, средняя 12 ч, большая 20 ч — рядом с подзадачами ролей.",
+        "Keep Story estimation as a Planning-type task: small 4h, medium 12h, large 20h — next to role subtasks.",
+      ),
       tx("Запретить списание времени при нулевой исходной оценке.", "Disallow time logging against a zero initial estimate."),
+      tx(
+        "Новые требования: зафиксировать scope → обновить Planning → поправить затронутые BA/DEV/QA ≤24 ч → при росте объёма — новая подзадача/Story, не «дотягивание» фактом.",
+        "New requirements: record scope → update Planning → adjust affected BA/DEV/QA ≤24h → on volume growth create a new subtask/Story, do not stretch by actuals.",
+      ),
       tx("При каждом списании обновлять оставшуюся оценку и фиксировать результат.", "Update remaining estimate and record the result with every time entry."),
       tx("Автоматически выбирать случаи, где факт выше плана или план равен нулю.", "Automatically select cases where actual exceeds plan or plan is zero."),
       tx("Разбирать корневую причину по задаче и роли, затем менять правило или оценку.", "Review the root cause by task and role, then adjust the rule or estimate."),
@@ -206,8 +225,8 @@ export const metricPages: MetricPage[] = [
     artifacts: [
       tx("Реестр отклонений, фильтр Jira, классификатор причин; владелец — PMO.", "Variance register, Jira filter, cause taxonomy; owner: PMO."),
       tx(
-        "Структура истории (Story) BA/DEV/QA ≤24 ч и шкала оценки; владельцы — аналитик и команда. Полный стандарт — в слое «Регламенты».",
-        "Story structure BA/DEV/QA ≤24h and estimation scale; owners: analyst and team. Full standard lives in the Rules layer.",
+        "Структура Story BA/DEV/QA ≤24 ч + подзадача Planning 4/12/20 ч; владельцы — аналитик и команда. Полный стандарт — в «Регламентах».",
+        "Story structure BA/DEV/QA ≤24h + Planning subtask 4/12/20h; owners: analyst and team. Full standard lives in Rules.",
       ),
     ],
     cadence: [
@@ -220,12 +239,17 @@ export const metricPages: MetricPage[] = [
         "Оставлять подзадачи >24 ч — сигнал план/факт приходит слишком поздно.",
         "Leaving subtasks >24h — the plan/fact signal arrives too late.",
       ),
+      tx(
+        "Списывать на Plan = 0 или без соседней Planning / «Оценка» у Story.",
+        "Logging time against Plan = 0 or without a neighbouring Planning / Estimate on the Story.",
+      ),
     ],
     result: tx(
       "Медианное абсолютное отклонение и доля нулевого плана снижаются; переоценка оформляется до перерасхода.",
       "Median absolute variance and zero-plan share fall; re-estimation happens before overspend.",
     ),
     relatedLayers: ["rules", "stages", "artifacts", "cadence"],
+    relatedPages: [mistakesLink],
   },
   {
     id: "tail-cost",
@@ -368,17 +392,28 @@ export const layerPages: LayerPage[] = [
     inputs: [tx("Границы портфеля, договорные модели, текущие правила Jira.", "Portfolio boundaries, contract models, and current Jira rules.")],
     actions: [
       tx(
-        "Декомпозиция BA/DEV/QA ≤24 ч: ранний сигнал; на подзадачах ролей, не на Epic.",
-        "BA/DEV/QA ≤24h decomposition: early signal; on role subtasks, not the Epic.",
+        "Декомпозиция BA/DEV/QA ≤24 ч на подзадачах ролей (не на Epic); за дроблением следит аналитик; тимлид + QA — по ФТ/ОП.",
+        "BA/DEV/QA ≤24h on role subtasks (not the Epic); the analyst owns the split; team lead + QA cover FT/OP.",
       ),
-      tx("Правила списаний, планирования, запрет «План = 0», изменения объёма.", "Time logging, planning, zero-plan ban, work-volume changes."),
-      tx("Обязательные поля, исключения, маршрут срочных исправлений.", "Mandatory fields, exceptions, emergency-fix route."),
+      tx(
+        "Оценки обязательны; тип «Планирование» у Story: 4 / 12 / 20 ч. External-дефекты с прода — 16 ч (в разработке оценку не ставим).",
+        "Estimates are mandatory; Story Planning type: 4 / 12 / 20h. Production external defects — 16h (no estimate inside development).",
+      ),
+      tx(
+        "Задача на аналитическое сопровождение разработки и тестирования; новые требования — правка плана или новая задача.",
+        "Create analysis-support for development and testing; new requirements mean plan edit or a new task.",
+      ),
+      tx(
+        "Переоценка: scope → обновить Planning → BA/DEV/QA ≤24 ч → существенный рост = новая Story/подзадача, не «дотягивание» фактом.",
+        "Re-estimate: scope → update Planning → BA/DEV/QA ≤24h → material growth = new Story/subtask, not stretching by actuals.",
+      ),
+      tx("Правила списаний, запрет «План = 0», CR на изменение объёма; исключения и срочные исправления.", "Time logging, zero-plan ban, CR for volume change; exceptions and emergency fixes."),
       tx("Владельцы правил и порядок смены версий.", "Rule owners and version-change procedure."),
     ],
     outputs: [
       tx(
-        "Короткий регламент (в т.ч. «зачем ≤24 ч») и памятка ролей.",
-        "Concise rules (including why ≤24h) and role guide.",
+        "Короткий регламент (≤24 ч, Planning 4/12/20, external 16 ч, переоценка) и памятка ролей.",
+        "Concise rules (≤24h, Planning 4/12/20, external 16h, re-estimation) and role guide.",
       ),
       tx(
         "Журнал исключений: отклонение, кто согласовал, срок, риск/компенсация.",
@@ -391,7 +426,7 @@ export const layerPages: LayerPage[] = [
         "Director of the Production System — system and methodology across the perimeter.",
       ),
       tx("Руководители потоков внедряют правила у себя.", "Flow leads embed rules locally."),
-      tx("Команды дают обратную связь по исполнению.", "Teams give feedback on execution."),
+      tx("Аналитик — оценки и дробление; при превышении — обратная связь ПМ / тимлиду.", "Analyst — estimates and split; on overrun — feedback to PM / team lead."),
       tx(
         "Не путать поток с PO заказчика — см. структуру команд.",
         "Do not confuse a flow lead with the customer PO — see team structure.",
@@ -400,6 +435,7 @@ export const layerPages: LayerPage[] = [
     rolesLink: teamStructureLink,
     cadence: [tx("Проверка соблюдения еженедельно; пересмотр после значимого изменения или по циклу.", "Compliance weekly; review after major change or on a set cycle.")],
     relatedMetrics: ["schedule", "plan-fact", "tail-cost", "overspend"],
+    relatedPages: [mistakesLink],
   },
   {
     id: "stages",
@@ -447,8 +483,8 @@ export const layerPages: LayerPage[] = [
         "Lock Definition of Ready (DoR), Definition of Done (DoD), and Acceptance Criteria (AC) before development starts.",
       ),
       tx(
-        "Заполнять оценку BA/DEV/QA ≤24 ч, даты, владельца и связи Epic → Story → Subtask.",
-        "Populate BA/DEV/QA estimate ≤24h, dates, owner, and Epic → Story → Subtask links.",
+        "Заполнять оценку BA/DEV/QA ≤24 ч и соседнюю Planning 4/12/20 ч; даты, владелец, связи Epic → Story → Subtask.",
+        "Populate BA/DEV/QA estimate ≤24h and neighbouring Planning 4/12/20h; dates, owner, Epic → Story → Subtask links.",
       ),
       tx(
         "Вести артефакты по группам: анализ → разработка → тестирование; автоматизировать контроль обязательных полей.",
@@ -473,6 +509,7 @@ export const layerPages: LayerPage[] = [
       ),
     ],
     relatedMetrics: ["schedule", "satisfaction", "plan-fact", "tech-debt", "overspend"],
+    relatedPages: [mistakesLink],
   },
   {
     id: "cadence",
@@ -511,8 +548,8 @@ export const layerPages: LayerPage[] = [
     inputs: [tx("Оценки, даты, исполнители, календарь доступности и приоритеты.", "Estimates, dates, assignees, availability calendar, and priorities.")],
     actions: [
       tx(
-        "В Timeline — только оценённые работы с датами и владельцами (≤24 ч — в «Регламентах»).",
-        "Timeline shows only estimated, dated, owned work (≤24h lives in Rules).",
+        "В Timeline — только оценённые работы с датами и владельцами (≤24 ч и Planning — в «Регламентах»).",
+        "Timeline shows only estimated, dated, owned work (≤24h and Planning live in Rules).",
       ),
       tx("Спрос vs ёмкость по ролям и периодам.", "Demand vs capacity by role and period."),
       tx(
@@ -536,6 +573,7 @@ export const layerPages: LayerPage[] = [
       tx("Горизонт — не короче цикла планирования.", "Horizon no shorter than the planning cycle."),
     ],
     relatedMetrics: ["schedule", "tail-cost", "tech-debt", "overspend"],
+    relatedPages: [mistakesLink],
   },
   {
     id: "customer",
@@ -560,6 +598,7 @@ export const layerPages: LayerPage[] = [
     ],
     cadence: [tx("Статус — еженедельно; решения — по событию; CSAT — по согласованному циклу.", "Status weekly; decisions event-driven; CSAT on an agreed cycle.")],
     relatedMetrics: ["satisfaction", "overspend"],
+    relatedPages: [mistakesLink],
   },
 ];
 
@@ -1019,6 +1058,344 @@ export const authorityItems: AuthorityPage[] = [
     relatedLaunch: ["embedding", "targets", "changes"],
   },
 ];
+
+/** Compact PlanFact standards — full block only on /project-office/how/rules/ */
+export const rulesStandardsContent = {
+  title: tx(
+    "Базовые правила декомпозиции и заведения",
+    "Basic decomposition and task-creation rules",
+  ),
+  lead: tx(
+    "Единые правила для всех команд. Пороги методические: ≤24 ч, Planning 4/12/20 ч, external 16 ч.",
+    "Shared rules for every team. Method thresholds: ≤24h, Planning 4/12/20h, external 16h.",
+  ),
+  decompose: {
+    title: tx("Декомпозиция и заведение", "Decomposition and creation"),
+    items: [
+      tx("Аналитикам — проставлять оценки на подзадачах.", "Analysts must set estimates on subtasks."),
+      tx(
+        "External-дефекты с прода — 16 ч; в рамках разработки оценку не ставим.",
+        "Production external defects — 16h; no estimate inside development.",
+      ),
+      tx(
+        "Дробить BA/DEV/QA ≤24 ч (тимлид + тестировщик по ФТ/ОП).",
+        "Split BA/DEV/QA ≤24h (team lead + tester for FT/OP).",
+      ),
+      tx(
+        "Создавать задачу на аналитическое сопровождение разработки и тестирования.",
+        "Create an analysis-support task for development and testing.",
+      ),
+      tx(
+        "За дроблением следит аналитик; при новых требованиях — правка плана или новая задача.",
+        "The analyst owns the split; new requirements mean plan edit or a new task.",
+      ),
+      tx(
+        "Тип «Планирование»: малая 4 ч, средняя 12 ч, большая 20 ч.",
+        "Planning type: small 4h, medium 12h, large 20h.",
+      ),
+      tx(
+        "При превышении или невозможности дробления — обратная связь аналитику / ПМ / тимлиду.",
+        "On overrun or if split is impossible — feedback to analyst / PM / team lead.",
+      ),
+    ],
+  },
+  reestimate: {
+    title: tx("Новые требования: как переоценить", "New requirements: how to re-estimate"),
+    items: [
+      tx(
+        "Аналитик фиксирует, что изменилось (новый scope, какие подзадачи затронуты).",
+        "Analyst records what changed (new scope, which subtasks are affected).",
+      ),
+      tx(
+        "Обновить соседнюю подзадачу «Оценка» / «Планирование» (тип Planning) — общая переоценка Story.",
+        "Update the neighbouring Estimate / Planning subtask (Planning type) — Story-level re-estimate.",
+      ),
+      tx(
+        "Скорректировать оценки на затронутых подзадачах (фронт / бэк / QA); каждая ≤24 ч.",
+        "Adjust estimates on affected subtasks (front / back / QA); each ≤24h.",
+      ),
+      tx(
+        "При существенном росте объёма — новая подзадача или Story, а не «дотягивание» фактом.",
+        "On material volume growth — new subtask or Story, not stretching by actuals.",
+      ),
+      tx("Согласовать с аналитиком / ПМ / тимлидом.", "Align with analyst / PM / team lead."),
+    ],
+    example: tx(
+      "Пример: появилась валидация во внешней системе учёта — сначала переоценка в Planning, затем правка плана на затронутых подзадачах.",
+      "Example: validation appeared in an external accounting system — re-estimate in Planning first, then adjust the plan on affected subtasks.",
+    ),
+  },
+  links: [
+    { label: tx("План/факт", "Plan/fact"), href: "/project-office/plan-fact/" },
+    { label: tx("Артефакты / DoR", "Artifacts / DoR"), href: "/project-office/how/artifacts/" },
+    mistakesLink,
+  ] satisfies Resource[],
+};
+
+export type MistakeRow = {
+  id: string;
+  error: LangText;
+  role: LangText;
+  why: LangText;
+  fix: LangText;
+  href: string;
+  linkLabel: LangText;
+};
+
+export type MistakeGroup = {
+  id: string;
+  n: string;
+  title: LangText;
+  rows: MistakeRow[];
+};
+
+/** Typical mistakes across methodology — /project-office/mistakes/ */
+export const mistakesContent = {
+  title: tx("Типовые ошибки", "Typical mistakes"),
+  lead: tx(
+    "Скан по контурам: ошибка × роль × почему плохо × как правильно. Без живых цифр портфеля — только методические ловушки.",
+    "Scan by contour: mistake × role × why it hurts × the right move. No live portfolio figures — method pitfalls only.",
+  ),
+  groups: [
+    {
+      id: "decompose",
+      n: "01",
+      title: tx("Декомпозиция и заведение", "Decomposition and task creation"),
+      rows: [
+        {
+          id: "no-estimate",
+          error: tx("Нет оценки на подзадаче BA/DEV/QA", "No estimate on a BA/DEV/QA subtask"),
+          role: tx("Аналитик", "Analyst"),
+          why: tx("План = 0 → любое списание выглядит как бесконечный перерасход.", "Plan = 0 makes every log look like endless overrun."),
+          fix: tx("Проставить оценку; проверить соседнюю Planning.", "Set an estimate; check neighbouring Planning."),
+          href: "/project-office/how/rules/",
+          linkLabel: tx("Регламенты", "Rules"),
+        },
+        {
+          id: "gt-24",
+          error: tx("Подзадача >24 ч", "Subtask >24h"),
+          role: tx("Аналитик / тимлид", "Analyst / team lead"),
+          why: tx("Сигнал отклонения приходит слишком поздно.", "Variance signal arrives too late."),
+          fix: tx("Дробить BA/DEV/QA ≤24 ч.", "Split BA/DEV/QA ≤24h."),
+          href: "/project-office/how/rules/",
+          linkLabel: tx("Регламенты", "Rules"),
+        },
+        {
+          id: "no-structure",
+          error: tx("Нет структуры Story / ролей", "No Story / role structure"),
+          role: tx("Аналитик", "Analyst"),
+          why: tx("Нельзя сравнить план и факт по работам.", "Plan vs actual cannot be compared by work type."),
+          fix: tx("Оформить Story + BA/DEV/QA + Planning 4/12/20.", "Create Story + BA/DEV/QA + Planning 4/12/20."),
+          href: "/project-office/plan-fact/",
+          linkLabel: tx("План/факт", "Plan/fact"),
+        },
+        {
+          id: "no-support",
+          error: tx("Нет задачи на аналитическое сопровождение", "No analysis-support task"),
+          role: tx("Аналитик", "Analyst"),
+          why: tx("Часы сопровождения растворяются в DEV/QA или Plan = 0.", "Support hours vanish into DEV/QA or Plan = 0."),
+          fix: tx("Отдельная подзадача сопровождения с оценкой.", "Separate support subtask with an estimate."),
+          href: "/project-office/how/rules/",
+          linkLabel: tx("Регламенты", "Rules"),
+        },
+        {
+          id: "ext-16",
+          error: tx("External с прода без стандарта 16 ч", "Production external without the 16h standard"),
+          role: tx("Аналитик / QA", "Analyst / QA"),
+          why: tx("Несопоставимый учёт инцидентов и дефектов.", "Incidents and defects become incomparable."),
+          fix: tx("External с прода — 16 ч; в разработке оценку не ставим.", "Production external — 16h; no estimate inside development."),
+          href: "/project-office/how/rules/",
+          linkLabel: tx("Регламенты", "Rules"),
+        },
+      ],
+    },
+    {
+      id: "reestimate",
+      n: "02",
+      title: tx("Переоценка, CR и расползание объёма", "Re-estimation, CR, and scope creep"),
+      rows: [
+        {
+          id: "overwrite-plan",
+          error: tx("Правка исходного плана задним числом", "Overwriting the original plan after the fact"),
+          role: tx("PM / аналитик", "PM / analyst"),
+          why: tx("Скрывает отклонение и ломает исходную линию.", "Hides variance and breaks the baseline."),
+          fix: tx("Оформить переоценку: scope → Planning → затронутые подзадачи.", "Record re-estimate: scope → Planning → affected subtasks."),
+          href: "/project-office/plan-fact/",
+          linkLabel: tx("План/факт", "Plan/fact"),
+        },
+        {
+          id: "stretch-fact",
+          error: tx("«Дотягивание» фактом вместо новой Story", "Stretching by actuals instead of a new Story"),
+          role: tx("Аналитик / DEV", "Analyst / DEV"),
+          why: tx("Рост объёма маскируется под промах оценки.", "Volume growth masquerades as estimate miss."),
+          fix: tx("Существенный рост → новая подзадача/Story + согласование.", "Material growth → new subtask/Story + alignment."),
+          href: "/project-office/how/rules/",
+          linkLabel: tx("Регламенты", "Rules"),
+        },
+        {
+          id: "no-cr",
+          error: tx("Новый объём без CR", "New volume without a CR"),
+          role: tx("PM / заказчик", "PM / customer"),
+          why: tx("Неоплаченный перерасход и спор о сроке.", "Unpaid overspend and schedule disputes."),
+          fix: tx("CR с влиянием на срок и цену до старта работ.", "CR with schedule and price impact before work starts."),
+          href: "/project-office/overspend/",
+          linkLabel: tx("Перерасход", "Overspend"),
+        },
+      ],
+    },
+    {
+      id: "transparency",
+      n: "03",
+      title: tx("Прозрачность план/факт и статуса", "Plan/fact and status transparency"),
+      rows: [
+        {
+          id: "avg-team",
+          error: tx("Усреднять отклонение по команде", "Averaging variance across the team"),
+          role: tx("PMO / PM", "PMO / PM"),
+          why: tx("Теряется корневая причина по задаче и роли.", "Root cause by task and role is lost."),
+          fix: tx("Разбор кейсов: задача × роль × правило.", "Case review: task × role × rule."),
+          href: "/project-office/plan-fact/",
+          linkLabel: tx("План/факт", "Plan/fact"),
+        },
+        {
+          id: "parallel-status",
+          error: tx("Несколько «истин» статуса", "Several parallel status truths"),
+          role: tx("PM / поток", "PM / flow lead"),
+          why: tx("Руководство и заказчик спорят о фактах, не о решении.", "Leadership and customer argue about facts, not decisions."),
+          fix: tx("Один канал статуса из трекера.", "One status channel from the tracker."),
+          href: "/project-office/how/customer/",
+          linkLabel: tx("Заказчик", "Customer"),
+        },
+        {
+          id: "deck-replace",
+          error: tx("Статус из презентации вместо Jira", "Status from a deck instead of Jira"),
+          role: tx("PM", "PM"),
+          why: tx("Цифры устаревают до совещания.", "Numbers are stale before the meeting."),
+          fix: tx("Планирование и статус — по данным трекера.", "Planning and status from tracker data."),
+          href: "/project-office/how/cadence/",
+          linkLabel: tx("Ритм", "Cadence"),
+        },
+      ],
+    },
+    {
+      id: "artifacts",
+      n: "04",
+      title: tx("Артефакты, Ready/Done, релизы", "Artifacts, Ready/Done, releases"),
+      rows: [
+        {
+          id: "skip-dor",
+          error: tx("Старт разработки без DoR / AC", "Starting development without DoR / AC"),
+          role: tx("Аналитик / тимлид", "Analyst / team lead"),
+          why: tx("Переделки, споры о «что имели в виду», срыв срока.", "Rework, meaning disputes, schedule slip."),
+          fix: tx("Шлюз Ready до взятия в работу.", "Ready gate before taking into work."),
+          href: "/project-office/how/artifacts/",
+          linkLabel: tx("Артефакты", "Artifacts"),
+        },
+        {
+          id: "skip-dod",
+          error: tx("Закрытие без DoD / тестов", "Closing without DoD / tests"),
+          role: tx("DEV / QA", "DEV / QA"),
+          why: tx("Дефекты уезжают в эксплуатацию и хвост.", "Defects move into production and the tail."),
+          fix: tx("DoD до приёмки и релиза.", "DoD before acceptance and release."),
+          href: "/project-office/how/artifacts/",
+          linkLabel: tx("Артефакты", "Artifacts"),
+        },
+        {
+          id: "skip-tests-speed",
+          error: tx("Ускорять срок отменой тестов / шлюзов", "Speeding delivery by skipping tests / gates"),
+          role: tx("PM / поток", "PM / flow lead"),
+          why: tx("Календарь «зелёный», качество и долг — нет.", "Calendar looks green; quality and debt do not."),
+          fix: tx("Срок без урезания Ready/Done.", "Schedule without cutting Ready/Done."),
+          href: "/project-office/schedule/",
+          linkLabel: tx("Сроки", "Schedule"),
+        },
+        {
+          id: "rare-release",
+          error: tx("Релизный цикл без ритма и владельца", "Release cycle without cadence or owner"),
+          role: tx("Поток / QA-лид", "Flow lead / QA lead"),
+          why: tx("Очередь и ожидание согласований растут незаметно.", "Queue and approval wait grow unnoticed."),
+          fix: tx("Ритм от 2 недель с целью учащать; прогноз на планировании.", "Cadence from 2 weeks aiming more often; forecast at planning."),
+          href: "/project-office/how/cadence/",
+          linkLabel: tx("Ритм", "Cadence"),
+        },
+      ],
+    },
+    {
+      id: "capacity",
+      n: "05",
+      title: tx("Загрузка и хвост", "Capacity and tail"),
+      rows: [
+        {
+          id: "timeline-empty",
+          error: tx("Timeline без оценок / дат / владельцев", "Timeline without estimates / dates / owners"),
+          role: tx("PM / поток", "PM / flow lead"),
+          why: tx("Прогноз загрузки врёт; конфликт приоритетов виден поздно.", "Capacity forecast lies; priority conflicts appear late."),
+          fix: tx("В Timeline — только оценённые работы с датами.", "Timeline shows only estimated, dated work."),
+          href: "/project-office/how/capacity/",
+          linkLabel: tx("Загрузка", "Capacity"),
+        },
+        {
+          id: "util-as-value",
+          error: tx("Высокая загрузка = успех без выручки", "High utilization treated as success without revenue"),
+          role: tx("PM / финансы", "PM / finance"),
+          why: tx("Неоплаченные часы выглядят как «полезный» объём.", "Unpaid hours look like useful volume."),
+          fix: tx("Связать факт с нормой часов и источником оплаты.", "Link actuals to hour norm and funding source."),
+          href: "/project-office/overspend/",
+          linkLabel: tx("Перерасход", "Overspend"),
+        },
+        {
+          id: "tail-hide",
+          error: tx("Прятать хвост переносом между списками", "Hiding the tail by moving lists"),
+          role: tx("PM / поток", "PM / flow lead"),
+          why: tx("Ёмкость занята задачами без ценности и решения.", "Capacity is tied up in valueless undecided work."),
+          fix: tx("Реестр хвоста: закрыть / завершить / переоценить.", "Tail register: close / finish / re-estimate."),
+          href: "/project-office/tail-cost/",
+          linkLabel: tx("Хвост", "Tail"),
+        },
+      ],
+    },
+    {
+      id: "rollout",
+      n: "06",
+      title: tx("База, внедрение, полномочия", "Baseline, rollout, authority"),
+      rows: [
+        {
+          id: "targets-before-baseline",
+          error: tx("Цели до фиксации исходной линии", "Targets before locking the baseline"),
+          role: tx("PMO / руководство", "PMO / leadership"),
+          why: tx("Нельзя доказать эффект — только «ощущение».", "Effect cannot be proven — only a feeling."),
+          fix: tx("Сначала аудит и база, потом ориентиры.", "Audit and baseline first, then targets."),
+          href: "/project-office/launch/baseline/",
+          linkLabel: tx("База", "Baseline"),
+        },
+        {
+          id: "rules-optional",
+          error: tx("Регламенты «для галочки» без владельца", "Rules as checkbox without an owner"),
+          role: tx("Поток / PMO", "Flow lead / PMO"),
+          why: tx("Команды учитывают по-разному — план/факт несопоставим.", "Teams track differently — plan/fact is not comparable."),
+          fix: tx("Владелец правил + еженедельная проверка соблюдения.", "Rule owner + weekly compliance check."),
+          href: "/project-office/how/rules/",
+          linkLabel: tx("Регламенты", "Rules"),
+        },
+        {
+          id: "no-authority",
+          error: tx("Методология без полномочий менять процесс", "Methodology without authority to change the process"),
+          role: tx("Директор / PMO", "Director / PMO"),
+          why: tx("Аудит есть, решения не внедряются.", "Audit exists; decisions never land."),
+          fix: tx("Зафиксировать периметр полномочий до маршрута запуска.", "Lock authority perimeter before the launch route."),
+          href: "/project-office/authority/mandate/",
+          linkLabel: tx("Полномочия", "Authority"),
+        },
+      ],
+    },
+  ] satisfies MistakeGroup[],
+  footLinks: [
+    { label: tx("Регламенты", "Rules"), href: "/project-office/how/rules/" },
+    { label: tx("План/факт", "Plan/fact"), href: "/project-office/plan-fact/" },
+    { label: tx("Артефакты", "Artifacts"), href: "/project-office/how/artifacts/" },
+    { label: tx("Маршрут запуска", "Launch route"), href: "/project-office/#launch" },
+  ] satisfies Resource[],
+};
 
 /** DoR / DoD / AC — full explanation only on /project-office/how/artifacts/ */
 export const dorDodContent = {

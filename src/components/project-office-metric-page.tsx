@@ -110,6 +110,11 @@ export function ProjectOfficeMetricPage({ metric }: { metric: MetricPage }) {
                     {layer.n} · {t(layer.title)}
                   </Link>
                 ))}
+                {metric.relatedPages?.map((page) => (
+                  <Link key={page.href} href={page.href}>
+                    {t(page.label)}
+                  </Link>
+                ))}
               </div>
             </div>
             <Link href="/project-office/" className="po-detail__all">
