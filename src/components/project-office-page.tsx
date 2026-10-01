@@ -58,11 +58,11 @@ export function ProjectOfficePage() {
             <aside className="po-hero__motto">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/sadhguru.jpg`}
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/sadhguru.png`}
                 alt={lang === "ru" ? "Садхгуру" : "Sadhguru"}
                 className="po-hero__motto-photo"
                 width={280}
-                height={340}
+                height={264}
               />
               <blockquote className="po-hero__motto-quote">
                 {lang === "ru"

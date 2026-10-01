@@ -408,7 +408,11 @@ a.glass-card:hover {
   height: auto;
   object-fit: contain;
   object-position: center bottom;
-  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.55));
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
   mix-blend-mode: normal;
 }
 
@@ -1101,9 +1105,13 @@ a.glass-card:hover {
 .project-office-theme .po-detail__result {
   border-color: rgba(240, 196, 25, 0.48);
   background: #15130a;
+}
+
+.project-office-theme .po-detail__result-body {
+  margin: 0.65rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.45;
   color: var(--po-body);
-  font-size: 0.85rem;
-  line-height: 1.5;
 }
 
 .project-office-theme .po-detail__nav {

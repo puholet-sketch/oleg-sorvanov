@@ -10,8 +10,8 @@ export function ProjectOfficeDorDod({ className = "" }: { className?: string }) 
   return (
     <section className={`po-dor ${className}`.trim()} aria-labelledby="po-dor-title">
       <div className="po-block__head">
-        <span className="po-num po-num--wide" aria-hidden>
-          DoR·DoD
+        <span className="po-num" aria-hidden>
+          01
         </span>
         <div>
           <h2 className="po-h2" id="po-dor-title">
@@ -79,8 +79,8 @@ export function ProjectOfficeDorDod({ className = "" }: { className?: string }) 
 
       <div className="po-dor__groups" aria-labelledby="po-groups-title">
         <div className="po-block__head">
-          <span className="po-num po-num--wide" aria-hidden>
-            ART
+          <span className="po-num" aria-hidden>
+            02
           </span>
           <div>
             <h2 className="po-h2" id="po-groups-title">

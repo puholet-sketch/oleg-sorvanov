@@ -91,8 +91,13 @@ export function ProjectOfficeMetricPage({ metric }: { metric: MetricPage }) {
               </section>
             ))}
             <section className="po-detail__card po-detail__result">
-              <p className="po-kicker">{lang === "ru" ? "Критерий результата" : "Result criterion"}</p>
-              <p>{t(metric.result)}</p>
+              <p className="po-kicker" aria-hidden>
+                {String(sections.length + 2).padStart(2, "0")}
+              </p>
+              <h2 className="po-detail__title">
+                {lang === "ru" ? "Критерий результата" : "Result criterion"}
+              </h2>
+              <p className="po-detail__result-body">{t(metric.result)}</p>
             </section>
           </FadeUp>
 

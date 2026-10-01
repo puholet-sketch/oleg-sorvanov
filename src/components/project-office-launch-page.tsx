@@ -96,10 +96,13 @@ export function ProjectOfficeLaunchPage({ step }: { step: LaunchStepPage }) {
               </section>
             ))}
             <section className="po-detail__card po-detail__result">
-              <p className="po-kicker">
-                {lang === "ru" ? "Критерий «шаг закрыт»" : "Step-done criterion"}
+              <p className="po-kicker" aria-hidden>
+                {String(sections.length + 2).padStart(2, "0")}
               </p>
-              <p>{t(step.result)}</p>
+              <h2 className="po-detail__title">
+                {lang === "ru" ? "Критерий «шаг закрыт»" : "Step-done criterion"}
+              </h2>
+              <p className="po-detail__result-body">{t(step.result)}</p>
             </section>
           </FadeUp>
 

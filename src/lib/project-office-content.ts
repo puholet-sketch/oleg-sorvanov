@@ -98,24 +98,24 @@ export const metricPages: MetricPage[] = [
     steps: [
       tx("Определить путь задачи от входа до приёмки и владельца каждого перехода.", "Define the path from intake to acceptance and an owner for every transition."),
       tx(
-        "Ввести Definition of Ready (DoR) и Definition of Done (DoD) плюс контроль качества требований до разработки — детали в слое «Артефакты».",
-        "Introduce Definition of Ready (DoR) and Definition of Done (DoD) plus requirements quality control before development — details in the Artifacts layer.",
+        "Ввести шлюзы Ready/Done и контроль качества требований — см. слой «Артефакты».",
+        "Introduce Ready/Done gates and requirements quality control — see the Artifacts layer.",
       ),
       tx(
-        "Задать устойчивый релизный ритм: начать от 2 недель и со временем учащать; ориентир — раз в 2 дня или чаще. Плюс правила срочных исправлений.",
-        "Set a sustainable release cadence: start from 2 weeks and increase frequency over time; aim for every 2 days or more often. Plus emergency-fix rules.",
+        "Задать релизный ритм: старт от 2 недель, стремиться учащать; ориентир — раз в 2 дня или чаще. Плюс правила срочных исправлений.",
+        "Set release cadence: start from 2 weeks, aim to increase frequency; target every 2 days or more often. Plus emergency-fix rules.",
       ),
       tx(
-        "Заполнить оценки (BA/DEV/QA ≤24 ч), даты и исполнителей — иначе Timeline врёт, а сигнал по сроку запаздывает.",
-        "Populate estimates (BA/DEV/QA ≤24h), dates, and owners — otherwise Timeline lies and the schedule signal arrives late.",
+        "Заполнить оценки, даты и исполнителей — иначе Timeline врёт. Норма дробления ≤24 ч — в «Регламентах» и план/факт.",
+        "Populate estimates, dates, and owners — otherwise Timeline lies. The ≤24h split rule lives in Rules and plan/fact.",
       ),
       tx("Устранять главную причину ожидания и повторять замер на сопоставимом периоде.", "Remove the main waiting cause and repeat the measurement over a comparable period."),
     ],
     artifacts: [
-      tx("Карта потока, календарь релизов, реестр блокировок; владелец — руководитель поставки.", "Flow map, release calendar, blocker log; owner: delivery lead."),
+      tx("Карта потока, календарь релизов, реестр блокировок; владелец — руководитель потока.", "Flow map, release calendar, blocker log; owner: flow lead."),
       tx(
-        "Шаблон требований, DoR/DoD; владельцы — аналитик и технический лидер. Норма дробления ≤24 ч — в регламенте и ориентире план/факт.",
-        "Requirements template, DoR/DoD; owners: analyst and technical lead. ≤24h split rule lives in the rules and plan/fact target.",
+        "Шаблон требований и критерии Ready/Done — см. «Артефакты»; владельцы — аналитик и техлид.",
+        "Requirements template and Ready/Done criteria — see Artifacts; owners: analyst and tech lead.",
       ),
     ],
     cadence: [
@@ -124,8 +124,8 @@ export const metricPages: MetricPage[] = [
     errors: [
       tx("Считать срок без времени ожидания или сравнивать задачи разного типа.", "Ignoring waiting time or comparing unlike work."),
       tx(
-        "Ускорять поставку отменой тестов, DoR/DoD или дробления ≤24 ч.",
-        "Speeding delivery by skipping tests, DoR/DoD, or ≤24h decomposition.",
+        "Ускорять поставку отменой тестов или шлюзов Ready/Done.",
+        "Speeding delivery by skipping tests or Ready/Done gates.",
       ),
     ],
     result: tx(
@@ -206,8 +206,8 @@ export const metricPages: MetricPage[] = [
     artifacts: [
       tx("Реестр отклонений, фильтр Jira, классификатор причин; владелец — PMO.", "Variance register, Jira filter, cause taxonomy; owner: PMO."),
       tx(
-        "Структура Story BA/DEV/QA ≤24 ч и шкала оценки; владельцы — аналитик и команда. Полный стандарт — в слое «Регламенты» и brief §04.",
-        "Story structure BA/DEV/QA ≤24h and estimation scale; owners: analyst and team. Full standard lives in the Rules layer and brief §04.",
+        "Структура истории (Story) BA/DEV/QA ≤24 ч и шкала оценки; владельцы — аналитик и команда. Полный стандарт — в слое «Регламенты».",
+        "Story structure BA/DEV/QA ≤24h and estimation scale; owners: analyst and team. Full standard lives in the Rules layer.",
       ),
     ],
     cadence: [
@@ -297,7 +297,7 @@ export const metricPages: MetricPage[] = [
     ],
     artifacts: [
       tx("Реестр долга, журнал инцидентов, план тестов; владелец — технический лидер.", "Debt register, incident log, test plan; owner: technical lead."),
-      tx("Задачи улучшения с DoD; владельцы — команда и руководитель поставки.", "Improvement tasks with DoD; owners: team and delivery lead."),
+      tx("Задачи улучшения с DoD; владельцы — команда и руководитель потока.", "Improvement tasks with DoD; owners: team and flow lead."),
     ],
     cadence: [
       tx("Триаж — на планировании; тенденция — ежемесячно или на каждом релизном цикле.", "Triage during planning; trend monthly or every release cycle."),
@@ -333,15 +333,15 @@ export const metricPages: MetricPage[] = [
       tx("Рассчитать норму DEV-часов: выручка / целевая ставка R.", "Calculate the DEV-hour norm: revenue / target rate R."),
       tx("Связать каждое превышение с причиной: оценка, изменение объёма, дефект или ожидание.", "Link every overrun to a cause: estimate, work-volume change, defect, or waiting."),
       tx("Не начинать новый объём без оформленного изменения объёма работ (CR).", "Do not start new volume without an approved change request (CR)."),
-      tx("Предлагать выбор: пересмотр цены или T&M с лимитом либо сокращение объёма.", "Offer a choice: repricing or capped T&M, or reducing work volume."),
+      tx("Предлагать выбор: пересмотр цены или повременную оплату с лимитом (T&M), либо сокращение объёма.", "Offer a choice: repricing or capped time-and-materials (T&M), or reducing work volume."),
       tx("Калибровать доли управления и сопровождения по сопоставимым типам работ.", "Calibrate management and support shares by comparable work types."),
     ],
     artifacts: [
-      tx("PnL проекта, реестр CR, расчёт нормы часов; владельцы — PM и финансовая функция.", "Project PnL, CR register, hour-norm calculation; owners: PM and finance."),
+      tx("Финрезультат проекта (P&L), реестр изменений объёма (CR), расчёт нормы часов; владельцы — PM и финансовая функция.", "Project P&L, change-request (CR) register, hour-norm calculation; owners: PM and finance."),
       tx("Панель исходной линии и факта; владелец — PMO.", "Baseline-versus-actual dashboard; owner: PMO."),
     ],
     cadence: [
-      tx("План/факт — еженедельно; PnL — по финансовому циклу и перед решением по CR.", "Plan versus actual weekly; PnL on the financial cycle and before CR decisions."),
+      tx("План/факт — еженедельно; финрезультат — по финансовому циклу и перед решением по CR.", "Plan versus actual weekly; P&L on the financial cycle and before CR decisions."),
     ],
     errors: [
       tx("Считать высокой загрузкой полезный результат, даже если часы не покрыты выручкой.", "Treating high utilization as success when hours are not covered by revenue."),
@@ -371,7 +371,7 @@ export const layerPages: LayerPage[] = [
         "Зафиксировать декомпозицию BA/DEV/QA ≤24 ч: зачем — ранний сигнал отклонения; где — подзадачи ролей, не Epic целиком.",
         "Lock BA/DEV/QA ≤24h decomposition: why — early variance signal; where — role subtasks, not the whole Epic.",
       ),
-      tx("Согласовать правила списаний, Planning, запрет «План = 0» и изменения объёма.", "Agree time logging, Planning, zero-plan ban, and work-volume change rules."),
+      tx("Согласовать правила списаний, планирования, запрет «План = 0» и изменения объёма.", "Agree time logging, planning, zero-plan ban, and work-volume change rules."),
       tx("Определить обязательные поля, исключения и маршрут срочных исправлений.", "Define mandatory fields, exceptions, and the emergency-fix route."),
       tx("Назначить владельцев правил и порядок изменения версий.", "Assign rule owners and version-change procedure."),
     ],
@@ -446,8 +446,8 @@ export const layerPages: LayerPage[] = [
         "Populate BA/DEV/QA estimate ≤24h, dates, owner, and Epic → Story → Subtask links.",
       ),
       tx(
-        "Вести артефакты по группам: анализ → разработка → тестирование; автоматизировать контроль обязательных полей (Quality Gate).",
-        "Keep artifacts by group: analysis → development → testing; automate mandatory-field checks (Quality Gate).",
+        "Вести артефакты по группам: анализ → разработка → тестирование; автоматизировать контроль обязательных полей.",
+        "Keep artifacts by group: analysis → development → testing; automate mandatory-field checks.",
       ),
     ],
     outputs: [
@@ -480,6 +480,10 @@ export const layerPages: LayerPage[] = [
     actions: [
       tx("Установить минимальный набор встреч и цель каждой.", "Set the minimum meeting set and purpose of each."),
       tx("Проводить планирование и статус по данным Jira, а не по отдельным таблицам.", "Run planning and status from Jira data, not separate spreadsheets."),
+      tx(
+        "Задать релизный ритм: старт от 2 недель, стремиться учащать; ориентир — раз в 2 дня или чаще.",
+        "Set release cadence: start from 2 weeks, aim to increase frequency; target every 2 days or more often.",
+      ),
       tx("Завершать ретроспективу задачами улучшения с владельцем и сроком.", "End retrospectives with owned, dated improvement tasks."),
     ],
     outputs: [tx("Календарь управления, журнал решений, задачи улучшения, прогноз релиза.", "Management calendar, decision log, improvement tasks, and release forecast.")],
@@ -495,7 +499,10 @@ export const layerPages: LayerPage[] = [
     purpose: tx("Заранее увидеть дефицит, избыток и конфликт приоритетов на основе оценённых работ.", "See shortages, excess, and priority conflicts early from estimated work."),
     inputs: [tx("Оценки, даты, исполнители, календарь доступности и приоритеты.", "Estimates, dates, assignees, availability calendar, and priorities.")],
     actions: [
-      tx("Показывать в Timeline только оценённые работы с датами и владельцами.", "Show only estimated, dated, owned work in Timeline."),
+      tx(
+        "Показывать в Timeline только оценённые работы с датами и владельцами (норма ≤24 ч — в «Регламентах»).",
+        "Show only estimated, dated, owned work in Timeline (≤24h rule lives in Rules).",
+      ),
       tx("Сопоставлять спрос и доступную ёмкость по ролям и периодам.", "Compare demand and available capacity by role and period."),
       tx("Сверять состав потока с рекомендацией: ядро 5–9 (BA/DEV/QA), PM на 1–3 команды; настройщики — в контуре поставки на потоках с печатными формами; дизайнер — общий пул; PO как правило на стороне заказчика. Пропорции калибровать после аудита.", "Check stream staffing against a guide: core 5–9 (BA/DEV/QA), PM for 1–3 teams; configurers in the delivery contour for print-form streams; designer as a shared pool; PO usually on the customer side. Calibrate ratios after an audit."),
       tx("Ограничивать незавершённую работу и разрешать конфликт приоритетов до старта.", "Limit work in progress and resolve priority conflicts before start."),
@@ -660,8 +667,8 @@ export const launchSteps: LaunchStepPage[] = [
     ],
     steps: [
       tx(
-        "Внедрить регламенты слоёв 1–3: списание, BA/DEV/QA ≤24 ч (ранний сигнал отклонения), Planning, запрет нулевого плана.",
-        "Roll out layers 1–3 rules: time logging, BA/DEV/QA ≤24h (early variance signal), Planning, ban on zero plan.",
+        "Внедрить регламенты слоёв 1–3: списание, BA/DEV/QA ≤24 ч (ранний сигнал отклонения), планирование, запрет нулевого плана.",
+        "Roll out layers 1–3 rules: time logging, BA/DEV/QA ≤24h (early variance signal), planning, ban on zero plan.",
       ),
       tx(
         "Сделать обязательными артефакты задачи: оценка, даты, исполнитель, условия приёмки — детали DoR/DoD/AC в слое «Артефакты».",
@@ -891,7 +898,7 @@ export const authorityItems: AuthorityPage[] = [
       "Make the rules and mandatory fields uniform in the contour. Otherwise layers 1–3 do not hold, and metrics plus Timeline stay opinions.",
     ),
     scope: [
-      tx("Регламенты списания, декомпозиции ≤24 ч, Planning и запрета нулевого плана.", "Rules for time logging, decomposition ≤24h, Planning, and zero-plan ban."),
+      tx("Регламенты списания, декомпозиции ≤24 ч, планирования и запрета нулевого плана.", "Rules for time logging, decomposition ≤24h, planning, and zero-plan ban."),
       tx("Обязательные артефакты: оценка, даты, исполнитель, условия приёмки, критерии готовности, шаблон требований.", "Mandatory artifacts: estimate, dates, assignee, acceptance criteria, readiness criteria, requirements template."),
       tx(
         "Порядок изменения версий правил и журнал исключений (согласованные отклонения: что, кто, срок, риск/компенсация).",
