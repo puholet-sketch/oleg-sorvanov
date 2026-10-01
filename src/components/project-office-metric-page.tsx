@@ -5,6 +5,7 @@ import { FadeUp } from "@/components/motion";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { useI18n } from "@/lib/i18n";
+import { ProjectOfficeDorDod } from "@/components/project-office-dor-dod";
 import { layerPages, type MetricPage } from "@/lib/project-office-content";
 
 export function ProjectOfficeMetricPage({ metric }: { metric: MetricPage }) {
@@ -12,11 +13,12 @@ export function ProjectOfficeMetricPage({ metric }: { metric: MetricPage }) {
   const sections = [
     { title: { ru: "Что измеряем", en: "What we measure" }, items: metric.measure },
     { title: { ru: "Исходная линия", en: "Baseline" }, items: metric.baseline },
-    { title: { ru: "Артефакты и ответственные", en: "Artifacts and owners" }, items: metric.artifacts },
-    { title: { ru: "Ритм контроля", en: "Control cadence" }, items: metric.cadence },
-    { title: { ru: "Типовые ошибки", en: "Common mistakes" }, items: metric.errors },
+    { title: { ru: "Артефакты", en: "Artifacts" }, items: metric.artifacts },
+    { title: { ru: "Ритм", en: "Cadence" }, items: metric.cadence },
+    { title: { ru: "Ошибки", en: "Mistakes" }, items: metric.errors },
   ];
   const related = layerPages.filter((layer) => metric.relatedLayers.includes(layer.id));
+  const showDorCallout = metric.id === "schedule";
 
   return (
     <div className="project-office-theme po-metric min-h-screen">
@@ -41,6 +43,12 @@ export function ProjectOfficeMetricPage({ metric }: { metric: MetricPage }) {
               <p className="po-hero__lead">{t(metric.meaning)}</p>
             </div>
           </FadeUp>
+
+          {showDorCallout ? (
+            <FadeUp delay={0.02}>
+              <ProjectOfficeDorDod mode="callout" className="mt-4" />
+            </FadeUp>
+          ) : null}
 
           <FadeUp className="po-block po-detail__block" delay={0.03}>
             <div className="po-block__head">

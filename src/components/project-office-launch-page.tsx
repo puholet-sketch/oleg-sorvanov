@@ -5,6 +5,7 @@ import { FadeUp } from "@/components/motion";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { useI18n } from "@/lib/i18n";
+import { ProjectOfficeDorDod } from "@/components/project-office-dor-dod";
 import {
   authorityItems,
   launchStepById,
@@ -17,11 +18,11 @@ import {
 export function ProjectOfficeLaunchPage({ step }: { step: LaunchStepPage }) {
   const { t, lang } = useI18n();
   const sections = [
-    { title: { ru: "Что на входе", en: "Inputs" }, items: step.inputs },
-    { title: { ru: "Выходы и артефакты", en: "Outputs and artifacts" }, items: step.outputs },
-    { title: { ru: "Кто участвует", en: "Who takes part" }, items: step.roles },
-    { title: { ru: "Срок и ритм", en: "Duration and cadence" }, items: step.cadence },
-    { title: { ru: "Типовые ошибки", en: "Common mistakes" }, items: step.errors },
+    { title: { ru: "Вход", en: "Input" }, items: step.inputs },
+    { title: { ru: "Выход", en: "Output" }, items: step.outputs },
+    { title: { ru: "Роли", en: "Roles" }, items: step.roles },
+    { title: { ru: "Ритм", en: "Cadence" }, items: step.cadence },
+    { title: { ru: "Ошибки", en: "Mistakes" }, items: step.errors },
   ];
   const relatedMetrics = metricPages.filter((metric) =>
     step.relatedMetrics.includes(metric.id),
@@ -54,6 +55,12 @@ export function ProjectOfficeLaunchPage({ step }: { step: LaunchStepPage }) {
               <p className="po-hero__lead">{t(step.purpose)}</p>
             </div>
           </FadeUp>
+
+          {step.id === "baseline" ? (
+            <FadeUp delay={0.02}>
+              <ProjectOfficeDorDod mode="callout" className="mt-4" />
+            </FadeUp>
+          ) : null}
 
           <FadeUp className="po-block po-detail__block" delay={0.03}>
             <div className="po-block__head">

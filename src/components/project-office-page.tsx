@@ -6,6 +6,7 @@ import { FadeUp } from "@/components/motion";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { useI18n } from "@/lib/i18n";
+import { ProjectOfficeDorDod } from "@/components/project-office-dor-dod";
 import {
   authorityItems,
   launchSteps,
@@ -46,8 +47,8 @@ export function ProjectOfficePage() {
               </h1>
               <p className="po-hero__lead">
                 {lang === "ru"
-                  ? "Прогнозируемое управление портфелем: регламенты, учёт, ритм мероприятий и прозрачность для заказчика — с измеримым эффектом после базовой линии."
-                  : "Predictable portfolio management: rules, tracking, management cadence and customer visibility — with measurable effect after a baseline."}
+                  ? "Регламенты, учёт, ритм и прозрачность для заказчика — с измеримым эффектом после базовой линии."
+                  : "Rules, tracking, cadence and customer visibility — with measurable effect after a baseline."}
               </p>
               <p className="po-hero__alt">
                 {lang === "ru"
@@ -111,8 +112,8 @@ export function ProjectOfficePage() {
                 </h2>
                 <p className="po-lead">
                   {lang === "ru"
-                    ? "Пример целевых уровней после аудита прошлого периода — не заявленные прошлые результаты. Сначала базовая линия, потом цели."
-                    : "Example target levels after an audit of the prior period — not claimed past results. Baseline first, then goals."}
+                    ? "Пример целей после аудита. Сначала базовая линия, потом ориентиры — не заявленные прошлые результаты."
+                    : "Example goals after an audit. Baseline first, then targets — not claimed past results."}
                 </p>
               </div>
             </div>
@@ -146,6 +147,9 @@ export function ProjectOfficePage() {
                     <li key={step.ru}>{t(step)}</li>
                   ))}
                 </ol>
+                {opened.id === "schedule" ? (
+                  <ProjectOfficeDorDod mode="callout" className="po-reveal__glossary" />
+                ) : null}
                 <Link href={`/project-office/${opened.id}/`} className="po-reveal__more">
                   {lang === "ru" ? "Открыть страницу" : "Open the page"} →
                 </Link>
@@ -165,8 +169,8 @@ export function ProjectOfficePage() {
                 </h2>
                 <p className="po-lead">
                   {lang === "ru"
-                    ? "Шесть слоёв. Каждый опирается на предыдущий: без регламентов и артефактов ритм и метрики не держат прогноз."
-                    : "Six layers. Each rests on the previous: without rules and artifacts, cadence and metrics cannot hold a forecast."}
+                    ? "Шесть слоёв. Без регламентов и артефактов ритм и метрики не держат прогноз."
+                    : "Six layers. Without rules and artifacts, cadence and metrics cannot hold a forecast."}
                 </p>
               </div>
             </div>
@@ -188,6 +192,7 @@ export function ProjectOfficePage() {
                 </li>
               ))}
             </ol>
+            <ProjectOfficeDorDod mode="callout" className="mt-4" />
           </FadeUp>
 
           {/* 4. Launch route */}
@@ -202,8 +207,8 @@ export function ProjectOfficePage() {
                 </h2>
                 <p className="po-lead">
                   {lang === "ru"
-                    ? "Короткий путь от встраивания до точечных изменений. Без базовой линии и артефактов метрики не заработают."
-                    : "A short path from embedding to targeted changes. Without baseline and artifacts, metrics will not work."}
+                    ? "От встраивания до точечных мер. Без базы и артефактов метрики не работают."
+                    : "From embedding to targeted measures. Without baseline and artifacts, metrics do not work."}
                 </p>
               </div>
             </div>
@@ -246,8 +251,8 @@ export function ProjectOfficePage() {
                 </h2>
                 <p className="po-lead">
                   {lang === "ru"
-                    ? "Условия, без которых маршрут запуска и ориентиры не держатся в контуре."
-                    : "Conditions without which the launch route and targets cannot hold in the contour."}
+                    ? "Условия, без которых маршрут и ориентиры не держатся."
+                    : "Conditions without which the route and targets cannot hold."}
                 </p>
               </div>
             </div>

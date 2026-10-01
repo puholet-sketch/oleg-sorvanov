@@ -87,21 +87,36 @@ export const metricPages: MetricPage[] = [
     ],
     steps: [
       tx("Определить путь задачи от входа до приёмки и владельца каждого перехода.", "Define the path from intake to acceptance and an owner for every transition."),
-      tx("Ввести критерии готовности DoR/DoD и контроль качества требований до разработки.", "Introduce DoR/DoD and requirements quality control before development."),
-      tx("Установить устойчивый релизный ритм и правила срочных исправлений.", "Set a sustainable release cadence and emergency-fix rules."),
-      tx("Заполнить оценки, даты и исполнителей, чтобы Timeline показывал реальную очередь.", "Populate estimates, dates, and owners so Timeline shows the real queue."),
+      tx(
+        "Ввести DoR (готовность ко входу) и DoD (готовность результата) плюс контроль качества требований до разработки.",
+        "Introduce DoR (intake readiness) and DoD (result readiness) plus requirements quality control before development.",
+      ),
+      tx(
+        "Задать устойчивый релизный ритм: начать от 2 недель и со временем учащать; ориентир — раз в 2 дня или чаще. Плюс правила срочных исправлений.",
+        "Set a sustainable release cadence: start from 2 weeks and increase frequency over time; aim for every 2 days or more often. Plus emergency-fix rules.",
+      ),
+      tx(
+        "Заполнить оценки (BA/DEV/QA ≤24 ч), даты и исполнителей — иначе Timeline врёт, а сигнал по сроку запаздывает.",
+        "Populate estimates (BA/DEV/QA ≤24h), dates, and owners — otherwise Timeline lies and the schedule signal arrives late.",
+      ),
       tx("Устранять главную причину ожидания и повторять замер на сопоставимом периоде.", "Remove the main waiting cause and repeat the measurement over a comparable period."),
     ],
     artifacts: [
       tx("Карта потока, календарь релизов, реестр блокировок; владелец — руководитель поставки.", "Flow map, release calendar, blocker log; owner: delivery lead."),
-      tx("Шаблон требований и критерии готовности; владельцы — аналитик и технический лидер.", "Requirements template and readiness criteria; owners: analyst and technical lead."),
+      tx(
+        "Шаблон требований, DoR/DoD; владельцы — аналитик и технический лидер. Норма дробления ≤24 ч — в регламенте и ориентире план/факт.",
+        "Requirements template, DoR/DoD; owners: analyst and technical lead. ≤24h split rule lives in the rules and plan/fact target.",
+      ),
     ],
     cadence: [
       tx("Очередь и блокировки — еженедельно; релизный прогноз — на каждом планировании.", "Queue and blockers weekly; release forecast at every planning session."),
     ],
     errors: [
       tx("Считать срок без времени ожидания или сравнивать задачи разного типа.", "Ignoring waiting time or comparing unlike work."),
-      tx("Ускорять поставку отменой тестов и проверки требований.", "Speeding delivery by skipping tests or requirements review."),
+      tx(
+        "Ускорять поставку отменой тестов, DoR/DoD или дробления ≤24 ч.",
+        "Speeding delivery by skipping tests, DoR/DoD, or ≤24h decomposition.",
+      ),
     ],
     result: tx(
       "Медианный цикл устойчиво сокращается относительно исходной линии, а качество и согласованный объём не ухудшаются.",
@@ -169,7 +184,10 @@ export const metricPages: MetricPage[] = [
       tx("Отделить первичную оценку от аналитического сопровождения и изменения объёма.", "Separate initial estimation from analysis support and work-volume changes."),
     ],
     steps: [
-      tx("Разложить истории на BA/DEV/QA-подзадачи не крупнее 24 часов.", "Split stories into BA/DEV/QA subtasks no larger than 24 hours."),
+      tx(
+        "Разложить Story на BA/DEV/QA ≤24 ч: крупная оценка маскирует перерасход; дробление делает отклонение видимым за 1–3 дня.",
+        "Split stories into BA/DEV/QA ≤24h: a large estimate hides overspend; splitting makes variance visible in 1–3 days.",
+      ),
       tx("Запретить списание времени при нулевой исходной оценке.", "Disallow time logging against a zero initial estimate."),
       tx("При каждом списании обновлять оставшуюся оценку и фиксировать результат.", "Update remaining estimate and record the result with every time entry."),
       tx("Автоматически выбирать случаи, где факт выше плана или план равен нулю.", "Automatically select cases where actual exceeds plan or plan is zero."),
@@ -177,7 +195,10 @@ export const metricPages: MetricPage[] = [
     ],
     artifacts: [
       tx("Реестр отклонений, фильтр Jira, классификатор причин; владелец — PMO.", "Variance register, Jira filter, cause taxonomy; owner: PMO."),
-      tx("Структура Story и шкала оценки; владельцы — аналитик и команда.", "Story structure and estimation scale; owners: analyst and team."),
+      tx(
+        "Структура Story BA/DEV/QA ≤24 ч и шкала оценки; владельцы — аналитик и команда. Полный стандарт — в слое «Регламенты» и brief §04.",
+        "Story structure BA/DEV/QA ≤24h and estimation scale; owners: analyst and team. Full standard lives in the Rules layer and brief §04.",
+      ),
     ],
     cadence: [
       tx("Сигналы — еженедельно; причины — на планировании и ретроспективе.", "Signals weekly; causes during planning and retrospectives."),
@@ -185,6 +206,10 @@ export const metricPages: MetricPage[] = [
     errors: [
       tx("Усреднять отклонение по команде и терять конкретную причину.", "Averaging variance across the team and losing the specific cause."),
       tx("Менять исходный план задним числом вместо фиксации переоценки.", "Overwriting the original plan instead of recording a re-estimate."),
+      tx(
+        "Оставлять подзадачи >24 ч — сигнал план/факт приходит слишком поздно.",
+        "Leaving subtasks >24h — the plan/fact signal arrives too late.",
+      ),
     ],
     result: tx(
       "Медианное абсолютное отклонение и доля нулевого плана снижаются; переоценка оформляется до перерасхода.",
@@ -323,14 +348,26 @@ export const layerPages: LayerPage[] = [
     n: "01",
     title: tx("Регламенты", "Rules"),
     summary: tx("Единые правила учёта, декомпозиции и изменений.", "Shared rules for tracking, decomposition, and change."),
-    purpose: tx("Сделать одинаковые действия и показатели сопоставимыми во всём согласованном контуре.", "Make actions and measures comparable across the agreed contour."),
+    purpose: tx(
+      "Сделать действия и показатели сопоставимыми в контуре. Норма дробления BA/DEV/QA ≤24 ч — здесь: без неё план/факт и Timeline запаздывают.",
+      "Make actions and measures comparable in the contour. The BA/DEV/QA ≤24h split rule lives here: without it, plan/fact and Timeline arrive late.",
+    ),
     inputs: [tx("Границы портфеля, договорные модели, текущие правила Jira.", "Portfolio boundaries, contract models, and current Jira rules.")],
     actions: [
-      tx("Согласовать правила списаний, декомпозиции ≤24 ч и изменения объёма.", "Agree time logging, decomposition ≤24h, and work-volume change rules."),
+      tx(
+        "Зафиксировать декомпозицию BA/DEV/QA ≤24 ч: зачем — ранний сигнал отклонения; где — подзадачи ролей, не Epic целиком.",
+        "Lock BA/DEV/QA ≤24h decomposition: why — early variance signal; where — role subtasks, not the whole Epic.",
+      ),
+      tx("Согласовать правила списаний, Planning, запрет «План = 0» и изменения объёма.", "Agree time logging, Planning, zero-plan ban, and work-volume change rules."),
       tx("Определить обязательные поля, исключения и маршрут срочных исправлений.", "Define mandatory fields, exceptions, and the emergency-fix route."),
       tx("Назначить владельцев правил и порядок изменения версий.", "Assign rule owners and version-change procedure."),
     ],
-    outputs: [tx("Короткий регламент, памятка ролей, журнал исключений.", "Concise rules, role guide, and exception log.")],
+    outputs: [
+      tx(
+        "Короткий регламент (в т.ч. «зачем ≤24 ч»), памятка ролей, журнал исключений.",
+        "Concise rules (including why ≤24h), role guide, and exception log.",
+      ),
+    ],
     roles: [tx("PMO владеет системой; руководители потоков внедряют; команды дают обратную связь.", "PMO owns the system; flow leads implement; teams provide feedback.")],
     cadence: [tx("Проверка соблюдения еженедельно; пересмотр после значимого изменения или по циклу.", "Compliance weekly; review after major change or on a set cycle.")],
     relatedMetrics: ["schedule", "plan-fact", "tail-cost", "overspend"],
@@ -356,17 +393,33 @@ export const layerPages: LayerPage[] = [
     id: "artifacts",
     n: "03",
     title: tx("Артефакты и атрибуты", "Artifacts and attributes"),
-    summary: tx("Оценка, даты, роли и критерии готовности.", "Estimate, dates, roles, and readiness criteria."),
-    purpose: tx("Дать каждой задаче минимальный набор данных для оценки, исполнения, приёмки и прогноза.", "Give each item the minimum data needed for estimation, execution, acceptance, and forecasting."),
+    summary: tx("Оценка, даты, роли; DoR на входе и DoD на выходе.", "Estimate, dates, roles; DoR at intake and DoD at exit."),
+    purpose: tx(
+      "Дать задаче минимум данных для оценки, исполнения, приёмки и прогноза — и два шлюза: DoR до разработки, DoD до приёмки.",
+      "Give each item the minimum data for estimation, execution, acceptance, and forecast — plus two gates: DoR before development, DoD before acceptance.",
+    ),
     inputs: [tx("Карта стадий, шаблоны требований, правила учёта.", "Stage map, requirements templates, and tracking rules.")],
     actions: [
-      tx("Ввести критерии готовности DoR/DoD и проверяемые условия приёмки.", "Introduce DoR/DoD and testable acceptance criteria."),
+      tx(
+        "Ввести DoR (готовность ко входу), DoD (готовность результата) и проверяемые условия приёмки.",
+        "Introduce DoR (intake readiness), DoD (result readiness), and testable acceptance criteria.",
+      ),
       tx("Заполнять оценку, даты, владельца и связи Epic → Story → Subtask.", "Populate estimate, dates, owner, and Epic → Story → Subtask links."),
-      tx("Автоматизировать контроль обязательных полей и тестов.", "Automate mandatory-field and test checks."),
+      tx("Автоматизировать контроль обязательных полей и тестов (Quality Gate).", "Automate mandatory-field and test checks (Quality Gate)."),
     ],
     outputs: [tx("Шаблон требований, карточка Story, проверки контроля качества.", "Requirements template, story card, and quality-control checks.")],
-    roles: [tx("Аналитик отвечает за готовность входа; технический и QA-лиды — за DoD; исполнитель — за факт.", "Analyst owns intake readiness; technical and QA leads own DoD; assignee owns actuals.")],
-    cadence: [tx("Проверка до начала работы и перед переходом к приёмке.", "Check before work starts and before acceptance.")],
+    roles: [
+      tx(
+        "Аналитик отвечает за DoR; технический и QA-лиды — за DoD; исполнитель — за факт.",
+        "Analyst owns DoR; technical and QA leads own DoD; assignee owns actuals.",
+      ),
+    ],
+    cadence: [
+      tx(
+        "DoR — до взятия в работу / спринт-контур; DoD — до приёмки и релиза.",
+        "DoR before taking into work / sprint contour; DoD before acceptance and release.",
+      ),
+    ],
     relatedMetrics: ["schedule", "satisfaction", "plan-fact", "tech-debt", "overspend"],
   },
   {
@@ -544,8 +597,14 @@ export const launchSteps: LaunchStepPage[] = [
       tx("Согласованный контур проектов и канал статуса.", "Agreed project contour and status channel."),
     ],
     steps: [
-      tx("Внедрить или доадаптировать регламенты слоёв 1–3: списание, декомпозиция ≤24 ч, Planning, запрет нулевого плана.", "Introduce or adapt layers 1–3 rules: time logging, decomposition ≤24h, Planning, ban on zero plan."),
-      tx("Сделать обязательными артефакты задачи: оценка, даты начала и окончания, исполнитель, условия приёмки и критерии готовности.", "Make task artifacts mandatory: estimate, start and end dates, assignee, acceptance criteria and readiness criteria."),
+      tx(
+        "Внедрить регламенты слоёв 1–3: списание, BA/DEV/QA ≤24 ч (ранний сигнал отклонения), Planning, запрет нулевого плана.",
+        "Roll out layers 1–3 rules: time logging, BA/DEV/QA ≤24h (early variance signal), Planning, ban on zero plan.",
+      ),
+      tx(
+        "Сделать обязательными артефакты задачи: оценка, даты, исполнитель, условия приёмки, DoR и DoD.",
+        "Make task artifacts mandatory: estimate, dates, assignee, acceptance criteria, DoR and DoD.",
+      ),
       tx("Ввести шаблон бизнес-требований и оценку по ролям BA / DEV / QA.", "Introduce a business-requirements template and BA / DEV / QA role estimates."),
       tx("Зафиксировать период, набор типов работ и правила учёта — это и есть исходная линия для сравнения.", "Lock the period, work types, and accounting rules — this is the baseline for comparison."),
       tx("Согласовать с руководством, что измеряем одинаково до и после изменений.", "Agree with leadership that measurement stays consistent before and after changes."),
@@ -558,7 +617,10 @@ export const launchSteps: LaunchStepPage[] = [
     roles: [
       tx("PMO владеет системой правил и исходной линией.", "PMO owns the rule system and baseline."),
       tx("Руководители потоков внедряют правила в командах.", "Stream leads embed the rules in teams."),
-      tx("Аналитик и технические лиды отвечают за качество входа и DoD.", "Analyst and technical leads own intake quality and DoD."),
+      tx(
+        "Аналитик отвечает за DoR (вход); технические и QA-лиды — за DoD (результат).",
+        "Analyst owns DoR (intake); technical and QA leads own DoD (result).",
+      ),
     ],
     cadence: [
       tx("Фиксация базы — после аудита, обычно в течение 2–4 недель внедрения правил.", "Baseline lock after audit, typically within 2–4 weeks of rule rollout."),
@@ -825,6 +887,95 @@ export const authorityItems: AuthorityPage[] = [
     relatedLaunch: ["embedding", "targets", "changes"],
   },
 ];
+
+/** DoR / DoD glossary and stage ribbon — shared by PO pages */
+export const dorDodContent = {
+  title: tx("DoR и DoD — два шлюза качества", "DoR and DoD — two quality gates"),
+  lead: tx(
+    "DoR проверяет готовность требования ко входу в работу. DoD — готовность результата к приёмке. Вместе с Quality Gate шаблона БТ и декомпозицией BA/DEV/QA ≤24 ч они держат прогноз.",
+    "DoR checks that a requirement is ready to enter work. DoD checks that the result is ready for acceptance. Together with the BT template Quality Gate and BA/DEV/QA ≤24h decomposition, they keep the forecast honest.",
+  ),
+  stages: [
+    {
+      id: "req",
+      label: tx("Требование", "Requirement"),
+      hint: tx("вход", "intake"),
+      kind: "plain" as const,
+    },
+    {
+      id: "dor",
+      label: tx("DoR", "DoR"),
+      hint: tx("шлюз качества", "quality gate"),
+      kind: "gate" as const,
+    },
+    {
+      id: "dev",
+      label: tx("Разработка / тест", "Dev / test"),
+      hint: tx("исполнение", "execution"),
+      kind: "plain" as const,
+    },
+    {
+      id: "dod",
+      label: tx("DoD", "DoD"),
+      hint: tx("шлюз качества", "quality gate"),
+      kind: "gate" as const,
+    },
+    {
+      id: "release",
+      label: tx("Релиз / приёмка", "Release / accept"),
+      hint: tx("выход", "exit"),
+      kind: "plain" as const,
+    },
+  ],
+  dor: {
+    abbr: "DoR",
+    name: tx(
+      "критерии готовности к взятию в работу",
+      "Definition of Ready — intake readiness criteria",
+    ),
+    when: tx(
+      "До разработки / на входе в спринт-контур",
+      "Before development / at sprint-contour intake",
+    ),
+    what: tx(
+      "Правила входа: ясная формулировка, условия приёмки, макеты или уточнения, нет внешних блокеров. Подкрепляется контролем качества шаблона бизнес-требований.",
+      "Intake rules: clear wording, acceptance criteria, mocks or clarifications, no external blockers. Backed by the business-requirements template quality check.",
+    ),
+    checks: [
+      tx("Формулировка и ссылка на утверждённые БТ", "Wording and link to approved BR"),
+      tx("Проверяемые условия приёмки (AC)", "Testable acceptance criteria (AC)"),
+      tx("Оценка BA/DEV/QA ≤24 ч, нет блокеров", "BA/DEV/QA estimate ≤24h, no blockers"),
+    ],
+    owner: tx("Аналитик (BA) — владелец входа", "Analyst (BA) — owns intake"),
+  },
+  dod: {
+    abbr: "DoD",
+    name: tx(
+      "критерии готовности результата",
+      "Definition of Done — result readiness criteria",
+    ),
+    when: tx(
+      "До приёмки / выхода из разработки и теста",
+      "Before acceptance / exit from development and test",
+    ),
+    what: tx(
+      "Сквозной стандарт готовности любой задачи: тесты, ревью, документация по правилу контура. Прогресс Story — не «% задач», а прохождение через DoD.",
+      "Cross-cutting readiness standard for any item: tests, review, documentation per contour rules. Story progress is not “% of tasks”, but passing through DoD.",
+    ),
+    checks: [
+      tx("Тесты / автопроверки по правилу контура", "Tests / automated checks per contour rules"),
+      tx("Ревью кода и актуальный статус в трекере", "Code review and current tracker status"),
+      tx("Документация / артефакты закрытия по DoD", "Docs / closure artifacts per DoD"),
+    ],
+    owner: tx("Техлид и QA-лид — стандарт результата", "Tech lead and QA lead — result standard"),
+  },
+  calloutTitle: tx("Коротко: DoR и DoD", "In short: DoR and DoD"),
+  calloutBody: tx(
+    "DoR — готовность ко входу (до разработки). DoD — готовность результата (до приёмки). Шкала: требование → DoR → разработка/тест → DoD → релиз.",
+    "DoR — intake readiness (before development). DoD — result readiness (before acceptance). Scale: requirement → DoR → dev/test → DoD → release.",
+  ),
+  moreLabel: tx("Подробнее в слое «Артефакты»", "More in the Artifacts layer"),
+};
 
 export function metricById(id: string) {
   return metricPages.find((item) => item.id === id);

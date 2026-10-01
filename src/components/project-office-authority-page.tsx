@@ -19,23 +19,23 @@ export function ProjectOfficeAuthorityPage({
   const { t, lang } = useI18n();
   const sections = [
     {
-      title: { ru: "Что входит", en: "What is included" },
+      title: { ru: "Состав", en: "Scope" },
       items: item.scope,
     },
     {
-      title: { ru: "Как закрепляется", en: "How it is locked in" },
+      title: { ru: "Как закрепляют", en: "How locked" },
       items: item.howFixed,
     },
     {
-      title: { ru: "Что ломается без этого", en: "What breaks without it" },
+      title: { ru: "Без этого", en: "Without it" },
       items: item.withoutIt,
     },
     {
-      title: { ru: "Признаки «есть»", en: "Signs it is present" },
+      title: { ru: "Признаки «есть»", en: "Signs: yes" },
       items: item.signsYes,
     },
     {
-      title: { ru: "Признаки «нет»", en: "Signs it is missing" },
+      title: { ru: "Признаки «нет»", en: "Signs: no" },
       items: item.signsNo,
     },
   ];
