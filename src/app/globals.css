@@ -2323,7 +2323,7 @@ a.glass-card:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee {
+  .marquee:not(.marquee--force) {
     animation: none;
     width: 100%;
     max-width: 100%;
@@ -2333,8 +2333,9 @@ a.glass-card:hover {
   }
 
   /* Only hide the looping duplicate — not the sole group when JS
-     already omitted it under useReducedMotion (last-child === only-child). */
-  .marquee .marquee__group:nth-child(n + 2) {
+     already omitted it under useReducedMotion (last-child === only-child).
+     .marquee--force (project-office pillars) keeps both groups + animation. */
+  .marquee:not(.marquee--force) .marquee__group:nth-child(n + 2) {
     display: none;
   }
 }

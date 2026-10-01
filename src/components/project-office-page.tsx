@@ -52,6 +52,7 @@ export function ProjectOfficePage() {
               </p>
               <Marquee
                 className="po-pillars-marquee"
+                forceMotion
                 aria-label={lang === "ru" ? "Четыре столпа" : "Four pillars"}
                 items={
                   lang === "ru"

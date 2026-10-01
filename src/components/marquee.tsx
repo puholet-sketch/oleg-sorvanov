@@ -21,6 +21,8 @@ type MarqueeProps = {
   items?: string[];
   className?: string;
   "aria-label"?: string;
+  /** Keep scrolling even when prefers-reduced-motion is set (opt-in). */
+  forceMotion?: boolean;
 };
 
 /** Repeat short lists so the strip stays wider than typical viewports. */
@@ -59,8 +61,10 @@ export function Marquee({
   items = DEFAULT_ITEMS,
   className,
   "aria-label": ariaLabel,
+  forceMotion = false,
 }: MarqueeProps) {
-  const reducedMotion = useReducedMotion();
+  const prefersReduced = useReducedMotion();
+  const reducedMotion = Boolean(prefersReduced) && !forceMotion;
   const loop = reducedMotion ? items : expandItems(items);
 
   return (
@@ -75,6 +79,7 @@ export function Marquee({
         className={cn(
           "marquee gap-8 py-2.5 text-[0.7rem] tracking-[0.16em] uppercase",
           reducedMotion && "marquee--static",
+          forceMotion && "marquee--force",
         )}
       >
         <MarqueeGroup items={loop} />
