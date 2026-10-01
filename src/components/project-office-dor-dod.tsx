@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 import { dorDodContent } from "@/lib/project-office-content";
 
@@ -40,42 +41,28 @@ export function ProjectOfficeDorDod({ className = "" }: { className?: string }) 
         ))}
       </ol>
 
-      <div className="po-dor__grid">
-        {[c.dor, c.dod].map((gate) => (
-          <article className="po-dor__card" key={gate.abbr}>
-            <p className="po-kicker">{gate.abbr}</p>
-            <h3 className="po-dor__fullname">{t(gate.fullName)}</h3>
-            <p className="po-dor__name">{t(gate.name)}</p>
+      <div className="po-dor__grid po-dor__grid--quartet">
+        {c.quartet.map((item) => (
+          <article className="po-dor__card" key={item.id}>
+            <p className="po-kicker">{item.abbr}</p>
+            <h3 className="po-dor__fullname">{t(item.fullName)}</h3>
+            <p className="po-dor__name">{t(item.name)}</p>
             <p className="po-dor__when">
               <span className="po-dor__tag">
                 {lang === "ru" ? "Когда" : "When"}
               </span>
-              {t(gate.when)}
+              {t(item.when)}
             </p>
-            <p className="po-dor__what">{t(gate.what)}</p>
+            <p className="po-dor__what">{t(item.what)}</p>
             <ul className="po-detail__list">
-              {gate.checks.map((item) => (
-                <li key={item.ru}>{t(item)}</li>
+              {item.checks.map((check) => (
+                <li key={check.ru}>{t(check)}</li>
               ))}
             </ul>
-            <p className="po-dor__owner">{t(gate.owner)}</p>
+            <p className="po-dor__owner">{t(item.owner)}</p>
           </article>
         ))}
       </div>
-
-      <article className="po-dor__ac" aria-labelledby="po-ac-title">
-        <p className="po-kicker">{c.ac.abbr}</p>
-        <h3 className="po-dor__fullname" id="po-ac-title">
-          {t(c.ac.fullName)}
-        </h3>
-        <p className="po-dor__name">{t(c.ac.name)}</p>
-        <p className="po-dor__what">{t(c.ac.what)}</p>
-        <ul className="po-detail__list">
-          {c.ac.links.map((item) => (
-            <li key={item.ru}>{t(item)}</li>
-          ))}
-        </ul>
-      </article>
 
       <div className="po-dor__groups" aria-labelledby="po-groups-title">
         <div className="po-block__head">
@@ -102,6 +89,30 @@ export function ProjectOfficeDorDod({ className = "" }: { className?: string }) 
             </article>
           ))}
         </div>
+      </div>
+
+      <div className="po-dor__boosts" aria-labelledby="po-boosts-title">
+        <div className="po-block__head">
+          <span className="po-num" aria-hidden>
+            03
+          </span>
+          <div>
+            <h2 className="po-h2" id="po-boosts-title">
+              {t(c.boostsTitle)}
+            </h2>
+            <p className="po-lead">{t(c.boostsLead)}</p>
+          </div>
+        </div>
+        <ul className="po-dor__boost-list">
+          {c.boosts.map((boost) => (
+            <li key={boost.id}>
+              <span>{t(boost.text)}</span>{" "}
+              <Link href={boost.href} className="po-mistakes__link">
+                {t(boost.linkLabel)} →
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
