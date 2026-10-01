@@ -84,23 +84,50 @@ export function ProjectOfficePage() {
               </p>
             </div>
             <aside className="po-hero__motto">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/sadhguru.png`}
-                alt={lang === "ru" ? "Садхгуру" : "Sadhguru"}
-                className="po-hero__motto-photo"
-                width={280}
-                height={264}
-              />
-              <blockquote className="po-hero__motto-quote">
-                {lang === "ru"
-                  ? "Всё, что вы делаете — делайте с максимальной вовлечённостью! Когда вы идёте по большому, вы максимально вовлечены в процесс, иначе результата не будет! Почему бы не делать всё остальное по такому же принципу? В противном случае это можно не делать!"
-                  : "Whatever you do — do it with full involvement! When you go after something big, you are fully in the process — otherwise there is no result. Why not live the rest the same way? Otherwise it need not be done at all!"}
-              </blockquote>
-              <p className="po-hero__motto-attr">
-                {lang === "ru" ? (
-                  <>
-                    —{" "}
+              <div className="po-hero__motto-media">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/sadhguru.png`}
+                  alt={lang === "ru" ? "Садхгуру" : "Sadhguru"}
+                  className="po-hero__motto-photo"
+                  width={120}
+                  height={120}
+                />
+              </div>
+              <div className="po-hero__motto-copy">
+                <blockquote className="po-hero__motto-quote">
+                  {lang === "ru" ? (
+                    <>
+                      <p className="po-hero__motto-lead">
+                        Всё, что вы делаете — делайте с максимальной вовлечённостью!
+                      </p>
+                      <p>
+                        Когда вы идёте по большому, вы максимально вовлечены в процесс,
+                        иначе результата не будет.
+                      </p>
+                      <p>
+                        Почему бы не делать всё остальное по такому же принципу? В
+                        противном случае это можно не делать!
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="po-hero__motto-lead">
+                        Whatever you do — do it with full involvement!
+                      </p>
+                      <p>
+                        When you go after something big, you are fully in the process —
+                        otherwise there is no result.
+                      </p>
+                      <p>
+                        Why not live the rest the same way? Otherwise it need not be
+                        done at all!
+                      </p>
+                    </>
+                  )}
+                </blockquote>
+                <p className="po-hero__motto-attr">
+                  {lang === "ru" ? (
                     <a
                       href="https://ru.wikipedia.org/wiki/%D0%92%D0%B0%D1%81%D1%83%D0%B4%D0%B5%D0%B2,_%D0%94%D0%B6%D0%B0%D0%B3%D0%B3%D0%B8"
                       target="_blank"
@@ -108,10 +135,7 @@ export function ProjectOfficePage() {
                     >
                       Садхгуру
                     </a>
-                  </>
-                ) : (
-                  <>
-                    —{" "}
+                  ) : (
                     <a
                       href="https://en.wikipedia.org/wiki/Sadhguru"
                       target="_blank"
@@ -119,9 +143,9 @@ export function ProjectOfficePage() {
                     >
                       Sadhguru
                     </a>
-                  </>
-                )}
-              </p>
+                  )}
+                </p>
+              </div>
             </aside>
           </FadeUp>
 

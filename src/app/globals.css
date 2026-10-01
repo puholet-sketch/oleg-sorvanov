@@ -462,41 +462,74 @@ a.glass-card:hover {
 .project-office-theme .po-hero__motto {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  padding: 0.45rem 0.55rem 0.55rem;
-  text-align: center;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem 0.85rem;
+  align-items: start;
+  padding: 0.15rem 0 0.1rem 0.85rem;
+  border-left: 2px solid rgba(240, 196, 25, 0.55);
+  background: transparent;
+}
+
+.project-office-theme .po-hero__motto-media {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(240, 196, 25, 0.35);
+  background:
+    radial-gradient(circle at 50% 35%, rgba(240, 196, 25, 0.12) 0%, transparent 62%),
+    #0a0a0a;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.35);
 }
 
 .project-office-theme .po-hero__motto-photo {
-  width: min(150px, 48%);
-  height: auto;
-  object-fit: contain;
-  object-position: center bottom;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+  filter: none;
   mix-blend-mode: normal;
+}
+
+.project-office-theme .po-hero__motto-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 .project-office-theme .po-hero__motto-quote {
   margin: 0;
-  max-width: 22rem;
-  font-size: 0.76rem;
+  max-width: none;
+  font-style: normal;
+}
+
+.project-office-theme .po-hero__motto-quote p {
+  margin: 0;
+  font-size: 0.72rem;
   line-height: 1.4;
-  color: var(--po-body);
-  font-style: italic;
+  color: var(--po-muted);
+}
+
+.project-office-theme .po-hero__motto-quote p + p {
+  margin-top: 0.32rem;
+}
+
+.project-office-theme .po-hero__motto-lead {
+  font-size: 0.82rem !important;
+  line-height: 1.35 !important;
+  font-weight: 600;
+  color: #f3f1ef !important;
+  letter-spacing: -0.01em;
 }
 
 .project-office-theme .po-hero__motto-attr {
-  margin: 0;
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
+  margin: 0.1rem 0 0;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--po-gold);
 }
@@ -504,28 +537,29 @@ a.glass-card:hover {
 .project-office-theme .po-hero__motto-attr a {
   color: var(--po-gold);
   text-decoration: none;
-  border-bottom: 1px solid rgba(240, 196, 25, 0.35);
+  border-bottom: none;
 }
 
 .project-office-theme .po-hero__motto-attr a:hover {
-  border-bottom-color: var(--po-gold);
+  color: #ffe27a;
+}
+
+@media (max-width: 899px) {
+  .project-office-theme .po-hero__motto {
+    margin-top: 0.15rem;
+    padding-top: 0.55rem;
+  }
 }
 
 @media (min-width: 900px) {
   .project-office-theme .po-hero__motto {
-    align-items: stretch;
-    text-align: left;
-    border-left: 1px solid #2a2a2a;
-    padding-left: 1.05rem;
+    align-self: stretch;
+    padding-left: 1rem;
   }
 
-  .project-office-theme .po-hero__motto-photo {
-    width: min(165px, 55%);
-    align-self: center;
-  }
-
-  .project-office-theme .po-hero__motto-quote {
-    max-width: none;
+  .project-office-theme .po-hero__motto-media {
+    width: 72px;
+    height: 72px;
   }
 }
 
