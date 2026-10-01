@@ -10,7 +10,7 @@ Next.js-портфолио Олега Сорванова на GitHub Pages.
 
 ## Факты
 - Сайт: https://puholet-sketch.github.io/oleg-sorvanov/
-- Роль на сайте: руководитель проектного офиса
+- Роль на сайте: заместитель операционного директора по производственной системе
 - Страница позиционирования: `/project-office/` (BIV-палитра, scoped)
 - Кейсы: `/cases/b2b/`, `/cases/vfos/`
 - CV PDF: `public/Oleg_Sorvanov_CV.pdf`

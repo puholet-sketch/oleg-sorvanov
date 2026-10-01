@@ -1,14 +1,15 @@
 {
+  "v": 4,
   "status": "done",
   "goal": "Детализированный раздел проектного офиса по обезличенной методологии",
-  "next": "Проверить визуал 12 детальных страниц и опубликовать по отдельной команде",
+  "next": "Только новые замечания по контенту/визуалу",
   "blockers": [],
   "hot_files": [
-    "src/lib/project-office-content.ts",
     "src/components/project-office-page.tsx",
-    "src/components/project-office-metric-page.tsx",
-    "src/components/project-office-layer-page.tsx",
-    "src/app/globals.css"
+    "src/lib/project-office-content.ts",
+    "src/lib/site.ts",
+    "src/app/project-office/page.tsx",
+    "src/app/layout.tsx"
   ],
   "updated": "2026-10-01"
 }

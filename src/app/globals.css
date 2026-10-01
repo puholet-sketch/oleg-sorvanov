@@ -374,9 +374,9 @@ a.glass-card:hover {
 .project-office-theme .po-hero__title {
   margin-top: 0.4rem;
   font-family: var(--font-display), var(--font-body), sans-serif;
-  font-size: clamp(1.45rem, 3.6vw, 2.35rem);
+  font-size: clamp(1.2rem, 2.8vw, 1.85rem);
   font-weight: 700;
-  line-height: 0.98;
+  line-height: 1.12;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #ffffff;

@@ -387,8 +387,8 @@ export const layerPages: LayerPage[] = [
     ],
     roles: [
       tx(
-        "Head of PMO владеет системой и внедрением методологии на всём периметре; руководители потоков внедряют правила у себя; команды дают обратную связь. Не путать поток с PO заказчика — см. структуру команд.",
-        "Head of PMO owns the system and methodology rollout across the perimeter; flow leads embed rules locally; teams give feedback. Do not confuse a flow lead with the customer PO — see team structure.",
+        "Зам. операционного директора по производственной системе владеет системой и внедрением методологии на всём периметре; руководители потоков внедряют правила у себя; команды дают обратную связь. Не путать поток с PO заказчика — см. структуру команд.",
+        "The Deputy Operational Director for the Production System owns the system and methodology rollout across the perimeter; flow leads embed rules locally; teams give feedback. Do not confuse a flow lead with the customer PO — see team structure.",
       ),
     ],
     rolesLink: teamStructureLink,
@@ -568,7 +568,7 @@ export const launchSteps: LaunchStepPage[] = [
       tx("Согласованный список проектов / потоков для аудита.", "Agreed project / stream list for the audit."),
     ],
     roles: [
-      tx("Руководитель проектного офиса согласует контур и канал статуса.", "Head of project office agrees the contour and status channel."),
+      tx("Зам. операционного директора по производственной системе согласует контур и канал статуса.", "The Deputy Operational Director for the Production System agrees the contour and status channel."),
       tx(
         "Руководители потоков (ответственные за поставку команды) подтверждают границы и владельцев.",
         "Flow leads (owners of team delivery) confirm boundaries and owners.",
@@ -833,8 +833,8 @@ export const authorityItems: AuthorityPage[] = [
       tx("Письменное согласование с руководством: состав контура и дата пересмотра.", "Written agreement with leadership: contour composition and review date."),
       tx("Карта ролей на старте маршрута запуска (шаг «Встраивание»).", "Role map at launch-route start (Embedding step)."),
       tx(
-        "Владелец методологии и производственной функции процессов на всём согласованном контуре — руководитель проектного офиса (Head of PMO); руководители потоков внедряют правила у себя, не подменяя эту роль.",
-        "Methodology and production process ownership across the whole agreed contour sits with the Head of PMO; flow leads embed the rules in their streams and do not replace that role.",
+        "Владелец внедрения методологии и производственной функции процессов на согласованном периметре — заместитель операционного директора по производственной системе (внедрение методологии поставки / PMO-контур); руководители потоков и PM внедряют у себя, не подменяя эту роль.",
+        "Methodology and production process ownership across the agreed perimeter sits with the Deputy Operational Director for the Production System (delivery methodology rollout / PMO contour); flow leads and PMs embed locally and do not replace that role.",
       ),
     ],
     withoutIt: [
@@ -909,7 +909,7 @@ export const authorityItems: AuthorityPage[] = [
       ),
     ],
     howFixed: [
-      tx("Полномочие прямо входит в зону ответственности руководителя проектного офиса для согласованного контура.", "The mandate is explicit in the head of project office responsibility for the agreed contour."),
+      tx("Полномочие прямо входит в зону ответственности зам. операционного директора по производственной системе для согласованного контура.", "The mandate is explicit in the Deputy Operational Director for the Production System responsibility for the agreed contour."),
       tx("Регламент утверждается с руководством и владельцами потоков; PMO владеет системой, потоки внедряют.", "Rules are approved with leadership and stream owners; PMO owns the system, streams implement."),
       tx(
         "Исключения оформляют в журнале явно — не «тихим» обходом в чате; иначе отклонение становится нормой.",
@@ -1166,22 +1166,25 @@ export const dorDodContent = {
 export const teamStructureContent = {
   title: tx("Структура команд", "Team structure"),
   lead: tx(
-    "Кто за что отвечает: Head of PMO внедряет методологию на всём периметре; потоки и PM — локально. Ориентир, не оргприказ.",
-    "Who owns what: Head of PMO rolls out methodology across the perimeter; streams and PMs act locally. A guide, not an org order.",
+    "Кто за что отвечает: зам. операционного директора по производственной системе внедряет методологию на всём периметре; потоки и PM — локально. Ориентир, не оргприказ.",
+    "Who owns what: the Deputy Operational Director for the Production System rolls out methodology across the perimeter; streams and PMs act locally. A guide, not an org order.",
   ),
-  ownershipTitle: tx("Кто за что отвечает", "Who owns what"),
+  ownershipTitle: tx("Кто чем владеет", "Who owns what"),
   ownershipLead: tx(
-    "Производственная функция и методология целиком — у руководителя проектного офиса. Остальные уровни не подменяют эту роль.",
-    "The production system and full methodology sit with the Head of PMO. Other levels do not replace that role.",
+    "Методология и производственная функция процессов на согласованном периметре — у заместителя операционного директора по производственной системе. Поток, PM, ресурсные линии и PO — другие зоны; роль дополняет операционного директора, не подменяет его.",
+    "Methodology and the production process function across the agreed perimeter sit with the Deputy Operational Director for the Production System. Flow lead, PM, resource lines and PO cover other scopes; the role strengthens the operational director, it does not replace them.",
   ),
   ownership: [
     {
       id: "pmo",
       n: "01",
-      title: tx("Руководитель проектного офиса", "Head of Project Office"),
+      title: tx(
+        "Заместитель операционного директора по производственной системе",
+        "Deputy Operational Director for the Production System",
+      ),
       body: tx(
-        "Владелец системы: регламенты, базовая линия, сопоставимость метрик, внедрение методологии на всём согласованном периметре производства.",
-        "System owner: rules, baseline, metric comparability, methodology rollout across the whole agreed production perimeter.",
+        "Владелец внедрения методологии поставки и производственной функции процессов на периметре (PMO-контур): регламенты, базовая линия, сопоставимость метрик, свод прогноза. Дополняет операционного директора в этой зоне.",
+        "Owns delivery methodology rollout and the production process function across the perimeter (PMO contour): rules, baseline, metric comparability, forecast consolidation. Strengthens the operational director in this zone.",
       ),
       highlight: true,
     },
@@ -1228,8 +1231,8 @@ export const teamStructureContent = {
   ],
   flowLeadTitle: tx("Кто такой руководитель потока", "Who a flow lead is"),
   flowLeadBody: tx(
-    "Руководитель потока отвечает за поставку и поток работ своей команды: сроки, приоритеты, внедрение регламентов у себя, решения по хвосту. В оргштатке это часто руководитель проектов / группы / направления. Не путать с Head of PMO (методология на весь периметр), с PO заказчика и с ресурсными руководителями BA/DEV/QA.",
-    "A flow lead owns their team’s delivery stream: schedule, priorities, local rule rollout, tail decisions. In the org chart this is often a project / group / stream manager. Not the Head of PMO (methodology across the perimeter), not the customer PO, and not BA/DEV/QA resource leads.",
+    "Руководитель потока отвечает за поставку и поток работ своей команды: сроки, приоритеты, внедрение регламентов у себя, решения по хвосту. В оргштатке это часто руководитель проектов / группы / направления. Не путать с зам. операционного директора по производственной системе (методология на весь периметр), с PO заказчика и с ресурсными руководителями BA/DEV/QA.",
+    "A flow lead owns their team’s delivery stream: schedule, priorities, local rule rollout, tail decisions. In the org chart this is often a project / group / stream manager. Not the Deputy Operational Director for the Production System (methodology across the perimeter), not the customer PO, and not BA/DEV/QA resource leads.",
   ),
   chainTitle: tx("Цепочка от команды к системе", "Chain from team to system"),
   chain: [
@@ -1253,8 +1256,8 @@ export const teamStructureContent = {
       n: "03",
       title: tx("Руководитель потока", "Flow lead"),
       body: tx(
-        "Владеет поставкой потока и локальным внедрением правил. Не подменяет Head of PMO по методологии периметра.",
-        "Owns stream delivery and local rule rollout. Does not replace the Head of PMO on perimeter methodology.",
+        "Владеет поставкой потока и локальным внедрением правил. Не подменяет зам. операционного директора по производственной системе по методологии периметра.",
+        "Owns stream delivery and local rule rollout. Does not replace the Deputy Operational Director for the Production System on perimeter methodology.",
       ),
     },
     {
@@ -1267,10 +1270,13 @@ export const teamStructureContent = {
     },
     {
       n: "05",
-      title: tx("Head of PMO", "Head of PMO"),
+      title: tx(
+        "Заместитель операционного директора по производственной системе",
+        "Deputy Operational Director for the Production System",
+      ),
       body: tx(
-        "Владеет системой и внедрением методологии на всём согласованном периметре: регламенты, база, метрики. Потоки внедряют у себя.",
-        "Owns the system and methodology rollout across the agreed perimeter: rules, baseline, metrics. Streams implement locally.",
+        "Владеет методологией и производственной функцией процессов на периметре (PMO-контур). Потоки и PM внедряют у себя. Дополняет операционного директора в этой зоне.",
+        "Owns methodology and the production process function across the perimeter (PMO contour). Streams and PMs embed locally. Strengthens the operational director in this zone.",
       ),
     },
   ],

@@ -5,16 +5,16 @@ export const site = {
     en: "Oleg Sorvanov",
   },
   role: {
-    ru: "Руководитель проектного офиса · ВИРТУ СИСТЕМС",
-    en: "Head of Project Office · VIRTU SYSTEMS",
+    ru: "Заместитель операционного директора по производственной системе · ВИРТУ СИСТЕМС",
+    en: "Deputy Operational Director for the Production System · VIRTU SYSTEMS",
   },
   headline: {
     ru: "IT-лидер страхового рынка",
     en: "Insurance IT leader",
   },
   tagline: {
-    ru: "20+ лет в ИТ — от разработчика Oracle до руководителя проектного офиса и портфеля 300+ млн ₽ в год. Предприниматель, лыжник, яхтсмен, отец троих детей.",
-    en: "20+ years in IT — from Oracle developer to head of project office and a 300M+ ₽/yr portfolio. Entrepreneur, skier, yachtsman, father of three.",
+    ru: "20+ лет в ИТ — от разработчика Oracle до заместителя операционного директора по производственной системе и портфеля 300+ млн ₽ в год. Предприниматель, лыжник, яхтсмен, отец троих детей.",
+    en: "20+ years in IT — from Oracle developer to Deputy Operational Director for the Production System and a 300M+ ₽/yr portfolio. Entrepreneur, skier, yachtsman, father of three.",
   },
   companyUrl: "https://www.virtusystems.ru/",
   email: "sorvanovon@yandex.ru",
@@ -65,8 +65,8 @@ export const site = {
       ],
     },
     focus: {
-      ru: "Путь от разработчика Oracle и Team Lead до руководителя проектного офиса: delivery, PMO-аналитика, портфель и стабилизация продуктов страхового рынка.",
-      en: "Path from Oracle developer and Team Lead to Head of Project Office: delivery, PMO analytics, portfolio and product stabilization in insurance IT.",
+      ru: "Путь от разработчика Oracle и Team Lead до заместителя операционного директора по производственной системе: delivery, методология поставки, портфель и стабилизация продуктов страхового рынка.",
+      en: "Path from Oracle developer and Team Lead to Deputy Operational Director for the Production System: delivery, delivery methodology, portfolio and product stabilization in insurance IT.",
     },
     office: {
       ru: "Команды: VFOS B2B, ОФР, Аутстафф, VirtuDrive, РГС Ипотека, Согласие Ипотека, Согласие ВИТА и НПФ, ВСК / МСГ. Клиенты: ВСК, Альфа, Райффайзен, Сбер, РОСГОССТРАХ, Ингосстрах, Гелиос, МСГ и др.",
@@ -105,8 +105,8 @@ export const site = {
       duration: { ru: "3 года", en: "3 years" },
       href: "https://www.virtusystems.ru/",
       title: {
-        ru: "ВИРТУ СИСТЕМС · Руководитель проектного офиса",
-        en: "VIRTU SYSTEMS · Head of Project Office",
+        ru: "ВИРТУ СИСТЕМС · Заместитель операционного директора по производственной системе",
+        en: "VIRTU SYSTEMS · Deputy Operational Director for the Production System",
       },
       lines: {
         ru: [

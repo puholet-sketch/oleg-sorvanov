@@ -17,7 +17,7 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  title: `${site.fullName.ru} — Head of Project Office`,
+  title: `${site.fullName.ru} — Заместитель операционного директора по производственной системе`,
   description: site.tagline.ru,
 };
 

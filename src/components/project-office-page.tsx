@@ -36,13 +36,13 @@ export function ProjectOfficePage() {
             <div className="po-hero__body">
               <p className="po-kicker">
                 {lang === "ru"
-                  ? "Офис проектов · управление портфелем"
-                  : "Project office · portfolio management"}
+                  ? "Владелец методологии поставки · проектный офис"
+                  : "Delivery methodology owner · project office"}
               </p>
               <h1 className="po-hero__title">
                 {lang === "ru"
-                  ? "Руководитель проектного офиса"
-                  : "Head of Project Office"}
+                  ? "Заместитель операционного директора по производственной системе"
+                  : "Deputy Operational Director for the Production System"}
               </h1>
               <p className="po-hero__lead">
                 {lang === "ru"
@@ -52,19 +52,19 @@ export function ProjectOfficePage() {
               <p className="po-hero__alt">
                 {lang === "ru" ? (
                   <>
-                    Методология и производственная функция процессов на всём
-                    периметре — зона{" "}
-                    <span className="po-accent">руководителя проектного офиса</span>{" "}
-                    (Head of PMO).{" "}
+                    Владеет внедрением методологии поставки на согласованном
+                    периметре{" "}
+                    <span className="po-accent">(PMO-контур)</span>. Дополняет
+                    операционного директора в зоне производственной системы.{" "}
                     <Link href="/project-office/how/team/" className="po-hero__alt-link">
                       Кто за что →
                     </Link>
                   </>
                 ) : (
                   <>
-                    Methodology and production process ownership across the whole
-                    perimeter sits with the{" "}
-                    <span className="po-accent">Head of PMO</span>.{" "}
+                    Owns delivery methodology rollout across the agreed perimeter{" "}
+                    <span className="po-accent">(PMO contour)</span>. Strengthens
+                    the operational director on the production system.{" "}
                     <Link href="/project-office/how/team/" className="po-hero__alt-link">
                       Who owns what →
                     </Link>
