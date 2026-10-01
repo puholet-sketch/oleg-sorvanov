@@ -1935,6 +1935,9 @@ export type RolloutPhase = {
   id: string;
   n: string;
   weeks: LangText;
+  /** Inclusive week range on the ~90-day scale (1–13). */
+  weekStart: number;
+  weekEnd: number;
   title: LangText;
   close: LangText;
   launchHref: string;
@@ -1977,6 +1980,13 @@ export const rolloutContent = {
     "Горизонт от полугода держит повторный замер; первые ~90 дней закрывают установку контура и первую волну мер.",
     "A horizon from six months keeps the repeat measurement; the first ~90 days lock the contour and the first measure wave.",
   ),
+  chartHint: tx(
+    "Ось X — недели 1–13 · ось Y — фазы. Кликните строку — текст и ссылки ниже.",
+    "X axis — weeks 1–13 · Y axis — phases. Click a row for text and links below.",
+  ),
+  axisWeeks: tx("Недели", "Weeks"),
+  axisPhases: tx("Фазы", "Phases"),
+  totalWeeks: 13,
   checklistsCta: tx("Открыть чек-листы внедрения", "Open rollout checklists"),
   checklistsHref: "/project-office/rollout/checklists/",
   phases: [
@@ -1984,6 +1994,8 @@ export const rolloutContent = {
       id: "embedding",
       n: "01",
       weeks: tx("Нед. 1–2", "Wk 1–2"),
+      weekStart: 1,
+      weekEnd: 2,
       title: tx("Встраивание", "Embedding"),
       close: tx(
         "Контур назван, роли и эскалация ясны, один канал статуса согласован.",
@@ -2001,6 +2013,8 @@ export const rolloutContent = {
       id: "audit",
       n: "02",
       weeks: tx("Нед. 3–5", "Wk 3–5"),
+      weekStart: 3,
+      weekEnd: 5,
       title: tx("Аудит", "Audit"),
       close: tx(
         "Снимок план/факт, стадий, загрузки, хвоста и зрелости артефактов.",
@@ -2018,6 +2032,8 @@ export const rolloutContent = {
       id: "baseline",
       n: "03",
       weeks: tx("Нед. 6–8", "Wk 6–8"),
+      weekStart: 6,
+      weekEnd: 8,
       title: tx("База", "Baseline"),
       close: tx(
         "Правила слоёв 1–3 действуют, обязательные артефакты заполняются, линия зафиксирована.",
@@ -2035,6 +2051,8 @@ export const rolloutContent = {
       id: "targets",
       n: "04",
       weeks: tx("Нед. 9–10", "Wk 9–10"),
+      weekStart: 9,
+      weekEnd: 10,
       title: tx("Цели", "Targets"),
       close: tx(
         "Ориентиры утверждены на фактах базы: формула, период, владелец.",
@@ -2052,6 +2070,8 @@ export const rolloutContent = {
       id: "changes",
       n: "05",
       weeks: tx("Нед. 11–13", "Wk 11–13"),
+      weekStart: 11,
+      weekEnd: 13,
       title: tx("Точечные меры", "Targeted measures"),
       close: tx(
         "Ограниченный набор мер в ритме; проверка эффекта — на следующей базе.",
