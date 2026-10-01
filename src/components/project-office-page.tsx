@@ -50,9 +50,26 @@ export function ProjectOfficePage() {
                   : "Rules, tracking, cadence and customer visibility — with measurable effect after a baseline."}
               </p>
               <p className="po-hero__alt">
-                {lang === "ru"
-                  ? "Альтернатива по периметру: старший руководитель проектов с группой РП и набором проектов."
-                  : "Alternative scope: senior project lead with a group of PMs and a set of projects."}
+                {lang === "ru" ? (
+                  <>
+                    Методология и производственная функция процессов на всём
+                    периметре — зона{" "}
+                    <span className="po-accent">руководителя проектного офиса</span>{" "}
+                    (Head of PMO).{" "}
+                    <Link href="/project-office/how/team/" className="po-hero__alt-link">
+                      Кто за что →
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    Methodology and production process ownership across the whole
+                    perimeter sits with the{" "}
+                    <span className="po-accent">Head of PMO</span>.{" "}
+                    <Link href="/project-office/how/team/" className="po-hero__alt-link">
+                      Who owns what →
+                    </Link>
+                  </>
+                )}
               </p>
             </div>
             <aside className="po-hero__motto">

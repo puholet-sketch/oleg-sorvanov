@@ -387,8 +387,8 @@ export const layerPages: LayerPage[] = [
     ],
     roles: [
       tx(
-        "PMO владеет системой; руководители потоков внедряют; команды дают обратную связь. Руководитель потока — отвечает за поставку и поток работ команды (часто руководитель проектов / группы / направления), не путать с PO заказчика.",
-        "PMO owns the system; flow leads implement; teams provide feedback. A flow lead owns the team’s delivery and work stream (often a project / group / stream manager) — not the customer PO.",
+        "Head of PMO владеет системой и внедрением методологии на всём периметре; руководители потоков внедряют правила у себя; команды дают обратную связь. Не путать поток с PO заказчика — см. структуру команд.",
+        "Head of PMO owns the system and methodology rollout across the perimeter; flow leads embed rules locally; teams give feedback. Do not confuse a flow lead with the customer PO — see team structure.",
       ),
     ],
     rolesLink: teamStructureLink,
@@ -832,7 +832,10 @@ export const authorityItems: AuthorityPage[] = [
     howFixed: [
       tx("Письменное согласование с руководством: состав контура и дата пересмотра.", "Written agreement with leadership: contour composition and review date."),
       tx("Карта ролей на старте маршрута запуска (шаг «Встраивание»).", "Role map at launch-route start (Embedding step)."),
-      tx("Альтернатива по периметру: старший руководитель проектов с группой РП и набором проектов — тот же принцип границ.", "Scope alternative: a senior project lead with a PM group and a project set — same boundary principle."),
+      tx(
+        "Владелец методологии и производственной функции процессов на всём согласованном контуре — руководитель проектного офиса (Head of PMO); руководители потоков внедряют правила у себя, не подменяя эту роль.",
+        "Methodology and production process ownership across the whole agreed contour sits with the Head of PMO; flow leads embed the rules in their streams and do not replace that role.",
+      ),
     ],
     withoutIt: [
       tx("Сравнивают чужие проекты с разными правилами учёта и получают ложный план/факт.", "Unlike projects with different accounting rules get compared and yield false plan/fact."),
@@ -1163,15 +1166,72 @@ export const dorDodContent = {
 export const teamStructureContent = {
   title: tx("Структура команд", "Team structure"),
   lead: tx(
-    "Кто за что отвечает в поставке: от ядра команды до PMO. Ориентир, не оргприказ — пропорции калибруют после аудита.",
-    "Who owns what in delivery: from the team core to PMO. A guide, not an org order — calibrate ratios after an audit.",
+    "Кто за что отвечает: Head of PMO внедряет методологию на всём периметре; потоки и PM — локально. Ориентир, не оргприказ.",
+    "Who owns what: Head of PMO rolls out methodology across the perimeter; streams and PMs act locally. A guide, not an org order.",
   ),
+  ownershipTitle: tx("Кто за что отвечает", "Who owns what"),
+  ownershipLead: tx(
+    "Производственная функция и методология целиком — у руководителя проектного офиса. Остальные уровни не подменяют эту роль.",
+    "The production system and full methodology sit with the Head of PMO. Other levels do not replace that role.",
+  ),
+  ownership: [
+    {
+      id: "pmo",
+      n: "01",
+      title: tx("Руководитель проектного офиса", "Head of Project Office"),
+      body: tx(
+        "Владелец системы: регламенты, базовая линия, сопоставимость метрик, внедрение методологии на всём согласованном периметре производства.",
+        "System owner: rules, baseline, metric comparability, methodology rollout across the whole agreed production perimeter.",
+      ),
+      highlight: true,
+    },
+    {
+      id: "flow",
+      n: "02",
+      title: tx("Руководитель потока", "Flow lead"),
+      body: tx(
+        "Внедряет правила в своём потоке поставки: сроки, приоритеты, хвост, эскалация. Не владелец методологии целиком.",
+        "Embeds rules in their delivery stream: schedule, priorities, tail, escalation. Not the owner of the full methodology.",
+      ),
+      highlight: false,
+    },
+    {
+      id: "pm",
+      n: "03",
+      title: tx("PM", "PM"),
+      body: tx(
+        "Операционка команды(команд): план/факт, ритм встреч, прозрачность статуса. Один PM — на 1–3 команды.",
+        "Team operations: plan/fact, meeting cadence, status transparency. One PM for 1–3 teams.",
+      ),
+      highlight: false,
+    },
+    {
+      id: "resource",
+      n: "04",
+      title: tx("Ресурсные руководители", "Resource leads"),
+      body: tx(
+        "Линии BA / DEV / QA: ёмкость, грейды, качество практики. Не подменяют владельца потока по срокам.",
+        "BA / DEV / QA lines: capacity, grades, practice quality. They do not replace the flow lead on schedule.",
+      ),
+      highlight: false,
+    },
+    {
+      id: "po",
+      n: "05",
+      title: tx("PO — сторона заказчика", "PO — customer side"),
+      body: tx(
+        "Приоритет ценности и приёмка смысла у заказчика. Как правило не штатная роль внутри каждой нашей команды поставки.",
+        "Value priority and meaning acceptance on the customer side. Usually not a staffed role inside each of our delivery teams.",
+      ),
+      highlight: false,
+    },
+  ],
   flowLeadTitle: tx("Кто такой руководитель потока", "Who a flow lead is"),
   flowLeadBody: tx(
-    "Руководитель потока отвечает за поставку и поток работ команды: сроки, приоритеты, внедрение регламентов, решения по хвосту. В оргштатке это часто руководитель проектов / группы проектов / направления. Не путать с PO заказчика (приоритет ценности у заказчика) и с ресурсными руководителями BA/DEV/QA (ёмкость и практика роли).",
-    "A flow lead owns the team’s delivery and work stream: schedule, priorities, rule rollout, tail decisions. In the org chart this is often a project / project-group / stream manager. Not the customer PO (value priority on the customer side) and not BA/DEV/QA resource leads (capacity and practice of the role).",
+    "Руководитель потока отвечает за поставку и поток работ своей команды: сроки, приоритеты, внедрение регламентов у себя, решения по хвосту. В оргштатке это часто руководитель проектов / группы / направления. Не путать с Head of PMO (методология на весь периметр), с PO заказчика и с ресурсными руководителями BA/DEV/QA.",
+    "A flow lead owns their team’s delivery stream: schedule, priorities, local rule rollout, tail decisions. In the org chart this is often a project / group / stream manager. Not the Head of PMO (methodology across the perimeter), not the customer PO, and not BA/DEV/QA resource leads.",
   ),
-  chainTitle: tx("Цепочка ответственности", "Ownership chain"),
+  chainTitle: tx("Цепочка от команды к системе", "Chain from team to system"),
   chain: [
     {
       n: "01",
@@ -1193,8 +1253,8 @@ export const teamStructureContent = {
       n: "03",
       title: tx("Руководитель потока", "Flow lead"),
       body: tx(
-        "Владеет поставкой потока: спрос, границы, внедрение правил, эскалация. Часто совмещён с «главным» PM на несколько команд.",
-        "Owns stream delivery: demand, boundaries, rule rollout, escalation. Often combined with a senior PM across several teams.",
+        "Владеет поставкой потока и локальным внедрением правил. Не подменяет Head of PMO по методологии периметра.",
+        "Owns stream delivery and local rule rollout. Does not replace the Head of PMO on perimeter methodology.",
       ),
     },
     {
@@ -1207,10 +1267,10 @@ export const teamStructureContent = {
     },
     {
       n: "05",
-      title: tx("PMO", "PMO"),
+      title: tx("Head of PMO", "Head of PMO"),
       body: tx(
-        "Владеет системой: регламенты, исходная линия, сопоставимость метрик, свод прогноза. Потоки внедряют.",
-        "Owns the system: rules, baseline, metric comparability, forecast consolidation. Streams implement.",
+        "Владеет системой и внедрением методологии на всём согласованном периметре: регламенты, база, метрики. Потоки внедряют у себя.",
+        "Owns the system and methodology rollout across the agreed perimeter: rules, baseline, metrics. Streams implement locally.",
       ),
     },
   ],

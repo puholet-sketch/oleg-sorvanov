@@ -30,7 +30,35 @@ export function ProjectOfficeTeamPage() {
             </div>
           </FadeUp>
 
-          <FadeUp className="po-glossary mt-4" delay={0.02}>
+          <FadeUp className="po-block po-detail__block" delay={0.02}>
+            <div className="po-block__head">
+              <span className="po-num" aria-hidden>
+                01
+              </span>
+              <div>
+                <h2 className="po-h2">{t(c.ownershipTitle)}</h2>
+                <p className="po-lead">{t(c.ownershipLead)}</p>
+              </div>
+            </div>
+            <ol className="po-own-map" aria-label={t(c.ownershipTitle)}>
+              {c.ownership.map((item) => (
+                <li
+                  key={item.id}
+                  className={
+                    item.highlight
+                      ? "po-own-map__item is-highlight"
+                      : "po-own-map__item"
+                  }
+                >
+                  <p className="po-kicker">{item.n}</p>
+                  <h3 className="po-own-map__title">{t(item.title)}</h3>
+                  <p className="po-own-map__body">{t(item.body)}</p>
+                </li>
+              ))}
+            </ol>
+          </FadeUp>
+
+          <FadeUp className="po-glossary mt-4" delay={0.03}>
             <p className="po-kicker">{t(c.flowLeadTitle)}</p>
             <p className="po-glossary__text">{t(c.flowLeadBody)}</p>
           </FadeUp>
@@ -38,7 +66,7 @@ export function ProjectOfficeTeamPage() {
           <FadeUp className="po-block po-detail__block" delay={0.04}>
             <div className="po-block__head">
               <span className="po-num" aria-hidden>
-                01
+                02
               </span>
               <div>
                 <h2 className="po-h2">{t(c.chainTitle)}</h2>
