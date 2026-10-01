@@ -36,35 +36,46 @@ export function ProjectOfficePage() {
             <div className="po-hero__body">
               <p className="po-kicker">
                 {lang === "ru"
-                  ? "Владелец методологии поставки · проектный офис"
-                  : "Delivery methodology owner · project office"}
+                  ? "Методология поставки · проектный офис"
+                  : "Delivery methodology · project office"}
               </p>
               <h1 className="po-hero__title">
                 {lang === "ru"
-                  ? "Заместитель операционного директора по производственной системе"
-                  : "Deputy Operational Director for the Production System"}
+                  ? "Директор по производственной системе"
+                  : "Director of the Production System"}
               </h1>
               <p className="po-hero__lead">
                 {lang === "ru"
-                  ? "Регламенты, учёт, ритм и прозрачность для заказчика — с измеримым эффектом после базовой линии."
-                  : "Rules, tracking, cadence and customer visibility — with measurable effect after a baseline."}
+                  ? "Владеет внедрением методологии поставки и PMO-контуром на согласованном периметре."
+                  : "Owns delivery methodology rollout and the PMO contour across the agreed perimeter."}
+              </p>
+              <ul className="po-pillars" aria-label={lang === "ru" ? "Четыре столпа" : "Four pillars"}>
+                {(lang === "ru"
+                  ? ["Регламенты", "Учёт", "Ритм", "Прозрачность для заказчика"]
+                  : ["Rules", "Tracking", "Cadence", "Customer visibility"]
+                ).map((label) => (
+                  <li key={label} className="po-pillars__item">
+                    <span className="po-pillars__dot" aria-hidden />
+                    <span className="po-pillars__label">{label}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="po-pillars__caption">
+                {lang === "ru"
+                  ? "Измеримый эффект после базовой линии"
+                  : "Measurable effect after the baseline"}
               </p>
               <p className="po-hero__alt">
                 {lang === "ru" ? (
                   <>
-                    Владеет внедрением методологии поставки на согласованном
-                    периметре{" "}
-                    <span className="po-accent">(PMO-контур)</span>. Дополняет
-                    операционного директора в зоне производственной системы.{" "}
+                    Отдельная роль в операционном контуре.{" "}
                     <Link href="/project-office/how/team/" className="po-hero__alt-link">
                       Кто за что →
                     </Link>
                   </>
                 ) : (
                   <>
-                    Owns delivery methodology rollout across the agreed perimeter{" "}
-                    <span className="po-accent">(PMO contour)</span>. Strengthens
-                    the operational director on the production system.{" "}
+                    A distinct role in the operating contour.{" "}
                     <Link href="/project-office/how/team/" className="po-hero__alt-link">
                       Who owns what →
                     </Link>
