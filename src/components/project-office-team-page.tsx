@@ -5,7 +5,37 @@ import { FadeUp } from "@/components/motion";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { useI18n } from "@/lib/i18n";
-import { teamStructureContent } from "@/lib/project-office-content";
+import {
+  teamStructureContent,
+  type CubeBody,
+  type LangText,
+} from "@/lib/project-office-content";
+
+function CubeCopy({
+  body,
+  t,
+  leadClass,
+  pointsClass,
+  boundClass,
+}: {
+  body: CubeBody;
+  t: (value: LangText) => string;
+  leadClass: string;
+  pointsClass: string;
+  boundClass: string;
+}) {
+  return (
+    <>
+      <p className={leadClass}>{t(body.lead)}</p>
+      <ul className={pointsClass}>
+        {body.points.map((point) => (
+          <li key={point.ru}>{t(point)}</li>
+        ))}
+      </ul>
+      {body.boundary ? <p className={boundClass}>{t(body.boundary)}</p> : null}
+    </>
+  );
+}
 
 export function ProjectOfficeTeamPage() {
   const { t, lang } = useI18n();
@@ -52,15 +82,27 @@ export function ProjectOfficeTeamPage() {
                 >
                   <p className="po-kicker">{item.n}</p>
                   <h3 className="po-own-map__title">{t(item.title)}</h3>
-                  <p className="po-own-map__body">{t(item.body)}</p>
+                  <CubeCopy
+                    body={item}
+                    t={t}
+                    leadClass="po-own-map__lead"
+                    pointsClass="po-own-map__points"
+                    boundClass="po-own-map__bound"
+                  />
                 </li>
               ))}
             </ol>
           </FadeUp>
 
-          <FadeUp className="po-glossary mt-4" delay={0.03}>
+          <FadeUp className="po-glossary po-glossary--compact" delay={0.03}>
             <p className="po-kicker">{t(c.flowLeadTitle)}</p>
-            <p className="po-glossary__text">{t(c.flowLeadBody)}</p>
+            <CubeCopy
+              body={c.flowLead}
+              t={t}
+              leadClass="po-own-map__lead"
+              pointsClass="po-own-map__points"
+              boundClass="po-own-map__bound"
+            />
           </FadeUp>
 
           <FadeUp className="po-block po-detail__block" delay={0.04}>
@@ -77,7 +119,13 @@ export function ProjectOfficeTeamPage() {
                 <li key={item.n} className="po-team-chain__item">
                   <p className="po-kicker">{item.n}</p>
                   <h3 className="po-team-chain__title">{t(item.title)}</h3>
-                  <p className="po-team-chain__body">{t(item.body)}</p>
+                  <CubeCopy
+                    body={item}
+                    t={t}
+                    leadClass="po-own-map__lead"
+                    pointsClass="po-own-map__points"
+                    boundClass="po-own-map__bound"
+                  />
                   {index < c.chain.length - 1 ? (
                     <span className="po-team-chain__arrow" aria-hidden>
                       →

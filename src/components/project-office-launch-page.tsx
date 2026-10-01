@@ -136,6 +136,12 @@ export function ProjectOfficeLaunchPage({ step }: { step: LaunchStepPage }) {
                     {lang === "ru" ? "Полномочие" : "Authority"} · {t(item.title)}
                   </Link>
                 ))}
+                <Link href="/project-office/rollout/">
+                  {lang === "ru" ? "План внедрения" : "Rollout plan"}
+                </Link>
+                <Link href="/project-office/rollout/checklists/">
+                  {lang === "ru" ? "Чек-листы" : "Checklists"}
+                </Link>
               </div>
             </div>
             <div className="po-detail__links po-detail__links--stack">

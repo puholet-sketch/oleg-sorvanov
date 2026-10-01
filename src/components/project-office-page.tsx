@@ -23,7 +23,7 @@ export function ProjectOfficePage() {
     <div className="project-office-theme min-h-screen">
       <SiteHeader />
       <main>
-        <div className="po-sheet mx-auto max-w-[1100px] px-4 pb-16 pt-[max(4.5rem,6.5vh)] sm:px-6 md:px-8">
+        <div className="po-sheet mx-auto max-w-[1100px] px-4 pb-10 pt-[max(3.85rem,5.2vh)] sm:px-6 md:px-8">
           <Link href="/#about" className="po-back">
             ← {lang === "ru" ? "К портфолио" : "Back to portfolio"}
           </Link>
@@ -324,11 +324,81 @@ export function ProjectOfficePage() {
             </ol>
           </FadeUp>
 
-          {/* 5. Perimeter */}
-          <FadeUp className="po-block" id="authority" delay={0.1}>
+          {/* 5. Rollout */}
+          <FadeUp className="po-block" id="rollout" delay={0.09}>
             <div className="po-block__head">
               <span className="po-num" aria-hidden>
                 05
+              </span>
+              <div>
+                <h2 className="po-h2">
+                  {lang === "ru" ? "Внедрение" : "Rollout"}
+                </h2>
+                <p className="po-lead">
+                  {lang === "ru" ? (
+                    <>
+                      План по времени и чек-листы исполнения.{" "}
+                      <span className="po-accent">
+                        Ориентир ~90 дней без внутренних цифр.
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      Time-phased plan and execution checklists.{" "}
+                      <span className="po-accent">
+                        ~90-day guide without internal figures.
+                      </span>
+                    </>
+                  )}
+                </p>
+              </div>
+            </div>
+
+            <div className="po-kpi po-rollout-home" role="list">
+              <Link
+                href="/project-office/rollout/"
+                className="po-kpi__item po-kpi__hit"
+                role="listitem"
+              >
+                <div className="po-kpi__value">01</div>
+                <h3 className="po-kpi__label">
+                  {lang === "ru" ? "План внедрения" : "Rollout plan"}
+                </h3>
+                <p className="po-kpi__note">
+                  {lang === "ru"
+                    ? "Фазы по неделям: встраивание → аудит → база → цели → меры."
+                    : "Week-phased: embedding → audit → baseline → targets → measures."}
+                </p>
+                <span className="po-kpi__hint">
+                  {lang === "ru" ? "Открыть роадмап" : "Open roadmap"}
+                </span>
+              </Link>
+              <Link
+                href="/project-office/rollout/checklists/"
+                className="po-kpi__item po-kpi__hit"
+                role="listitem"
+              >
+                <div className="po-kpi__value">02</div>
+                <h3 className="po-kpi__label">
+                  {lang === "ru" ? "Чек-листы" : "Checklists"}
+                </h3>
+                <p className="po-kpi__note">
+                  {lang === "ru"
+                    ? "Пункт · роль · регулярность · отметка в браузере."
+                    : "Item · role · cadence · browser marks."}
+                </p>
+                <span className="po-kpi__hint">
+                  {lang === "ru" ? "Открыть чек-листы" : "Open checklists"}
+                </span>
+              </Link>
+            </div>
+          </FadeUp>
+
+          {/* 6. Perimeter */}
+          <FadeUp className="po-block" id="authority" delay={0.1}>
+            <div className="po-block__head">
+              <span className="po-num" aria-hidden>
+                06
               </span>
               <div>
                 <h2 className="po-h2">
