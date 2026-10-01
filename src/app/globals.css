@@ -1050,8 +1050,9 @@ a.glass-card:hover {
 }
 
 .project-office-theme .po-detail__hero .po-hero__title {
-  font-size: clamp(1.3rem, 3vw, 2.05rem);
-  line-height: 1.08;
+  font-size: clamp(1.05rem, 2.1vw, 1.45rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
 .project-office-theme .po-detail__hero .po-hero__lead {
