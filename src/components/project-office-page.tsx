@@ -15,6 +15,20 @@ import {
   metricPages,
 } from "@/lib/project-office-content";
 
+/** Split ±KPI so sign and digits share one baseline with tabular nums. */
+function KpiValue({ value }: { value: string }) {
+  const match = /^([+\u2212\-])(.+)$/u.exec(value);
+  if (!match) {
+    return <div className="po-kpi__value">{value}</div>;
+  }
+  return (
+    <div className="po-kpi__value" aria-label={value}>
+      <span className="po-kpi__sign">{match[1]}</span>
+      <span className="po-kpi__digits">{match[2]}</span>
+    </div>
+  );
+}
+
 export function ProjectOfficePage() {
   const { t, lang } = useI18n();
   const [openMetric, setOpenMetric] = useState<string | null>(null);
@@ -193,7 +207,7 @@ export function ProjectOfficePage() {
                     onMouseEnter={() => setOpenMetric(m.id)}
                     onFocus={() => setOpenMetric(m.id)}
                   >
-                    <div className="po-kpi__value">{m.value}</div>
+                    <KpiValue value={m.value} />
                     <div className="po-kpi__label">{t(m.label)}</div>
                     <div className="po-kpi__note">{t(m.note)}</div>
                     <span className="po-kpi__hint">

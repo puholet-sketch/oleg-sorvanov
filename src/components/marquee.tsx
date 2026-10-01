@@ -70,7 +70,7 @@ export function Marquee({
   return (
     <section
       className={cn(
-        "overflow-hidden border-y border-[#2a2a2a] bg-void text-mist",
+        "overflow-hidden border-y border-[#2a2a2a] bg-void text-mist min-w-0 max-w-full",
         className,
       )}
       aria-label={ariaLabel}

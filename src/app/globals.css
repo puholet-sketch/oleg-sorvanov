@@ -204,6 +204,8 @@ a.glass-card:hover {
 
   background: var(--po-bg);
   color: var(--po-ink);
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 .project-office-theme > header {
@@ -218,6 +220,22 @@ a.glass-card:hover {
 
 .project-office-theme .po-sheet {
   padding-bottom: 2.5rem;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Shared progress / phase counters — stable width + baseline */
+.project-office-theme .po-count {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-display), var(--font-body), sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--po-gold);
+  white-space: nowrap;
 }
 
 .project-office-theme .po-back {
@@ -311,9 +329,13 @@ a.glass-card:hover {
     radial-gradient(ellipse 70% 80% at 85% 40%, rgba(240, 196, 25, 0.08) 0%, transparent 55%),
     var(--po-panel);
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.75rem;
   align-items: stretch;
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (min-width: 900px) {
@@ -350,7 +372,10 @@ a.glass-card:hover {
 .project-office-theme .po-hero__body {
   position: relative;
   z-index: 1;
-  max-width: none;
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 @media (max-width: 720px) {
@@ -369,17 +394,26 @@ a.glass-card:hover {
 
 .project-office-theme .po-hero .po-kicker {
   color: var(--po-gold);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  letter-spacing: 0.1em;
 }
 
 .project-office-theme .po-hero__title {
   margin-top: 0.4rem;
   font-family: var(--font-display), var(--font-body), sans-serif;
-  font-size: clamp(1.2rem, 2.8vw, 1.85rem);
+  font-size: clamp(1.05rem, 4.2vw, 1.85rem);
   font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: 0.02em;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
   color: #ffffff;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: manual;
+  text-wrap: wrap;
 }
 
 .project-office-theme .po-hero__lead {
@@ -387,6 +421,8 @@ a.glass-card:hover {
   font-size: clamp(0.84rem, 1.3vw, 0.94rem);
   line-height: 1.4;
   color: var(--po-body);
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .project-office-theme .po-pillars-marquee {
@@ -394,6 +430,10 @@ a.glass-card:hover {
   /* Match main ticker: text + thin rules on page/panel bg, no filled strip */
   background: transparent;
   color: var(--po-ink);
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
 }
 
 .project-office-theme .po-pillars-marquee .text-muted {
@@ -440,6 +480,8 @@ a.glass-card:hover {
   padding: 0.15rem 0 0.1rem 0.85rem;
   border-left: 2px solid rgba(240, 196, 25, 0.55);
   background: transparent;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .project-office-theme .po-hero__motto-media {
@@ -467,15 +509,20 @@ a.glass-card:hover {
 
 .project-office-theme .po-hero__motto-copy {
   min-width: 0;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  overflow-wrap: break-word;
 }
 
 .project-office-theme .po-hero__motto-quote {
   margin: 0;
-  max-width: none;
+  max-width: 100%;
+  min-width: 0;
   font-style: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .project-office-theme .po-hero__motto-quote p {
@@ -483,6 +530,9 @@ a.glass-card:hover {
   font-size: 0.72rem;
   line-height: 1.4;
   color: var(--po-muted);
+  max-width: 100%;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .project-office-theme .po-hero__motto-quote p + p {
@@ -519,6 +569,16 @@ a.glass-card:hover {
   .project-office-theme .po-hero__motto {
     margin-top: 0.15rem;
     padding-top: 0.55rem;
+    padding-left: 0.7rem;
+  }
+
+  .project-office-theme .po-hero__motto-media {
+    width: 56px;
+    height: 56px;
+  }
+
+  .project-office-theme .po-hero .po-kicker {
+    letter-spacing: 0.08em;
   }
 }
 
@@ -647,12 +707,34 @@ a.glass-card:hover {
 }
 
 .project-office-theme .po-kpi__value {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.02em;
   font-family: var(--font-display), var(--font-body), sans-serif;
   font-size: clamp(1.65rem, 3.4vw, 2.05rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
   color: var(--po-gold);
+  white-space: nowrap;
+}
+
+.project-office-theme .po-kpi__sign {
+  display: inline-block;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  transform: none;
+  position: relative;
+  top: 0;
+}
+
+.project-office-theme .po-kpi__digits {
+  display: inline-block;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
 }
 
 .project-office-theme .po-kpi__label {
@@ -826,8 +908,14 @@ a.glass-card:hover {
 }
 
 .project-office-theme .po-metric__value {
+  display: inline-flex;
+  align-items: baseline;
   color: var(--po-gold);
   margin-right: 0.25rem;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .project-office-theme .po-metric__hero .po-kicker {
@@ -2114,8 +2202,17 @@ a.glass-card:hover {
 
 .project-office-theme .po-check__progress {
   margin: 0;
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem;
   font-size: 0.8rem;
+  line-height: 1.2;
   color: var(--po-body);
+}
+
+.project-office-theme .po-check__progress .po-count {
+  font-size: 0.8rem;
 }
 
 .project-office-theme .po-check__reset {
@@ -2164,17 +2261,22 @@ a.glass-card:hover {
 }
 
 .project-office-theme .po-check__phase-meta {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   gap: 0.45rem;
+  min-width: 0;
+}
+
+.project-office-theme .po-check__phase-meta .po-glossary__more {
+  margin-top: 0;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: baseline;
 }
 
 .project-office-theme .po-check__phase-count {
-  font-family: var(--font-display), var(--font-body), sans-serif;
   font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--po-gold);
 }
 
 .project-office-theme .po-check__list {
@@ -2248,21 +2350,41 @@ a.glass-card:hover {
 }
 
 .project-office-theme .po-check__chips {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.3rem;
+  min-width: 0;
+  width: 100%;
+}
+
+/* Owner always on its own row; cadence + status share a stable second row */
+.project-office-theme .po-check__chips-secondary {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.3rem;
+  min-width: 0;
 }
 
 .project-office-theme .po-check__chip {
   display: inline-flex;
   align-items: center;
   min-height: 1.55rem;
+  max-width: 100%;
   padding: 0.15rem 0.4rem;
   border: 1px solid #333;
   border-radius: 2px;
   font-size: 0.62rem;
   line-height: 1.2;
   color: var(--po-muted);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.project-office-theme .po-check__chip--owner {
+  width: fit-content;
+  max-width: 100%;
 }
 
 .project-office-theme .po-check__chip--muted {
@@ -2297,7 +2419,13 @@ a.glass-card:hover {
 .marquee {
   display: flex;
   width: max-content;
+  max-width: none;
   animation: marquee 28s linear infinite;
+}
+
+/* Contain scrolling strip so max-content width cannot inflate page/ancestors */
+.project-office-theme .po-pillars-marquee .marquee {
+  max-width: none;
 }
 
 .marquee:hover {

@@ -78,8 +78,8 @@ export function ProjectOfficeChecklistsPage() {
               <p className="po-hero__lead">{t(c.lead)}</p>
               <div className="po-check__summary">
                 <p className="po-check__progress">
-                  {t(c.progressLabel)}:{" "}
-                  <span className="po-accent">
+                  <span>{t(c.progressLabel)}:</span>
+                  <span className="po-count">
                     {doneCount}/{totalCount}
                   </span>
                 </p>
@@ -107,7 +107,7 @@ export function ProjectOfficeChecklistsPage() {
                       <h2 className="po-h2">{t(phase.title)}</h2>
                     </div>
                     <div className="po-check__phase-meta">
-                      <span className="po-check__phase-count">
+                      <span className="po-count po-check__phase-count">
                         {phaseDone}/{phase.items.length}
                       </span>
                       <Link href={phase.launchHref} className="po-glossary__more">
@@ -137,21 +137,23 @@ export function ProjectOfficeChecklistsPage() {
                             <span className="po-check__body">
                               <span className="po-check__label">{t(item.label)}</span>
                               <span className="po-check__chips">
-                                <span className="po-check__chip">
+                                <span className="po-check__chip po-check__chip--owner">
                                   {t(c.ownerLabel)}: {t(item.owner)}
                                 </span>
-                                <span className="po-check__chip po-check__chip--muted">
-                                  {t(c.cadenceLabel)}:{" "}
-                                  {t(checklistCadenceLabel[item.cadence])}
-                                </span>
-                                <span
-                                  className={
-                                    done
-                                      ? "po-check__chip po-check__chip--done"
-                                      : "po-check__chip po-check__chip--todo"
-                                  }
-                                >
-                                  {done ? t(c.doneLabel) : t(c.todoLabel)}
+                                <span className="po-check__chips-secondary">
+                                  <span className="po-check__chip po-check__chip--muted">
+                                    {t(c.cadenceLabel)}:{" "}
+                                    {t(checklistCadenceLabel[item.cadence])}
+                                  </span>
+                                  <span
+                                    className={
+                                      done
+                                        ? "po-check__chip po-check__chip--done"
+                                        : "po-check__chip po-check__chip--todo"
+                                    }
+                                  >
+                                    {done ? t(c.doneLabel) : t(c.todoLabel)}
+                                  </span>
                                 </span>
                               </span>
                             </span>
