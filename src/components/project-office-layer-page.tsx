@@ -11,11 +11,11 @@ import { metricPages, type LayerPage } from "@/lib/project-office-content";
 export function ProjectOfficeLayerPage({ layer }: { layer: LayerPage }) {
   const { t, lang } = useI18n();
   const sections = [
-    { title: { ru: "Вход", en: "Input" }, items: layer.inputs, mark: "in" as const },
-    { title: { ru: "Действие", en: "Action" }, items: layer.actions, mark: "act" as const },
-    { title: { ru: "Выход", en: "Output" }, items: layer.outputs, mark: "out" as const },
-    { title: { ru: "Роли", en: "Roles" }, items: layer.roles, mark: null },
-    { title: { ru: "Ритм", en: "Cadence" }, items: layer.cadence, mark: null },
+    { title: { ru: "Вход", en: "Input" }, items: layer.inputs, showRolesLink: false },
+    { title: { ru: "Действие", en: "Action" }, items: layer.actions, showRolesLink: false },
+    { title: { ru: "Выход", en: "Output" }, items: layer.outputs, showRolesLink: false },
+    { title: { ru: "Роли", en: "Roles" }, items: layer.roles, showRolesLink: true },
+    { title: { ru: "Ритм", en: "Cadence" }, items: layer.cadence, showRolesLink: false },
   ];
   const related = metricPages.filter((metric) => layer.relatedMetrics.includes(metric.id));
 
@@ -47,25 +47,18 @@ export function ProjectOfficeLayerPage({ layer }: { layer: LayerPage }) {
           <FadeUp className="po-detail__grid" delay={0.04}>
             {sections.map((section, index) => (
               <section className="po-detail__card" key={section.title.ru}>
-                <p className="po-kicker">
-                  {section.mark === "in"
-                    ? lang === "ru"
-                      ? "Вход"
-                      : "In"
-                    : section.mark === "act"
-                      ? lang === "ru"
-                        ? "Действие"
-                        : "Act"
-                      : section.mark === "out"
-                        ? lang === "ru"
-                          ? "Выход"
-                          : "Out"
-                        : String(index + 1).padStart(2, "0")}
-                </p>
+                <p className="po-kicker">{String(index + 1).padStart(2, "0")}</p>
                 <h2 className="po-detail__title">{t(section.title)}</h2>
                 <ul className="po-detail__list">
-                  {section.items.map((item) => <li key={item.ru}>{t(item)}</li>)}
+                  {section.items.map((item) => (
+                    <li key={item.ru}>{t(item)}</li>
+                  ))}
                 </ul>
+                {section.showRolesLink && layer.rolesLink ? (
+                  <Link href={layer.rolesLink.href} className="po-glossary__more">
+                    {t(layer.rolesLink.label)} →
+                  </Link>
+                ) : null}
               </section>
             ))}
           </FadeUp>

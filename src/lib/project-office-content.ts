@@ -29,6 +29,8 @@ export type LayerPage = {
   actions: LangText[];
   outputs: LangText[];
   roles: LangText[];
+  /** Optional CTA under the Roles card (e.g. team structure). */
+  rolesLink?: Resource;
   cadence: LangText[];
   relatedMetrics: string[];
 };
@@ -43,6 +45,8 @@ export type LaunchStepPage = {
   steps: LangText[];
   outputs: LangText[];
   roles: LangText[];
+  /** Optional CTA under the Roles card (e.g. team structure). */
+  rolesLink?: Resource;
   cadence: LangText[];
   errors: LangText[];
   result: LangText;
@@ -66,6 +70,12 @@ export type AuthorityPage = {
 };
 
 const tx = (ru: string, en: string): LangText => ({ ru, en });
+
+/** Shared link to the compact team-structure page. */
+export const teamStructureLink: Resource = {
+  label: tx("Структура команд", "Team structure"),
+  href: "/project-office/how/team/",
+};
 
 export const metricPages: MetricPage[] = [
   {
@@ -242,7 +252,10 @@ export const metricPages: MetricPage[] = [
       tx("Отслеживать повторное накопление по входящему потоку и возрасту очереди.", "Track reaccumulation through inflow and queue age."),
     ],
     artifacts: [
-      tx("Реестр хвоста и протокол решений; владельцы — руководители потоков.", "Tail register and decision log; owners: flow leads."),
+      tx(
+        "Реестр хвоста и протокол решений; владельцы — руководители потоков (ответственные за поставку команды).",
+        "Tail register and decision log; owners: stream leads (accountable for the team’s delivery).",
+      ),
       tx("Правило закрытия и передачи; владелец — PMO.", "Closure and handoff rule; owner: PMO."),
     ],
     cadence: [
@@ -367,8 +380,18 @@ export const layerPages: LayerPage[] = [
         "Короткий регламент (в т.ч. «зачем ≤24 ч»), памятка ролей, журнал исключений.",
         "Concise rules (including why ≤24h), role guide, and exception log.",
       ),
+      tx(
+        "Журнал исключений — реестр согласованных отклонений от регламента: что отошли от правила, кто согласовал, срок действия, риск или компенсация. Иначе исключение тихо становится нормой.",
+        "Exception log — a register of approved rule deviations: what was waived, who approved, validity period, risk or compensation. Otherwise an exception quietly becomes the norm.",
+      ),
     ],
-    roles: [tx("PMO владеет системой; руководители потоков внедряют; команды дают обратную связь.", "PMO owns the system; flow leads implement; teams provide feedback.")],
+    roles: [
+      tx(
+        "PMO владеет системой; руководители потоков внедряют; команды дают обратную связь. Руководитель потока — отвечает за поставку и поток работ команды (часто руководитель проектов / группы / направления), не путать с PO заказчика.",
+        "PMO owns the system; flow leads implement; teams provide feedback. A flow lead owns the team’s delivery and work stream (often a project / group / stream manager) — not the customer PO.",
+      ),
+    ],
+    rolesLink: teamStructureLink,
     cadence: [tx("Проверка соблюдения еженедельно; пересмотр после значимого изменения или по циклу.", "Compliance weekly; review after major change or on a set cycle.")],
     relatedMetrics: ["schedule", "plan-fact", "tail-cost", "overspend"],
   },
@@ -385,7 +408,13 @@ export const layerPages: LayerPage[] = [
       tx("Настроить статусы Jira и правила закрытия Epic, Story и подзадач.", "Configure Jira states and closure rules for epics, stories, and subtasks."),
     ],
     outputs: [tx("Карта жизненного цикла, схема статусов, правила закрытия.", "Lifecycle map, status scheme, and closure rules.")],
-    roles: [tx("Руководитель поставки отвечает за поток; аналитик — за вход; команда — за актуальный статус.", "Delivery lead owns flow; analyst owns intake; team owns current status.")],
+    roles: [
+      tx(
+        "Руководитель потока (поставки) отвечает за поток; аналитик — за вход; команда — за актуальный статус.",
+        "Flow (delivery) lead owns the stream; analyst owns intake; team owns current status.",
+      ),
+    ],
+    rolesLink: teamStructureLink,
     cadence: [tx("Статусы обновляются по факту события; качество стадий проверяется еженедельно.", "Status updates on events; stage quality checked weekly.")],
     relatedMetrics: ["schedule", "satisfaction", "plan-fact", "tail-cost", "overspend"],
   },
@@ -453,7 +482,13 @@ export const layerPages: LayerPage[] = [
       tx("Ограничивать незавершённую работу и разрешать конфликт приоритетов до старта.", "Limit work in progress and resolve priority conflicts before start."),
     ],
     outputs: [tx("Прогноз загрузки, список дефицитов, решение по приоритетам и найму/перераспределению.", "Capacity forecast, shortage list, and priority plus staffing/reallocation decisions.")],
-    roles: [tx("Руководители потоков подтверждают спрос; ресурсные руководители BA/DEV/QA — доступность; настройщики закрепляются за потоками с печатными формами; дизайнер — из общего пула; PMO сводит прогноз и держит рекомендательный каркас состава (PO обычно на стороне заказчика).", "Flow leads confirm demand; BA/DEV/QA resource leads confirm availability; configurers attach to print-form streams; designer comes from a shared pool; PMO consolidates the forecast and keeps the staffing guide (PO usually on the customer side).")],
+    roles: [
+      tx(
+        "Руководители потоков (ответственные за поставку команды) подтверждают спрос; ресурсные руководители BA/DEV/QA — доступность; настройщики закрепляются за потоками с печатными формами; дизайнер — из общего пула; PMO сводит прогноз и держит рекомендательный каркас состава (PO обычно на стороне заказчика).",
+        "Flow leads (owners of team delivery) confirm demand; BA/DEV/QA resource leads confirm availability; configurers attach to print-form streams; designer comes from a shared pool; PMO consolidates the forecast and keeps the staffing guide (PO usually on the customer side).",
+      ),
+    ],
+    rolesLink: teamStructureLink,
     cadence: [tx("Обновление еженедельно; горизонт — не короче согласованного цикла планирования.", "Update weekly; horizon no shorter than the agreed planning cycle.")],
     relatedMetrics: ["schedule", "tail-cost", "tech-debt", "overspend"],
   },
@@ -508,9 +543,13 @@ export const launchSteps: LaunchStepPage[] = [
     ],
     roles: [
       tx("Руководитель проектного офиса согласует контур и канал статуса.", "Head of project office agrees the contour and status channel."),
-      tx("Руководители потоков подтверждают границы и владельцев.", "Stream leads confirm boundaries and owners."),
+      tx(
+        "Руководители потоков (ответственные за поставку команды) подтверждают границы и владельцев.",
+        "Flow leads (owners of team delivery) confirm boundaries and owners.",
+      ),
       tx("Заказчик и руководство подтверждают, куда смотрят статус.", "Customer and leadership confirm where they read status."),
     ],
+    rolesLink: teamStructureLink,
     cadence: [
       tx("Обычно 1–2 недели на старт; дальше канал статуса работает еженедельно.", "Typically 1–2 weeks to start; then the status channel runs weekly."),
       tx("Пересмотр границ — при изменении портфеля или состава потоков.", "Review boundaries when the portfolio or stream mix changes."),
@@ -560,9 +599,13 @@ export const launchSteps: LaunchStepPage[] = [
     ],
     roles: [
       tx("PMO ведёт аудит и сводит артефакты.", "PMO runs the audit and consolidates artifacts."),
-      tx("Руководители потоков подтверждают факты по своим проектам.", "Stream leads confirm facts for their projects."),
+      tx(
+        "Руководители потоков подтверждают факты по своим проектам.",
+        "Flow leads confirm facts for their projects.",
+      ),
       tx("Финансовая функция помогает с обезличенными агрегатами, не подменяя PMO.", "Finance helps with anonymized aggregates without replacing PMO."),
     ],
+    rolesLink: teamStructureLink,
     cadence: [
       tx("Полный снимок — один раз на старте и затем по согласованному циклу (часто год или полугодие).", "Full snapshot once at start, then on an agreed cycle (often yearly or half-yearly)."),
       tx("Лёгкая сверка сигналов план/факт и хвоста — еженедельно после запуска ритма.", "Light plan/fact and tail signal check weekly after cadence starts."),
@@ -616,12 +659,16 @@ export const launchSteps: LaunchStepPage[] = [
     ],
     roles: [
       tx("PMO владеет системой правил и исходной линией.", "PMO owns the rule system and baseline."),
-      tx("Руководители потоков внедряют правила в командах.", "Stream leads embed the rules in teams."),
+      tx(
+        "Руководители потоков внедряют правила в командах (ответственные за поставку, не PO заказчика).",
+        "Flow leads embed the rules in teams (delivery owners, not the customer PO).",
+      ),
       tx(
         "Аналитик отвечает за DoR (вход); технические и QA-лиды — за DoD (результат).",
         "Analyst owns DoR (intake); technical and QA leads own DoD (result).",
       ),
     ],
+    rolesLink: teamStructureLink,
     cadence: [
       tx("Фиксация базы — после аудита, обычно в течение 2–4 недель внедрения правил.", "Baseline lock after audit, typically within 2–4 weeks of rule rollout."),
       tx("Соблюдение полей и списаний — еженедельно; пересмотр регламента — по событию или циклу.", "Field and logging compliance weekly; rule review on event or cycle."),
@@ -827,12 +874,18 @@ export const authorityItems: AuthorityPage[] = [
     scope: [
       tx("Регламенты списания, декомпозиции ≤24 ч, Planning и запрета нулевого плана.", "Rules for time logging, decomposition ≤24h, Planning, and zero-plan ban."),
       tx("Обязательные артефакты: оценка, даты, исполнитель, условия приёмки, критерии готовности, шаблон требований.", "Mandatory artifacts: estimate, dates, assignee, acceptance criteria, readiness criteria, requirements template."),
-      tx("Порядок изменения версий правил и журнал исключений.", "Rule version-change procedure and exception log."),
+      tx(
+        "Порядок изменения версий правил и журнал исключений (согласованные отклонения: что, кто, срок, риск/компенсация).",
+        "Rule version-change procedure and exception log (approved deviations: what, who, period, risk/compensation).",
+      ),
     ],
     howFixed: [
       tx("Полномочие прямо входит в зону ответственности руководителя проектного офиса для согласованного контура.", "The mandate is explicit in the head of project office responsibility for the agreed contour."),
       tx("Регламент утверждается с руководством и владельцами потоков; PMO владеет системой, потоки внедряют.", "Rules are approved with leadership and stream owners; PMO owns the system, streams implement."),
-      tx("Исключения оформляют явно — не «тихим» обходом в чате.", "Exceptions are recorded explicitly — not a quiet chat workaround."),
+      tx(
+        "Исключения оформляют в журнале явно — не «тихим» обходом в чате; иначе отклонение становится нормой.",
+        "Exceptions go into the log explicitly — not a quiet chat workaround; otherwise a waiver becomes the norm.",
+      ),
     ],
     withoutIt: [
       tx("Каждая команда ведёт учёт по-своему — план/факт несопоставим.", "Each team tracks differently — plan/fact is not comparable."),
@@ -975,6 +1028,69 @@ export const dorDodContent = {
     "DoR — intake readiness (before development). DoD — result readiness (before acceptance). Scale: requirement → DoR → dev/test → DoD → release.",
   ),
   moreLabel: tx("Подробнее в слое «Артефакты»", "More in the Artifacts layer"),
+};
+
+/** Compact team / flow-lead structure — linked from Roles cards */
+export const teamStructureContent = {
+  title: tx("Структура команд", "Team structure"),
+  lead: tx(
+    "Кто за что отвечает в поставке: от ядра команды до PMO. Ориентир, не оргприказ — пропорции калибруют после аудита.",
+    "Who owns what in delivery: from the team core to PMO. A guide, not an org order — calibrate ratios after an audit.",
+  ),
+  flowLeadTitle: tx("Кто такой руководитель потока", "Who a flow lead is"),
+  flowLeadBody: tx(
+    "Руководитель потока отвечает за поставку и поток работ команды: сроки, приоритеты, внедрение регламентов, решения по хвосту. В оргштатке это часто руководитель проектов / группы проектов / направления. Не путать с PO заказчика (приоритет ценности у заказчика) и с ресурсными руководителями BA/DEV/QA (ёмкость и практика роли).",
+    "A flow lead owns the team’s delivery and work stream: schedule, priorities, rule rollout, tail decisions. In the org chart this is often a project / project-group / stream manager. Not the customer PO (value priority on the customer side) and not BA/DEV/QA resource leads (capacity and practice of the role).",
+  ),
+  chainTitle: tx("Цепочка ответственности", "Ownership chain"),
+  chain: [
+    {
+      n: "01",
+      title: tx("Команда поставки", "Delivery team"),
+      body: tx(
+        "Ядро BA / DEV / QA — обычно 5–9 человек. Настройщики закрепляются за потоками с печатными формами; дизайнер — общий пул; PO как правило на стороне заказчика.",
+        "BA / DEV / QA core — usually 5–9 people. Configurers attach to print-form streams; designer is a shared pool; PO is usually on the customer side.",
+      ),
+    },
+    {
+      n: "02",
+      title: tx("PM", "PM"),
+      body: tx(
+        "Прозрачность, план/факт, ритм встреч. Один PM — на 1–3 команды в зависимости от сложности координации.",
+        "Transparency, plan/fact, meeting cadence. One PM for 1–3 teams depending on coordination load.",
+      ),
+    },
+    {
+      n: "03",
+      title: tx("Руководитель потока", "Flow lead"),
+      body: tx(
+        "Владеет поставкой потока: спрос, границы, внедрение правил, эскалация. Часто совмещён с «главным» PM на несколько команд.",
+        "Owns stream delivery: demand, boundaries, rule rollout, escalation. Often combined with a senior PM across several teams.",
+      ),
+    },
+    {
+      n: "04",
+      title: tx("Ресурсные руководители", "Resource leads"),
+      body: tx(
+        "Линейки BA / DEV / QA: доступность, грейды, качество практики. Не подменяют владельца потока по срокам поставки.",
+        "BA / DEV / QA lines: availability, grades, practice quality. They do not replace the flow lead on delivery schedule.",
+      ),
+    },
+    {
+      n: "05",
+      title: tx("PMO", "PMO"),
+      body: tx(
+        "Владеет системой: регламенты, исходная линия, сопоставимость метрик, свод прогноза. Потоки внедряют.",
+        "Owns the system: rules, baseline, metric comparability, forecast consolidation. Streams implement.",
+      ),
+    },
+  ],
+  relatedTitle: tx("Связанные разделы", "Related sections"),
+  related: [
+    { label: tx("Слой «Регламенты»", "Rules layer"), href: "/project-office/how/rules/" },
+    { label: tx("Слой «Прогноз загрузки»", "Capacity layer"), href: "/project-office/how/capacity/" },
+    { label: tx("Шаг «Встраивание»", "Embedding step"), href: "/project-office/launch/embedding/" },
+  ],
 };
 
 export function metricById(id: string) {

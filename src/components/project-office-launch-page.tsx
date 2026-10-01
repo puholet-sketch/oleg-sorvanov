@@ -95,6 +95,11 @@ export function ProjectOfficeLaunchPage({ step }: { step: LaunchStepPage }) {
                     <li key={item.ru}>{t(item)}</li>
                   ))}
                 </ul>
+                {section.title.ru === "Роли" && step.rolesLink ? (
+                  <Link href={step.rolesLink.href} className="po-glossary__more">
+                    {t(step.rolesLink.label)} →
+                  </Link>
+                ) : null}
               </section>
             ))}
             <section className="po-detail__card po-detail__result">
