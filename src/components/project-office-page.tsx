@@ -110,9 +110,23 @@ export function ProjectOfficePage() {
                     : "Targets after baseline"}
                 </h2>
                 <p className="po-lead">
-                  {lang === "ru"
-                    ? "Пример целей после аудита. Сначала базовая линия, потом ориентиры — не заявленные прошлые результаты."
-                    : "Example goals after an audit. Baseline first, then targets — not claimed past results."}
+                  {lang === "ru" ? (
+                    <>
+                      Пример целей после аудита.{" "}
+                      <span className="po-accent">
+                        Сначала базовая линия, потом ориентиры
+                      </span>{" "}
+                      — не заявленные прошлые результаты.
+                    </>
+                  ) : (
+                    <>
+                      Example goals after an audit.{" "}
+                      <span className="po-accent">
+                        Baseline first, then targets
+                      </span>{" "}
+                      — not claimed past results.
+                    </>
+                  )}
                 </p>
               </div>
             </div>
@@ -164,9 +178,23 @@ export function ProjectOfficePage() {
                   {lang === "ru" ? "Как устроено" : "How it is built"}
                 </h2>
                 <p className="po-lead">
-                  {lang === "ru"
-                    ? "Шесть слоёв. Без регламентов и артефактов ритм и метрики не держат прогноз."
-                    : "Six layers. Without rules and artifacts, cadence and metrics cannot hold a forecast."}
+                  {lang === "ru" ? (
+                    <>
+                      <span className="po-accent">6</span> слоёв.{" "}
+                      <span className="po-accent">
+                        Без регламентов и артефактов ритм и метрики не держат
+                        прогноз.
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="po-accent">6</span> layers.{" "}
+                      <span className="po-accent">
+                        Without rules and artifacts, cadence and metrics cannot
+                        hold a forecast.
+                      </span>
+                    </>
+                  )}
                 </p>
               </div>
             </div>
@@ -201,9 +229,21 @@ export function ProjectOfficePage() {
                   {lang === "ru" ? "Маршрут запуска" : "Launch route"}
                 </h2>
                 <p className="po-lead">
-                  {lang === "ru"
-                    ? "От встраивания до точечных мер. Без базы и артефактов метрики не работают."
-                    : "From embedding to targeted measures. Without baseline and artifacts, metrics do not work."}
+                  {lang === "ru" ? (
+                    <>
+                      От встраивания до точечных мер.{" "}
+                      <span className="po-accent">
+                        Без базы и артефактов метрики не работают.
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      From embedding to targeted measures.{" "}
+                      <span className="po-accent">
+                        Without baseline and artifacts, metrics do not work.
+                      </span>
+                    </>
+                  )}
                 </p>
               </div>
             </div>
@@ -245,9 +285,20 @@ export function ProjectOfficePage() {
                     : "Authority and scope"}
                 </h2>
                 <p className="po-lead">
-                  {lang === "ru"
-                    ? "Условия, без которых маршрут и ориентиры не держатся."
-                    : "Conditions without which the route and targets cannot hold."}
+                  {lang === "ru" ? (
+                    <>
+                      <span className="po-accent">
+                        Условия, без которых маршрут и ориентиры не держатся.
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="po-accent">
+                        Conditions without which the route and targets cannot
+                        hold.
+                      </span>
+                    </>
+                  )}
                 </p>
               </div>
             </div>

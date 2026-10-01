@@ -257,6 +257,11 @@ a.glass-card:hover {
   color: var(--po-muted);
 }
 
+.project-office-theme .po-accent {
+  color: var(--po-gold);
+  font-weight: 600;
+}
+
 .project-office-theme .po-num {
   flex-shrink: 0;
   display: inline-flex;
