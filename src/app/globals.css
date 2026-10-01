@@ -653,6 +653,24 @@ a.glass-card:hover {
   background: var(--po-panel);
 }
 
+.project-office-theme a.po-path__hit {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.project-office-theme a.po-path__hit:hover {
+  border-color: rgba(240, 196, 25, 0.45);
+  background: #141414;
+}
+
+.project-office-theme a.po-path__hit .po-kpi__hint {
+  margin-top: 0.75rem;
+}
+
 .project-office-theme .po-path__n {
   display: inline-flex;
   align-items: center;
@@ -884,10 +902,90 @@ a.glass-card:hover {
   background: var(--po-panel);
 }
 
-.project-office-theme .po-scope__item:nth-child(2) {
+.project-office-theme .po-scope > li:nth-child(2) .po-scope__item,
+.project-office-theme .po-scope > .po-scope__item:nth-child(2) {
   background: var(--po-gold);
   border-color: var(--po-gold);
   color: #000000;
+}
+
+.project-office-theme a.po-scope__hit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+.project-office-theme a.po-scope__hit:hover {
+  border-color: rgba(240, 196, 25, 0.45);
+}
+
+.project-office-theme .po-scope > li:nth-child(2) a.po-scope__hit:hover {
+  opacity: 0.92;
+  border-color: var(--po-gold);
+}
+
+.project-office-theme .po-scope__n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 2px;
+  background: var(--po-gold);
+  font-family: var(--font-display), var(--font-body), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #000000;
+}
+
+.project-office-theme .po-scope > li:nth-child(2) .po-scope__n {
+  background: #000000;
+  color: var(--po-gold);
+}
+
+.project-office-theme .po-scope__title {
+  font-family: var(--font-display), var(--font-body), sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.project-office-theme .po-scope__text {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--po-muted);
+}
+
+.project-office-theme .po-scope > li:nth-child(2) .po-scope__text {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.project-office-theme .po-scope > li:nth-child(2) .po-kpi__hint {
+  color: #000000;
+}
+
+.project-office-theme .po-detail__links--stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  align-items: flex-start;
+}
+
+.project-office-theme .po-detail__siblings {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #1f1f1f;
+}
+
+.project-office-theme .po-detail__links a[aria-current="page"] {
+  color: var(--po-gold);
 }
 
 .project-office-theme .btn-primary-orig {

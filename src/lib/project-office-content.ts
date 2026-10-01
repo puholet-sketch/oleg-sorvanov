@@ -33,6 +33,38 @@ export type LayerPage = {
   relatedMetrics: string[];
 };
 
+export type LaunchStepPage = {
+  id: string;
+  n: string;
+  title: LangText;
+  summary: LangText;
+  purpose: LangText;
+  inputs: LangText[];
+  steps: LangText[];
+  outputs: LangText[];
+  roles: LangText[];
+  cadence: LangText[];
+  errors: LangText[];
+  result: LangText;
+  nextStep?: string;
+  relatedMetrics: string[];
+  relatedLayers: string[];
+};
+
+export type AuthorityPage = {
+  id: string;
+  n: string;
+  title: LangText;
+  summary: LangText;
+  purpose: LangText;
+  scope: LangText[];
+  howFixed: LangText[];
+  withoutIt: LangText[];
+  signsYes: LangText[];
+  signsNo: LangText[];
+  relatedLaunch: string[];
+};
+
 const tx = (ru: string, en: string): LangText => ({ ru, en });
 
 export const metricPages: MetricPage[] = [
@@ -364,10 +396,11 @@ export const layerPages: LayerPage[] = [
     actions: [
       tx("Показывать в Timeline только оценённые работы с датами и владельцами.", "Show only estimated, dated, owned work in Timeline."),
       tx("Сопоставлять спрос и доступную ёмкость по ролям и периодам.", "Compare demand and available capacity by role and period."),
+      tx("Сверять состав потока с рекомендацией: ядро 5–9 (BA/DEV/QA), PM на 1–3 команды; настройщики — в контуре поставки на потоках с печатными формами; дизайнер — общий пул; PO как правило на стороне заказчика. Пропорции калибровать после аудита.", "Check stream staffing against a guide: core 5–9 (BA/DEV/QA), PM for 1–3 teams; configurers in the delivery contour for print-form streams; designer as a shared pool; PO usually on the customer side. Calibrate ratios after an audit."),
       tx("Ограничивать незавершённую работу и разрешать конфликт приоритетов до старта.", "Limit work in progress and resolve priority conflicts before start."),
     ],
     outputs: [tx("Прогноз загрузки, список дефицитов, решение по приоритетам и найму/перераспределению.", "Capacity forecast, shortage list, and priority plus staffing/reallocation decisions.")],
-    roles: [tx("Руководители потоков подтверждают спрос; ресурсные руководители — доступность; PMO сводит прогноз.", "Flow leads confirm demand; resource leads confirm availability; PMO consolidates the forecast.")],
+    roles: [tx("Руководители потоков подтверждают спрос; ресурсные руководители BA/DEV/QA — доступность; настройщики закрепляются за потоками с печатными формами; дизайнер — из общего пула; PMO сводит прогноз и держит рекомендательный каркас состава (PO обычно на стороне заказчика).", "Flow leads confirm demand; BA/DEV/QA resource leads confirm availability; configurers attach to print-form streams; designer comes from a shared pool; PMO consolidates the forecast and keeps the staffing guide (PO usually on the customer side).")],
     cadence: [tx("Обновление еженедельно; горизонт — не короче согласованного цикла планирования.", "Update weekly; horizon no shorter than the agreed planning cycle.")],
     relatedMetrics: ["schedule", "tail-cost", "tech-debt", "overspend"],
   },
@@ -390,10 +423,421 @@ export const layerPages: LayerPage[] = [
   },
 ];
 
+export const launchSteps: LaunchStepPage[] = [
+  {
+    id: "embedding",
+    n: "01",
+    title: tx("Встраивание", "Embedding"),
+    summary: tx(
+      "Вход в контур: роли, границы ответственности, каналы статуса к руководству и заказчику.",
+      "Enter the contour: roles, ownership boundaries, status channels to leadership and customer.",
+    ),
+    purpose: tx(
+      "Зафиксировать, кто за что отвечает и куда смотрит статус, до аудита и базовой линии. Без этого данные и решения собираются из чатов и разрозненных таблиц.",
+      "Lock who owns what and where status is read before audit and baseline. Without this, data and decisions are assembled from chats and scattered sheets.",
+    ),
+    inputs: [
+      tx("Согласованный портфель или группа проектов и список заказчиков / потоков.", "Agreed portfolio or project group and the list of customers / streams."),
+      tx("Текущие роли BA, DEV, QA и PM; фактические каналы отчётности.", "Current BA, DEV, QA and PM roles; actual reporting channels."),
+      tx("Доступ к трекеру задач (Jira) и к существующим регламентам, если они есть.", "Access to the task tracker (Jira) and any existing rules."),
+    ],
+    steps: [
+      tx("Описать границы контура: какие проекты входят, какие — вне периметра.", "Describe contour boundaries: which projects are in scope and which are out."),
+      tx("Назначить владельцев потоков и уточнить роли BA / DEV / QA / PM; настройщиков закрепить за потоками с печатными формами; дизайнера учитывать как общий пул. Ориентир ядра — 5–9 человек (BA/DEV/QA); PM на 1–3 команды. PO как правило на стороне заказчика.", "Assign stream owners and clarify BA / DEV / QA / PM roles; attach configurers to print-form streams; treat designer as a shared pool. Core guide is 5–9 people (BA/DEV/QA); PM for 1–3 teams. PO is usually on the customer side."),
+      tx("Согласовать один канал статуса для заказчика и руководства: отчёт, доска или панель — без параллельной ручной сводки из чатов.", "Agree one status channel for customer and leadership: report, board, or panel — no parallel manual chat summary."),
+      tx("Зафиксировать эскалацию: кому и когда передают срыв срока, перерасход и конфликт приоритетов.", "Fix escalation: who receives schedule slip, overspend, and priority conflicts, and when."),
+      tx("Коротко описать входные ожидания к аудиту: период, типы работ, доступ к данным.", "Briefly set audit intake expectations: period, work types, data access."),
+    ],
+    outputs: [
+      tx("Карта контура и ролей с границами ответственности.", "Contour and role map with ownership boundaries."),
+      tx("Описание единого канала статуса и маршрута эскалации.", "Description of the single status channel and escalation route."),
+      tx("Согласованный список проектов / потоков для аудита.", "Agreed project / stream list for the audit."),
+    ],
+    roles: [
+      tx("Руководитель проектного офиса согласует контур и канал статуса.", "Head of project office agrees the contour and status channel."),
+      tx("Руководители потоков подтверждают границы и владельцев.", "Stream leads confirm boundaries and owners."),
+      tx("Заказчик и руководство подтверждают, куда смотрят статус.", "Customer and leadership confirm where they read status."),
+    ],
+    cadence: [
+      tx("Обычно 1–2 недели на старт; дальше канал статуса работает еженедельно.", "Typically 1–2 weeks to start; then the status channel runs weekly."),
+      tx("Пересмотр границ — при изменении портфеля или состава потоков.", "Review boundaries when the portfolio or stream mix changes."),
+    ],
+    errors: [
+      tx("Оставить несколько параллельных «истин» статуса (чат, таблица, презентация).", "Leaving several parallel status truths (chat, sheet, deck)."),
+      tx("Начинать аудит без списка проектов и без владельцев потоков.", "Starting an audit without a project list and stream owners."),
+      tx("Считать встраивание «настройкой Jira» вместо договорённости о ролях и канале.", "Treating embedding as a Jira setup instead of an agreement on roles and channel."),
+    ],
+    result: tx(
+      "Контур назван, роли и эскалация понятны, один канал статуса согласован — можно переходить к аудиту за период.",
+      "Contour is named, roles and escalation are clear, one status channel is agreed — ready to move to the period audit.",
+    ),
+    nextStep: "audit",
+    relatedMetrics: ["satisfaction", "schedule"],
+    relatedLayers: ["rules", "customer", "capacity"],
+  },
+  {
+    id: "audit",
+    n: "02",
+    title: tx("Аудит за год", "Year audit"),
+    summary: tx(
+      "Снимок прошлого периода: план/факт, завершение стадий, загрузка, соблюдение регламентов, хвост задач.",
+      "Snapshot of the prior period: plan/fact, stage completion, load, process adherence, task tail.",
+    ),
+    purpose: tx(
+      "Получить объективный снимок процессов, артефактов и экономики. Без этой точки нельзя измерить прогресс и выставить целевые уровни.",
+      "Get an objective snapshot of processes, artifacts, and economics. Without this point you cannot measure progress or set targets.",
+    ),
+    inputs: [
+      tx("Карта контура и доступ к данным трекера за согласованный период (часто год или полный цикл портфеля).", "Contour map and tracker data for the agreed period (often a year or a full portfolio cycle)."),
+      tx("Правила учёта времени и типы работ, как они есть сейчас — даже если неидеальны.", "Current time-accounting rules and work types — even if imperfect."),
+      tx("Финансовые агрегаты контура в обезличенном виде, если доступны: выручка, прямые расходы, часы.", "Anonymized contour financial aggregates if available: revenue, direct costs, hours."),
+    ],
+    steps: [
+      tx("Снять стадии жизненного цикла: от заявки и согласования до Epic → Story → приёмки и закрытия.", "Capture lifecycle stages: from request and approval to Epic → Story → acceptance and closure."),
+      tx("Собрать реестр перерасходов: Факт > План или План = 0 при Факт > 0; классифицировать причины.", "Build an overspend register: Actual > Plan or Plan = 0 with Actual > 0; classify causes."),
+      tx("Оценить загрузку людей и команд; отметить перегрузку и простой.", "Assess people and team load; mark overload and idle capacity."),
+      tx("Измерить хвост задач: открытый backlog в трудочасах → оценка денег, нужных ролей и гипотетических дат закрытия.", "Measure the task tail: open backlog in effort hours → money, required roles, and hypothetical close dates."),
+      tx("Проверить зрелость артефактов: доля задач с оценкой, датами и ролями; наличие контроля качества и релизного ритма.", "Check artifact maturity: share of items with estimate, dates, and roles; quality control and release cadence presence."),
+      tx("При наличии данных — карта рентабельности и доли часов управления / сопровождения относительно разработки.", "If data exists — profitability map and management / support hour shares versus development."),
+    ],
+    outputs: [
+      tx("Реестр план/факт с причинами и картотекой ошибок структуры BA/DEV/QA и гранулярности >24 ч.", "Plan/fact register with causes and a file of BA/DEV/QA structure and >24h granularity errors."),
+      tx("Снимок хвоста, загрузки и зрелости артефактов.", "Tail, load, and artifact-maturity snapshot."),
+      tx("Карта рентабельности и аудит управленческих затрат — если данные позволяют.", "Profitability map and management-cost audit — if data allows."),
+    ],
+    roles: [
+      tx("PMO ведёт аудит и сводит артефакты.", "PMO runs the audit and consolidates artifacts."),
+      tx("Руководители потоков подтверждают факты по своим проектам.", "Stream leads confirm facts for their projects."),
+      tx("Финансовая функция помогает с обезличенными агрегатами, не подменяя PMO.", "Finance helps with anonymized aggregates without replacing PMO."),
+    ],
+    cadence: [
+      tx("Полный снимок — один раз на старте и затем по согласованному циклу (часто год или полугодие).", "Full snapshot once at start, then on an agreed cycle (often yearly or half-yearly)."),
+      tx("Лёгкая сверка сигналов план/факт и хвоста — еженедельно после запуска ритма.", "Light plan/fact and tail signal check weekly after cadence starts."),
+    ],
+    errors: [
+      tx("Выставлять целевые уровни до фиксации снимка.", "Setting targets before locking the snapshot."),
+      tx("Сравнивать несопоставимые контуры и типы работ.", "Comparing unlike contours and work types."),
+      tx("Оставлять выводы без артефактов: только «ощущение, что плохо».", "Leaving conclusions without artifacts: only a feeling that things are bad."),
+    ],
+    result: tx(
+      "Есть проверяемый снимок периода по план/факту, стадиям, загрузке, хвосту и зрелости артефактов — можно фиксировать базовую линию.",
+      "There is a verifiable period snapshot for plan/fact, stages, load, tail, and artifact maturity — ready to lock the baseline.",
+    ),
+    nextStep: "baseline",
+    relatedMetrics: ["plan-fact", "tail-cost", "overspend", "tech-debt", "schedule"],
+    relatedLayers: ["rules", "stages", "artifacts", "capacity"],
+  },
+  {
+    id: "baseline",
+    n: "03",
+    title: tx("База", "Baseline"),
+    summary: tx(
+      "Фиксируем базовую линию и обязательные артефакты. Без этого целевые уровни и метрики не опираются на факты.",
+      "Lock the baseline and mandatory artifacts. Without this, targets and metrics have no factual footing.",
+    ),
+    purpose: tx(
+      "Закрепить исходную линию измерений и минимальный набор правил с артефактами, на которые потом опираются цели и проверки эффекта.",
+      "Lock the measurement baseline and the minimum rules-plus-artifacts set that later goals and effect checks rest on.",
+    ),
+    inputs: [
+      tx("Артефакты аудита: реестр план/факт, снимок хвоста, зрелость полей, экономика при наличии.", "Audit artifacts: plan/fact register, tail snapshot, field maturity, economics if available."),
+      tx("Согласованный контур проектов и канал статуса.", "Agreed project contour and status channel."),
+    ],
+    steps: [
+      tx("Внедрить или доадаптировать регламенты слоёв 1–3: списание, декомпозиция ≤24 ч, Planning, запрет нулевого плана.", "Introduce or adapt layers 1–3 rules: time logging, decomposition ≤24h, Planning, ban on zero plan."),
+      tx("Сделать обязательными артефакты задачи: оценка, даты начала и окончания, исполнитель, условия приёмки и критерии готовности.", "Make task artifacts mandatory: estimate, start and end dates, assignee, acceptance criteria and readiness criteria."),
+      tx("Ввести шаблон бизнес-требований и оценку по ролям BA / DEV / QA.", "Introduce a business-requirements template and BA / DEV / QA role estimates."),
+      tx("Зафиксировать период, набор типов работ и правила учёта — это и есть исходная линия для сравнения.", "Lock the period, work types, and accounting rules — this is the baseline for comparison."),
+      tx("Согласовать с руководством, что измеряем одинаково до и после изменений.", "Agree with leadership that measurement stays consistent before and after changes."),
+    ],
+    outputs: [
+      tx("Короткий регламент учёта и декомпозиции; памятка ролей.", "Concise tracking and decomposition rules; role guide."),
+      tx("Шаблоны Story / требований и список обязательных полей.", "Story / requirements templates and mandatory-field list."),
+      tx("Зафиксированные значения исходной линии по выбранным показателям.", "Locked baseline values for the chosen measures."),
+    ],
+    roles: [
+      tx("PMO владеет системой правил и исходной линией.", "PMO owns the rule system and baseline."),
+      tx("Руководители потоков внедряют правила в командах.", "Stream leads embed the rules in teams."),
+      tx("Аналитик и технические лиды отвечают за качество входа и DoD.", "Analyst and technical leads own intake quality and DoD."),
+    ],
+    cadence: [
+      tx("Фиксация базы — после аудита, обычно в течение 2–4 недель внедрения правил.", "Baseline lock after audit, typically within 2–4 weeks of rule rollout."),
+      tx("Соблюдение полей и списаний — еженедельно; пересмотр регламента — по событию или циклу.", "Field and logging compliance weekly; rule review on event or cycle."),
+    ],
+    errors: [
+      tx("Ставить KPI до очистки данных и обязательных полей.", "Setting KPIs before cleaning data and mandatory fields."),
+      tx("Считать базой красивый дашборд без оценок, дат и владельцев.", "Treating a pretty dashboard as baseline without estimates, dates, and owners."),
+      tx("Менять правила учёта задним числом без новой исходной линии.", "Changing accounting rules retroactively without a new baseline."),
+    ],
+    result: tx(
+      "Правила слоёв 1–3 действуют в контуре, обязательные артефакты заполняются, исходная линия зафиксирована письменно — можно согласовывать целевые уровни.",
+      "Layers 1–3 rules run in the contour, mandatory artifacts are filled, baseline is written down — ready to agree target levels.",
+    ),
+    nextStep: "targets",
+    relatedMetrics: ["plan-fact", "schedule", "overspend"],
+    relatedLayers: ["rules", "stages", "artifacts"],
+  },
+  {
+    id: "targets",
+    n: "04",
+    title: tx("Целевые уровни", "Target levels"),
+    summary: tx(
+      "Согласуем ориентиры по срокам, удовлетворённости, план/факту, хвосту, техническому долгу и перерасходу.",
+      "Agree targets for schedule, satisfaction, plan/fact, tail, technical debt and overspend.",
+    ),
+    purpose: tx(
+      "Поставить проверяемые ориентиры только после базовой линии. Проценты на сайте — пример целей, которые подтверждают фактами аудита, а не заявленные прошлые результаты.",
+      "Set verifiable targets only after the baseline. Site percentages are example goals confirmed by audit facts, not claimed past results.",
+    ),
+    inputs: [
+      tx("Зафиксированная исходная линия и артефакты аудита.", "Locked baseline and audit artifacts."),
+      tx("Приоритеты руководства: срок, маржа, качество, прозрачность для заказчика.", "Leadership priorities: schedule, margin, quality, customer transparency."),
+    ],
+    steps: [
+      tx("Выбрать ограниченный набор ориентиров из карты: сроки, удовлетворённость, план/факт, хвост, технический долг, перерасход.", "Pick a limited target set from the map: schedule, satisfaction, plan/fact, tail, technical debt, overspend."),
+      tx("Для каждого ориентира зафиксировать формулу, период сравнения и владельца сигнала.", "For each target, lock the formula, comparison period, and signal owner."),
+      tx("Согласовать реалистичный коридор цели с учётом зрелости данных — не «всё сразу на максимум».", "Agree a realistic target band given data maturity — not everything to the max at once."),
+      tx("Связать каждый ориентир с механизмом: регламент, артефакт, ритм или точечная мера.", "Link every target to a mechanism: rule, artifact, cadence, or targeted measure."),
+      tx("Опубликовать ориентиры в том же канале статуса, куда смотрит руководство.", "Publish targets in the same status channel leadership already reads."),
+    ],
+    outputs: [
+      tx("Согласованная карта ориентиров с формулами и владельцами.", "Agreed target map with formulas and owners."),
+      tx("Связь «ориентир → слой / мера» для программы изменений.", "Target → layer / measure link for the change program."),
+    ],
+    roles: [
+      tx("Руководство утверждает коридор целей.", "Leadership approves the target band."),
+      tx("PMO готовит предложения на фактах базы.", "PMO prepares proposals from baseline facts."),
+      tx("Владельцы потоков принимают ответственность за сигналы в своём контуре.", "Stream owners accept signal ownership in their contour."),
+    ],
+    cadence: [
+      tx("Утверждение — один раз после базы; пересмотр — при новой базовой линии или смене стратегии.", "Approval once after baseline; review on a new baseline or strategy change."),
+      tx("Контроль движения к цели — в еженедельном статусе и на цикле ревизии базы.", "Progress control in weekly status and on the baseline review cycle."),
+    ],
+    errors: [
+      tx("Копировать чужие проценты без своей исходной линии.", "Copying someone else’s percentages without your own baseline."),
+      tx("Ставить цели на все метрики сразу без приоритета и ёмкости.", "Setting goals on every metric at once without priority or capacity."),
+      tx("Измерять «процент готовности» вместо принятых историй и проверяемых событий.", "Measuring completion percentage instead of accepted stories and verifiable events."),
+    ],
+    result: tx(
+      "Ориентиры утверждены на фактах базы, у каждого есть формула, период и владелец — можно запускать точечные изменения.",
+      "Targets are approved on baseline facts; each has a formula, period, and owner — ready to run targeted changes.",
+    ),
+    nextStep: "changes",
+    relatedMetrics: ["schedule", "satisfaction", "plan-fact", "tail-cost", "tech-debt", "overspend"],
+    relatedLayers: ["cadence", "artifacts", "customer"],
+  },
+  {
+    id: "changes",
+    n: "05",
+    title: tx("Точечные изменения", "Targeted changes"),
+    summary: tx(
+      "Меры по узким местам с проверкой эффекта на следующей базовой линии — не кампания «всё сразу».",
+      "Measures on bottlenecks, checked against the next baseline — not a change-everything campaign.",
+    ),
+    purpose: tx(
+      "Устранять главные причины отклонений ограниченным набором мер и проверять эффект на следующем цикле измерений.",
+      "Remove main variance causes with a limited set of measures and verify effect on the next measurement cycle.",
+    ),
+    inputs: [
+      tx("Карта ориентиров и узкие места из аудита / еженедельных сигналов.", "Target map and bottlenecks from audit / weekly signals."),
+      tx("Ёмкость команд на улучшения — без скрытого срыва поставки.", "Team capacity for improvements — without silently breaking delivery."),
+    ],
+    steps: [
+      tx("Выбрать отклонения выше порога: план/факт, хвост, дефекты, неоплаченный объём.", "Select above-threshold variances: plan/fact, tail, defects, unpaid volume."),
+      tx("Назначить ограниченное число мер с владельцем, сроком и критерием готовности.", "Assign a limited set of measures with owner, date, and readiness criterion."),
+      tx("Встроить меры в ритм: планирование, статус, ретроспектива → задачи улучшения в трекере.", "Embed measures in cadence: planning, status, retrospective → improvement tasks in the tracker."),
+      tx("Автоматизировать выборку сигналов (фильтр превышений, Timeline), а разборы держать точечными.", "Automate signal selection (overrun filter, Timeline) and keep reviews targeted."),
+      tx("На следующей базовой линии сравнить сопоставимый период и решить: усилить, скорректировать или закрыть меру.", "On the next baseline, compare a like period and decide: reinforce, adjust, or close the measure."),
+    ],
+    outputs: [
+      tx("Реестр мер с владельцами и статусом проверки эффекта.", "Measure register with owners and effect-check status."),
+      tx("Задачи улучшения в трекере; обновлённые регламенты при устойчивом эффекте.", "Improvement tasks in the tracker; updated rules when effect holds."),
+    ],
+    roles: [
+      tx("PMO держит пороги, реестр мер и проверку на следующей базе.", "PMO holds thresholds, the measure register, and the next-baseline check."),
+      tx("Владельцы мер отвечают за исполнение в потоке.", "Measure owners deliver inside the stream."),
+      tx("Команда даёт факты на ретроспективе; без разбора личностей.", "Team provides facts in retrospectives; no personality reviews."),
+    ],
+    cadence: [
+      tx("Отбор мер — по еженедельным сигналам и после ретроспективы.", "Measure selection from weekly signals and after retrospectives."),
+      tx("Проверка эффекта — на следующем цикле базовой линии (часто квартал / полугодие).", "Effect check on the next baseline cycle (often quarter / half-year)."),
+    ],
+    errors: [
+      tx("Кампания «перестроить всё» без приоритета и без повторного замера.", "A rebuild-everything campaign without priority or a repeat measurement."),
+      tx("Разбор «средней температуры» по команде вместо задач выше порога.", "Reviewing team averages instead of above-threshold items."),
+      tx("Закрывать карточку улучшения без проверки, уменьшилась ли причина отклонения.", "Closing an improvement card without checking whether the variance cause fell."),
+    ],
+    result: tx(
+      "Узкие места закрыты ограниченным набором мер, эффект виден на сопоставимой следующей базовой линии — цикл запуска повторяется, а не «настраивается разово».",
+      "Bottlenecks are closed with a limited measure set; effect shows on the next comparable baseline — the launch cycle repeats instead of a one-off setup.",
+    ),
+    relatedMetrics: ["plan-fact", "tail-cost", "tech-debt", "overspend", "schedule", "satisfaction"],
+    relatedLayers: ["cadence", "rules", "capacity", "customer"],
+  },
+];
+
+export const authorityItems: AuthorityPage[] = [
+  {
+    id: "contour",
+    n: "01",
+    title: tx("Согласованный контур", "Agreed contour"),
+    summary: tx(
+      "Портфель или группа проектов с понятными границами ответственности.",
+      "A portfolio or project group with clear ownership boundaries.",
+    ),
+    purpose: tx(
+      "Ограничить зону, в которой проектный офис вправе задавать правила, измерять базу и вести статус. Без границ метрики и регламенты невозможно сделать сопоставимыми.",
+      "Limit the zone where the project office may set rules, measure baseline, and run status. Without boundaries, metrics and rules cannot be made comparable.",
+    ),
+    scope: [
+      tx("Список проектов / потоков, входящих в контур, и явный список исключений.", "List of projects / streams in the contour and an explicit exclusion list."),
+      tx("Владельцы потоков и границы ответственности BA / DEV / QA / PM.", "Stream owners and BA / DEV / QA / PM ownership boundaries."),
+      tx("Типы договорённостей учёта внутри контура: фиксированный бюджет, сопровождение, оценки, внутренние инициативы.", "Accounting agreement types inside the contour: fixed budget, support, estimation, internal initiatives."),
+    ],
+    howFixed: [
+      tx("Письменное согласование с руководством: состав контура и дата пересмотра.", "Written agreement with leadership: contour composition and review date."),
+      tx("Карта ролей на старте маршрута запуска (шаг «Встраивание»).", "Role map at launch-route start (Embedding step)."),
+      tx("Альтернатива по периметру: старший руководитель проектов с группой РП и набором проектов — тот же принцип границ.", "Scope alternative: a senior project lead with a PM group and a project set — same boundary principle."),
+    ],
+    withoutIt: [
+      tx("Сравнивают чужие проекты с разными правилами учёта и получают ложный план/факт.", "Unlike projects with different accounting rules get compared and yield false plan/fact."),
+      tx("Регламенты «висят в воздухе»: команды не понимают, на кого они распространяются.", "Rules hang in the air: teams do not know who they apply to."),
+      tx("Статус собирается выборочно — удобные проекты попадают в отчёт, проблемные нет.", "Status is selective — convenient projects enter the report, problem ones do not."),
+    ],
+    signsYes: [
+      tx("Есть актуальный список проектов контура и владельцы потоков.", "There is a current contour project list and stream owners."),
+      tx("Новый проект не попадает в отчётность, пока не включён в контур явно.", "A new project does not enter reporting until explicitly added to the contour."),
+    ],
+    signsNo: [
+      tx("«Мы ведём всё» без списка и без исключений.", "“We run everything” with no list and no exclusions."),
+      tx("Одни и те же люди отвечают «за всё», границы ролей не описаны.", "The same people own “everything”; role boundaries are undescribed."),
+    ],
+    relatedLaunch: ["embedding", "audit", "baseline"],
+  },
+  {
+    id: "horizon",
+    n: "02",
+    title: tx("Горизонт от полугода", "Horizon from six months"),
+    summary: tx(
+      "Горизонт работы от полугода — чтобы базовая линия, ритм и эффект успели проявиться.",
+      "Engagement horizon from six months — so baseline, cadence and effect can show.",
+    ),
+    purpose: tx(
+      "Дать время на встраивание, аудит, фиксацию базы, целевые уровни и проверку точечных мер на следующей линии. Короткий «настроить Jira за месяц» не даёт сопоставимого эффекта.",
+      "Allow time for embedding, audit, baseline lock, targets, and checking targeted measures on the next line. A short “fix Jira in a month” does not yield a comparable effect.",
+    ),
+    scope: [
+      tx("Полный маршрут запуска: встраивание → аудит → база → цели → точечные изменения.", "Full launch route: embedding → audit → baseline → targets → targeted changes."),
+      tx("Минимум один повторный замер на сопоставимом периоде после мер.", "At least one repeat measurement on a comparable period after measures."),
+      tx("Ритм управления (статус, релизы, ретроспектива) как постоянная практика, не разовый проект.", "Management cadence (status, releases, retrospective) as ongoing practice, not a one-off project."),
+    ],
+    howFixed: [
+      tx("В договорённости о роли или программе стабилизации указывают горизонт и циклы ревизии базы.", "Role or stabilization-program agreement states the horizon and baseline review cycles."),
+      tx("Календарь: когда фиксируют базу, когда утверждают цели, когда сверяют эффект.", "Calendar: when baseline locks, when targets approve, when effect is checked."),
+    ],
+    withoutIt: [
+      tx("Отменяют программу до повторного замера — «не взлетело» без факта.", "The program is cancelled before a repeat measurement — “didn’t take off” without evidence."),
+      tx("Меняют правила учёта каждый месяц — исходная линия становится бесполезной.", "Accounting rules change every month — the baseline becomes useless."),
+      tx("Цели ставят на квартал без базы и без ёмкости на улучшения.", "Goals are set for a quarter without baseline or improvement capacity."),
+    ],
+    signsYes: [
+      tx("В плане есть даты базы, целей и следующей сверки эффекта.", "The plan has dates for baseline, targets, and the next effect check."),
+      tx("Руководство понимает, что эффект смотрят на сопоставимом периоде, а не через две недели.", "Leadership understands effect is judged on a comparable period, not in two weeks."),
+    ],
+    signsNo: [
+      tx("Ожидание «покажите рост KPI в следующем спринте» без исходной линии.", "Expectation to “show KPI growth next sprint” without a baseline."),
+      tx("Программа свёрнута после настройки досок, до аудита и мер.", "Program stopped after board setup, before audit and measures."),
+    ],
+    relatedLaunch: ["baseline", "targets", "changes"],
+  },
+  {
+    id: "mandate",
+    n: "03",
+    title: tx("Право на регламенты и артефакты", "Mandate for rules and artifacts"),
+    summary: tx(
+      "Право фиксировать регламенты и обязательные артефакты в согласованном контуре.",
+      "Mandate to set rules and mandatory artifacts inside the agreed contour.",
+    ),
+    purpose: tx(
+      "Сделать правила игры и обязательные поля едиными в контуре. Иначе слои 1–3 не держатся, а метрики и Timeline остаются мнением.",
+      "Make the rules and mandatory fields uniform in the contour. Otherwise layers 1–3 do not hold, and metrics plus Timeline stay opinions.",
+    ),
+    scope: [
+      tx("Регламенты списания, декомпозиции ≤24 ч, Planning и запрета нулевого плана.", "Rules for time logging, decomposition ≤24h, Planning, and zero-plan ban."),
+      tx("Обязательные артефакты: оценка, даты, исполнитель, условия приёмки, критерии готовности, шаблон требований.", "Mandatory artifacts: estimate, dates, assignee, acceptance criteria, readiness criteria, requirements template."),
+      tx("Порядок изменения версий правил и журнал исключений.", "Rule version-change procedure and exception log."),
+    ],
+    howFixed: [
+      tx("Полномочие прямо входит в зону ответственности руководителя проектного офиса для согласованного контура.", "The mandate is explicit in the head of project office responsibility for the agreed contour."),
+      tx("Регламент утверждается с руководством и владельцами потоков; PMO владеет системой, потоки внедряют.", "Rules are approved with leadership and stream owners; PMO owns the system, streams implement."),
+      tx("Исключения оформляют явно — не «тихим» обходом в чате.", "Exceptions are recorded explicitly — not a quiet chat workaround."),
+    ],
+    withoutIt: [
+      tx("Каждая команда ведёт учёт по-своему — план/факт несопоставим.", "Each team tracks differently — plan/fact is not comparable."),
+      tx("Timeline пустой: нет оценок и дат, отчёт заказчику снова собирают руками.", "Timeline is empty: no estimates or dates, customer report is hand-built again."),
+      tx("Точечные разборы невозможны: нет порога и нет одинаковых полей.", "Targeted reviews are impossible: no threshold and no shared fields."),
+    ],
+    signsYes: [
+      tx("Есть короткий утверждённый регламент и список обязательных полей.", "There is a short approved rule set and mandatory-field list."),
+      tx("Новая версия правил имеет дату и владельца; исключения в журнале.", "A new rule version has a date and owner; exceptions are in the log."),
+    ],
+    signsNo: [
+      tx("PMO «советует», но команды вправе игнорировать обязательные поля.", "PMO “advises” but teams may ignore mandatory fields."),
+      tx("Правила есть только в головах или в устаревшей презентации.", "Rules exist only in heads or an obsolete deck."),
+    ],
+    relatedLaunch: ["embedding", "baseline", "changes"],
+  },
+  {
+    id: "status-channel",
+    n: "04",
+    title: tx("Прямой канал статуса", "Direct status channel"),
+    summary: tx(
+      "Прямой канал статуса к заказчику и руководству — без ручной сборки разрозненных таблиц.",
+      "Direct status channel to customer and leadership — without stitching ad-hoc spreadsheets.",
+    ),
+    purpose: tx(
+      "Дать один согласованный источник правды: сделанное, даты, отклонения, риски и решения. Это основа удовлетворённости и раннего управления перерасходом.",
+      "Provide one agreed source of truth: done work, dates, deviations, risks, and decisions. This underpins satisfaction and early overspend control.",
+    ),
+    scope: [
+      tx("Еженедельный отчёт или панель из трекера задач, а не сводка из чатов.", "Weekly report or panel from the task tracker, not a chat digest."),
+      tx("Канал эскалации срывов, перерасхода и решений, ожидаемых от заказчика.", "Escalation channel for slips, overspend, and decisions needed from the customer."),
+      tx("Связка с контуром инцидентов и программой улучшений по обратной связи.", "Link to the incident contour and the feedback improvement program."),
+    ],
+    howFixed: [
+      tx("На шаге встраивания согласовать формат и аудиторию канала; закрепить в карте контура.", "At embedding, agree channel format and audience; lock it in the contour map."),
+      tx("Статус ведёт PM / поток на фактах трекера; PMO задаёт шаблон и качество сигнала.", "PM / stream runs status from tracker facts; PMO sets the template and signal quality."),
+      tx("Заказчик и руководство подтверждают, что смотрят именно этот канал.", "Customer and leadership confirm they read this channel."),
+    ],
+    withoutIt: [
+      tx("Статус узнают постфактум; CSAT падает по прозрачности.", "Status is learned after the fact; CSAT drops on transparency."),
+      tx("Руководство получает разные цифры из разных таблиц.", "Leadership gets different numbers from different sheets."),
+      tx("Эскалации теряются в переписке — перерасход и срыв срока замечают поздно.", "Escalations die in chat — overspend and schedule slip are noticed late."),
+    ],
+    signsYes: [
+      tx("Один отчёт / доска на неделю; расхождения с трекером разбирают как дефект данных.", "One report / board per week; tracker mismatches are treated as data defects."),
+      tx("В статусе видны риски, решения и владельцы — не только «процент готовности».", "Status shows risks, decisions, and owners — not only a completion percentage."),
+    ],
+    signsNo: [
+      tx("Перед каждым совещанием заново собирают презентацию из чатов.", "Before every meeting a deck is rebuilt from chats."),
+      tx("Заказчик ведёт свой параллельный учёт, потому что официальному не доверяет.", "The customer keeps a parallel tracker because the official one is not trusted."),
+    ],
+    relatedLaunch: ["embedding", "targets", "changes"],
+  },
+];
+
 export function metricById(id: string) {
   return metricPages.find((item) => item.id === id);
 }
 
 export function layerById(id: string) {
   return layerPages.find((item) => item.id === id);
+}
+
+export function launchStepById(id: string) {
+  return launchSteps.find((item) => item.id === id);
+}
+
+export function authorityById(id: string) {
+  return authorityItems.find((item) => item.id === id);
 }

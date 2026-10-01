@@ -7,78 +7,12 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { useI18n } from "@/lib/i18n";
 import {
+  authorityItems,
+  launchSteps,
   layerPages as layers,
   metricPages as metrics,
   metricPages,
 } from "@/lib/project-office-content";
-
-const pathSteps = [
-  {
-    n: "01",
-    title: { ru: "Встраивание", en: "Embedding" },
-    text: {
-      ru: "Вход в контур: роли, границы ответственности, каналы статуса к руководству и заказчику.",
-      en: "Enter the contour: roles, ownership boundaries, status channels to leadership and customer.",
-    },
-  },
-  {
-    n: "02",
-    title: { ru: "Аудит за год", en: "Year audit" },
-    text: {
-      ru: "Снимок прошлого периода: план/факт, завершение стадий, загрузка, соблюдение регламентов, хвост задач.",
-      en: "Snapshot of the prior period: plan/fact, stage completion, load, process adherence, task tail.",
-    },
-  },
-  {
-    n: "03",
-    title: { ru: "База", en: "Baseline" },
-    text: {
-      ru: "Фиксируем базовую линию и обязательные артефакты. Без этого целевые уровни и метрики не опираются на факты.",
-      en: "Lock the baseline and mandatory artifacts. Without this, targets and metrics have no factual footing.",
-    },
-  },
-  {
-    n: "04",
-    title: {
-      ru: "Целевые уровни",
-      en: "Target levels",
-    },
-    text: {
-      ru: "Согласуем ориентиры по срокам, удовлетворённости, план/факту, хвосту, техническому долгу и перерасходу.",
-      en: "Agree targets for schedule, satisfaction, plan/fact, tail, technical debt and overspend.",
-    },
-  },
-  {
-    n: "05",
-    title: {
-      ru: "Точечные изменения",
-      en: "Targeted changes",
-    },
-    text: {
-      ru: "Меры по узким местам с проверкой эффекта на следующей базовой линии — не кампания «всё сразу».",
-      en: "Measures on bottlenecks, checked against the next baseline — not a change-everything campaign.",
-    },
-  },
-] as const;
-
-const perimeter = [
-  {
-    ru: "Согласованный контур: портфель или группа проектов с понятными границами ответственности",
-    en: "Agreed contour: a portfolio or project group with clear ownership boundaries",
-  },
-  {
-    ru: "Горизонт работы от полугода — чтобы базовая линия, ритм и эффект успели проявиться",
-    en: "Engagement horizon from six months — so baseline, cadence and effect can show",
-  },
-  {
-    ru: "Право фиксировать регламенты и обязательные артефакты в согласованном контуре",
-    en: "Mandate to set rules and mandatory artifacts inside the agreed contour",
-  },
-  {
-    ru: "Прямой канал статуса к заказчику и руководству — без ручной сборки разрозненных таблиц",
-    en: "Direct status channel to customer and leadership — without stitching ad-hoc spreadsheets",
-  },
-] as const;
 
 export function ProjectOfficePage() {
   const { t, lang } = useI18n();
@@ -257,7 +191,7 @@ export function ProjectOfficePage() {
           </FadeUp>
 
           {/* 4. Launch route */}
-          <FadeUp className="po-block" delay={0.08}>
+          <FadeUp className="po-block" id="launch" delay={0.08}>
             <div className="po-block__head">
               <span className="po-num" aria-hidden>
                 04
@@ -275,23 +209,31 @@ export function ProjectOfficePage() {
             </div>
 
             <ol className="po-path">
-              {pathSteps.map((step, i) => (
-                <li key={step.n} className="po-path__step">
-                  <div className="po-path__n">{step.n}</div>
-                  <h3 className="po-path__title">{t(step.title)}</h3>
-                  <p className="po-path__text">{t(step.text)}</p>
-                  {i < pathSteps.length - 1 ? (
-                    <span className="po-path__arrow" aria-hidden>
-                      →
+              {launchSteps.map((step, i) => (
+                <li key={step.id}>
+                  <Link
+                    href={`/project-office/launch/${step.id}/`}
+                    className="po-path__step po-path__hit"
+                  >
+                    <div className="po-path__n">{step.n}</div>
+                    <h3 className="po-path__title">{t(step.title)}</h3>
+                    <p className="po-path__text">{t(step.summary)}</p>
+                    <span className="po-kpi__hint">
+                      {lang === "ru" ? "Открыть шаг" : "Open step"}
                     </span>
-                  ) : null}
+                    {i < launchSteps.length - 1 ? (
+                      <span className="po-path__arrow" aria-hidden>
+                        →
+                      </span>
+                    ) : null}
+                  </Link>
                 </li>
               ))}
             </ol>
           </FadeUp>
 
           {/* 5. Perimeter */}
-          <FadeUp className="po-block" delay={0.1}>
+          <FadeUp className="po-block" id="authority" delay={0.1}>
             <div className="po-block__head">
               <span className="po-num" aria-hidden>
                 05
@@ -302,13 +244,28 @@ export function ProjectOfficePage() {
                     ? "Полномочия и периметр"
                     : "Authority and scope"}
                 </h2>
+                <p className="po-lead">
+                  {lang === "ru"
+                    ? "Условия, без которых маршрут запуска и ориентиры не держатся в контуре."
+                    : "Conditions without which the launch route and targets cannot hold in the contour."}
+                </p>
               </div>
             </div>
 
             <ul className="po-scope">
-              {perimeter.map((item) => (
-                <li key={item.ru} className="po-scope__item">
-                  {t(item)}
+              {authorityItems.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    href={`/project-office/authority/${item.id}/`}
+                    className="po-scope__item po-scope__hit"
+                  >
+                    <span className="po-scope__n">{item.n}</span>
+                    <span className="po-scope__title">{t(item.title)}</span>
+                    <span className="po-scope__text">{t(item.summary)}</span>
+                    <span className="po-kpi__hint">
+                      {lang === "ru" ? "Открыть" : "Open"}
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>
