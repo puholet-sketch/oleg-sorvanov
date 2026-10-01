@@ -391,8 +391,8 @@ a.glass-card:hover {
 
 .project-office-theme .po-pillars-marquee {
   margin: 0.75rem 0 0;
-  /* Keep strip readable inside the dark hero panel */
-  background: #000000;
+  /* Match main ticker: text + thin rules on page/panel bg, no filled strip */
+  background: transparent;
   color: var(--po-ink);
 }
 
