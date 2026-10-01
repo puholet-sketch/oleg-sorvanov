@@ -81,7 +81,7 @@ export const teamStructureLink: Resource = {
   href: "/project-office/how/team/",
 };
 
-/** Shared link to the typical-mistakes catalog. */
+/** Typical-mistakes catalog — page kept at /project-office/mistakes/, hidden from public nav. */
 export const mistakesLink: Resource = {
   label: tx("Типовые ошибки", "Typical mistakes"),
   href: "/project-office/mistakes/",
@@ -143,7 +143,6 @@ export const metricPages: MetricPage[] = [
       "Median cycle time falls sustainably against the baseline while quality and agreed work volume do not deteriorate.",
     ),
     relatedLayers: ["rules", "stages", "artifacts", "cadence", "capacity"],
-    relatedPages: [mistakesLink],
   },
   {
     id: "satisfaction",
@@ -249,7 +248,6 @@ export const metricPages: MetricPage[] = [
       "Median absolute variance and zero-plan share fall; re-estimation happens before overspend.",
     ),
     relatedLayers: ["rules", "stages", "artifacts", "cadence"],
-    relatedPages: [mistakesLink],
   },
   {
     id: "tail-cost",
@@ -435,7 +433,6 @@ export const layerPages: LayerPage[] = [
     rolesLink: teamStructureLink,
     cadence: [tx("Проверка соблюдения еженедельно; пересмотр после значимого изменения или по циклу.", "Compliance weekly; review after major change or on a set cycle.")],
     relatedMetrics: ["schedule", "plan-fact", "tail-cost", "overspend"],
-    relatedPages: [mistakesLink],
   },
   {
     id: "stages",
@@ -510,7 +507,6 @@ export const layerPages: LayerPage[] = [
       ),
     ],
     relatedMetrics: ["schedule", "satisfaction", "plan-fact", "tech-debt", "overspend"],
-    relatedPages: [mistakesLink],
   },
   {
     id: "cadence",
@@ -574,7 +570,6 @@ export const layerPages: LayerPage[] = [
       tx("Горизонт — не короче цикла планирования.", "Horizon no shorter than the planning cycle."),
     ],
     relatedMetrics: ["schedule", "tail-cost", "tech-debt", "overspend"],
-    relatedPages: [mistakesLink],
   },
   {
     id: "customer",
@@ -599,7 +594,6 @@ export const layerPages: LayerPage[] = [
     ],
     cadence: [tx("Статус — еженедельно; решения — по событию; CSAT — по согласованному циклу.", "Status weekly; decisions event-driven; CSAT on an agreed cycle.")],
     relatedMetrics: ["satisfaction", "overspend"],
-    relatedPages: [mistakesLink],
   },
 ];
 
@@ -1129,7 +1123,6 @@ export const rulesStandardsContent = {
   links: [
     { label: tx("План/факт", "Plan/fact"), href: "/project-office/plan-fact/" },
     { label: tx("Артефакты / качество", "Artifacts / quality"), href: "/project-office/how/artifacts/" },
-    mistakesLink,
   ] satisfies Resource[],
 };
 
@@ -1706,15 +1699,6 @@ export const dorDodContent = {
       ),
       href: "/project-office/how/cadence/",
       linkLabel: tx("Ритм", "Cadence"),
-    },
-    {
-      id: "mistakes",
-      text: tx(
-        "Типовые ловушки: старт без DoR/AC, закрытие без DoD, игнор Quality Gates.",
-        "Typical traps: start without DoR/AC, close without DoD, ignore Quality Gates.",
-      ),
-      href: "/project-office/mistakes/",
-      linkLabel: tx("Ошибки", "Mistakes"),
     },
   ],
 };
