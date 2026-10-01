@@ -55,8 +55,8 @@ export function ProjectOfficePage() {
                 aria-label={lang === "ru" ? "Четыре столпа" : "Four pillars"}
                 items={
                   lang === "ru"
-                    ? ["Регламенты", "Учёт", "Ритм", "Прозрачность для заказчика"]
-                    : ["Rules", "Tracking", "Cadence", "Customer visibility"]
+                    ? ["Регламенты", "Учёт", "Ритм", "Прозрачность"]
+                    : ["Rules", "Tracking", "Cadence", "Visibility"]
                 }
               />
               <p className="po-pillars__caption">

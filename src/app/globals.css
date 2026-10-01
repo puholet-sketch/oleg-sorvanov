@@ -391,6 +391,17 @@ a.glass-card:hover {
 
 .project-office-theme .po-pillars-marquee {
   margin: 0.75rem 0 0;
+  /* Keep strip readable inside the dark hero panel */
+  background: #000000;
+  color: var(--po-ink);
+}
+
+.project-office-theme .po-pillars-marquee .text-muted {
+  color: #c8c8c8;
+}
+
+.project-office-theme .po-pillars-marquee .text-voltage {
+  color: var(--po-gold);
 }
 
 .project-office-theme .po-pillars__caption {
@@ -2321,7 +2332,9 @@ a.glass-card:hover {
     row-gap: 0.45rem;
   }
 
-  .marquee .marquee__group:last-child {
+  /* Only hide the looping duplicate — not the sole group when JS
+     already omitted it under useReducedMotion (last-child === only-child). */
+  .marquee .marquee__group:nth-child(n + 2) {
     display: none;
   }
 }
