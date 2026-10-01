@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProjectOfficeMetricPage } from "@/components/project-office-metric-page";
-import { metricById, metricPages } from "@/lib/project-office-metrics";
+import { metricById, metricPages } from "@/lib/project-office-content";
 
 export function generateStaticParams() {
   return metricPages.map((metric) => ({ metric: metric.id }));
@@ -17,7 +17,7 @@ export async function generateMetadata({
   if (!metric) return { title: "Проектный офис" };
   return {
     title: `${metric.value} ${metric.label.ru} · Олег Сорванов`,
-    description: metric.why.ru,
+    description: metric.meaning.ru,
   };
 }
 

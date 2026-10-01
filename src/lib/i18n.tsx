@@ -24,7 +24,9 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const saved = window.localStorage.getItem("os-lang");
-    if (saved === "ru" || saved === "en") setLangState(saved);
+    if (saved !== "ru" && saved !== "en") return;
+    const timer = window.setTimeout(() => setLangState(saved), 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   const setLang = useCallback((next: Lang) => {

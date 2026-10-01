@@ -5,10 +5,18 @@ import { FadeUp } from "@/components/motion";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { useI18n } from "@/lib/i18n";
-import type { MetricPage } from "@/lib/project-office-metrics";
+import { layerPages, type MetricPage } from "@/lib/project-office-content";
 
 export function ProjectOfficeMetricPage({ metric }: { metric: MetricPage }) {
   const { t, lang } = useI18n();
+  const sections = [
+    { title: { ru: "Что измеряем", en: "What we measure" }, items: metric.measure },
+    { title: { ru: "Исходная линия", en: "Baseline" }, items: metric.baseline },
+    { title: { ru: "Артефакты и ответственные", en: "Artifacts and owners" }, items: metric.artifacts },
+    { title: { ru: "Ритм контроля", en: "Control cadence" }, items: metric.cadence },
+    { title: { ru: "Типовые ошибки", en: "Common mistakes" }, items: metric.errors },
+  ];
+  const related = layerPages.filter((layer) => metric.relatedLayers.includes(layer.id));
 
   return (
     <div className="project-office-theme po-metric min-h-screen">
@@ -19,7 +27,7 @@ export function ProjectOfficeMetricPage({ metric }: { metric: MetricPage }) {
             ← {lang === "ru" ? "К ориентирам" : "Back to targets"}
           </Link>
 
-          <FadeUp className="po-hero po-metric__hero mt-3">
+          <FadeUp className="po-hero po-detail__hero mt-3">
             <div className="po-hero__body">
               <p className="po-kicker">
                 {lang === "ru"
@@ -30,11 +38,11 @@ export function ProjectOfficeMetricPage({ metric }: { metric: MetricPage }) {
                 <span className="po-metric__value">{metric.value}</span>{" "}
                 {t(metric.label)}
               </h1>
-              <p className="po-hero__lead">{t(metric.why)}</p>
+              <p className="po-hero__lead">{t(metric.meaning)}</p>
             </div>
           </FadeUp>
 
-          <FadeUp className="po-block po-metric__block" delay={0.03}>
+          <FadeUp className="po-block po-detail__block" delay={0.03}>
             <div className="po-block__head">
               <span className="po-num" aria-hidden>
                 01
@@ -45,8 +53,8 @@ export function ProjectOfficeMetricPage({ metric }: { metric: MetricPage }) {
                 </h2>
               </div>
             </div>
-            <ol className="po-path po-metric__steps">
-              {metric.how.map((step, index) => (
+            <ol className="po-path po-detail__steps">
+              {metric.steps.map((step, index) => (
                 <li key={step.ru} className="po-path__step">
                   <div className="po-path__n">
                     {String(index + 1).padStart(2, "0")}
@@ -72,27 +80,36 @@ export function ProjectOfficeMetricPage({ metric }: { metric: MetricPage }) {
             ) : null}
           </FadeUp>
 
-          <FadeUp className="po-block po-metric__block" delay={0.05}>
-            <div className="po-block__head">
-              <span className="po-num" aria-hidden>
-                02
-              </span>
-              <div>
-                <h2 className="po-h2">
-                  {lang === "ru"
-                    ? "Почему цифра держится"
-                    : "Why the figure holds"}
-                </h2>
-                <p className="po-lead">{t(metric.note)}</p>
+          <FadeUp className="po-detail__grid" delay={0.05}>
+            {sections.map((section, index) => (
+              <section className="po-detail__card" key={section.title.ru}>
+                <p className="po-kicker">{String(index + 2).padStart(2, "0")}</p>
+                <h2 className="po-detail__title">{t(section.title)}</h2>
+                <ul className="po-detail__list">
+                  {section.items.map((item) => <li key={item.ru}>{t(item)}</li>)}
+                </ul>
+              </section>
+            ))}
+            <section className="po-detail__card po-detail__result">
+              <p className="po-kicker">{lang === "ru" ? "Критерий результата" : "Result criterion"}</p>
+              <p>{t(metric.result)}</p>
+            </section>
+          </FadeUp>
+
+          <FadeUp className="po-detail__nav" delay={0.07}>
+            <div>
+              <p className="po-kicker">{lang === "ru" ? "Связанные слои" : "Related layers"}</p>
+              <div className="po-detail__links">
+                {related.map((layer) => (
+                  <Link key={layer.id} href={`/project-office/how/${layer.id}/`}>
+                    {layer.n} · {t(layer.title)}
+                  </Link>
+                ))}
               </div>
             </div>
-            <ul className="po-scope po-metric__why">
-              {metric.before.map((item) => (
-                <li key={item.ru} className="po-scope__item">
-                  {t(item)}
-                </li>
-              ))}
-            </ul>
+            <Link href="/project-office/" className="po-detail__all">
+              {lang === "ru" ? "Все материалы проектного офиса" : "All project office materials"} →
+            </Link>
           </FadeUp>
         </div>
       </main>

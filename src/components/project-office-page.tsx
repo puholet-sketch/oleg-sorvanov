@@ -6,145 +6,11 @@ import { FadeUp } from "@/components/motion";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { useI18n } from "@/lib/i18n";
-import { metricPages } from "@/lib/project-office-metrics";
-
-const metrics = [
-  {
-    id: "schedule",
-    value: "−15%",
-    label: { ru: "сроки", en: "schedule" },
-    note: {
-      ru: "сжатие после выравнивания контура",
-      en: "compression after contour alignment",
-    },
-  },
-  {
-    id: "satisfaction",
-    value: "+20%",
-    label: {
-      ru: "удовлетворённость заказчика",
-      en: "customer satisfaction",
-    },
-    note: {
-      ru: "при регулярной обратной связи",
-      en: "with a regular feedback loop",
-    },
-  },
-  {
-    id: "plan-fact",
-    value: "−30%",
-    label: {
-      ru: "расхождение план/факт",
-      en: "plan/fact drift",
-    },
-    note: {
-      ru: "по проектам и командам",
-      en: "across projects and teams",
-    },
-  },
-  {
-    id: "tail-cost",
-    value: "−20%",
-    label: {
-      ru: "хвост затрат",
-      en: "backlog-tail cost",
-    },
-    note: {
-      ru: "закрытие и передача устаревших задач",
-      en: "close or hand off stale tasks",
-    },
-  },
-  {
-    id: "tech-debt",
-    value: "−15%",
-    label: {
-      ru: "технический долг",
-      en: "technical debt",
-    },
-    note: {
-      ru: "объём относительно базовой линии",
-      en: "volume vs baseline",
-    },
-  },
-  {
-    id: "overspend",
-    value: "−20%",
-    label: {
-      ru: "перерасход",
-      en: "overspend",
-    },
-    note: {
-      ru: "факт против оценки",
-      en: "actual vs estimate",
-    },
-  },
-] as const;
-
-const layers = [
-  {
-    n: "01",
-    title: { ru: "Регламенты", en: "Rules of the game" },
-    text: {
-      ru: "Согласованные правила игры. Без них статусы и метрики — мнение, а не управление.",
-      en: "Agreed rules. Without them, status and metrics stay opinions, not management.",
-    },
-  },
-  {
-    n: "02",
-    title: {
-      ru: "Учёт стадий",
-      en: "Stage tracking",
-    },
-    text: {
-      ru: "Порядок ведения проектов и задач: вход в портфель, старт, финиш, закрытие этапа.",
-      en: "How projects and tasks are tracked: portfolio entry, start, finish, stage close.",
-    },
-  },
-  {
-    n: "03",
-    title: {
-      ru: "Артефакты и атрибуты",
-      en: "Artifacts and attributes",
-    },
-    text: {
-      ru: "Оценка, даты, ответственность, критерии готовности — без них задача неуправляема.",
-      en: "Estimate, dates, ownership, done criteria — without them work is not manageable.",
-    },
-  },
-  {
-    n: "04",
-    title: {
-      ru: "Ритм мероприятий",
-      en: "Cadence of rituals",
-    },
-    text: {
-      ru: "Оценки, планирование, статусы и ретроспективы с действиями — цикл, который держит прогноз.",
-      en: "Estimates, planning, status and retrospectives with actions — the forecast cycle.",
-    },
-  },
-  {
-    n: "05",
-    title: {
-      ru: "Прогноз загрузки",
-      en: "Load forecast",
-    },
-    text: {
-      ru: "Горизонт от месяца: дефицит и избыток ресурса видно до срыва сроков, не после.",
-      en: "From one month out: resource gaps and excess visible before deadlines slip.",
-    },
-  },
-  {
-    n: "06",
-    title: {
-      ru: "Работа с заказчиком",
-      en: "Customer working model",
-    },
-    text: {
-      ru: "Единый контур общения, удовлетворённость и цикл улучшений — один язык статуса.",
-      en: "One working model, satisfaction and improvement loop — one status language.",
-    },
-  },
-] as const;
+import {
+  layerPages as layers,
+  metricPages as metrics,
+  metricPages,
+} from "@/lib/project-office-content";
 
 const pathSteps = [
   {
@@ -340,9 +206,9 @@ export function ProjectOfficePage() {
               <div className="po-reveal" key={opened.id}>
                 <p className="po-kicker">{opened.value}</p>
                 <h3 className="po-reveal__title">{t(opened.label)}</h3>
-                <p className="po-reveal__text">{t(opened.hover)}</p>
+                <p className="po-reveal__text">{t(opened.meaning)}</p>
                 <ol className="po-reveal__steps">
-                  {opened.how.map((step) => (
+                  {opened.steps.slice(0, 3).map((step) => (
                     <li key={step.ru}>{t(step)}</li>
                   ))}
                 </ol>
@@ -371,12 +237,20 @@ export function ProjectOfficePage() {
               </div>
             </div>
 
-            <ol className="po-kpi po-layers-grid" role="list">
+            <ol className="po-kpi po-layers-grid" id="how" role="list">
               {layers.map((layer) => (
-                <li key={layer.n} className="po-kpi__item" role="listitem">
+                <li key={layer.n} role="listitem">
+                  <Link
+                    href={`/project-office/how/${layer.id}/`}
+                    className="po-kpi__item po-kpi__hit"
+                  >
                   <div className="po-kpi__value">{layer.n}</div>
                   <h3 className="po-kpi__label">{t(layer.title)}</h3>
-                  <p className="po-kpi__note">{t(layer.text)}</p>
+                  <p className="po-kpi__note">{t(layer.summary)}</p>
+                  <span className="po-kpi__hint">
+                    {lang === "ru" ? "Открыть слой" : "Open layer"}
+                  </span>
+                  </Link>
                 </li>
               ))}
             </ol>
