@@ -292,8 +292,8 @@ export const site = {
     {
       title: "Барбершоп",
       text: {
-        ru: "PMO-модель открытия на 6 мастеров в Москве: обратный счёт к 1 млн чистыми, ОКВЭД, интерьер «Чёрная кость», калькулятор окупаемости.",
-        en: "PMO model for a 6-chair Moscow barbershop: reverse P&L to 1M net, OKVED, Black Bone-style CAPEX, payback calculator.",
+        ru: "Модель открытия на 6 мастеров в Москве: обратный счёт к 1 млн чистыми, ОКВЭД, интерьер «Чёрная кость», калькулятор окупаемости.",
+        en: "6-chair Moscow barbershop model: reverse P&L to 1M net, OKVED, Black Bone-style CAPEX, payback calculator.",
       },
       href: "https://puholet-sketch.github.io/barbershop/",
     },
