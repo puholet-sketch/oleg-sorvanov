@@ -290,6 +290,14 @@ export const site = {
   ],
   projects: [
     {
+      title: "Бюро 1440 · Рассвет",
+      text: {
+        ru: "Интерактивное досье LEO-группировки: схема телефон→спутник→Земля, ТТХ, финансы, команда, покрытие, плазменные ДУ.",
+        en: "Interactive LEO constellation dossier: phone→sat→Earth diagram, specs, finance, team, coverage, plasma thrusters.",
+      },
+      href: "https://puholet-sketch.github.io/bureau-1440-rassvet/",
+    },
+    {
       title: "Барбершоп",
       text: {
         ru: "Модель открытия на 6 мастеров в Москве: обратный счёт к 1 млн чистыми, ОКВЭД, интерьер «Чёрная кость», калькулятор окупаемости.",
